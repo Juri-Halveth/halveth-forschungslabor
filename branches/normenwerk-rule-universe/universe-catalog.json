@@ -1,0 +1,105 @@
+{
+  "branchCount": 10,
+  "branches": [
+    {
+      "id": "focus-kernel",
+      "sourceFiles": [
+        "branches/focus-kernel/core.js"
+      ],
+      "testFiles": [
+        "branches/focus-kernel/tests/core.test.mjs"
+      ]
+    },
+    {
+      "id": "document-issue-reference-verifier",
+      "sourceFiles": [
+        "branches/document-issue-reference-verifier/src/reference-verifier.mjs"
+      ],
+      "testFiles": [
+        "branches/document-issue-reference-verifier/test/reference-verifier.test.mjs"
+      ]
+    },
+    {
+      "id": "bounded-knowledge-reuse-inventory",
+      "sourceFiles": [
+        "branches/bounded-knowledge-reuse-inventory/src/cli.js",
+        "branches/bounded-knowledge-reuse-inventory/src/inventory.js"
+      ],
+      "testFiles": [
+        "branches/bounded-knowledge-reuse-inventory/test/inventory.test.js"
+      ]
+    },
+    {
+      "id": "pixel-region-change-observer",
+      "sourceFiles": [
+        "branches/pixel-region-change-observer/src/cli.js",
+        "branches/pixel-region-change-observer/src/observer.js"
+      ],
+      "testFiles": [
+        "branches/pixel-region-change-observer/test/observer.test.js"
+      ]
+    },
+    {
+      "id": "binary-inquiry-loop",
+      "sourceFiles": [
+        "branches/binary-inquiry-loop/binary-inquiry-machine.mjs"
+      ],
+      "testFiles": [
+        "branches/binary-inquiry-loop/binary-inquiry-machine.test.mjs"
+      ]
+    },
+    {
+      "id": "eye-optics-and-prediction",
+      "sourceFiles": [
+        "branches/eye-optics-and-prediction/model.mjs",
+        "branches/eye-optics-and-prediction/view.mjs"
+      ],
+      "testFiles": [
+        "branches/eye-optics-and-prediction/model.test.mjs"
+      ]
+    },
+    {
+      "id": "banana-transition-field",
+      "sourceFiles": [
+        "branches/banana-transition-field/model.mjs"
+      ],
+      "testFiles": [
+        "branches/banana-transition-field/model.test.mjs"
+      ]
+    },
+    {
+      "id": "fegefeuer-provenance-transducer",
+      "sourceFiles": [
+        "branches/fegefeuer-provenance-transducer/fegefeuer_core.py"
+      ],
+      "testFiles": [
+        "branches/fegefeuer-provenance-transducer/test_fegefeuer_core.py"
+      ]
+    },
+    {
+      "id": "normenwerk-rule-universe",
+      "sourceFiles": [
+        "branches/normenwerk-rule-universe/normenkern.py",
+        "branches/normenwerk-rule-universe/universe.py"
+      ],
+      "testFiles": [
+        "branches/normenwerk-rule-universe/test_normenkern.py",
+        "branches/normenwerk-rule-universe/test_universe.py"
+      ]
+    },
+    {
+      "id": "security-impact-learning",
+      "sourceFiles": [
+        "branches/security-impact-learning/cli-result-model.mjs",
+        "branches/security-impact-learning/demo.mjs",
+        "branches/security-impact-learning/impact-model.mjs",
+        "branches/security-impact-learning/submission-review.mjs"
+      ],
+      "testFiles": [
+        "branches/security-impact-learning/cli-result-model.test.mjs",
+        "branches/security-impact-learning/impact-model.test.mjs",
+        "branches/security-impact-learning/submission-review.test.mjs"
+      ]
+    }
+  ]
+}

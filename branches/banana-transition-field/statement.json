@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1.0.0",
+  "textStatus": "MODULE_SCOPE_STATEMENT",
+  "text": "Illustratives numerisches Modell: Materialanteile bleiben beim Austausch erhalten; Parameter sind nicht an biologische Messreihen kalibriert. Der Forschungsgraph verwaltet offene Fragen und Quellenreferenzen.",
+  "byteLength": 208,
+  "sha256": "792c53c09a65a902d22ed69539024d74639142240da883fc8469bc71213990de",
+  "scientificModelStatus": "ILLUSTRATIVE_UNCALIBRATED"
+}

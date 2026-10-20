@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "1.0.0",
+  "branches": [
+    {
+      "id": "focus-kernel",
+      "title": "Focus Kernel – bestätigte Ziele und Vorschläge getrennt halten",
+      "description": "Lokaler Zustandskern für bestätigte Ziele, Vorschläge und begrenzte Prüfergebnisse.",
+      "path": "branches/focus-kernel",
+      "entry": "core.js",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
+      "id": "document-issue-reference-verifier",
+      "title": "Referenzprüfer – Format, Zustand und Berechtigung prüfen",
+      "description": "Synthetischer Referenzprüfer mit Digest-, Schema-, Principal- und Lebenszyklusprüfung.",
+      "path": "branches/document-issue-reference-verifier",
+      "entry": "src/reference-verifier.mjs",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
+      "id": "bounded-knowledge-reuse-inventory",
+      "title": "Metadatenprüfung – Freigabekandidaten nachvollziehbar einordnen",
+      "description": "Offline-Prüfung deklarierter Metadaten. Ein positives Ergebnis ist ein Kandidat, keine Publikationsfreigabe.",
+      "path": "branches/bounded-knowledge-reuse-inventory",
+      "entry": "src/inventory.js",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
+      "id": "pixel-region-change-observer",
+      "title": "Bildvergleich – Änderungen in gelieferten RGBA-Daten erkennen",
+      "description": "Offline-Vergleich synthetischer Framearrays mit Region, Schwelle und ausgewiesener Beobachtungslücke.",
+      "path": "branches/pixel-region-change-observer",
+      "entry": "src/observer.js",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
+      "id": "binary-inquiry-loop",
+      "title": "Dialogprotokoll – Zustimmung und offene Antworten modellieren",
+      "description": "Deterministisches Protokollmodell für eine gebundene Frage und zwei deklarierte Seiten.",
+      "path": "branches/binary-inquiry-loop",
+      "entry": "binary-inquiry-machine.mjs",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
+      "id": "eye-optics-and-prediction",
+      "title": "Optiklabor – Lichtbrechung und Bewegungsvorhersage",
+      "description": "Geometrisches Lehrmodell mit Strahlen, Fokus und einem Gegenbeispiel bei plötzlicher Bewegungsumkehr.",
+      "path": "branches/eye-optics-and-prediction",
+      "entry": "model.mjs",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
+      "id": "banana-transition-field",
+      "title": "Zustandsmodell – Stoffanteile und Übergänge berechnen",
+      "description": "Illustratives numerisches Modell mit erhaltener Stoffsumme. Keine validierte biologische Vorhersage.",
+      "path": "branches/banana-transition-field",
+      "entry": "model.mjs",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
+      "id": "fegefeuer-provenance-transducer",
+      "title": "Ereigniskern – Herkunft, Kandidaten und Zustandsänderungen",
+      "description": "In-Memory-Prototyp mit Ereignisidentität, Kandidatenaufnahme, HOLD und protokollierten Zustandsänderungen.",
+      "path": "branches/fegefeuer-provenance-transducer",
+      "entry": "fegefeuer_core.py",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
+      "id": "normenwerk-rule-universe",
+      "title": "Regelmodell – Konflikte, Vorrang und offene Zustände",
+      "description": "Python-Regelmodell mit dreiwertiger Logik, explizitem Vorrang und Replay der mitgelieferten Modelle.",
+      "path": "branches/normenwerk-rule-universe",
+      "entry": "normenkern.py",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
+      "id": "security-impact-learning",
+      "title": "Berichtsprüfung – Beobachtung und Sicherheitswirkung einordnen",
+      "description": "Lokale synthetische Prüfmodelle für Befundbehauptungen. Keine aktiven Angriffe oder fremden Zielsysteme.",
+      "path": "branches/security-impact-learning",
+      "entry": "submission-review.mjs",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    }
+  ]
+}

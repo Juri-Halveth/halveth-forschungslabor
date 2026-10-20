@@ -1,0 +1,13 @@
+{
+  "name": "halveth-forschungslabor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "SEE LICENSE IN LICENSES.md",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node scripts/check-modules.mjs"
+  }
+}

@@ -1,0 +1,376 @@
+{
+  "schema": "halveth.selected-source-transfer.v1",
+  "historicalSourceCommit": "251fd2e72e7c521d939314d401bed03037fd6695",
+  "selection": "Executable local modules and declared models only; narratives, institutional-level claims, financial proposals and personal archives excluded",
+  "records": [
+    {
+      "path": "branches/focus-kernel/core.js",
+      "sourceSha256": "2dfab1c8af1418e00604f13fe718a1bb29f22b9e6539db723aae2a593a4b5a29",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "2dfab1c8af1418e00604f13fe718a1bb29f22b9e6539db723aae2a593a4b5a29"
+    },
+    {
+      "path": "branches/focus-kernel/package.json",
+      "sourceSha256": "94808116c15ad83ce4c6865842767f984a0158e96637c198bc7ee2a9b195319d",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "94808116c15ad83ce4c6865842767f984a0158e96637c198bc7ee2a9b195319d"
+    },
+    {
+      "path": "branches/focus-kernel/tests/core.test.mjs",
+      "sourceSha256": "01c048097f1656864b85ff6de53d75f9057850ac680e7d9ba8efb1fe564b2447",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "01c048097f1656864b85ff6de53d75f9057850ac680e7d9ba8efb1fe564b2447"
+    },
+    {
+      "path": "branches/document-issue-reference-verifier/package.json",
+      "sourceSha256": "32bf425b8efa525482e342672bb88b1ea6d05a6c26d06c1561ba1c9d15443851",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "32bf425b8efa525482e342672bb88b1ea6d05a6c26d06c1561ba1c9d15443851"
+    },
+    {
+      "path": "branches/document-issue-reference-verifier/examples/synthetic-registry.json",
+      "sourceSha256": "d0bc49b4762f8049c47aefc092b9632b7715a84bbb5b40f872d7ead302065fdd",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "d0bc49b4762f8049c47aefc092b9632b7715a84bbb5b40f872d7ead302065fdd"
+    },
+    {
+      "path": "branches/document-issue-reference-verifier/src/reference-verifier.mjs",
+      "sourceSha256": "dd45b22af670718d8800843c4350f41822e589ed4648e97690dec30d8c6d4ff3",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "dd45b22af670718d8800843c4350f41822e589ed4648e97690dec30d8c6d4ff3"
+    },
+    {
+      "path": "branches/document-issue-reference-verifier/test/reference-verifier.test.mjs",
+      "sourceSha256": "c48716642cf5b3cf1b8bacc14701c863270e5145fd43c07587af20dac1a17683",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "c48716642cf5b3cf1b8bacc14701c863270e5145fd43c07587af20dac1a17683"
+    },
+    {
+      "path": "branches/bounded-knowledge-reuse-inventory/package.json",
+      "sourceSha256": "392c305508c1a5276993d5e76f92ce2ab6103c9c1a74510b35bd06e7eb23220f",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "392c305508c1a5276993d5e76f92ce2ab6103c9c1a74510b35bd06e7eb23220f"
+    },
+    {
+      "path": "branches/bounded-knowledge-reuse-inventory/fixtures/synthetic-inventory.json",
+      "sourceSha256": "e80b0d2886800f66a86fd8242c92be846e5d7f0e8f96784a8c4e311130a807a7",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "e80b0d2886800f66a86fd8242c92be846e5d7f0e8f96784a8c4e311130a807a7"
+    },
+    {
+      "path": "branches/bounded-knowledge-reuse-inventory/src/cli.js",
+      "sourceSha256": "2d564f853e6cbf8c1dcef4060023b611d0a866da85def27cde932cdc9b0a2561",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "2d564f853e6cbf8c1dcef4060023b611d0a866da85def27cde932cdc9b0a2561"
+    },
+    {
+      "path": "branches/bounded-knowledge-reuse-inventory/src/inventory.js",
+      "sourceSha256": "97b6289248bd8390bd2454e6006b889843d7249c57bdb16a82567f08a691f302",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "97b6289248bd8390bd2454e6006b889843d7249c57bdb16a82567f08a691f302"
+    },
+    {
+      "path": "branches/bounded-knowledge-reuse-inventory/test/inventory.test.js",
+      "sourceSha256": "c3b1ecc685fcefa8069cbc05ae5074287b4c094e136da24efcf269cc08d27512",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "c3b1ecc685fcefa8069cbc05ae5074287b4c094e136da24efcf269cc08d27512"
+    },
+    {
+      "path": "branches/pixel-region-change-observer/package.json",
+      "sourceSha256": "2ec5b48b4869f43061587468626439306e632c51618e994bb445ad31d58c88fc",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "2ec5b48b4869f43061587468626439306e632c51618e994bb445ad31d58c88fc"
+    },
+    {
+      "path": "branches/pixel-region-change-observer/fixtures/synthetic-frames.json",
+      "sourceSha256": "041a79f21b33317fec73a8a7243f0ef477b5e8a91d32c43861605ae28628a965",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "041a79f21b33317fec73a8a7243f0ef477b5e8a91d32c43861605ae28628a965"
+    },
+    {
+      "path": "branches/pixel-region-change-observer/src/cli.js",
+      "sourceSha256": "bf0817e5e92d2739b20c179db51f7ef5270d6b46dac23742aa238dd46263241c",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "bf0817e5e92d2739b20c179db51f7ef5270d6b46dac23742aa238dd46263241c"
+    },
+    {
+      "path": "branches/pixel-region-change-observer/src/observer.js",
+      "sourceSha256": "e0fd9cacecbabeea06c9d4b4e8453ca0dc54a8deef07a07c9280a81750305397",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "e0fd9cacecbabeea06c9d4b4e8453ca0dc54a8deef07a07c9280a81750305397"
+    },
+    {
+      "path": "branches/pixel-region-change-observer/test/observer.test.js",
+      "sourceSha256": "75033240ddb2b0a61c5af6ea9442beba08253e0c05dce28e086a188a4163dd55",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "75033240ddb2b0a61c5af6ea9442beba08253e0c05dce28e086a188a4163dd55"
+    },
+    {
+      "path": "branches/binary-inquiry-loop/binary-inquiry-machine.mjs",
+      "sourceSha256": "82356f940981ceb31960d9f66ad81c3fe6543b6cbb2fb079801909d2ca887ea8",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "82356f940981ceb31960d9f66ad81c3fe6543b6cbb2fb079801909d2ca887ea8"
+    },
+    {
+      "path": "branches/binary-inquiry-loop/binary-inquiry-machine.test.mjs",
+      "sourceSha256": "1d3aa0db219a1a2ec8dac26ff330dcf258c77d904932aee095ade03cf8b1e214",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "1d3aa0db219a1a2ec8dac26ff330dcf258c77d904932aee095ade03cf8b1e214"
+    },
+    {
+      "path": "branches/binary-inquiry-loop/package.json",
+      "sourceSha256": "dbdebe8b1340adbb54154cdc8e5492268d0f5d9a0b2366e8dcfb93289865d580",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "dbdebe8b1340adbb54154cdc8e5492268d0f5d9a0b2366e8dcfb93289865d580"
+    },
+    {
+      "path": "branches/eye-optics-and-prediction/index.html",
+      "sourceSha256": "7ee8140531d95d476022810070872e06c951d8e1b306473ec1bb05316fd1317c",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "7ee8140531d95d476022810070872e06c951d8e1b306473ec1bb05316fd1317c"
+    },
+    {
+      "path": "branches/eye-optics-and-prediction/model.mjs",
+      "sourceSha256": "2e71d12bd2a898379dae06db12ab9b3c4efd3c0ba29b47965d2530c7beb0ac38",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "2e71d12bd2a898379dae06db12ab9b3c4efd3c0ba29b47965d2530c7beb0ac38"
+    },
+    {
+      "path": "branches/eye-optics-and-prediction/model.test.mjs",
+      "sourceSha256": "00a9fecba62a17c15eaabf4203c2b1d66c592b21e35a627995751b36177d5fbc",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "00a9fecba62a17c15eaabf4203c2b1d66c592b21e35a627995751b36177d5fbc"
+    },
+    {
+      "path": "branches/eye-optics-and-prediction/style.css",
+      "sourceSha256": "979d92a8e1fa81da41459e3ffd1ffacab15410945829f5c9683b68e99fbeafbc",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "979d92a8e1fa81da41459e3ffd1ffacab15410945829f5c9683b68e99fbeafbc"
+    },
+    {
+      "path": "branches/eye-optics-and-prediction/view.mjs",
+      "sourceSha256": "c855442cb798273856155e1cbd72267b794153c95ae4cf991e5a169e4ccf7dc4",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "c855442cb798273856155e1cbd72267b794153c95ae4cf991e5a169e4ccf7dc4"
+    },
+    {
+      "path": "branches/banana-transition-field/model.mjs",
+      "sourceSha256": "f3ffe2596778037ee44ac5a0fc3d1c321a0b6aa0b60dcb93aae95f8cda53c5f8",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "f3ffe2596778037ee44ac5a0fc3d1c321a0b6aa0b60dcb93aae95f8cda53c5f8"
+    },
+    {
+      "path": "branches/banana-transition-field/model.test.mjs",
+      "sourceSha256": "34979181e7f61c1a0e32d2291a248ef1be19dbdf2370218ea85287ccff1b63ba",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "34979181e7f61c1a0e32d2291a248ef1be19dbdf2370218ea85287ccff1b63ba"
+    },
+    {
+      "path": "branches/fegefeuer-provenance-transducer/fegefeuer_core.py",
+      "sourceSha256": "bacd152c7e98b70901a241d3ef712d897ee4a3c84e2dcfbc2369aaf5b03b07eb",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "bacd152c7e98b70901a241d3ef712d897ee4a3c84e2dcfbc2369aaf5b03b07eb"
+    },
+    {
+      "path": "branches/fegefeuer-provenance-transducer/test_fegefeuer_core.py",
+      "sourceSha256": "f390fbf814d30ba1908b648a4f6f8ff32b5cd73223ced7dd569ddaa76ff8c056",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "f390fbf814d30ba1908b648a4f6f8ff32b5cd73223ced7dd569ddaa76ff8c056"
+    },
+    {
+      "path": "branches/normenwerk-rule-universe/01_unterstuetzt.model.json",
+      "sourceSha256": "be8fbf7628559c4799c82eea7fbf9a48b4d1feae539dddc01f016edb802bd69a",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "be8fbf7628559c4799c82eea7fbf9a48b4d1feae539dddc01f016edb802bd69a"
+    },
+    {
+      "path": "branches/normenwerk-rule-universe/01_unterstuetzt.receipt.json",
+      "sourceSha256": "e5bff768992979b15b6bcd0955eabda5f99daef9636cd51b835e20bee4823a7c",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "e5bff768992979b15b6bcd0955eabda5f99daef9636cd51b835e20bee4823a7c"
+    },
+    {
+      "path": "branches/normenwerk-rule-universe/02_konflikt.model.json",
+      "sourceSha256": "4a462837cf703f4a26ed1742c0bb2e46955265d88e96ebcc38e405d224a196dc",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "4a462837cf703f4a26ed1742c0bb2e46955265d88e96ebcc38e405d224a196dc"
+    },
+    {
+      "path": "branches/normenwerk-rule-universe/02_konflikt.receipt.json",
+      "sourceSha256": "fa77ef99b10753c2925eaf492a2938057018ba2f6db6089f193d566834c2ec83",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "fa77ef99b10753c2925eaf492a2938057018ba2f6db6089f193d566834c2ec83"
+    },
+    {
+      "path": "branches/normenwerk-rule-universe/03_offen.model.json",
+      "sourceSha256": "912e4afc95dd73f3a2aca5871bff1f57f8719748a08fa0feaa6dd84d012fcf62",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "912e4afc95dd73f3a2aca5871bff1f57f8719748a08fa0feaa6dd84d012fcf62"
+    },
+    {
+      "path": "branches/normenwerk-rule-universe/03_offen.receipt.json",
+      "sourceSha256": "a4247e119f20cdb4c039e6d7ae3542b0a55ec019a9b381c422a48175f667ba2d",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "a4247e119f20cdb4c039e6d7ae3542b0a55ec019a9b381c422a48175f667ba2d"
+    },
+    {
+      "path": "branches/normenwerk-rule-universe/04_vorrang.model.json",
+      "sourceSha256": "06681d1d616e76f3b3b31afb530d84bc2d49707120d23010055107daedb0257c",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "06681d1d616e76f3b3b31afb530d84bc2d49707120d23010055107daedb0257c"
+    },
+    {
+      "path": "branches/normenwerk-rule-universe/04_vorrang.receipt.json",
+      "sourceSha256": "9503eb7e5fc6b4da3c076ae0dd0b5b9ca8e3e7db2f6d7ffb2c59b2d838cabd44",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "9503eb7e5fc6b4da3c076ae0dd0b5b9ca8e3e7db2f6d7ffb2c59b2d838cabd44"
+    },
+    {
+      "path": "branches/normenwerk-rule-universe/blocks.json",
+      "sourceSha256": "7d0c75460cac08e53331311e612f65ae62b7eb07eb168c46fa8b49cb96284722",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "7d0c75460cac08e53331311e612f65ae62b7eb07eb168c46fa8b49cb96284722"
+    },
+    {
+      "path": "branches/normenwerk-rule-universe/normenkern.py",
+      "sourceSha256": "84dc83b2b6b93e1735b054e50f4c314a8e0e097fa5479a6ee5f773f2cdebea18",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "84dc83b2b6b93e1735b054e50f4c314a8e0e097fa5479a6ee5f773f2cdebea18"
+    },
+    {
+      "path": "branches/normenwerk-rule-universe/test_normenkern.py",
+      "sourceSha256": "deec2a08aea9d655e304329f695defe6df08f666cd614e937f776d9c07a2dce9",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "deec2a08aea9d655e304329f695defe6df08f666cd614e937f776d9c07a2dce9"
+    },
+    {
+      "path": "branches/normenwerk-rule-universe/test_universe.py",
+      "sourceSha256": "c0627d127e8d259803163b8c74e64aee26c7580bd097914cacea90fe0e9d1889",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "c0627d127e8d259803163b8c74e64aee26c7580bd097914cacea90fe0e9d1889"
+    },
+    {
+      "path": "branches/normenwerk-rule-universe/universe.py",
+      "sourceSha256": "ecdb26a6d7e6304949dba8d0b36c5e4ca2a506b460b3010d539e19db8deefeb0",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "ecdb26a6d7e6304949dba8d0b36c5e4ca2a506b460b3010d539e19db8deefeb0"
+    },
+    {
+      "path": "branches/security-impact-learning/cli-result-model.mjs",
+      "sourceSha256": "3cb5e438f080709a35fba555491f15ac3e577b06e440b141317e6e2c9240082d",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "3cb5e438f080709a35fba555491f15ac3e577b06e440b141317e6e2c9240082d"
+    },
+    {
+      "path": "branches/security-impact-learning/cli-result-model.test.mjs",
+      "sourceSha256": "6b754a5ef8ca8d74dbbd3b23487232ccd6b4ac7889b20b781851e0adb69087f6",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "6b754a5ef8ca8d74dbbd3b23487232ccd6b4ac7889b20b781851e0adb69087f6"
+    },
+    {
+      "path": "branches/security-impact-learning/demo.mjs",
+      "sourceSha256": "32777c52e166534b7a63588a201f96343e18fe6aa5cb680a7f7f5af6f45f54b1",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "32777c52e166534b7a63588a201f96343e18fe6aa5cb680a7f7f5af6f45f54b1"
+    },
+    {
+      "path": "branches/security-impact-learning/fixtures.json",
+      "sourceSha256": "fe922d979a93fdbb32961b0be8689c5b5078bc4707862d08c53f5f3514a6e192",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "fe922d979a93fdbb32961b0be8689c5b5078bc4707862d08c53f5f3514a6e192"
+    },
+    {
+      "path": "branches/security-impact-learning/impact-model.mjs",
+      "sourceSha256": "f8fdc612d06b3e6386ae82ce59c857443ada8a409e5971121c53fff04408d58a",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "f8fdc612d06b3e6386ae82ce59c857443ada8a409e5971121c53fff04408d58a"
+    },
+    {
+      "path": "branches/security-impact-learning/impact-model.test.mjs",
+      "sourceSha256": "fba0e57b609e1d6fb51a5e6d8315d2d902d8fd3d2f58b6e6c2a85045bc502868",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "fba0e57b609e1d6fb51a5e6d8315d2d902d8fd3d2f58b6e6c2a85045bc502868"
+    },
+    {
+      "path": "branches/security-impact-learning/lessons.json",
+      "sourceSha256": "1aaa791ecf67148d2268212cabfdf622384ddca3adc6c85b7d7acbd719821abb",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "1aaa791ecf67148d2268212cabfdf622384ddca3adc6c85b7d7acbd719821abb"
+    },
+    {
+      "path": "branches/security-impact-learning/sources.json",
+      "sourceSha256": "0a75de32e4dea6fcc68e70aa36734e855a13596a19b9bcfad8366e49fa28f180",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "0a75de32e4dea6fcc68e70aa36734e855a13596a19b9bcfad8366e49fa28f180"
+    },
+    {
+      "path": "branches/security-impact-learning/submission-review.mjs",
+      "sourceSha256": "e2176dc71b81e26741f94bcde4c4eaa7a22bbe76a91f994124857e2740dbd197",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "e2176dc71b81e26741f94bcde4c4eaa7a22bbe76a91f994124857e2740dbd197"
+    },
+    {
+      "path": "branches/security-impact-learning/submission-review.test.mjs",
+      "sourceSha256": "98e16e855e999f40263495340f0d9d2631cd66f5a3fb55f2da2bc3788fe5e86b",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "98e16e855e999f40263495340f0d9d2631cd66f5a3fb55f2da2bc3788fe5e86b"
+    },
+    {
+      "path": "scripts/plain-json.mjs",
+      "sourceSha256": "c1e955edcaae5789d2287ea908350b562a95f4c7e0f34c3061a5b58fc8d99ab4",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "c1e955edcaae5789d2287ea908350b562a95f4c7e0f34c3061a5b58fc8d99ab4"
+    },
+    {
+      "path": "scripts/source-packet-browser.mjs",
+      "sourceSha256": "d75029884d4ff306105a0f7656af142baf94ddb74f7656b162ee1cc1a66d79e9",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "d75029884d4ff306105a0f7656af142baf94ddb74f7656b162ee1cc1a66d79e9"
+    },
+    {
+      "path": "scripts/source-packet-browser.test.mjs",
+      "sourceSha256": "0c6ab082e67794d03bd0fdcc3d7bfd57aa92ffd303305a09286f34afa600dab1",
+      "transfer": "TEST_ADAPTED_TO_ISOLATED_PACKET_MODULE; source hash identifies predecessor",
+      "outputSha256": "e95e6414181b1fbc32d30e4d442b94fffff23d2bd0fa12a245252e6d96b37bda"
+    },
+    {
+      "path": "scripts/symbol-source-frame.mjs",
+      "sourceSha256": "cdc62caf5bf7615684d92abb9387a131e298edc51fa905211069c9430265ccd5",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "cdc62caf5bf7615684d92abb9387a131e298edc51fa905211069c9430265ccd5"
+    },
+    {
+      "path": "scripts/symbol-source-frame.test.mjs",
+      "sourceSha256": "a155461cfc600ce996b399adb9bc89855be2916fd7e1bf24e705808febd78e02",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "a155461cfc600ce996b399adb9bc89855be2916fd7e1bf24e705808febd78e02"
+    },
+    {
+      "path": "scripts/build-ai-bootstrap-index.mjs",
+      "sourceSha256": "429dd30267b52a856ae741512a715c88d5b908d39653cd32fcbef21f3ee7434c",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "429dd30267b52a856ae741512a715c88d5b908d39653cd32fcbef21f3ee7434c"
+    }
+  ],
+  "derivedFiles": [
+    {
+      "path": "scripts/packet.mjs",
+      "derivation": "Extracted makePacket/decodePacket/formatPacket functions with their original helpers; no repository discovery or execution adapter",
+      "source": "scripts/halveth-entry.mjs"
+    }
+  ],
+  "adaptations": [
+    {
+      "path": "branches/banana-transition-field/statement.json",
+      "change": "New technical module scope statement; historical personal design statement is retained in the private source archive."
+    },
+    {
+      "path": "branches/banana-transition-field/SHA256SUMS.txt",
+      "change": "New manifest binds this selected module only; historical full application manifest was not transplanted."
+    },
+    {
+      "path": "branches/normenwerk-rule-universe/universe-catalog.json",
+      "change": "Catalog rebuilt over the ten selected modules with non-empty actual source/test file lists."
+    }
+  ]
+}
