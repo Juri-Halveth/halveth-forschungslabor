@@ -1,0 +1,20 @@
+flowchart LR
+    A[Konkreter Gegenstand] -->|NAVIGATION_NEXT| B[Quelle und Beobachtung]
+    B -->|NAVIGATION_NEXT| C[Projekt und Scope]
+    C -->|NAVIGATION_NEXT| D{Alle Pflichtachsen eingeordnet?}
+    D -->|Nein: Achse offen| D
+    D -->|Ja| E[Hypothese und Gegenhypothese]
+    E -->|NAVIGATION_NEXT| F[Kleinste unterscheidende Probe]
+    F -->|NAVIGATION_NEXT| G[Ergebnis und Evidenzstand]
+    G -->|Reopen-Trigger fehlt| H[Wiedervorlage benennen]
+    G -->|Reopen-Trigger gebunden| I[Endlicher Arbeitsstand]
+    H -->|NAVIGATION_NEXT| I
+    C -.->|Security-Autorität fehlt| J[Lesen oder lokales Modell]
+    J -.->|neue Policy und Scope nötig| C
+    I -->|separater Auftrag| K[Commit / Meldung / Veröffentlichung]
+    classDef node fill:#171f35,stroke:#67dfe7,color:#f0f6ff
+    classDef question fill:#40234c,stroke:#e982c8,color:#fff
+    classDef end fill:#2a3a2e,stroke:#b9dd87,color:#fff
+    class A,B,C,E,F,G,H,J node
+    class D question
+    class I,K end

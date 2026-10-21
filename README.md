@@ -23,6 +23,10 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [Nächster-Schritt-Navigator – Security, Bau, Forschung und Einreichung](branches/next-action-navigator/)
+
+Interaktive Wegkarte mit vollständigen Pflichtachsen, Gegenmodell, kleinster Prüfung und endlichem Arbeitsstand. [Diagramm ansehen](branches/next-action-navigator/diagram.mmd).
+
 ### [Focus Kernel – bestätigte Ziele und Vorschläge getrennt halten](branches/focus-kernel/)
 
 Lokaler Zustandskern für bestätigte Ziele, Vorschläge und begrenzte Prüfergebnisse.
