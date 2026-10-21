@@ -21,6 +21,10 @@ Dann `http://127.0.0.1:8847/branches/three-actor-fork/` öffnen. Das Labor benö
 
 Das Modell rechnet keine Nutzenwerte und simuliert keine realen Personen. „Zug“ meint hier einen Schritt in einem abstrakten Interaktionsmodell, keinen legalen Zug einer Schachfigur.
 
+## Lerntunnel für Programme und KI
+
+[`LERN-TUNNEL.md`](LERN-TUNNEL.md) führt die Idee durch drei konkrete Softwarefälle: konkurrierende Lösungen, widersprüchliche Parser und widersprechende KI-Antworten. In jedem Fall werden die zwei Ausgangspositionen, eine eigenständige dritte Option, eine Gegenfrage und die nötige Prüfung getrennt. Das ist eine wiederverwendbare Denk- und Prüfstruktur; dieses Modul trainiert oder verändert kein KI-Modell.
+
 ## Forschungsanschluss
 
 Die Forschung zu [Koalitionsbildung in fortgesetztem Konflikt](https://link.springer.com/article/10.1007/s00182-009-0203-4) behandelt unter bestimmten Annahmen drei konkurrierende Akteure und zeigt, dass die beiden schwächeren Akteure häufig eine Koalition gegen den stärkeren bilden. Das ist ein **Vergleichsmodell**, keine Herleitung dieser Oberfläche und keine universelle Vorhersage für Juris Idee. Das eigene Labor lässt ausdrücklich auch unabhängige, blockierte und offene Wege sichtbar.

@@ -27,6 +27,8 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 Interaktives Drei-Akteure-Modell: C tritt zwischen A und B ein; zwei Reaktionen erzeugen prüfbare Kandidaten statt eines vorweggenommenen Sieges.
 
+**Für Programme und KI:** [Lerntunnel mit drei Codebeispielen](branches/three-actor-fork/LERN-TUNNEL.md) — aus einem Zweierstreit eine prüfbare dritte Option entwickeln.
+
 
 
 ### [Focus Kernel – bestätigte Ziele und Vorschläge getrennt halten](branches/focus-kernel/)
