@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="theme-color" content="#080b15">
+  <title>Drei-Gabel · HALVETH Forschungslabor</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="view.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="header">
+      <div class="brand"><span class="brand-mark">H</span><span>HALVETH <small>FORSCHUNGSLABOR</small></span></div>
+      <span class="lab-tag">03 / DREI-GABEL</span>
+    </header>
+
+    <section class="intro" aria-labelledby="title">
+      <p class="eyebrow">Ein Gedanke wird spielbar</p>
+      <h1 id="title">Wenn zwei streiten,<br><em>entsteht ein dritter Weg.</em></h1>
+      <p>Wähle, wie A und B auf C reagieren. Das Labor zeigt die nächsten zwei Modellzüge: C tritt ein, dann ändern sich die Beziehungen. Der Ausgang bleibt eine prüfbare Frage.</p>
+    </section>
+
+    <section class="stage" aria-label="Drei-Akteure-Simulation">
+      <div class="stage-top"><span id="step-label">AUSGANGSLAGE · 0 / 2</span><span>LOKALES GEDANKENMODELL</span></div>
+      <svg id="scene" viewBox="0 0 900 420" role="img" aria-labelledby="scene-title scene-desc">
+        <title id="scene-title">A und B mit offenem Raum für C</title>
+        <desc id="scene-desc">Zunächst stehen A und B im Konflikt. C kann einen eigenständigen dritten Weg eröffnen.</desc>
+        <defs>
+          <linearGradient id="beam" x1="0" y1="1" x2="0" y2="0"><stop stop-color="#8f4afd" stop-opacity=".05"/><stop offset="1" stop-color="#f477cf" stop-opacity=".86"/></linearGradient>
+          <filter id="glow"><feGaussianBlur stdDeviation="11"/></filter>
+        </defs>
+        <path class="floor" d="M75 324H825"/>
+        <path class="contest" d="M238 122C365 192 530 192 660 122"/>
+        <path id="c-beam" class="c-beam" d="M450 345C448 275 449 205 450 108"/>
+        <path id="a-link" class="link" d="M450 200Q320 125 240 120"/>
+        <path id="b-link" class="link" d="M450 200Q575 125 660 120"/>
+        <circle class="a-halo" cx="200" cy="105" r="49" filter="url(#glow)"/>
+        <circle class="b-halo" cx="700" cy="105" r="49" filter="url(#glow)"/>
+        <circle class="a-orb" cx="200" cy="105" r="46"/>
+        <circle class="b-orb" cx="700" cy="105" r="46"/>
+        <text x="200" y="116" class="actor-letter">A</text>
+        <text x="700" y="116" class="actor-letter">B</text>
+        <text x="200" y="178" class="actor-caption">ERSTER WEG</text>
+        <text x="700" y="178" class="actor-caption">ZWEITER WEG</text>
+        <circle id="c-halo" class="c-halo" cx="450" cy="345" r="48" filter="url(#glow)"/>
+        <circle id="c-orb" class="c-orb" cx="450" cy="345" r="46"/>
+        <text id="c-letter" x="450" y="356" class="actor-letter">C</text>
+        <text x="450" y="405" class="actor-caption">EIGENER WEG</text>
+        <text x="450" y="88" class="gap-label">DIE LÜCKE</text>
+      </svg>
+      <div class="stage-bottom"><span id="stage-message">A und B besetzen das Spielfeld. C ist noch nicht eingetreten.</span><span class="stage-pulse" aria-hidden="true"></span></div>
+    </section>
+
+    <section class="controls" aria-label="Modell bedienen">
+      <div class="step-card"><span class="step-number">01</span><div><h2>C betritt die Lücke</h2><p>Aus zwei sichtbaren Wegen werden drei eigenständige Handlungswege.</p></div><button id="enter-button" type="button">C eintreten lassen <span aria-hidden="true">↗</span></button></div>
+      <div id="response-controls" class="response-controls" hidden>
+        <div class="response-title"><span class="step-number">02</span><div><h2>Wie reagieren A und B?</h2><p>Die Antworten sind Modellannahmen. Wähle beide Seiten einzeln.</p></div></div>
+        <div class="choices"><label>A reagiert<select id="a-response"><option value="offen">Noch offen</option><option value="kooperiert">Kooperiert mit C</option><option value="blockiert">Blockiert C</option></select></label><label>B reagiert<select id="b-response"><option value="offen">Noch offen</option><option value="kooperiert">Kooperiert mit C</option><option value="blockiert">Blockiert C</option></select></label><button id="evaluate-button" type="button">Folgezug prüfen <span aria-hidden="true">→</span></button></div>
+      </div>
+    </section>
+
+    <section id="result" class="result" aria-live="polite" hidden><p class="eyebrow">MODELLERGEBNIS · 2 / 2</p><h2 id="result-title"></h2><p id="result-detail"></p><div class="question"><span>OFFENE FRAGE</span><strong id="next-question"></strong></div><button id="reset-button" type="button">Neuen Verlauf beginnen</button></section>
+
+    <footer><p>Dieses Labor prüft Möglichkeiten eines Drei-Akteure-Modells. Es sagt kein reales Verhalten und keinen Sieg voraus. A, B und C sind Rollen, keine Personenidentitäten.</p><a href="README.md">Modell, Quellen &amp; Grenzen</a></footer>
+  </main>
+</body>
+</html>
