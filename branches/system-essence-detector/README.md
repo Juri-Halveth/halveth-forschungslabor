@@ -31,6 +31,23 @@ Der Vergleich prüft keine ACLs, Alternate Data Streams, Laufzeit,
 Wiederherstellbarkeit oder gleichzeitige Schreibvorgänge und gibt keine
 Löschfreigabe. Auch das JSON-Inventar bleibt privat.
 
+Der **Projektfinder** sucht an einer ausdrücklich gewählten Wurzel und genau
+eine Verzeichnisebene darunter nach lokalen Git-Checkouts. Er erfasst HEAD,
+Branch, die **Namen** der Remotes und vorhandene Lizenz-*Dateinamen*; Remote-
+URLs und Dateiinhalte liest er nicht in den Bericht. Damit werden alte
+Projektinseln sichtbar, ohne sie mit einem öffentlichen Repository oder einer
+wirksamen Lizenz gleichzusetzen. Die Ausgabe enthält lokale Pfade und bleibt
+privat:
+
+```powershell
+python branches/system-essence-detector/git_roots.py "C:\Meine-Projekte" --output "C:\Privat\git-roots.json"
+```
+
+Ein höheres Suchlimit wird explizit mit `--max-children` gesetzt. Ein
+erreichtes Limit, übersprungene Links und Lesefehler stehen im Coverage-Record;
+der Finder geht niemals tiefer als eine Kindeebene. Er führt keinen
+Git-Checkout, Pull, Status-Refresh, Commit oder Push aus.
+
 Die [Browseransicht](index.html) öffnet die JSON-Datei per Dateiauswahl oder
 Drag & Drop im eigenen Browser. Beim Start zeigt sie ausdrücklich
 **synthetische Beispieldaten**. Es gibt keine Netzanforderung und keinen
@@ -71,6 +88,9 @@ eine spätere Fortsetzung wertvoll sein kann.
   Momentaufnahme gegen konkurrierende Schreibvorgänge ist das nicht.
 - Die Scan-JSON enthält lokale Pfade. Sie gehört weder in Git noch in eine
   externe Anfrage. Das öffentliche Beispiel enthält nur erfundene Werte.
+- Der Projektfinder beantwortet nur, **wo** ein lokaler Git-Root liegt.
+  Ein fehlender Remote macht ein Projekt nicht wertlos; ein vorhandener
+  Remote oder eine Datei namens `LICENSE` macht es nicht veröffentlichbar.
 
 ## Herkunft und Lizenz
 
