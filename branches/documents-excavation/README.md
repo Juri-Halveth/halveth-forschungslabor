@@ -35,7 +35,8 @@ Urheberschaft, Erfindungsdatum oder gleiche Ausführung:
 Die lokale Suche sammelte 592.235 eindeutige Dateipfade in einem Metadaten-
 Snapshot. Aus ausgewählten historischen Wurzeln wurden 1.062 Text- und
 Codequellen vollständig gehasht und, soweit UTF-8, nach Begriffen durchsucht.
-Generierte Verzeichnisse und Reparse-Pfade wurden ausgenommen. Das ist eine
+Benannte Buildordner und Reparse-Pfade wurden ausgenommen; andere generierte
+Kopien können im Index stehen. Das ist eine
 **endliche Suchabdeckung**, keine vollständige inhaltliche Prüfung sämtlicher
 Dateien. Vollständige lokale Pfade, private Archive und Rohbeweise sind nicht
 Teil dieser öffentlichen Auswahl.
