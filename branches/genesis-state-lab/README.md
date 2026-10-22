@@ -41,6 +41,8 @@ Eine Session enthält `initialState`, die append-only Reihen `events` und `state
 
 `projectEvent(event, 'forward')` und `projectEvent(event, 'anti')` erstellen zwei sprachliche Ansichten **desselben** Records. Beide tragen dieselbe Event-ID und dieselben Vorher-/Nachher-Referenzen. Die ANTI-DATEI ist hier die modellierte Sicht auf das RELAY-Ziel. Sie ist kein zweiter Zustand, keine Negation der Daten und keine rekonstruktive Umkehrfunktion. Bei geschlossenem Gate zeigt die Gegenansicht ausdrücklich, dass kein Signal zugestellt wurde. `usedRelations` listet geprüfte Relationen; eine gelistete RELAY-Kante bedeutet bei `BLOCKED_BY_CONTEXT` keine Zustellung.
 
+Die Graphmarkierung folgt beim Ansehen eines historischen Events dessen gespeicherter Quelle. Eine spätere Änderung im Ursprungsmenü bereitet nur den **nächsten** Impuls vor und färbt das angezeigte frühere Ereignis nicht um. Am Anfang der Zeitspur zeigt die Markierung die aktuelle Menüauswahl.
+
 Die Vorwärtsregel kann zwei verschiedene vollständige Vorzustände auf denselben Nachzustand abbilden: Bei Ursprungssignal 3 oder 4 entsteht in beiden Fällen Sättigung 4. Der Test hält die übrigen Felder gleich und zeigt die Kollision. Replay benötigt daher den gebundenen Anfangszustand und die Ereignisfolge; aus einer Event-ID oder einem Nachher-Fingerabdruck allein wird der Vorzustand nicht wiederhergestellt.
 
 ## Das Scope-Gegenbeispiel

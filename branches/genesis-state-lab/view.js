@@ -43,6 +43,7 @@ function drawGraph(state, event) {
   const edgeGroup = $('graph-edges');
   const nodeGroup = $('graph-nodes');
   const used = new Set(event?.usedRelations ?? []);
+  const highlightedAgent = event?.actorId ?? select.value;
   const edgeElements = graph.relations.map(relation => {
     const start = point(relation.from);
     const end = point(relation.to);
@@ -59,11 +60,15 @@ function drawGraph(state, event) {
     const position = point(agent.id);
     const classes = ['node'];
     if (agent.signal > 0) classes.push('lit');
-    if (agent.id === select.value) classes.push('selected');
+    if (agent.id === highlightedAgent) classes.push('selected');
     else if (agent.id === relayTarget) classes.push('relay-target');
-    return svg('circle', { cx: position.x, cy: position.y, r: agent.id === select.value ? 6.5 : agent.signal > 0 ? 4.2 : 2.7, class: classes.join(' ') });
+    return svg('circle', { cx: position.x, cy: position.y, r: agent.id === highlightedAgent ? 6.5 : agent.signal > 0 ? 4.2 : 2.7, class: classes.join(' ') });
   });
   nodeGroup.replaceChildren(...nodeElements);
+  $('selected-legend').textContent = event ? `Ereignisquelle ${highlightedAgent}` : `gewählt ${highlightedAgent}`;
+  $('graph-desc').textContent = event
+    ? `100 Agenten auf einem Kreis und 120 gerichtete Relationen. Ereignisquelle ${highlightedAgent} und im angezeigten Ereignis genutzte Relationen sind hervorgehoben.`
+    : `100 Agenten auf einem Kreis und 120 gerichtete Relationen. Die aktuell gewählte Quelle ${highlightedAgent} ist hervorgehoben.`;
 }
 
 function showEvent(event) {
