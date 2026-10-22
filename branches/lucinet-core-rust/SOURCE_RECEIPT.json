@@ -1,0 +1,107 @@
+{
+  "schema": "halveth.source-copy-receipt.v1",
+  "sourceProject": "LUCINET_LOCAL_GIT",
+  "sourceCommit": "5b7956f40f2fde241a20f9705f1d4f7c1fbc9920",
+  "sourcePath": "crates/lucinet-core/",
+  "copyMode": "EXACT_COMMITTED_BYTES",
+  "sourceLicense": "MIT",
+  "sourceLicenseSha256": "726cbcbe74bf33cc0732ee6db4ac29dacfafb2d183031bb55be81f0ce27ec213",
+  "claimCeiling": "BYTES_AND_LOCAL_TESTS_OF_EXTRACTED_CORE_ONLY",
+  "files": [
+    {
+      "path": "src/aperture.rs",
+      "bytes": 6181,
+      "sha256": "242aefd5d6a9098f18462126b052ad4fc43acfbf5c4b2c46a3ab5ae28cc51cea"
+    },
+    {
+      "path": "src/axes.rs",
+      "bytes": 5192,
+      "sha256": "cd09f0283af0b77f4ef8b19de9dbf0c017490f09fa8348912b330b52f992b111"
+    },
+    {
+      "path": "src/digest.rs",
+      "bytes": 537,
+      "sha256": "2c469d1560a01ef4c8e8c305b66d61dc6164011b3f6dd6f65275168103b7bfe0"
+    },
+    {
+      "path": "src/epistemic.rs",
+      "bytes": 86102,
+      "sha256": "37f5da7b044d158ab263fdcbe127123dcda4751ca08ad1d544e8c7a381a1eb89"
+    },
+    {
+      "path": "src/frame.rs",
+      "bytes": 5789,
+      "sha256": "942ba390c75e8bab0bbf8ae211b5aae74e8d4e27270c1768ea52e3803e1a608b"
+    },
+    {
+      "path": "src/full_inversion.rs",
+      "bytes": 12711,
+      "sha256": "b98d4e5bab10de5781ed711b3ea52ec5c2ddac0aad6031ae7b12ab4ceac7c5fe"
+    },
+    {
+      "path": "src/glyph_reflection.rs",
+      "bytes": 10708,
+      "sha256": "cf2fbea25bcfa6585e6dc576b7c9c0f95c8861c1365877ae1f189937cbc9009c"
+    },
+    {
+      "path": "src/graph.rs",
+      "bytes": 39785,
+      "sha256": "08393c07c4108962620473a97c9451e199977e06e9c5ed38a37b1874f5d7abe4"
+    },
+    {
+      "path": "src/identifiers.rs",
+      "bytes": 3632,
+      "sha256": "5d7bead51c51a18972d35264dd4e069e852f50842ae3a8546c9d548225777fd0"
+    },
+    {
+      "path": "src/lib.rs",
+      "bytes": 4292,
+      "sha256": "11532f7c29a471e8dc0c373975785243d7efdf78335bf61a6bdb4696466113b6"
+    },
+    {
+      "path": "src/physical_materialization.rs",
+      "bytes": 6913,
+      "sha256": "3966146171c9ff7081f24ac82a2d3fbfa89a372a67947f3d13a391f3d4c3d173"
+    },
+    {
+      "path": "src/reasoning.rs",
+      "bytes": 17381,
+      "sha256": "cd5e6bd0d679324cfa7468a2c56299deb41325615b8b5b220c22a5ddd4205ce7"
+    },
+    {
+      "path": "src/sampling_generativity.rs",
+      "bytes": 26407,
+      "sha256": "5861120b836e222900f2e7693ecae488c4857882e0d9b3cf58163c8b2478c784"
+    },
+    {
+      "path": "src/source.rs",
+      "bytes": 1263,
+      "sha256": "be12290180a195fcfe90979ff42fcb595717c9921b7e2dc235086b9de06de6b6"
+    },
+    {
+      "path": "src/superposition.rs",
+      "bytes": 8471,
+      "sha256": "42cc9da3df6eef2ecfe4ca4d67f9083d05290d679790092c725d21ea589ec763"
+    },
+    {
+      "path": "src/transform.rs",
+      "bytes": 16391,
+      "sha256": "fa04250d2f5a89de007ebeaac9990937beeedcf0bb1e84ddecda2b284574ed61"
+    },
+    {
+      "path": "src/typed_transformation.rs",
+      "bytes": 8875,
+      "sha256": "e68393c0dbc537ce49918f07a1ebe8fb647f28116d5a5f3050de6c19908dfdd9"
+    },
+    {
+      "path": "src/view.rs",
+      "bytes": 4712,
+      "sha256": "55404eae458d810fee843ec4ac6b9118649f78474cdc28967c6d552bb18b024f"
+    },
+    {
+      "path": "tests/p0_semantics.rs",
+      "bytes": 15295,
+      "sha256": "9ec87489b6d63df37acdbaf3cedf193f660f250313dd2223b9f3d887b191c3aa"
+    }
+  ]
+}
