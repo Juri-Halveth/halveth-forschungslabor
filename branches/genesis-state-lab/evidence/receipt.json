@@ -1,0 +1,52 @@
+{
+  "schema": "halveth.genesis.public-evidence-receipt.v1",
+  "sourceHead": "c782d4a1ebb7a7cbc9031c6109bd58fe07b504ea",
+  "test": {
+    "command": "npm test",
+    "environment": {
+      "node": "v24.18.0",
+      "python": "3.14.6",
+      "platform": "Windows"
+    },
+    "exitCode": 0,
+    "nodeTests": { "run": 148, "passed": 148, "failed": 0 },
+    "pythonSuites": [
+      { "run": 17, "passed": 17 },
+      { "run": 29, "passed": 29 },
+      { "run": 3, "passed": 3 }
+    ],
+    "log": {
+      "path": "npm-test-20261022.txt",
+      "bytes": 18546,
+      "sha256": "b0d1277988c4eab4a3f9cb1cb436a8cf42343891e4f8bae5bd20cfd8db5c7d0a"
+    }
+  },
+  "visualFiles": [
+    {
+      "path": "event-source-menu-a002.jpg",
+      "bytes": 85685,
+      "sha256": "6c595de80719ddff81ba97f8f3d5a71396d990b82b764889bcbbb7d7c01fa7b6",
+      "mediaType": "image/jpeg",
+      "observation": "VISIBLE_EVENT_SOURCE_A001_WHILE_NEXT_MENU_SELECTION_A002",
+      "captureTime": null
+    },
+    {
+      "path": "event-source-legend-a001.jpg",
+      "bytes": 71253,
+      "sha256": "cbb064b4777a70c592c0e99eaa0fab2ccd8cd722132a86116fdbe71f88bb303d",
+      "mediaType": "image/jpeg",
+      "observation": "VISIBLE_GRAPH_LEGEND_A001_AND_ONE_STEP_REPLAY",
+      "captureTime": null
+    },
+    {
+      "path": "two-event-replay.jpg",
+      "bytes": 65223,
+      "sha256": "9e8ec68189832b77136d398747c90b8c986adf6e6a410ab0631d2e5d92ad7c45",
+      "mediaType": "image/jpeg",
+      "observation": "VISIBLE_TWO_STEP_REPLAY_AT_STATE_ONE_OF_TWO",
+      "captureTime": null
+    }
+  ],
+  "evidenceState": "LOCAL_TEST_AND_VISUAL_RECORDS_WITH_PUBLIC_SOURCE_HEAD",
+  "claimCeiling": "SYNTHETIC_SOFTWARE_BEHAVIOR_IN_BOUND_RUNS_ONLY"
+}
