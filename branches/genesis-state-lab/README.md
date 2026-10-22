@@ -74,6 +74,12 @@ Der Codec gruppiert nach dem vollständigen kanonischen Nachzustand, nicht nach 
 
 Der Fingerabdruck ist nur ein lokaler Änderungsindikator, keine kryptografische Signatur und kein Zeitstempel. Beide `Y`-Werte werden **innerhalb desselben Modells** erzeugt. Ein späterer Abgleich mit der Außenwelt benötigt eine unabhängige Quelle, Zeitpunkt, Messoperator, Kalibrierung, Coverage und einen vorher gebundenen Vergleich. Der archivierte Gedanke der Wahrheitsgrenze und Nichtinterferenz wurde als Frage übernommen; kein privater Code wurde in dieses Modul kopiert.
 
+## Gepaarte Scores: positive Summe ist nicht automatisch ein Richtungssieg
+
+[`paired-score-audit.js`](paired-score-audit.js) implementiert unabhängig vom älteren lokalen Archivcode einen strikten Serienvergleich. Die deklarierte Entscheidungsregel verlangt zugleich eine mittlere Differenz von mindestens `0,5` und einen Vorsprung in **mehr als der Hälfte** der Paare. Sie wird spiegelbildlich für die Kontrolle geprüft. Vier synthetische Folgen zeigen Originalvorsprung, Kontrollvorsprung, Abstand unter der Schwelle und einen Mischfall: `Original=[2,0,0]`, `Kontrolle=[0,0,0]` ergibt einen positiven Mittelwert von `2/3`, aber nur ein gewonnenes Paar. Das Resultat heißt deshalb `MIXED_OR_INSUFFICIENT_MAJORITY`; es sagt nicht „Kontrolle besser“.
+
+Die ältere lokale Vergleichsfunktion kann genau diesen Mischfall falsch als `V2_KONTROLLE_BESSER` etikettieren. Ihr Original blieb unverändert; der neue Code und seine Tests wurden ohne Byteübernahme geschrieben. Die Schwelle ist eine **vereinbarte Modellregel**, kein Signifikanztest. Selbst ein erfülltes Kriterium belegt ohne vorab gebundenes Studiendesign, unabhängiges Ergebnis, Zeitstruktur und Baseline keinen Informationskanal.
+
 ## Konzeptquellen und Herkunft
 
 - Von Juri im Auftrag verlinkter [Chat-Link zur Genesis-/KOSMOS-X9-Idee](https://chatgpt.com/share/6ada12f4-d720-83eb-95f4-840c4e6a64ad): Impuls → Relation → neuer Zustand, `STATE → TRANSITION → FEEDBACK → CONTEXT → LAYER`, zwei Perspektiven auf ein Geschehen. Der Link ist hier ein Ideengeber; Originaldateien, Entstehungszeit und Außenwirkung wurden in diesem Branch nicht verifiziert.

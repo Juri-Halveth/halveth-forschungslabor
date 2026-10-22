@@ -3,6 +3,7 @@ import { createGenesisResearchHandoff } from './handoff.js';
 import { auditFiniteScope } from './scope-audit.js';
 import { saturationFiberAudit } from './preimage-audit.js';
 import { predictionControlAudit } from './prediction-audit.js';
+import { comparePairedScores, pairedScoreExamples } from './paired-score-audit.js';
 
 const $ = id => document.getElementById(id);
 const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -257,4 +258,52 @@ for (const button of document.querySelectorAll('[data-prediction-mode]')) {
   button.addEventListener('click', () => renderPrediction(button.dataset.predictionMode));
 }
 renderPrediction('pending');
+
+function pairedBar(label, value, max) {
+  const line = document.createElement('div');
+  line.className = 'paired-bar-line';
+  const name = document.createElement('span');
+  name.textContent = label;
+  const track = document.createElement('div');
+  track.className = 'paired-bar-track';
+  const fill = document.createElement('i');
+  fill.className = label === 'Original' ? 'paired-original' : 'paired-control';
+  fill.style.width = `${Math.max(0, Math.min(100, 100 * value / max))}%`;
+  track.append(fill);
+  const number = document.createElement('b');
+  number.textContent = String(value);
+  line.append(name, track, number);
+  return line;
+}
+function renderPaired(mode) {
+  const example = pairedScoreExamples[mode];
+  if (!example) throw new TypeError('Unbekannte synthetische Scorefolge');
+  const result = comparePairedScores(example.original, example.control);
+  const max = Math.max(2, ...example.original, ...example.control);
+  const rows = example.original.map((value, index) => {
+    const row = document.createElement('div');
+    row.className = 'paired-row';
+    const heading = document.createElement('strong');
+    heading.textContent = `PAAR ${index + 1}`;
+    row.append(heading, pairedBar('Original', value, max), pairedBar('Kontrolle', example.control[index], max));
+    return row;
+  });
+  $('paired-series').replaceChildren(...rows);
+  const statusText = {
+    ORIGINAL_MEETS_DECLARED_RULE: 'ORIGINAL ERFÜLLT DIE REGEL',
+    CONTROL_MEETS_DECLARED_RULE: 'KONTROLLE ERFÜLLT DIE REGEL',
+    BELOW_DECLARED_THRESHOLD: 'UNTER DER SCHWELLE',
+    MIXED_OR_INSUFFICIENT_MAJORITY: 'MISCHFALL · KEIN RICHTUNGSSIEG'
+  };
+  $('paired-status').textContent = statusText[result.status];
+  $('paired-mean').textContent = `Mittlere Differenz Original − Kontrolle: ${result.meanDifference.toFixed(2)} · Mindestabstand: ${result.minimumMeanAdvantage.toFixed(2)}`;
+  $('paired-counts').textContent = `${result.originalWins} Original vorn · ${result.controlWins} Kontrolle vorn · ${result.ties} gleich`;
+  for (const button of document.querySelectorAll('[data-paired-mode]')) {
+    button.setAttribute('aria-pressed', String(button.dataset.pairedMode === mode));
+  }
+}
+for (const button of document.querySelectorAll('[data-paired-mode]')) {
+  button.addEventListener('click', () => renderPaired(button.dataset.pairedMode));
+}
+renderPaired('mixed');
 render();
