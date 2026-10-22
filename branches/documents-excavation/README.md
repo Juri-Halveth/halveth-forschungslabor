@@ -40,6 +40,13 @@ Generierte Verzeichnisse und Reparse-Pfade wurden ausgenommen. Das ist eine
 Dateien. Vollständige lokale Pfade, private Archive und Rohbeweise sind nicht
 Teil dieser öffentlichen Auswahl.
 
+Der neue Scanner gehört fachlich zum bereits vorhandenen
+[`bounded-knowledge-reuse-inventory`](../bounded-knowledge-reuse-inventory/):
+**erfassen → deklarierte Metadaten prüfen → öffentliche Ableitung schreiben**.
+Die erste Stufe erzeugt keine fertigen Records für die zweite; ein geprüfter
+Adapter und eine bewusste Auswahl wären der nächste technische Schritt. Das
+Metadaten-Gate erteilt seinerseits keine Publikationsberechtigung.
+
 ## Das neue Modell
 
 `evaluateContinuingEffect(record)` nimmt ausschließlich fünf deklarierte
