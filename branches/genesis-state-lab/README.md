@@ -4,6 +4,10 @@ Ein ausführbares, endliches und **synthetisches** Modell nach Juris LUCINET- un
 
 Die [Anschlusskarte](BRIDGES.md) zeigt die konkreten Prüfwege zu Ereigniskern, Ausgrabungsstätte, Navigator und Metadatenprüfung samt Forschungsquellen und der offenen Adapterfrage.
 
+Der [Belegsatz](evidence/README.md) verbindet drei lokale Browseraufnahmen,
+einen vollständigen Testlog und ein Digest-Receipt mit dem geprüften Quellstand.
+Jede Aufnahme trägt nur ihren sichtbaren Ausschnitt der synthetischen Software.
+
 Der lokale [`handoff.js`](handoff.js) verbindet den Replay-Stand mit dem bereits vorhandenen Forschungsnavigator. Sein Ergebnis ist eine Datenprojektion im Browser; der Link zum Navigator öffnet eine separate Seite und überträgt keine Daten dorthin.
 
 ## Lokal starten
