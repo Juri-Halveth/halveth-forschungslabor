@@ -7,7 +7,6 @@ Dieses Repository enthält eine ausgewählte technische Sammlung von Juri Halvet
 ## Direkt anfangen
 
 Voraussetzungen: **Node.js 24 und Python 3.11 oder neuer**. Keine zusätzlichen Pakete.
-Für den separaten LUCINET-Rust-Slice wird **Rust 1.85 oder neuer** benötigt.
 
 ```sh
 npm test
@@ -23,11 +22,6 @@ python -m http.server 8847 --bind 127.0.0.1
 Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
-
-### [LUCINET Core – eigenständiger Rust-Quellslice](branches/lucinet-core-rust/)
-
-Die I/O-freie Semantik aus einem lokalen LUCINET-Commit liegt als separat
-testbare Crate mit exakten Quelldigests und erhaltener MIT-Lizenz vor.
 
 ### [Drei-Gabel – ein dritter Weg im Konflikt](branches/three-actor-fork/)
 
