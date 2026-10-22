@@ -87,6 +87,16 @@ generierte Ordner werden ausgelassen. Die Ausgabe enthält **private relative
 Pfade** und muss deshalb in einem lokalen Verzeichnis außerhalb des Git-Repos
 bleiben. Budgetende und Lesefehler stehen im Summary.
 
+Verzeichniseinträge werden einzeln in Dateisystemreihenfolge verarbeitet,
+statt vollständige Verzeichnisse vorab zu sammeln und zu sortieren. Datei-
+und Zeitbudget werden während der Aufzählung und Metadatenprüfung geprüft;
+ein Abbruch erhält `BUDGET_LIMIT`. Das Zeitbudget ist kooperativ: Ein bereits
+laufender Dateisystemaufruf kann nicht unterbrochen werden. Initiale
+Pfadprüfung und das Schreiben der Zusammenfassung sind kein harter
+Echtzeit-Timeout. Die Anzahl offener Verzeichnisiteratoren wächst mit der
+Suchtiefe, nicht mit der Anzahl der Einträge eines Verzeichnisses; beim
+Budgetabbruch werden sie geschlossen.
+
 ```sh
 python scripts/excavate-metadata.py --root "C:/Pfad/zur/Sammlung" --output "C:/Pfad/zum/lokalen/Index" --max-files 100000 --max-seconds 600
 ```
