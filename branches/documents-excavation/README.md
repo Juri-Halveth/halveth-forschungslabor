@@ -15,6 +15,15 @@ Juris `Documents`-Bestand. [Karte öffnen](index.html) ·
 | DISU zu Focus Kernel; ANÁDYSIS zu Ereigniskern | `MODEL_ANALOGY` / `STRUCTURAL_ANALOGY` | Vergleich von Fragen und Zustandsformen, keine Codegleichheit |
 | Atlas zur öffentlichen Quellspan-Logik | `POSSIBLE_TYPE_BRIDGE` | Konkreter Adapter mit Typ- und Scopeprüfung steht aus |
 
+Die beiden lokalen Bytevergleiche sind an folgende Digest-/Größenpaare
+gebunden. Sie sind Prüfschlüssel für die erhaltenen Originale, kein Beleg für
+Urheberschaft, Erfindungsdatum oder gleiche Ausführung:
+
+| Familie | SHA-256 | Größe |
+| --- | --- | ---: |
+| VCC-2-Mastertext | `74131d56fe952ee5ddd85d91943979056dda7b8c083e95004c08f74994c5992d` | 21.350 Bytes |
+| Meta-Logik-Fassung | `307caa72788f57b87ccbfa79301d0e321130893f2871c1a4ab9194fbced20f3f` | 5.976 Bytes |
+
 Die lokale Suche sammelte 592.235 eindeutige Dateipfade in einem Metadaten-
 Snapshot. Aus ausgewählten historischen Wurzeln wurden 1.062 Text- und
 Codequellen vollständig gehasht und, soweit UTF-8, nach Begriffen durchsucht.
