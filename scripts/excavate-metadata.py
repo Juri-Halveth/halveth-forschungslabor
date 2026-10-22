@@ -18,7 +18,7 @@ import time
 GENERATED = frozenset({
     ".git", "node_modules", ".venv", "venv", "__pycache__", ".next",
     ".nuxt", ".pytest_cache", ".mypy_cache", "target", "site-packages",
-    ".gradle", ".idea", ".vs", "obj",
+    ".gradle", ".idea", ".vs", ".codex-build", "vendor", "dist", "build", "obj",
 })
 SENSITIVE_NAMES = (".env", "password", "secret", "token", "credential", "private_key", "id_rsa", "wallet", "seedphrase", "mnemonic")
 

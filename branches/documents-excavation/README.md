@@ -15,6 +15,14 @@ Juris `Documents`-Bestand. [Karte öffnen](index.html) ·
 | DISU zu Focus Kernel; ANÁDYSIS zu Ereigniskern | `MODEL_ANALOGY` / `STRUCTURAL_ANALOGY` | Vergleich von Fragen und Zustandsformen, keine Codegleichheit |
 | Atlas zur öffentlichen Quellspan-Logik | `POSSIBLE_TYPE_BRIDGE` | Konkreter Adapter mit Typ- und Scopeprüfung steht aus |
 
+Bei ANÁDYSIS ist der nächste konkrete Anschluss als **Messprofil** beschrieben:
+Der historische `EMERGENCE_MEASUREMENT_PLAN` verlangt Schätzer, Skalenfenster,
+Unsicherheit und Nullmodell statt einer einzelnen „Emergenz-Zahl“. Der Entwurf
+`EMERGENT_GEOMETRY_MODEL` beschreibt Dimension aus Graphrelationen ohne
+vorgegebene Raumkoordinaten. Diese Funde sind ein Forschungsast; eine
+veröffentlichte Implementierungsbrücke und ein physikalischer Atomversuch
+folgen daraus nicht.
+
 Die beiden lokalen Bytevergleiche sind an folgende Digest-/Größenpaare
 gebunden. Sie sind Prüfschlüssel für die erhaltenen Originale, kein Beleg für
 Urheberschaft, Erfindungsdatum oder gleiche Ausführung:

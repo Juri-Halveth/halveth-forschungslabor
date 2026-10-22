@@ -21,8 +21,10 @@ class InventoryTests(unittest.TestCase):
             output = base / "output"
             (source / "old").mkdir(parents=True)
             (source / "node_modules").mkdir()
+            (source / ".codex-build").mkdir()
             (source / "old" / "idea.py").write_text("VERY_PRIVATE_CONTENT", encoding="utf-8")
             (source / "node_modules" / "package.js").write_text("generated", encoding="utf-8")
+            (source / ".codex-build" / "copy.py").write_text("copy", encoding="utf-8")
             try:
                 (source / "linked").symlink_to(source / "old", target_is_directory=True)
             except (OSError, NotImplementedError):
