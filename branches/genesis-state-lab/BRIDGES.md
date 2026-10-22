@@ -18,6 +18,15 @@ Die Gegenprobe konstruiert `s₁` und `s₂` mit `P(s₁) = P(s₂)`. Bei demsel
 
 Für eine wissenschaftliche Makrovariable wären Dynamik, Messoperator, Skala, Nullmodell und Unsicherheit zusätzlich zu binden. Die Forschung zu [dynamischer Unabhängigkeit makroskopischer Prozesse](https://arxiv.org/abs/2106.06511) und zu [Lumping/Informationsverlust bei Markov-Ketten](https://arxiv.org/abs/1212.4375) liefert dafür begriffliche und mathematische Vergleichsmaßstäbe. Unser deterministisches Gate-Beispiel ist keine Reproduktion dieser Arbeiten.
 
+Ein zweiter Literaturabgleich schärft die beiden ausführbaren Fragen des Labors:
+
+| Primärquelle | Relevanter Befund aus der Quelle | Unsere engere Anwendung |
+| --- | --- | --- |
+| [M. Nilsson Jacobi, *Quotient Manifold Projections and Hierarchical Dynamics* (2006)](https://arxiv.org/abs/math-ph/0606016) | Hierarchische Ebenen werden über Projektionen beschrieben, deren höhere Dynamik mit der unteren verträglich sein muss. | `auditFiniteScope()` prüft eine diskrete, endliche Verträglichkeitsbedingung für vier konkrete Beobachtungsoperatoren. Es konstruiert weder Quotientenmannigfaltigkeiten noch eine allgemeine Hierarchie. |
+| [C. H. Bennett, *Logical Reversibility of Computation* (1973)](https://doi.org/10.1147/rd.176.0525) | Eine logisch irreversible Berechnung kann durch Bewahren der sonst verlorenen Information reversibel eingebettet werden; der ursprüngliche Input bleibt dabei erhalten. | `saturationFiberAudit()` zählt die Vorzustände eines vollständigen Nachzustands in einer Fünferfamilie. Das Zwei-Bit-Residuum unterscheidet deren größte Rückfaser. Es ist keine thermodynamische Bilanz und keine Umkehr aller Genesis-Transitionsfolgen. |
+
+Die Quellen belegen die mathematische Forschungsrichtung. Die konkreten Zahlen `100`, `200`, `28/27` bis `200/0` und `ceil(log₂ 3)=2` folgen dagegen aus der offengelegten lokalen Enumeration und ihren Tests, nicht aus diesen Publikationen.
+
 ## Anschlussmatrix
 
 | Genesis-Begriff | Bestehende öffentliche Stelle | Exakter Anschluss | Nächster prüfbarer Schritt |
