@@ -143,6 +143,9 @@ def main() -> None:
     output = args.output.expanduser().resolve()
     if output == public_repo or public_repo in output.parents:
         parser.error("local Git reports contain private paths; choose an output outside this repository")
+    selected_root = args.root.expanduser().resolve(strict=True)
+    if output == selected_root or selected_root in output.parents:
+        parser.error("local Git report must stay outside the selected source tree")
     report = discover(args.root, args.max_children)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")

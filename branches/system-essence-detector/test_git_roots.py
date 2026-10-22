@@ -7,6 +7,7 @@ from __future__ import annotations
 import importlib.util
 import json
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -77,6 +78,16 @@ class GitRootTests(unittest.TestCase):
         report = module.discover(self.root / "project", max_children=0)
         self.assertEqual(len(report["repositories"]), 1)
         self.assertTrue(report["coverage"]["limitReached"])
+
+    def test_cli_refuses_output_inside_selected_tree(self) -> None:
+        output = self.root / "git-roots.json"
+        process = subprocess.run(
+            [sys.executable, str(Path(__file__).with_name("git_roots.py")), str(self.root), "--output", str(output)],
+            capture_output=True, text=True, timeout=10,
+        )
+        self.assertNotEqual(process.returncode, 0)
+        self.assertFalse(output.exists())
+        self.assertIn("outside the selected source tree", process.stderr)
 
 
 if __name__ == "__main__":

@@ -7,7 +7,8 @@ löscht, verschiebt, komprimiert und lädt keine Datei hoch.
 ## Ausführen
 
 Python 3.11 oder neuer genügt; Zusatzpakete sind nicht nötig. Die JSON-Datei
-enthält lokale Pfade und bleibt außerhalb eines öffentlichen Repositories.
+enthält lokale Pfade und bleibt außerhalb der gewählten Quelle und eines
+öffentlichen Repositories.
 
 ```powershell
 python branches/system-essence-detector/scan.py "C:\Ausgewaehltes-Projekt" --output "C:\Privat\essence-scan.json"
@@ -37,7 +38,7 @@ Branch, die **Namen** der Remotes und vorhandene Lizenz-*Dateinamen*; Remote-
 URLs und Dateiinhalte liest er nicht in den Bericht. Damit werden alte
 Projektinseln sichtbar, ohne sie mit einem öffentlichen Repository oder einer
 wirksamen Lizenz gleichzusetzen. Die Ausgabe enthält lokale Pfade und bleibt
-privat:
+privat und außerhalb der gewählten Quelle:
 
 ```powershell
 python branches/system-essence-detector/git_roots.py "C:\Meine-Projekte" --output "C:\Privat\git-roots.json"

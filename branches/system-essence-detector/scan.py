@@ -8,6 +8,7 @@ import argparse
 import hashlib
 import json
 import os
+import stat as stat_module
 import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
@@ -23,6 +24,11 @@ def utc_now() -> str:
 
 def is_link_or_reparse(entry: os.DirEntry[str], stat: os.stat_result) -> bool:
     return entry.is_symlink() or bool(getattr(stat, "st_file_attributes", 0) & 0x400)
+
+
+def is_path_link_or_reparse(path: Path) -> bool:
+    st = path.lstat()
+    return stat_module.S_ISLNK(st.st_mode) or bool(getattr(st, "st_file_attributes", 0) & 0x400)
 
 
 def source_probe(path: Path) -> tuple[str, list[str]] | None:
@@ -53,7 +59,12 @@ def git_site_probe(path: Path) -> tuple[str, list[str]]:
     parent = path.parent
     receipt_path = path / "build-info.json"
     notes: list[str] = []
-    if not receipt_path.is_file() or receipt_path.stat().st_size > 65536:
+    try:
+        if is_path_link_or_reparse(receipt_path):
+            return "HOLD_SOURCE_STATE", ["Build receipt is a link or reparse point."]
+        if not receipt_path.is_file() or receipt_path.stat().st_size > 65536:
+            return "HOLD_SOURCE_STATE", ["Missing or oversized build-info.json."]
+    except OSError:
         return "HOLD_SOURCE_STATE", ["Missing or oversized build-info.json."]
     try:
         receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
@@ -108,6 +119,8 @@ def candidate(path: Path, kind: str, notes: list[str], root: Path) -> dict[str, 
 def scan(root: Path, max_entries: int = 1_000_000) -> dict[str, Any]:
     if max_entries < 1:
         raise ValueError("max_entries must be positive")
+    if is_path_link_or_reparse(root):
+        raise ValueError("selected root is a link or reparse point")
     root = root.resolve(strict=True)
     if not root.is_dir():
         raise ValueError("root must be a directory")
@@ -200,7 +213,13 @@ def main() -> None:
     public_repo = Path(__file__).resolve().parents[2]
     if output == public_repo or public_repo in output.parents:
         parser.error("scan reports contain local paths and must be written outside this public repository")
-    report = scan(args.root, max_entries=args.max_entries)
+    selected = args.root.expanduser()
+    if is_path_link_or_reparse(selected):
+        parser.error("selected root is a link or reparse point")
+    root = selected.resolve(strict=True)
+    if output == root or root in output.parents:
+        parser.error("scan output must stay outside the selected source tree")
+    report = scan(selected, max_entries=args.max_entries)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Wrote {output} | {report['coverage']['entriesSeen']} entries | {len(report['candidates'])} candidates")

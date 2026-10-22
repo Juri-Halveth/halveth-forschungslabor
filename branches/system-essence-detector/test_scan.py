@@ -6,11 +6,13 @@ from __future__ import annotations
 import json
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
-from scan import scan
+from scan import scan, is_path_link_or_reparse
 
 
 class ScanTests(unittest.TestCase):
@@ -64,19 +66,52 @@ class ScanTests(unittest.TestCase):
         self.assertEqual(limited["coverage"]["entriesSeen"], 1)
 
     def test_symlink_outside_root_is_not_followed(self) -> None:
-        outside = self.root.parent / "outside-essence-test.bin"
+        external = tempfile.TemporaryDirectory(prefix="halveth-scan-outside-")
+        self.addCleanup(external.cleanup)
+        outside = Path(external.name) / "outside-essence-test.bin"
         outside.write_bytes(b"external")
         link = self.root / "outside-link"
         try:
             link.symlink_to(outside)
         except OSError:
             self.skipTest("Symlinks unavailable in this environment")
-        finally:
-            # The target is outside the TemporaryDirectory and must be removed separately.
-            outside.unlink(missing_ok=True)
         report = scan(self.root)
         self.assertEqual(report["coverage"]["skippedLinksOrReparse"], 1)
         self.assertEqual(report["logicalBytes"], 0)
+
+    def test_selected_root_link_is_rejected_before_resolution(self) -> None:
+        linked = self.root.parent / f"{self.root.name}-link"
+        try:
+            linked.symlink_to(self.root, target_is_directory=True)
+        except OSError:
+            self.skipTest("Directory symlinks unavailable in this environment")
+        self.addCleanup(linked.unlink, missing_ok=True)
+        with self.assertRaisesRegex(ValueError, "selected root is a link"):
+            scan(linked)
+
+    def test_reparse_marker_on_selected_root_is_rejected(self) -> None:
+        original_lstat = Path.lstat
+
+        def marked_lstat(path: Path):
+            result = original_lstat(path)
+            if path == self.root:
+                return type("MarkedStat", (), {"st_mode": result.st_mode, "st_file_attributes": 0x400})()
+            return result
+
+        with patch.object(Path, "lstat", marked_lstat):
+            self.assertTrue(is_path_link_or_reparse(self.root))
+            with self.assertRaisesRegex(ValueError, "selected root is a link"):
+                scan(self.root)
+
+    def test_cli_refuses_output_inside_selected_tree(self) -> None:
+        output = self.root / "report.json"
+        process = subprocess.run(
+            [sys.executable, str(Path(__file__).with_name("scan.py")), str(self.root), "--output", str(output)],
+            capture_output=True, text=True, timeout=10,
+        )
+        self.assertNotEqual(process.returncode, 0)
+        self.assertFalse(output.exists())
+        self.assertIn("outside the selected source tree", process.stderr)
 
     @unittest.skipUnless(shutil.which("git"), "Git is required for this source-state gate")
     def test_site_build_needs_matching_clean_commit(self) -> None:
@@ -100,6 +135,43 @@ class ScanTests(unittest.TestCase):
         (repo / "untracked.txt").write_text("changed", encoding="utf-8")
         held = scan(repo)
         self.assertEqual(self.candidate(held, "SITE_BUILD")["decision"], "HOLD_SOURCE_STATE")
+
+    @unittest.skipUnless(shutil.which("git"), "Git is required for this source-state gate")
+    def test_linked_site_receipt_is_held(self) -> None:
+        repo = self.root / "site"
+        (repo / "tools").mkdir(parents=True)
+        (repo / "tools" / "build_site.mjs").write_text("// build\n", encoding="utf-8")
+        (repo / ".gitignore").write_text(".site-build/\n", encoding="utf-8")
+        subprocess.run(["git", "init", "-q", str(repo)], check=True)
+        subprocess.run(["git", "-C", str(repo), "add", "."], check=True)
+        subprocess.run(
+            ["git", "-C", str(repo), "-c", "user.name=Test", "-c", "user.email=test@example.invalid", "commit", "-qm", "seed"],
+            check=True,
+        )
+        outside = self.root / "outside-receipt.json"
+        outside.write_text('{"sourceTreeState":"GIT_STATUS_CLEAN"}', encoding="utf-8")
+        build = repo / ".site-build"
+        build.mkdir()
+        try:
+            (build / "build-info.json").symlink_to(outside)
+        except OSError:
+            self.skipTest("File symlinks unavailable in this environment")
+        report = scan(repo)
+        site = self.candidate(report, "SITE_BUILD")
+        self.assertEqual(site["decision"], "HOLD_SOURCE_STATE")
+        self.assertIn("link or reparse", " ".join(site["notes"]))
+
+    def test_site_receipt_reparse_marker_prevents_parsing(self) -> None:
+        repo = self.root / "site"
+        build = repo / ".site-build"
+        build.mkdir(parents=True)
+        receipt = build / "build-info.json"
+        receipt.write_text("malformed", encoding="utf-8")
+        from scan import git_site_probe
+        with patch("scan.is_path_link_or_reparse", return_value=True):
+            decision, notes = git_site_probe(build)
+        self.assertEqual(decision, "HOLD_SOURCE_STATE")
+        self.assertIn("link or reparse", " ".join(notes))
 
 
 if __name__ == "__main__":
