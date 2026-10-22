@@ -23,6 +23,10 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [GENESIS / Zustandslabor – ein Impuls, zwei Perspektiven](branches/genesis-state-lab/)
+
+Interaktiver 100-Agenten-Graph mit typisierten Relationen, deterministischem Replay und einer Gegenprobe: Zwei grob gleiche Zustände können nach demselben Impuls auseinanderlaufen. Die ANTI-DATEI ist eine zweite Ansicht desselben Ereignisses.
+
 ### [Drei-Gabel – ein dritter Weg im Konflikt](branches/three-actor-fork/)
 
 Interaktives Drei-Akteure-Modell: C tritt zwischen A und B ein; zwei Reaktionen erzeugen prüfbare Kandidaten statt eines vorweggenommenen Sieges.

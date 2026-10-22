@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self' data:; font-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>GENESIS / Zustandslabor — HALVETH</title>
+  <meta name="description" content="Ein lokales, deterministisches Labor für Impulse, Relationen, Perspektiven und überprüfbares Replay mit 100 synthetischen Agenten.">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./view.js"></script>
+</head>
+<body>
+  <a class="skip" href="#lab">Zum Labor springen</a>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="masthead">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">✦</span><span><strong>HALVETH</strong><small>LUCINET / GENESIS</small></span></div>
+    <nav aria-label="Seitenbereiche"><a href="#lab">Labor</a><a href="#counterexample">Gegenprobe</a><a href="./README.md">Methode ↗</a></nav>
+    <span class="local-badge"><span aria-hidden="true"></span> LOKALES MODELL</span>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="title">
+      <div class="eyebrow"><span class="eyebrow-line"></span> FORSCHUNGSLABOR · GENESIS 01</div>
+      <h1 id="title">Ein Impuls.<br><em>Viele Beziehungen.</em><br>Ein Verlauf.</h1>
+      <p>100 synthetische Agenten teilen einen Zustand. Ein Impuls verändert ihn nach festen Regeln. Die Vorwärtsansicht und die <strong>ANTI-DATEI</strong> erzählen <em>dasselbe</em> Ereignis aus zwei Perspektiven.</p>
+      <div class="hero-foot"><span class="orb" aria-hidden="true"></span><span>STATE <b>→</b> TRANSITION <b>→</b> FEEDBACK <b>→</b> CONTEXT <b>→</b> LAYER</span></div>
+    </section>
+
+    <section class="lab-shell" id="lab" aria-labelledby="lab-title">
+      <div class="section-heading"><div><span class="kicker">01 / DAS EXPERIMENT</span><h2 id="lab-title">Ein gemeinsamer Zustandsraum</h2></div><p>Wähle einen Agenten. Löse einen Impuls aus. Öffne danach die Gegenseite und prüfe den Replay-Beleg.</p></div>
+      <div class="metrics" aria-label="Modellkennzahlen">
+        <div><span>AGENTEN</span><strong id="metric-agents">100</strong><small>synthetisch</small></div>
+        <div><span>RELATIONEN</span><strong id="metric-relations">120</strong><small>gerichtet · typisiert</small></div>
+        <div><span>EREIGNISSE</span><strong id="metric-events">00</strong><small>im aktuellen Verlauf</small></div>
+        <div><span>REPLAY</span><strong id="metric-replay">BEREIT</strong><small id="metric-replay-detail">Ausgangszustand gebunden</small></div>
+      </div>
+
+      <div class="workspace">
+        <aside class="control-panel" aria-labelledby="control-title">
+          <span class="panel-index">A / STEUERUNG</span>
+          <h3 id="control-title">Gib dem Raum einen Impuls.</h3>
+          <p>Jeder Agent hat ein Signal und ein Kontext-Gate. Ein geschlossenes Gate hält die Weitergabe zurück; das Ereignis bleibt trotzdem sichtbar.</p>
+          <label for="agent-select">Ursprung wählen</label>
+          <select id="agent-select" aria-describedby="agent-hint"></select>
+          <p class="field-hint" id="agent-hint">Die Auswahl ändert noch keinen Zustand.</p>
+          <button class="primary-action" type="button" id="impulse-button"><span aria-hidden="true">✳</span> Impuls auslösen <span aria-hidden="true">↗</span></button>
+          <button class="quiet-action" type="button" id="reset-button">Verlauf zurücksetzen</button>
+          <div class="mini-rule"><span class="mini-dot"></span><div><strong>Lokaler Versuch</strong><br>Kein Netzwerk, keine fremden Daten, keine Außenwirkung.</div></div>
+        </aside>
+
+        <div class="universe-panel">
+          <div class="universe-top"><span class="panel-index">B / RELATIONSGRAPH</span><span id="graph-caption">100 Knoten · 120 Kanten</span></div>
+          <div class="universe-wrap"><div class="halo halo-a" aria-hidden="true"></div><div class="halo halo-b" aria-hidden="true"></div><svg id="graph" viewBox="0 0 640 640" role="img" aria-labelledby="graph-title graph-desc"><title id="graph-title">Synthetischer Relationsgraph</title><desc id="graph-desc">100 Agenten auf einem Kreis und 120 gerichtete Relationen. Die gewählte Quelle und die im aktuellen Ereignis genutzten Relationen sind hervorgehoben.</desc><g id="graph-edges"></g><g id="graph-nodes"></g></svg><div class="graph-center" aria-hidden="true"><span>GENESIS</span><strong id="center-value">00</strong><small>IMPULSE</small></div></div>
+          <div class="legend"><span><i class="legend-node"></i> Agent</span><span><i class="legend-active"></i> gewählt</span><span><i class="legend-relay"></i> RELAY</span><span><i class="legend-echo"></i> ECHO</span></div>
+          <p class="graph-note">Die Kanten stellen definierte Modellrelationen dar. Ihre räumliche Zeichnung ist eine Ansicht, kein physischer Raum.</p>
+        </div>
+
+        <aside class="event-panel" aria-labelledby="event-title">
+          <span class="panel-index">C / EREIGNIS</span>
+          <h3 id="event-title">Der Verlauf antwortet.</h3>
+          <div class="empty-event" id="empty-event"><span aria-hidden="true">◎</span><p>Der Ausgangszustand wartet auf deinen ersten Impuls.</p></div>
+          <div id="event-detail" hidden>
+            <div class="event-id" id="event-id"></div>
+            <div class="perspective-switch" role="group" aria-label="Ereignisperspektive"><button id="forward-button" type="button" aria-pressed="true">Vorwärts</button><button id="anti-button" type="button" aria-pressed="false">ANTI-DATEI</button></div>
+            <div class="perspective-card"><span id="perspective-tag"></span><h4 id="perspective-title"></h4><p id="perspective-text"></p></div>
+            <dl class="event-facts"><div><dt>Vorher</dt><dd id="before-id"></dd></div><div><dt>Nachher</dt><dd id="after-id"></dd></div><div><dt>Feedback</dt><dd id="feedback-value"></dd></div><div><dt>Kontext-Gate</dt><dd id="gate-value"></dd></div></dl>
+            <p class="same-event">Zwei Ansichten. <strong>Eine Event-ID.</strong> Keine zweite Zustandskopie.</p>
+          </div>
+        </aside>
+      </div>
+
+      <div class="timeline-panel"><div class="timeline-head"><div><span class="panel-index">D / ZEITSPUR</span><h3>Replay statt Erinnerungslücke.</h3></div><span id="timeline-step">Zustand 0 / 0</span></div><label for="timeline-range">Zustand im Verlauf anzeigen</label><input id="timeline-range" type="range" min="0" max="0" value="0"><div class="timeline-ends"><span>ANFANG</span><span>AKTUELL</span></div><div class="stages" aria-label="Gebundene Modellstufen"><span>STATE</span><span>TRANSITION</span><span>FEEDBACK</span><span>CONTEXT</span><span>LAYER</span></div><p class="receipt" id="replay-receipt" aria-live="polite">Replay bereit. Es wurden noch keine Ereignisse erzeugt.</p></div>
+    </section>
+
+    <section class="counterexample" id="counterexample" aria-labelledby="counter-title"><div class="counter-heading"><span class="kicker">02 / DIE GEGENPROBE</span><h2 id="counter-title">Gleiches Bild. Anderer nächster Zustand.</h2><p>Zwei Systeme sehen auf der groben Ebene gleich aus. In einem ist das Gate von A000 offen, im anderen geschlossen. Derselbe Impuls liefert danach unterschiedliche Gesamtansichten.</p></div><div class="counter-grid"><div class="counter-card"><span>SYSTEM A / GATE OFFEN</span><strong id="counter-a-before">—</strong><small>Gesamtsignal vorher</small><div class="counter-arrow">IMPULS A000 ↓</div><strong id="counter-a-after">—</strong><small>Gesamtsignal danach</small></div><div class="counter-divider" aria-hidden="true">≠</div><div class="counter-card alternative"><span>SYSTEM B / GATE GESCHLOSSEN</span><strong id="counter-b-before">—</strong><small>Gesamtsignal vorher</small><div class="counter-arrow">DERSELBE IMPULS ↓</div><strong id="counter-b-after">—</strong><small>Gesamtsignal danach</small></div></div><div class="counter-conclusion"><strong>Die grobe Ansicht reicht hier nicht als Zustandsersatz.</strong><p>Das versteckte Gate ist für die nächste Transition relevant. Die Aussage gilt für diese definierte Modellregel und dieses Gegenbeispiel.</p></div></section>
+  </main>
+  <footer><span>HALVETH / LUCINET · GENESIS STATE LAB</span><span>Deterministisches lokales Modell · <a href="./README.md">Methode &amp; Grenzen ↗</a></span></footer>
+  <div class="sr-only" id="live-status" role="status" aria-live="polite"></div>
+</body>
+</html>
