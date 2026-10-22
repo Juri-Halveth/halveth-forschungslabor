@@ -53,6 +53,12 @@ Eingabegrenzen und sichtbarer Restmenge. Der lokale historische
 PowerShell-Prototyp blieb am Originalort; veröffentlicht wurde ein
 getrennt neu geschriebener Baustein.
 
+### [Open Hands – Anteile in kleinsten Einheiten planen](branches/open-hands-allocation/)
+
+Reiner Allokationsvorschlag auf Basis exakter Dezimalprozente: Jede
+Anteilszeile wird geprüft, und nicht zugewiesene Einheiten bleiben bei
+einem ausdrücklich benannten Restempfänger. Keine Wallet-Aktion.
+
 ### [Drei-Gabel – ein dritter Weg im Konflikt](branches/three-actor-fork/)
 
 Interaktives Drei-Akteure-Modell: C tritt zwischen A und B ein; zwei Reaktionen erzeugen prüfbare Kandidaten statt eines vorweggenommenen Sieges.
