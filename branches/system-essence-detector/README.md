@@ -13,6 +13,24 @@ enthält lokale Pfade und bleibt außerhalb eines öffentlichen Repositories.
 python branches/system-essence-detector/scan.py "C:\Ausgewaehltes-Projekt" --output "C:\Privat\essence-scan.json"
 ```
 
+Zwei ausdrücklich gewählte lokale Ordner lassen sich zusätzlich **lesend**
+gegenüberstellen. Das Ergebnis führt die relativen Verzeichnis- und Dateipfade,
+Byte-Längen, SHA-256-Werte, Unterschiede und Coverage-Lücken. Der Ausgabeort
+muss außerhalb beider Eingaben und außerhalb dieses öffentlichen Repositories
+liegen:
+
+```powershell
+python branches/system-essence-detector/compare.py "C:\Quelle" "C:\Arbeitskopie" --output "C:\Privat\tree-compare.json"
+```
+
+`EQUAL_WITHIN_BOUND_COVERAGE` bedeutet gleiche beobachtete Pfade und
+Dateibytes im abgeschlossenen Leseumfang. `DIFFERENT` benennt eine
+beobachtete Abweichung. `UNKNOWN_INCOMPLETE` erhält etwa Links,
+Lesefehler, instabile Dateien oder ein erreichtes Budget als offene Lücke.
+Der Vergleich prüft keine ACLs, Alternate Data Streams, Laufzeit,
+Wiederherstellbarkeit oder gleichzeitige Schreibvorgänge und gibt keine
+Löschfreigabe. Auch das JSON-Inventar bleibt privat.
+
 Die [Browseransicht](index.html) öffnet die JSON-Datei per Dateiauswahl oder
 Drag & Drop im eigenen Browser. Beim Start zeigt sie ausdrücklich
 **synthetische Beispieldaten**. Es gibt keine Netzanforderung und keinen
@@ -48,6 +66,9 @@ eine spätere Fortsetzung wertvoll sein kann.
 - Git- und Projektmarker sind Indikatoren für einen möglichen Neubau, keine
   Inhaltsprüfung und keine Löschfreigabe. Quell-Commits, Backups, Belege,
   Spielpakete und aktive Prozesse brauchen eine eigene Prüfung.
+- Der Zwei-Ordner-Vergleich liest benannte Bäume. Währenddessen wechselnde
+  Dateien werden soweit erkennbar als Lücke geführt; eine vollständige
+  Momentaufnahme gegen konkurrierende Schreibvorgänge ist das nicht.
 - Die Scan-JSON enthält lokale Pfade. Sie gehört weder in Git noch in eine
   externe Anfrage. Das öffentliche Beispiel enthält nur erfundene Werte.
 

@@ -25,8 +25,9 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ### [Essence Detector – Speicher-Schichten prüfbar machen](branches/system-essence-detector/)
 
-Lesender, begrenzter Metadaten-Scan mit lokaler Browseransicht. Cargo-, Unreal-
-und Site-Zwischenstände erhalten Quellprüfungen; unvollständige Downloads
+Lesender, begrenzter Metadaten-Scan, ein bytegebundener Zwei-Ordner-Vergleich
+und eine lokale Browseransicht. Cargo-, Unreal- und Site-Zwischenstände
+erhalten Quellprüfungen; unvollständige Downloads
 bleiben sichtbar. Es gibt keine automatische Löschung und keine Übertragung
 privater Inventare.
 
