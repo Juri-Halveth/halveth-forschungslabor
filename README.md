@@ -35,6 +35,10 @@ Interaktives Drei-Akteure-Modell: C tritt zwischen A und B ein; zwei Reaktionen 
 
 Interaktive Wegkarte mit vollständigen Pflichtachsen, Gegenmodell, kleinster Prüfung und endlichem Arbeitsstand. [Diagramm ansehen](branches/next-action-navigator/diagram.mmd).
 
+### [Projekt Ausgrabungsstätte – alte Quellen und neue Brücken](branches/documents-excavation/)
+
+Begehbare Karte einer begrenzten lokalen Suche, zwei bytegleichen Textfamilien und eines neuen synthetischen Modells für fortwirkende Effekte über Zeit und Kontext. Private Originale bleiben lokal.
+
 ### [Focus Kernel – bestätigte Ziele und Vorschläge getrennt halten](branches/focus-kernel/)
 
 Lokaler Zustandskern für bestätigte Ziele, Vorschläge und begrenzte Prüfergebnisse.
