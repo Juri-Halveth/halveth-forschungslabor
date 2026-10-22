@@ -33,6 +33,9 @@ test('reject malformed or silently expanded records', () => {
   assert.throws(() => evaluateContinuingEffect({}), /Missing field/);
   assert.throws(() => evaluateContinuingEffect({...SCENARIOS.current, effectActive: 'true'}), /true, false, or null/);
   assert.throws(() => evaluateContinuingEffect({...SCENARIOS.current, approval: true}), /Unexpected field/);
+  const hiddenExtra = {...SCENARIOS.current};
+  Object.defineProperty(hiddenExtra, 'approval', {value: true, enumerable: false});
+  assert.throws(() => evaluateContinuingEffect(hiddenExtra), /Unexpected field/);
   assert.throws(() => evaluateContinuingEffect(Object.assign(new Date(), SCENARIOS.current)), /plain effect record/);
   const withGetter = {...SCENARIOS.current};
   Object.defineProperty(withGetter, 'grantNow', {get() { throw new Error('should not run'); }});
