@@ -9,6 +9,7 @@ verleiht keine Rechte an verlinkten Quellen oder an fremden Projekten.
 | Alle Dateien in `branches/lucinet-script-lab/` | [MIT](branches/lucinet-script-lab/LICENSE) |
 | Neu geschriebener Quellcode und Tests in `branches/exact-percent-kernel/` | [Apache-2.0](branches/exact-percent-kernel/LICENSE-APACHE-2.0.txt) |
 | Neu geschriebener Quellcode und Tests in `branches/open-hands-allocation/` | [Apache-2.0](branches/open-hands-allocation/LICENSE-APACHE-2.0.txt) |
+| Neu geschriebener Quellcode und Tests in `branches/trajectory-chain-kernel/` | [Apache-2.0](branches/trajectory-chain-kernel/LICENSE-APACHE-2.0.txt) |
 | Sonstiger Quellcode, Tests, HTML und CSS unter `branches/` und `scripts/` | [MIT](LICENSE) |
 | JSON-Daten, Modelle, Fixtures und Katalogmetadaten | [CC0 1.0](LICENSE-DATA.md) |
 | Neu geschriebene Erläuterungen und Markdown-Dateien | [CC BY 4.0](LICENSE-CONTENT.md) |

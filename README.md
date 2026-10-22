@@ -59,6 +59,12 @@ Reiner Allokationsvorschlag auf Basis exakter Dezimalprozente: Jede
 Anteilszeile wird geprüft, und nicht zugewiesene Einheiten bleiben bei
 einem ausdrücklich benannten Restempfänger. Keine Wallet-Aktion.
 
+### [Trajectory Chain – Zustandsdeltas lokal wieder abspielen](branches/trajectory-chain-kernel/)
+
+Neuer reiner Datenkern für eine Folge synthetischer Beobachtungen:
+inhaltsgebundene Deltas, verkettete Ereignisse, getrennte Value-Digests
+und Replay des Endzustands. Der historische lokale Store bleibt privat.
+
 ### [Drei-Gabel – ein dritter Weg im Konflikt](branches/three-actor-fork/)
 
 Interaktives Drei-Akteure-Modell: C tritt zwischen A und B ein; zwei Reaktionen erzeugen prüfbare Kandidaten statt eines vorweggenommenen Sieges.
