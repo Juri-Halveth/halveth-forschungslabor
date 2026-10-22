@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {
   AGENT_COUNT, STAGES, appendImpulse, applyImpulse, canonical, checksum,
   contentId, createGraph, createInitialState, createSession, macroProjection,
-  projectEvent, replay, scopeCounterexample
+  projectEvent, projectionPairAudit, replay, scopeCounterexample
 } from './model.js';
 
 test('graph has 100 distinct agents and 120 directed, typed sparse relations', () => {
@@ -117,6 +117,20 @@ test('the macro view counterexample is equal now and divergent after the same im
   assert.notDeepEqual(example.macroAfterOpen, example.macroAfterBlocked);
   assert.equal(example.macroAfterOpen.totalSignal - example.macroAfterBlocked.totalSignal, 1);
   assert.equal(example.hiddenDifference.field, 'gate');
+  assert.equal(example.projections.SIGNALS_ONLY.finding, 'COUNTEREXAMPLE');
+  assert.equal(example.projections.SIGNALS_ONLY.sameBefore, true);
+  assert.equal(example.projections.SIGNALS_ONLY.sameAfter, false);
+  assert.equal(example.projections.SIGNALS_AND_ACTOR_GATE.finding, 'DISTINGUISHABLE_BEFORE');
+  assert.equal(example.projections.SIGNALS_AND_ACTOR_GATE.sameBefore, false);
+});
+
+test('projection comparison distinguishes a counterexample from a pair with no divergence', () => {
+  const state = createInitialState(3);
+  const samePair = projectionPairAudit(state, state, 'A002');
+  assert.equal(samePair.SIGNALS_ONLY.finding, 'NO_DIVERGENCE_IN_THIS_PAIR');
+  assert.equal(samePair.SIGNALS_ONLY.sameAfter, true);
+  assert.equal(samePair.SIGNALS_AND_ACTOR_GATE.sameBefore, true);
+  assert.throws(() => projectionPairAudit(state, state, 'A999'));
 });
 
 test('invalid actor, state and sequence are rejected before a transition', () => {

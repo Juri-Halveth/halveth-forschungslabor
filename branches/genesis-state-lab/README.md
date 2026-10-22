@@ -19,7 +19,7 @@ Dann `http://127.0.0.1:8847/branches/genesis-state-lab/` öffnen. Die Anwendung 
 Tests:
 
 ```sh
-node --test branches/genesis-state-lab/model.test.mjs
+node --test branches/genesis-state-lab/*.test.mjs
 npm test
 ```
 
@@ -46,6 +46,8 @@ Die Vorwärtsregel kann zwei verschiedene vollständige Vorzustände auf denselb
 ## Das Scope-Gegenbeispiel
 
 `scopeCounterexample()` konstruiert zwei Zustände mit identischem grobem Bild (`totalSignal`, aktive und gesättigte Agenten). Sie unterscheiden sich nur im verborgenen Gate von A000. Derselbe Impuls auf A000 führt dann zu unterschiedlichem `totalSignal`, weil das offene Gate an A001 weitergibt. Damit ist diese konkrete Makroprojektion für diese konkrete Übergangsregel **nicht kongruent**: Die grobe Ansicht reicht nicht, um den nächsten groben Zustand immer eindeutig vorherzusagen. Das ist ein einzelner ausführbarer Zeuge, kein Vollständigkeitsbeweis über alle möglichen Systeme.
+
+Der Schalter **Nur Signale / Signale + Gate** hält Zustände und Impuls fest und ändert allein den Beobachtungsoperator. `projectionPairAudit()` meldet bei der ersten Linse `COUNTEREXAMPLE`; bei der zweiten sind die beiden Zustände bereits vor dem Impuls unterscheidbar. Das beseitigt genau diesen Gegenzeugen. Eine Aussage über alle Zustände oder alle möglichen Projektionen folgt daraus noch nicht.
 
 ## Konzeptquellen und Herkunft
 

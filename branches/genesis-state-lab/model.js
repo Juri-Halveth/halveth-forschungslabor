@@ -103,6 +103,31 @@ export function macroProjection(state) {
   };
 }
 
+export function projectionPairAudit(stateA, stateB, actorId = 'A000') {
+  validateState(stateA);
+  validateState(stateB);
+  const actorIndex = indexOf(actorId);
+  const graph = createGraph();
+  const nextA = applyImpulse(stateA, graph, actorId, 1).state;
+  const nextB = applyImpulse(stateB, graph, actorId, 1).state;
+  const project = (state, mode) => mode === 'SIGNALS_AND_ACTOR_GATE'
+    ? { ...macroProjection(state), actorGate: state.agents[actorIndex].gate }
+    : macroProjection(state);
+  return Object.fromEntries(['SIGNALS_ONLY', 'SIGNALS_AND_ACTOR_GATE'].map(mode => {
+    const beforeA = project(stateA, mode);
+    const beforeB = project(stateB, mode);
+    const afterA = project(nextA, mode);
+    const afterB = project(nextB, mode);
+    const sameBefore = canonical(beforeA) === canonical(beforeB);
+    const sameAfter = canonical(afterA) === canonical(afterB);
+    return [mode, {
+      mode, actorId, beforeA, beforeB, afterA, afterB, sameBefore, sameAfter,
+      finding: sameBefore && !sameAfter ? 'COUNTEREXAMPLE'
+        : sameBefore ? 'NO_DIVERGENCE_IN_THIS_PAIR' : 'DISTINGUISHABLE_BEFORE'
+    }];
+  }));
+}
+
 function layerSummary(state) {
   const low = state.agents.filter(agent => agent.signal <= 1).length;
   const medium = state.agents.filter(agent => agent.signal === 2 || agent.signal === 3).length;
@@ -223,11 +248,13 @@ export function scopeCounterexample() {
   blocked.agents[0].gate = 0;
   const openResult = applyImpulse(base, graph, 'A000', 1);
   const blockedResult = applyImpulse(blocked, graph, 'A000', 1);
+  const projections = projectionPairAudit(base, blocked, 'A000');
   return {
     macroBeforeOpen: macroProjection(base), macroBeforeBlocked: macroProjection(blocked),
     macroAfterOpen: macroProjection(openResult.state), macroAfterBlocked: macroProjection(blockedResult.state),
     hiddenDifference: { agentId: 'A000', field: 'gate', open: 1, blocked: 0 },
     input: 'IMPULSE A000',
-    counterexample: canonical(macroProjection(base)) === canonical(macroProjection(blocked)) && canonical(macroProjection(openResult.state)) !== canonical(macroProjection(blockedResult.state))
+    projections,
+    counterexample: projections.SIGNALS_ONLY.finding === 'COUNTEREXAMPLE'
   };
 }

@@ -149,4 +149,25 @@ $('counter-a-before').textContent = String(example.macroBeforeOpen.totalSignal);
 $('counter-b-before').textContent = String(example.macroBeforeBlocked.totalSignal);
 $('counter-a-after').textContent = String(example.macroAfterOpen.totalSignal);
 $('counter-b-after').textContent = String(example.macroAfterBlocked.totalSignal);
+
+function renderProjection(mode) {
+  const comparison = example.projections[mode];
+  const format = value => `${value.totalSignal} Signal${value.totalSignal === 1 ? '' : 'e'}`
+    + (mode === 'SIGNALS_AND_ACTOR_GATE' ? ` · Gate A000 = ${value.actorGate}` : '');
+  for (const [id, value] of [
+    ['projection-before-a', comparison.beforeA], ['projection-before-b', comparison.beforeB],
+    ['projection-after-a', comparison.afterA], ['projection-after-b', comparison.afterB]
+  ]) $(id).textContent = format(value);
+  $('projection-before-relation').textContent = `Vorher: ${comparison.sameBefore ? 'gleich' : 'unterscheidbar'}`;
+  $('projection-after-relation').textContent = `Nachher: ${comparison.sameAfter ? 'gleich' : 'verschieden'}`;
+  $('projection-finding').textContent = comparison.finding === 'COUNTEREXAMPLE'
+    ? 'Diese grobe Ansicht verdeckt ein wirksames Gate. Derselbe sichtbare Zustand führt zu verschiedenen sichtbaren Folgen.'
+    : 'Mit dem Gate ist dieses Paar schon vorher unterscheidbar. Das beweist nur diese Gegenprobe, keine globale Vorhersagbarkeit.';
+  $('projection-signals').setAttribute('aria-pressed', String(mode === 'SIGNALS_ONLY'));
+  $('projection-gate').setAttribute('aria-pressed', String(mode === 'SIGNALS_AND_ACTOR_GATE'));
+}
+
+$('projection-signals').addEventListener('click', () => renderProjection('SIGNALS_ONLY'));
+$('projection-gate').addEventListener('click', () => renderProjection('SIGNALS_AND_ACTOR_GATE'));
+renderProjection('SIGNALS_ONLY');
 render();
