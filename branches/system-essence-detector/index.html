@@ -1,0 +1,224 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>HALVETH / Essence Detector</title>
+  <style>
+    :root { font-family: Inter, ui-sans-serif, system-ui, Segoe UI, sans-serif; color: #f2f6f5; background: #060b0b; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 300px; background: radial-gradient(circle at 72% -8%, #163839 0, transparent 38%), #060b0b; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible, a:focus-visible, label:focus-within { outline: 2px solid #89ffe2; outline-offset: 3px; }
+    .shell { width: min(1500px, 100%); margin: auto; padding: 0 clamp(18px, 4vw, 64px) 64px; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 84px; border-bottom: 1px solid #2c4240; }
+    .brand { display: flex; align-items: center; gap: 13px; text-decoration: none; color: inherit; }
+    .mark { width: 35px; height: 35px; border: 1px solid #8ae7d0; display: grid; place-items: center; border-radius: 50%; color: #a8ffe7; box-shadow: 0 0 22px #4dd6bb44; font-family: Georgia, serif; font-size: 24px; }
+    .brand b { font-size: 13px; letter-spacing: .21em; line-height: 1.5; }
+    .brand small { display: block; color: #86aaa6; font-size: 10px; letter-spacing: .28em; }
+    .header-tag { color: #a0bebb; font: 11px ui-monospace, Consolas, monospace; letter-spacing: .12em; text-transform: uppercase; }
+    .hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(340px, .9fr); min-height: 510px; align-items: center; gap: 4vw; padding: 55px 0 45px; }
+    .eyebrow { display: flex; align-items: center; gap: 11px; color: #74dfc9; font: 11px ui-monospace, Consolas, monospace; letter-spacing: .19em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 24px; height: 1px; background: currentColor; }
+    h1 { font-size: clamp(50px, 6vw, 100px); line-height: .95; letter-spacing: -.075em; margin: 25px 0; font-weight: 540; }
+    h1 em { display: block; color: #9bffe2; font: italic 500 .8em Georgia, serif; letter-spacing: -.055em; }
+    .hero-copy { max-width: 625px; color: #b8ceca; font-size: clamp(16px, 1.5vw, 19px); line-height: 1.6; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; align-items: center; }
+    .button { border: 1px solid #53746d; border-radius: 4px; background: transparent; color: #e7f7f0; padding: 13px 19px; min-height: 48px; font-weight: 650; }
+    .button.primary { background: #a5ffe2; border-color: #a5ffe2; color: #0b2823; }
+    .button:hover { transform: translateY(-1px); border-color: #a5ffe2; }
+    .file-button { position: relative; overflow: hidden; display: inline-flex; align-items: center; }
+    .file-button input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; }
+    .micro { font: 11px ui-monospace, Consolas, monospace; color: #82a9a2; margin-top: 13px; }
+    .radar { aspect-ratio: 1; width: min(100%, 470px); border-radius: 50%; margin: auto; position: relative; isolation: isolate; background: radial-gradient(circle, #1f59504c 0 6%, #041211 7% 10%, #16403922 11% 13%, transparent 14% 100%), repeating-radial-gradient(circle, transparent 0 47px, #6bddc331 48px 49px), conic-gradient(from 18deg, #d1ffe11e, #1a3e3c08 18%, #0c1e1c00 30%, #9cffe01a 56%, transparent 71%); box-shadow: inset 0 0 65px #56eac01d, 0 0 90px #54d6c012; border: 1px solid #4c817244; }
+    .radar::before, .radar::after { content: ''; position: absolute; z-index: -1; }
+    .radar::before { inset: 50% 5%; height: 1px; background: #8bf5d72a; transform: translateY(-50%); }
+    .radar::after { inset: 5% 50%; width: 1px; background: #8bf5d72a; transform: translateX(-50%); }
+    .radar .core { width: 74px; height: 74px; border-radius: 50%; display: grid; place-items: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 1px solid #9cffdb; color: #cbffec; box-shadow: 0 0 35px #6cfbd56b, inset 0 0 20px #80edb827; font: bold 28px Georgia, serif; }
+    .radar .orbit { position: absolute; inset: 19%; border-radius: 50%; border: 1px dashed #a2f1d130; }
+    .radar .point { position: absolute; width: 9px; height: 9px; border-radius: 50%; background: #9cffe2; box-shadow: 0 0 18px #9cffe2; }
+    .point.a { top: 13%; left: 57%; } .point.b { right: 10%; top: 62%; background: #e9b76b; box-shadow: 0 0 18px #e9b76b; } .point.c { bottom: 20%; left: 14%; background: #e97b81; box-shadow: 0 0 18px #e97b81; }
+    .radar .caption { position: absolute; bottom: 3%; left: 50%; transform: translateX(-50%); white-space: nowrap; font: 10px ui-monospace, Consolas, monospace; color: #7eaaa0; letter-spacing: .18em; text-transform: uppercase; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; border-top: 1px solid #2e4943; padding-top: 33px; }
+    .section-head h2 { font-size: clamp(30px, 3vw, 48px); letter-spacing: -.055em; font-weight: 560; margin: 0 0 6px; }
+    .section-head p { margin: 0; color: #9db8b2; line-height: 1.5; }
+    .mode { color: #a3dfcd; font: 11px ui-monospace, Consolas, monospace; white-space: nowrap; text-transform: uppercase; letter-spacing: .1em; padding-bottom: 7px; }
+    .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 27px 0; }
+    .stat { background: #0e1b19; border: 1px solid #2a4a42; padding: 21px; min-height: 123px; }
+    .stat small { color: #87aaa1; text-transform: uppercase; font: 10px ui-monospace, Consolas, monospace; letter-spacing: .12em; }
+    .stat strong { display: block; font-size: clamp(24px, 2.7vw, 42px); font-weight: 550; letter-spacing: -.05em; margin-top: 13px; overflow-wrap: anywhere; }
+    .stat strong.status { font-size: clamp(18px, 2.1vw, 27px); color: #a5ffe2; }
+    .work { display: grid; grid-template-columns: minmax(260px, .43fr) minmax(0, 1fr); gap: 12px; }
+    .panel { background: #0b1715; border: 1px solid #294840; min-width: 0; }
+    .panel-title { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 19px 20px; border-bottom: 1px solid #294840; }
+    .panel-title h3 { margin: 0; font-size: 16px; font-weight: 650; }
+    .panel-title span { font: 10px ui-monospace, Consolas, monospace; color: #83aaa0; text-transform: uppercase; }
+    .layer-list { padding: 8px 20px 24px; }
+    .layer { margin-top: 18px; }
+    .layer-line { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; align-items: baseline; }
+    .layer-line span { color: #d7e8e3; overflow-wrap: anywhere; }
+    .layer-line b { color: #afdfd1; white-space: nowrap; font: 12px ui-monospace, Consolas, monospace; }
+    .track { height: 5px; background: #203b34; margin-top: 9px; }
+    .track i { display: block; height: 100%; min-width: 2px; background: linear-gradient(90deg, #426e64, #a5ffe2); }
+    .filters { display: flex; flex-wrap: wrap; gap: 6px; padding: 15px 17px 0; }
+    .filters button { background: #142521; color: #9fbeb4; border: 1px solid #355148; border-radius: 3px; padding: 8px 11px; font-size: 12px; }
+    .filters button[aria-pressed="true"] { color: #0b2721; background: #a7f9df; border-color: #a7f9df; }
+    .candidates { padding: 9px 17px 20px; max-height: 650px; overflow: auto; }
+    .candidate { border: 1px solid #24453d; background: #101f1b; padding: 17px; margin-top: 9px; }
+    .candidate-top { display: flex; justify-content: space-between; align-items: start; gap: 20px; }
+    .candidate .type { color: #adcfbf; font: 10px ui-monospace, Consolas, monospace; letter-spacing: .09em; text-transform: uppercase; }
+    .candidate h4 { margin: 6px 0 7px; font-size: 16px; font-weight: 610; overflow-wrap: anywhere; }
+    .candidate .size { color: #e4f7ee; font: 14px ui-monospace, Consolas, monospace; white-space: nowrap; }
+    .badge { display: inline-block; padding: 5px 8px; border: 1px solid #67bea2; color: #a1f4d7; font: 10px ui-monospace, Consolas, monospace; text-transform: uppercase; letter-spacing: .07em; }
+    .badge.review { color: #f2d391; border-color: #a58954; } .badge.hold { color: #efadaf; border-color: #995d66; }
+    .candidate p { margin: 10px 0 0; color: #9cb8ac; font-size: 13px; line-height: 1.5; }
+    .boundary { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border: 1px solid #365b4d; background: linear-gradient(135deg, #102c25, #0c1b19); margin-top: 15px; padding: 26px; }
+    .boundary h3 { margin: 0 0 7px; font-size: 21px; } .boundary p { color: #a9c4b7; margin: 0; line-height: 1.55; }
+    .boundary code { color: #b6ffe1; }
+    footer { color: #76988e; font-size: 12px; padding-top: 25px; line-height: 1.5; }
+    .drop { border-color: #a5ffe2 !important; box-shadow: inset 0 0 0 2px #a5ffe244; }
+    @media (max-width: 950px) { .hero { grid-template-columns: 1fr; min-height: auto; gap: 25px; } .radar { width: min(70vw, 340px); } .work { grid-template-columns: 1fr; } }
+    @media (max-width: 650px) { header { height: 72px; } .header-tag { display: none; } .hero { padding-top: 42px; } h1 { font-size: clamp(52px, 16vw, 82px); } .radar { width: min(80vw, 300px); } .section-head { align-items: start; } .mode { display: none; } .stats { grid-template-columns: 1fr 1fr; } .stat { min-height: 100px; padding: 16px; } .boundary { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: no-preference) { .button { transition: transform .16s, border-color .16s; } .radar .point { animation: glimmer 4s ease-in-out infinite; } .point.b { animation-delay: 1s !important; } .point.c { animation-delay: 2s !important; } @keyframes glimmer { 50% { opacity: .35; transform: scale(.65); } } }
+  </style>
+</head>
+<body>
+  <div class="shell" id="page">
+    <header>
+      <a class="brand" href="#top" aria-label="Zurück zum Anfang"><span class="mark">H</span><span><b>HALVETH / LUCINET</b><small>ESSENCE DETECTOR</small></span></a>
+      <span class="header-tag">Lokales Forschungswerkzeug · v1</span>
+    </header>
+    <main id="top">
+      <section class="hero" aria-labelledby="title">
+        <div>
+          <div class="eyebrow">Projekt Ausgrabungsstätte / Systempflege</div>
+          <h1 id="title">Die Schichten<br><em>sichtbar machen.</em></h1>
+          <p class="hero-copy">Ein Scan zeigt, welche Dateien Raum belegen und welche Zwischenstände neu gebaut werden können. Quellcode, Belege, Spielstände und unvollständige Downloads erhalten ihren eigenen Status. Erst dann fällt eine Entscheidung.</p>
+          <div class="actions">
+            <label class="button primary file-button">Lokales Scan-JSON öffnen<input id="file" type="file" accept=".json,application/json" aria-label="Lokales Scan-JSON auswählen"></label>
+            <button class="button" id="sample" type="button">Beispiel laden</button>
+            <a class="button" href="README.md">So wird gescannt ↗</a>
+          </div>
+          <p class="micro">Datei bleibt in diesem Browserfenster. Keine Serveranfrage, kein Löschknopf.</p>
+        </div>
+        <div class="radar" aria-hidden="true"><div class="orbit"></div><div class="point a"></div><div class="point b"></div><div class="point c"></div><div class="core">✦</div><div class="caption">Quelle · Schicht · Entscheidung</div></div>
+      </section>
+      <section id="lab" aria-labelledby="lab-title">
+        <div class="section-head"><div><h2 id="lab-title">Der Befund</h2><p id="source-label">Synthetische Beispieldaten. Wähle dein lokales Scan-JSON für echte Werte.</p></div><span class="mode" id="mode">Beispiel / keine Löschung</span></div>
+        <div class="stats" aria-live="polite">
+          <div class="stat"><small>Logische Dateigröße</small><strong id="total">–</strong></div>
+          <div class="stat"><small>Einträge gesehen</small><strong id="entries">–</strong></div>
+          <div class="stat"><small>Prüfkandidaten</small><strong id="candidate-count">–</strong></div>
+          <div class="stat"><small>Scan-Abdeckung</small><strong class="status" id="coverage">–</strong></div>
+        </div>
+        <div class="work">
+          <article class="panel"><div class="panel-title"><h3>Wo liegt die Größe?</h3><span>oberste Schicht</span></div><div class="layer-list" id="layers"></div></article>
+          <article class="panel"><div class="panel-title"><h3>Was braucht Prüfung?</h3><span>keine automatische Freigabe</span></div><div class="filters" role="group" aria-label="Kandidaten filtern"><button type="button" data-filter="ALL" aria-pressed="true">Alle</button><button type="button" data-filter="REBUILDABLE_CANDIDATE" aria-pressed="false">Neu baubar</button><button type="button" data-filter="REVIEW" aria-pressed="false">Prüfen</button><button type="button" data-filter="HOLD_SOURCE_STATE" aria-pressed="false">Erhalten</button></div><div class="candidates" id="candidates"></div></article>
+        </div>
+        <div class="boundary"><div><h3>Essenz bewahren.</h3><p>Ein Ordnername ist noch keine Löschentscheidung. Das Werkzeug bindet Metadaten und lokale Quellindikatoren; der Mensch prüft Nutzung, Eigentum, Wiederherstellung und laufende Prozesse.</p></div><div><h3>Platz wirklich messen.</h3><p><code>logicalBytes</code> ist die Summe von Dateilängen. Ob Speicher frei wird, zeigt erst die Laufwerksmessung nach einer einzeln geprüften Änderung. Verschachtelte Kandidaten werden nicht addiert.</p></div></div>
+      </section>
+    </main>
+    <footer>HALVETH / LUCINET · Juri Halveth · Lokales, lesendes Werkzeug. Die Beispielwerte sind synthetisch.</footer>
+  </div>
+  <script>
+    const sample = {
+      schema: 'halveth.essence-scan.v1', mode: 'SYNTHETIC_EXAMPLE', root: 'C:\\Demo',
+      coverage: {entryLimit: 1000, entriesSeen: 284, filesSeen: 212, directoriesSeen: 72, skippedLinksOrReparse: 0, errors: [], limitReached: false},
+      logicalBytes: 11811160064,
+      topLevel: [
+        {name: 'source-and-assets', files: 137, logicalBytes: 5153960755},
+        {name: 'target', files: 65, logicalBytes: 4294967296},
+        {name: 'model-download', files: 3, logicalBytes: 2147483648},
+        {name: 'docs', files: 7, logicalBytes: 214748365}
+      ],
+      candidates: [
+        {id:'example-a', relativePath:'target/debug/incremental', kind:'CARGO_INCREMENTAL', decision:'REBUILDABLE_CANDIDATE', files:65, logicalBytes:3221225472, notes:['Cargo.toml and target/CACHEDIR.TAG present.']},
+        {id:'example-b', relativePath:'model-download/weights.incomplete', kind:'RESUMABLE_DOWNLOAD_PART', decision:'REVIEW', files:1, logicalBytes:2147483648, notes:['Partial download may be resumable; retain until origin and restart path are checked.']},
+        {id:'example-c', relativePath:'site/.site-build', kind:'SITE_BUILD', decision:'HOLD_SOURCE_STATE', files:42, logicalBytes:536870912, notes:['Build receipt records a dirty or unknown source state.']}
+      ]
+    };
+    const $ = selector => document.querySelector(selector);
+    let current = sample;
+    let filter = 'ALL';
+    const format = bytes => {
+      if (!Number.isFinite(bytes) || bytes < 0) return '–';
+      const units = ['B','KiB','MiB','GiB','TiB'];
+      let value = bytes, index = 0;
+      while (value >= 1024 && index < units.length - 1) { value /= 1024; index++; }
+      return `${new Intl.NumberFormat('de-DE', {maximumFractionDigits: index ? 2 : 0}).format(value)} ${units[index]}`;
+    };
+    const valid = data => data && data.schema === 'halveth.essence-scan.v1' && data.coverage && Array.isArray(data.topLevel) && Array.isArray(data.candidates) && Number.isFinite(data.logicalBytes);
+    function node(tag, cls, value) {
+      const el = document.createElement(tag);
+      if (cls) el.className = cls;
+      if (value !== undefined) el.textContent = String(value);
+      return el;
+    }
+    function render() {
+      const data = current;
+      $('#total').textContent = format(data.logicalBytes);
+      $('#entries').textContent = new Intl.NumberFormat('de-DE').format(data.coverage.entriesSeen || 0);
+      $('#candidate-count').textContent = new Intl.NumberFormat('de-DE').format(data.candidates.length);
+      const complete = !data.coverage.limitReached && !(data.coverage.errors || []).length && !data.coverage.skippedLinksOrReparse;
+      $('#coverage').textContent = complete ? 'Metadaten erfasst' : 'Begrenzt';
+      const layers = $('#layers'); layers.replaceChildren();
+      const maximum = Math.max(1, ...data.topLevel.map(x => Number(x.logicalBytes) || 0));
+      data.topLevel.slice(0, 12).forEach(item => {
+        const row = node('div','layer'); const line = node('div','layer-line');
+        line.append(node('span','',item.name), node('b','',format(Number(item.logicalBytes))));
+        const track = node('div','track'); const fill = node('i');
+        fill.style.width = `${Math.max(1, Math.min(100, (Number(item.logicalBytes) || 0) / maximum * 100))}%`;
+        track.append(fill); row.append(line, track); layers.append(row);
+      });
+      const list = $('#candidates'); list.replaceChildren();
+      const shown = data.candidates.filter(item => filter === 'ALL' || item.decision === filter).slice(0, 100);
+      if (!shown.length) list.append(node('p','', 'In dieser Auswahl liegt kein Kandidat.'));
+      shown.forEach(item => {
+        const card = node('article','candidate'); const top = node('div','candidate-top');
+        const left = node('div'); left.append(node('div','type',item.kind), node('h4','',item.relativePath));
+        top.append(left, node('div','size',format(Number(item.logicalBytes))));
+        const badgeClass = item.decision === 'REVIEW' ? 'review' : item.decision === 'HOLD_SOURCE_STATE' ? 'hold' : '';
+        card.append(top, node('span',`badge ${badgeClass}`,item.decision));
+        (item.notes || []).slice(0, 3).forEach(note => card.append(node('p','',note)));
+        list.append(card);
+      });
+    }
+    function load(data, label) {
+      if (!valid(data)) throw new Error('Dieses JSON hat nicht das Essence-Scan-v1-Format.');
+      current = data; filter = 'ALL';
+      document.querySelectorAll('[data-filter]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === filter)));
+      $('#source-label').textContent = label;
+      $('#mode').textContent = data.mode === 'SYNTHETIC_EXAMPLE' ? 'Beispiel / keine Löschung' : 'Lokal geladen / keine Löschung';
+      render();
+    }
+    $('#sample').addEventListener('click', () => load(sample, 'Synthetische Beispieldaten. Wähle dein lokales Scan-JSON für echte Werte.'));
+    $('#file').addEventListener('change', async event => {
+      const file = event.target.files?.[0]; if (!file) return;
+      try {
+        if (file.size > 16 * 1024 * 1024) throw new Error('Datei ist größer als 16 MiB.');
+        load(JSON.parse(await file.text()), `Lokale Datei: ${file.name}. Vollständige Pfade bleiben im Browser.`);
+        $('#lab').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+      } catch (error) { alert(error.message || 'Datei konnte nicht gelesen werden.'); }
+      event.target.value = '';
+    });
+    document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
+      filter = button.dataset.filter;
+      document.querySelectorAll('[data-filter]').forEach(choice => choice.setAttribute('aria-pressed', String(choice === button)));
+      render();
+    }));
+    const page = $('#page');
+    page.addEventListener('dragover', event => { event.preventDefault(); page.classList.add('drop'); });
+    page.addEventListener('dragleave', event => { if (!page.contains(event.relatedTarget)) page.classList.remove('drop'); });
+    page.addEventListener('drop', async event => {
+      event.preventDefault(); page.classList.remove('drop');
+      const file = event.dataTransfer?.files?.[0]; if (!file) return;
+      try { if (file.size > 16 * 1024 * 1024) throw new Error('Datei ist größer als 16 MiB.'); load(JSON.parse(await file.text()), `Lokale Datei: ${file.name}. Vollständige Pfade bleiben im Browser.`); $('#lab').scrollIntoView(); }
+      catch (error) { alert(error.message || 'Datei konnte nicht gelesen werden.'); }
+    });
+    render();
+  </script>
+</body>
+</html>

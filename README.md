@@ -23,6 +23,48 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [GENESIS / Zustandslabor – ein Impuls, zwei Perspektiven](branches/genesis-state-lab/)
+
+Interaktiver 100-Agenten-Graph mit typisierten Relationen, deterministischem Replay und einer Gegenprobe: Zwei grob gleiche Zustände können nach demselben Impuls auseinanderlaufen. Die ANTI-DATEI ist eine zweite Ansicht desselben Ereignisses.
+
+### [Belegwege – öffentliche Quellen und offene Prüfkanten](BELEGWEGE.md)
+
+Eine kleine, versionsgebundene Karte zu bereits veröffentlichten Belegen und
+zu GENESIS im integrierten Kandidatenstand. [Maschinenlesbare Fassung](catalog/evidence-routes.json).
+
+### [Essence Detector – Speicher-Schichten prüfbar machen](branches/system-essence-detector/)
+
+Lesender, begrenzter Metadaten-Scan, ein bytegebundener Zwei-Ordner-Vergleich
+und eine lokale Browseransicht. Cargo-, Unreal- und Site-Zwischenstände
+erhalten Quellprüfungen; unvollständige Downloads
+bleiben sichtbar. Es gibt keine automatische Löschung und keine Übertragung
+privater Inventare.
+
+### [LUCINET Script Lab – Textschichten prüfen](branches/lucinet-script-lab/)
+
+Eigenständige Rust-Bibliothek und CLI für UTF-8-Bytes, Unicode-Skalare,
+Normalisierung, Grapheme und Bidi-Anzeigeordnung. Originalbytes und
+Provider-Versionsgrenzen sind quellengebunden dokumentiert.
+
+### [Exact Percent Kernel – Anteile ohne Fließkomma prüfen](branches/exact-percent-kernel/)
+
+Reine Dezimal- und Prozentrechnung mit explizitem Dezimalzeichen,
+Eingabegrenzen und sichtbarer Restmenge. Der lokale historische
+PowerShell-Prototyp blieb am Originalort; veröffentlicht wurde ein
+getrennt neu geschriebener Baustein.
+
+### [Open Hands – Anteile in kleinsten Einheiten planen](branches/open-hands-allocation/)
+
+Reiner Allokationsvorschlag auf Basis exakter Dezimalprozente: Jede
+Anteilszeile wird geprüft, und nicht zugewiesene Einheiten bleiben bei
+einem ausdrücklich benannten Restempfänger. Keine Wallet-Aktion.
+
+### [Trajectory Chain – Zustandsdeltas lokal wieder abspielen](branches/trajectory-chain-kernel/)
+
+Neuer reiner Datenkern für eine Folge synthetischer Beobachtungen:
+inhaltsgebundene Deltas, verkettete Ereignisse, getrennte Value-Digests
+und Replay des Endzustands. Der historische lokale Store bleibt privat.
+
 ### [Drei-Gabel – ein dritter Weg im Konflikt](branches/three-actor-fork/)
 
 Interaktives Drei-Akteure-Modell: C tritt zwischen A und B ein; zwei Reaktionen erzeugen prüfbare Kandidaten statt eines vorweggenommenen Sieges.

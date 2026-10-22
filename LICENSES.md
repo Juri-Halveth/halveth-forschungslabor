@@ -5,7 +5,12 @@ verleiht keine Rechte an verlinkten Quellen oder an fremden Projekten.
 
 | Dateien | Bedingungen |
 | --- | --- |
-| Quellcode, Tests, HTML und CSS unter `branches/` und `scripts/` | [MIT](LICENSE) |
+| Quellcode, Tests und HTML in `branches/system-essence-detector/` | [Apache-2.0](branches/system-essence-detector/LICENSE-APACHE-2.0.txt) |
+| Alle Dateien in `branches/lucinet-script-lab/` | [MIT](branches/lucinet-script-lab/LICENSE) |
+| Neu geschriebener Quellcode und Tests in `branches/exact-percent-kernel/` | [Apache-2.0](branches/exact-percent-kernel/LICENSE-APACHE-2.0.txt) |
+| Neu geschriebener Quellcode und Tests in `branches/open-hands-allocation/` | [Apache-2.0](branches/open-hands-allocation/LICENSE-APACHE-2.0.txt) |
+| Neu geschriebener Quellcode und Tests in `branches/trajectory-chain-kernel/` | [Apache-2.0](branches/trajectory-chain-kernel/LICENSE-APACHE-2.0.txt) |
+| Sonstiger Quellcode, Tests, HTML und CSS unter `branches/` und `scripts/` | [MIT](LICENSE) |
 | JSON-Daten, Modelle, Fixtures und Katalogmetadaten | [CC0 1.0](LICENSE-DATA.md) |
 | Neu geschriebene Erläuterungen und Markdown-Dateien | [CC BY 4.0](LICENSE-CONTENT.md) |
 | Mermaid-Diagramm `branches/three-actor-fork/diagram.mmd` | [CC BY 4.0](LICENSE-CONTENT.md) |
@@ -13,8 +18,18 @@ verleiht keine Rechte an verlinkten Quellen oder an fremden Projekten.
 | Repository-Konfiguration und CI | [MIT](LICENSE) |
 | Lizenztexte | Ihre jeweils genannten Kopierbedingungen |
 
-Quellfassung der übernommenen Implementierungen:
+Die benannten Branch-Regeln haben Vorrang vor den allgemeinen Dateikategorien.
+
+Der LUCINET-Core-Slice unter `branches/lucinet-core-rust/` enthält zusätzlich
+die [MIT-Lizenz des lokalen Quellprojekts](branches/lucinet-core-rust/LICENSE)
+mit dessen ursprünglichem Copyright-Hinweis. Die neue Standalone-Cargo-Datei
+und die Quellhinweise stehen unter derselben MIT-Lizenz beziehungsweise für
+neu geschriebene Markdown-Erläuterungen unter CC BY 4.0.
+
+Quellfassung der bisherigen Open-Research-Branch-Implementierungen:
 `open-research-branches@251fd2e72e7c521d939314d401bed03037fd6695`.
+Für den neuen LUCINET-Core-Slice gilt dessen separates
+[`SOURCE_RECEIPT.json`](branches/lucinet-core-rust/SOURCE_RECEIPT.json).
 Die früheren speziellen Lizenzregeln für andere Berichte betreffen keine der
 hier ausgewählten Dateien. Das Originalregister bleibt im privaten Quellarchiv.
 `SOURCE_PROVENANCE.json` bezeichnet exakte Übernahmen und Bearbeitungen einzeln.
