@@ -2,6 +2,10 @@
 
 Ein ausführbares, endliches und **synthetisches** Modell nach Juris LUCINET- und HALVETH-Idee: Ein Impuls trifft auf einen Zustand, läuft über typisierte Relationen und wird mit Feedback, Kontext und einer aggregierten Schicht beschrieben. Die Oberfläche unter [`index.html`](index.html) zeigt den Graphen, denselben Event aus zwei Perspektiven, die Zeitspur und ein Gegenbeispiel gegen eine zu grobe Zustandsansicht.
 
+Die [Anschlusskarte](BRIDGES.md) zeigt die konkreten Prüfwege zu Ereigniskern, Ausgrabungsstätte, Navigator und Metadatenprüfung samt Forschungsquellen und der offenen Adapterfrage.
+
+Der lokale [`handoff.js`](handoff.js) verbindet den Replay-Stand mit dem bereits vorhandenen Forschungsnavigator. Sein Ergebnis ist eine Datenprojektion im Browser; der Link zum Navigator öffnet eine separate Seite und überträgt keine Daten dorthin.
+
 ## Lokal starten
 
 Vom Repository-Root aus:
@@ -35,7 +39,7 @@ Eine Session enthält `initialState`, die append-only Reihen `events` und `state
 
 ## Vorwärtsansicht und ANTI-DATEI
 
-`projectEvent(event, 'forward')` und `projectEvent(event, 'anti')` erstellen zwei sprachliche Ansichten **desselben** Records. Beide tragen dieselbe Event-ID und dieselben Vorher-/Nachher-Referenzen. Die ANTI-DATEI ist hier die Empfängerperspektive auf einen RELAY-Versuch. Sie ist kein zweiter Zustand, keine Negation der Daten und keine rekonstruktive Umkehrfunktion. Bei geschlossenem Gate zeigt die Gegenansicht ausdrücklich, dass kein Signal empfangen wurde.
+`projectEvent(event, 'forward')` und `projectEvent(event, 'anti')` erstellen zwei sprachliche Ansichten **desselben** Records. Beide tragen dieselbe Event-ID und dieselben Vorher-/Nachher-Referenzen. Die ANTI-DATEI ist hier die modellierte Sicht auf das RELAY-Ziel. Sie ist kein zweiter Zustand, keine Negation der Daten und keine rekonstruktive Umkehrfunktion. Bei geschlossenem Gate zeigt die Gegenansicht ausdrücklich, dass kein Signal zugestellt wurde. `usedRelations` listet geprüfte Relationen; eine gelistete RELAY-Kante bedeutet bei `BLOCKED_BY_CONTEXT` keine Zustellung.
 
 Die Vorwärtsregel kann zwei verschiedene vollständige Vorzustände auf denselben Nachzustand abbilden: Bei Ursprungssignal 3 oder 4 entsteht in beiden Fällen Sättigung 4. Der Test hält die übrigen Felder gleich und zeigt die Kollision. Replay benötigt daher den gebundenen Anfangszustand und die Ereignisfolge; aus einer Event-ID oder einem Nachher-Fingerabdruck allein wird der Vorzustand nicht wiederhergestellt.
 

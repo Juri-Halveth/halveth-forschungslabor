@@ -1,4 +1,5 @@
 import { appendImpulse, createSession, projectEvent, replay, scopeCounterexample } from './model.js';
+import { createGenesisResearchHandoff } from './handoff.js';
 
 const $ = id => document.getElementById(id);
 const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -6,6 +7,8 @@ const maxSteps = 9999;
 let session = createSession(1);
 let viewedStep = 0;
 let perspective = 'forward';
+let replayResult = replay(session);
+let researchHandoff = createGenesisResearchHandoff(session);
 
 const graph = session.graph;
 const select = $('agent-select');
@@ -77,13 +80,13 @@ function showEvent(event) {
 function render() {
   const state = session.states[viewedStep];
   const event = viewedStep > 0 ? session.events[viewedStep - 1] : null;
-  const result = replay(session);
+  const result = replayResult;
   $('metric-agents').textContent = String(session.graph.agentCount);
   $('metric-relations').textContent = String(session.graph.relations.length);
   $('metric-events').textContent = String(session.events.length).padStart(2, '0');
   $('center-value').textContent = String(session.events.length).padStart(2, '0');
-  $('metric-replay').textContent = result.ok ? 'STIMMIG' : 'ABWEICHUNG';
-  $('metric-replay-detail').textContent = result.ok ? `${result.steps} Schritt${result.steps === 1 ? '' : 'e'} rekonstruierbar` : result.reason;
+  $('metric-replay').textContent = result.ok ? (result.steps === 0 ? 'BEREIT' : 'STIMMIG') : 'ABWEICHUNG';
+  $('metric-replay-detail').textContent = result.ok ? (result.steps === 0 ? 'Ausgangszustand gebunden' : `${result.steps} Schritt${result.steps === 1 ? '' : 'e'} rekonstruierbar`) : result.reason;
   $('timeline-range').max = String(session.events.length);
   $('timeline-range').value = String(viewedStep);
   $('timeline-step').textContent = `Zustand ${viewedStep} / ${session.events.length}`;
@@ -91,6 +94,10 @@ function render() {
   $('replay-receipt').textContent = result.ok
     ? `REPLAY OK · ${result.steps} Schritt${result.steps === 1 ? '' : 'e'} · ${result.finalContentId}`
     : `REPLAY ABWEICHUNG · ${result.reason} · Schritt ${result.at ?? '?'}`;
+  $('handoff-recommendation').textContent = researchHandoff.recommendedCheck;
+  $('handoff-state').textContent = result.steps === 0
+    ? 'Ausgangszustand bereit · erster Schritt ausstehend.'
+    : 'Lokaler Prüfstand berechnet · Wirkung außerhalb des Modells offen.';
   for (const stage of document.querySelectorAll('.stages span')) stage.classList.toggle('active', Boolean(event));
   $('empty-event').hidden = Boolean(event);
   $('event-detail').hidden = !event;
@@ -101,6 +108,8 @@ function render() {
 $('impulse-button').addEventListener('click', () => {
   try {
     session = appendImpulse(session, select.value);
+    replayResult = replay(session);
+    researchHandoff = createGenesisResearchHandoff(session);
     viewedStep = session.events.length;
     perspective = 'forward';
     render();
@@ -112,6 +121,8 @@ $('impulse-button').addEventListener('click', () => {
 
 $('reset-button').addEventListener('click', () => {
   session = createSession(1);
+  replayResult = replay(session);
+  researchHandoff = createGenesisResearchHandoff(session);
   viewedStep = 0;
   perspective = 'forward';
   render();

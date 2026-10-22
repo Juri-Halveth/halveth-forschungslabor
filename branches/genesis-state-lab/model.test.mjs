@@ -59,6 +59,7 @@ test('a closed context gate prevents relay but does not erase the impulse', () =
   assert.equal(event.feedback.relay, 'BLOCKED_BY_CONTEXT');
   assert.equal(state.agents[0].signal, 4);
   assert.equal(state.agents[1].signal, initial.agents[1].signal);
+  assert.match(projectEvent(event, 'anti').headline, /keine Zustellung/);
 });
 
 test('forward and anti projections share one event identity and both state references', () => {

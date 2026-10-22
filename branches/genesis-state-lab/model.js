@@ -207,7 +207,9 @@ export function projectEvent(event, perspective = 'forward') {
     eventId: event.eventId,
     beforeContentId: event.beforeContentId,
     afterContentId: event.afterContentId,
-    headline: perspective === 'forward' ? `${event.actorId} sendet einen Impuls` : `${recipient} liest denselben Impuls von der Gegenseite`,
+    headline: perspective === 'forward' ? `${event.actorId} sendet einen Impuls`
+      : event.feedback.relay === 'DELIVERED' ? `Relay-Ziel ${recipient}: Signal empfangen`
+        : `Relay-Ziel ${recipient}: keine Zustellung`,
     detail: event.feedback.relay === 'DELIVERED'
       ? perspective === 'forward' ? `Relation ${event.usedRelations[0]} trägt ein Signal zu ${recipient}.` : `${recipient} empfängt ein Signal über ${event.usedRelations[0]}.`
       : perspective === 'forward' ? `Der Kontext von ${event.actorId} hält die Weitergabe zurück.` : `${recipient} empfängt in diesem Ereignis kein Signal.`

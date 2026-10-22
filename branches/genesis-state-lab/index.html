@@ -15,7 +15,7 @@
   <div class="grain" aria-hidden="true"></div>
   <header class="masthead">
     <div class="brand"><span class="brand-mark" aria-hidden="true">✦</span><span><strong>HALVETH</strong><small>LUCINET / GENESIS</small></span></div>
-    <nav aria-label="Seitenbereiche"><a href="#lab">Labor</a><a href="#counterexample">Gegenprobe</a><a href="./README.md">Methode ↗</a></nav>
+    <nav aria-label="Seitenbereiche"><a href="#lab">Labor</a><a href="#counterexample">Gegenprobe</a><a href="#connections">Anschlüsse</a><a href="./README.md">Methode ↗</a></nav>
     <span class="local-badge"><span aria-hidden="true"></span> LOKALES MODELL</span>
   </header>
   <main>
@@ -23,6 +23,7 @@
       <div class="eyebrow"><span class="eyebrow-line"></span> FORSCHUNGSLABOR · GENESIS 01</div>
       <h1 id="title">Ein Impuls.<br><em>Viele Beziehungen.</em><br>Ein Verlauf.</h1>
       <p>100 synthetische Agenten teilen einen Zustand. Ein Impuls verändert ihn nach festen Regeln. Die Vorwärtsansicht und die <strong>ANTI-DATEI</strong> erzählen <em>dasselbe</em> Ereignis aus zwei Perspektiven.</p>
+      <a class="hero-cta" href="#lab">Impuls ausprobieren <span aria-hidden="true">↘</span></a>
       <div class="hero-foot"><span class="orb" aria-hidden="true"></span><span>STATE <b>→</b> TRANSITION <b>→</b> FEEDBACK <b>→</b> CONTEXT <b>→</b> LAYER</span></div>
     </section>
 
@@ -70,9 +71,20 @@
       </div>
 
       <div class="timeline-panel"><div class="timeline-head"><div><span class="panel-index">D / ZEITSPUR</span><h3>Replay statt Erinnerungslücke.</h3></div><span id="timeline-step">Zustand 0 / 0</span></div><label for="timeline-range">Zustand im Verlauf anzeigen</label><input id="timeline-range" type="range" min="0" max="0" value="0"><div class="timeline-ends"><span>ANFANG</span><span>AKTUELL</span></div><div class="stages" aria-label="Gebundene Modellstufen"><span>STATE</span><span>TRANSITION</span><span>FEEDBACK</span><span>CONTEXT</span><span>LAYER</span></div><p class="receipt" id="replay-receipt" aria-live="polite">Replay bereit. Es wurden noch keine Ereignisse erzeugt.</p></div>
+      <section class="handoff-panel" aria-labelledby="handoff-title"><div><span class="panel-index">E / NÄCHSTE FRAGE</span><h3 id="handoff-title">Was prüfen wir danach?</h3></div><div><p id="handoff-recommendation">Einen ersten lokalen Impuls auslösen und seinen Replay-Beleg ansehen.</p><small id="handoff-state">Außenübertragbarkeit und Wirkung bleiben offen.</small></div><a href="../next-action-navigator/">Forschungsnavigator öffnen <span aria-hidden="true">↗</span></a></section>
     </section>
 
     <section class="counterexample" id="counterexample" aria-labelledby="counter-title"><div class="counter-heading"><span class="kicker">02 / DIE GEGENPROBE</span><h2 id="counter-title">Gleiches Bild. Anderer nächster Zustand.</h2><p>Zwei Systeme sehen auf der groben Ebene gleich aus. In einem ist das Gate von A000 offen, im anderen geschlossen. Derselbe Impuls liefert danach unterschiedliche Gesamtansichten.</p></div><div class="counter-grid"><div class="counter-card"><span>SYSTEM A / GATE OFFEN</span><strong id="counter-a-before">—</strong><small>Gesamtsignal vorher</small><div class="counter-arrow">IMPULS A000 ↓</div><strong id="counter-a-after">—</strong><small>Gesamtsignal danach</small></div><div class="counter-divider" aria-hidden="true">≠</div><div class="counter-card alternative"><span>SYSTEM B / GATE GESCHLOSSEN</span><strong id="counter-b-before">—</strong><small>Gesamtsignal vorher</small><div class="counter-arrow">DERSELBE IMPULS ↓</div><strong id="counter-b-after">—</strong><small>Gesamtsignal danach</small></div></div><div class="counter-conclusion"><strong>Die grobe Ansicht reicht hier nicht als Zustandsersatz.</strong><p>Das versteckte Gate ist für die nächste Transition relevant. Die Aussage gilt für diese definierte Modellregel und dieses Gegenbeispiel.</p></div></section>
+    <section class="connections" id="connections" aria-labelledby="connections-title">
+      <div class="section-heading"><div><span class="kicker">03 / ANSCHLÜSSE</span><h2 id="connections-title">Aus einem Versuch werden neue Prüfwege.</h2></div><p>Jede Verbindung führt zu vorhandenem Code. Die Module teilen Fragen und brauchen für eine gemeinsame Laufzeit einen geprüften Adapter.</p></div>
+      <div class="connections-grid">
+        <a class="connection-card" href="../fegefeuer-provenance-transducer/"><span>01 · EREIGNIS</span><strong>Gleicher Zustand, anderes Ereignis.</strong><small>Event-ID und Inhalts-ID zum Ereigniskern verfolgen <b aria-hidden="true">↗</b></small></a>
+        <a class="connection-card" href="../documents-excavation/"><span>02 · PROJEKTION</span><strong>Was verbirgt die grobe Ansicht?</strong><small>Ausgrabungsstätte und Emergenzfrage öffnen <b aria-hidden="true">↗</b></small></a>
+        <a class="connection-card" href="../next-action-navigator/"><span>03 · NÄCHSTER SCHRITT</span><strong>Welche Gegenprobe folgt?</strong><small>Offene Achsen im Navigator sichtbar halten <b aria-hidden="true">↗</b></small></a>
+        <a class="connection-card" href="../bounded-knowledge-reuse-inventory/"><span>04 · QUELLE</span><strong>Was darf aus dem Archiv hinaus?</strong><small>Metadaten und Rechte getrennt prüfen <b aria-hidden="true">↗</b></small></a>
+      </div>
+      <p class="connections-note">Die konkreten Typbrücken und Forschungsquellen stehen in der <a href="./BRIDGES.md">Anschlusskarte ↗</a>.</p>
+    </section>
   </main>
   <footer><span>HALVETH / LUCINET · GENESIS STATE LAB</span><span>Deterministisches lokales Modell · <a href="./README.md">Methode &amp; Grenzen ↗</a></span></footer>
   <div class="sr-only" id="live-status" role="status" aria-live="polite"></div>
