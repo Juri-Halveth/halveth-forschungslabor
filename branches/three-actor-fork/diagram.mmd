@@ -1,0 +1,17 @@
+flowchart LR
+    two["A und B konkurrieren"] --> enters{"C tritt ein?"}
+    enters -->|"Nein"| waiting["Zwei Wege bleiben"]
+    enters -->|"Ja"| third["Dritter Weg offen"]
+    third --> responses{"A und B reagieren"}
+    responses -->|"Beide blockieren"| blocked["Ausschlusskandidat"]
+    responses -->|"Beide kooperieren"| shared["Drei-Seiten-Kandidat"]
+    responses -->|"Eine Seite kooperiert"| pair["Zweierverbindung"]
+    responses -->|"Eine Seite blockiert"| contested["Umstrittener Eintritt"]
+    responses -->|"Beide offen"| independent["C bleibt eigenständig"]
+    blocked --> question["Folgefrage prüfen"]
+    shared --> question
+    pair --> question
+    contested --> question
+    independent --> question
+    style third fill:#DCCCFF,stroke:#874FFF
+    style question fill:#FFECBD,stroke:#FFC943
