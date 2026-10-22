@@ -1,0 +1,30 @@
+{
+  "schema": "halveth.selected-source-transfer.v1",
+  "historicalSourceCommit": "5b7956f40f2fde241a20f9705f1d4f7c1fbc9920",
+  "sourceProject": "LUCINET",
+  "sourceLicense": "MIT",
+  "records": [
+    {
+      "sourcePath": "crates/lucinet-script-lab/src/lib.rs",
+      "outputPath": "src/lib.rs",
+      "sourceSha256": "3ec01a361a99e885e9e764aa683ac6d9c7e2c2264adfae17c151ee30a9baf8a5",
+      "outputSha256": "3ec01a361a99e885e9e764aa683ac6d9c7e2c2264adfae17c151ee30a9baf8a5",
+      "transfer": "EXACT_SOURCE_BYTES"
+    },
+    {
+      "sourcePath": "docs/SCRIPT_LAB_STATUS.md",
+      "outputPath": "SOURCE_STATUS.md",
+      "sourceSha256": "281c0a18580d8152c44b758563b84414a26ba231effb56457a26a6e89f69451e",
+      "outputSha256": "281c0a18580d8152c44b758563b84414a26ba231effb56457a26a6e89f69451e",
+      "transfer": "EXACT_SOURCE_BYTES"
+    },
+    {
+      "sourcePath": "LICENSE",
+      "outputPath": "LICENSE",
+      "sourceSha256": "726cbcbe74bf33cc0732ee6db4ac29dacfafb2d183031bb55be81f0ce27ec213",
+      "outputSha256": "726cbcbe74bf33cc0732ee6db4ac29dacfafb2d183031bb55be81f0ce27ec213",
+      "transfer": "EXACT_SOURCE_BYTES"
+    }
+  ],
+  "claimCeiling": "The receipt binds copied bytes to a locally inspected commit. It does not independently publish the source Git history or establish runtime behavior."
+}
