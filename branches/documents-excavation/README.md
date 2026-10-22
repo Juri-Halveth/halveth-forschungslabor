@@ -23,6 +23,15 @@ vorgegebene Raumkoordinaten. Diese Funde sind ein Forschungsast; eine
 veröffentlichte Implementierungsbrücke und ein physikalischer Atomversuch
 folgen daraus nicht.
 
+Eine weitere öffentliche Nachbarschaft ist das
+[`INFINITY`-Dossier in Scarlet](https://github.com/Juri-Halveth/halveth-scarlet/blob/main/docs/entities/infinity.md):
+Es beschreibt viele Möglichkeiten und den begrenzten Umfang einer konkreten
+Handlung. Die Beziehung zu ANÁDYSIS ist hier `CONCEPTUAL_ADJACENCY`:
+Auswahl und Messung können gemeinsam befragt werden, doch das Dossier ist
+kein Emergenz-Messwert und keine physikalische Erklärung für Strahlung durch
+Atome. Die Quelle wurde gegen den öffentlichen Git-Blob
+`c11417d31de77ccf4b97f16aa2dbd791e4d21471` gebunden.
+
 Die beiden lokalen Bytevergleiche sind an folgende Digest-/Größenpaare
 gebunden. Sie sind Prüfschlüssel für die erhaltenen Originale, kein Beleg für
 Urheberschaft, Erfindungsdatum oder gleiche Ausführung:
