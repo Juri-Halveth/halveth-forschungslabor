@@ -49,6 +49,19 @@ Die Vorwärtsregel kann zwei verschiedene vollständige Vorzustände auf denselb
 
 Der Schalter **Nur Signale / Signale + Gate** hält Zustände und Impuls fest und ändert allein den Beobachtungsoperator. `projectionPairAudit()` meldet bei der ersten Linse `COUNTEREXAMPLE`; bei der zweiten sind die beiden Zustände bereits vor dem Impuls unterscheidbar. Das beseitigt genau diesen Gegenzeugen. Eine Aussage über alle Zustände oder alle möglichen Projektionen folgt daraus noch nicht.
 
+## Endliche Scope-Prüfung
+
+`auditFiniteScope()` prüft die Paarfrage systematischer: A000 und A001 erhalten unabhängig voneinander je fünf Signalwerte und zwei Gatewerte. Das ergibt exakt **100 vollständige Zustände**; die anderen 98 Agenten sind im Ausgangszustand fixiert. Für jeden Zustand werden die Impulse A000 und A001 berechnet, also 200 Zustands-Input-Paare. Vier explizite Ansichten gruppieren Zustände nur innerhalb desselben Inputs nach gleicher Vorher-Projektion und prüfen die Folge-Projektion:
+
+| Ansicht | Verschiedene Ansichtsklassen über beide Inputs | Klassen mit unterschiedlicher Folge | Befund im endlichen Scope |
+| --- | ---: | ---: | --- |
+| Nur aggregierte Signale | 28 | 27 | Gegenzeuge |
+| Aggregierte Signale + Gate des handelnden Agenten | 56 | 38 | Gegenzeuge |
+| Aggregierte Signale + beide lokalen Gates | 112 | 76 | Gegenzeuge |
+| Vollständige lokale Felder von A000 und A001 | 200 | 0 | Kein Gegenzeuge; jede Klasse hat genau einen Zustand |
+
+Die zweite Ansicht repariert das erste Gate-Paar, aber nicht alle anderen Paare: Die Verteilung gleicher Gesamtsignale auf A000 und A001 kann weiterhin verschiedene Folgen erzeugen. Auch beide Gates allein schließen diese Lücke nicht. Der letzte Lauf ist **kein** Closure-Beweis über das Gesamtsystem: Die 200 Klassen sind im geprüften Ausschnitt sämtlich Singletons; Zustände anderer Agenten und weitere Inputs wurden nicht variiert. Die Oberfläche zeigt zu jeder abweichenden Ansicht einen erneut berechneten konkreten Zeugen statt nur eines Statusworts. Der Code in [`scope-audit.js`](scope-audit.js) ist neu geschrieben; der archivierte Scope-Closure-Code wurde nicht kopiert.
+
 ## Konzeptquellen und Herkunft
 
 - Von Juri im Auftrag verlinkter [Chat-Link zur Genesis-/KOSMOS-X9-Idee](https://chatgpt.com/share/6ada12f4-d720-83eb-95f4-840c4e6a64ad): Impuls → Relation → neuer Zustand, `STATE → TRANSITION → FEEDBACK → CONTEXT → LAYER`, zwei Perspektiven auf ein Geschehen. Der Link ist hier ein Ideengeber; Originaldateien, Entstehungszeit und Außenwirkung wurden in diesem Branch nicht verifiziert.

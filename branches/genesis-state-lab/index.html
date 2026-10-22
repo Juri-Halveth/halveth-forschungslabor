@@ -81,8 +81,20 @@
       <div class="projection-pair"><article><span>SYSTEM A · GATE OFFEN</span><p>Vorher <strong id="projection-before-a">—</strong></p><p>Nachher <strong id="projection-after-a">—</strong></p></article><article><span>SYSTEM B · GATE GESCHLOSSEN</span><p>Vorher <strong id="projection-before-b">—</strong></p><p>Nachher <strong id="projection-after-b">—</strong></p></article></div>
       <div class="projection-result" aria-live="polite"><div><span id="projection-before-relation">Vorher: —</span><span id="projection-after-relation">Nachher: —</span></div><p id="projection-finding">—</p></div>
     </section>
+    <section class="finite-scope" id="finite-scope" aria-labelledby="finite-title">
+      <div class="finite-heading"><span class="kicker">04 / DER ENDLICHE SCOPE</span><h2 id="finite-title">Eine reparierte Gegenprobe ist noch kein geschlossenes Modell.</h2><p>Wir variieren bei A000 und A001 jeweils fünf Signalwerte und zwei Gatewerte: 100 vollständige Zustände. Für jeden prüfen wir die Impulse A000 und A001. Die übrigen 98 Agenten bleiben fest. Wähle, was die Ansicht mitbekommt.</p></div>
+      <div class="finite-modes" role="group" aria-label="Beobachtungsoperator für den endlichen Scope">
+        <button type="button" data-scope-mode="SIGNALS_ONLY" aria-pressed="true">01 · Summen</button>
+        <button type="button" data-scope-mode="ACTING_GATE" aria-pressed="false">02 · + handelndes Gate</button>
+        <button type="button" data-scope-mode="BOTH_GATES" aria-pressed="false">03 · + beide Gates</button>
+        <button type="button" data-scope-mode="LOCAL_FULL" aria-pressed="false">04 · lokale Felder</button>
+      </div>
+      <div class="finite-result" aria-live="polite"><div class="finite-status"><span>ERGEBNIS IM GEPRÜFTEN SCOPE</span><strong id="finite-status">—</strong><small id="finite-counts">—</small></div><p id="finite-explanation">—</p></div>
+      <div class="finite-witness" id="finite-witness"><span>ERSTER KONKRETER GEGENZEUGE · <b id="finite-input">—</b></span><p id="finite-before">—</p><div class="finite-pair"><div><small id="finite-left-id">—</small><strong id="finite-left-after">—</strong></div><div><small id="finite-right-id">—</small><strong id="finite-right-after">—</strong></div></div></div>
+      <p class="finite-ceiling">Auch 200 geprüfte Zustands-Input-Paare sind nur dieser definierte Ausschnitt. Ein fehlender Gegenzeuge in ihm beweist weder alle 100 Agenten-Konfigurationen noch reale Emergenz.</p>
+    </section>
     <section class="connections" id="connections" aria-labelledby="connections-title">
-      <div class="section-heading"><div><span class="kicker">04 / ANSCHLÜSSE</span><h2 id="connections-title">Aus einem Versuch werden neue Prüfwege.</h2></div><p>Jede Verbindung führt zu vorhandenem Code. Die Module teilen Fragen und brauchen für eine gemeinsame Laufzeit einen geprüften Adapter.</p></div>
+      <div class="section-heading"><div><span class="kicker">05 / ANSCHLÜSSE</span><h2 id="connections-title">Aus einem Versuch werden neue Prüfwege.</h2></div><p>Jede Verbindung führt zu vorhandenem Code. Die Module teilen Fragen und brauchen für eine gemeinsame Laufzeit einen geprüften Adapter.</p></div>
       <div class="connections-grid">
         <a class="connection-card" href="../fegefeuer-provenance-transducer/"><span>01 · EREIGNIS</span><strong>Gleicher Zustand, anderes Ereignis.</strong><small>Event-ID und Inhalts-ID zum Ereigniskern verfolgen <b aria-hidden="true">↗</b></small></a>
         <a class="connection-card" href="../documents-excavation/"><span>02 · PROJEKTION</span><strong>Was verbirgt die grobe Ansicht?</strong><small>Ausgrabungsstätte und Emergenzfrage öffnen <b aria-hidden="true">↗</b></small></a>

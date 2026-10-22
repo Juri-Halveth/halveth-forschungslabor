@@ -1,5 +1,6 @@
 import { appendImpulse, createSession, projectEvent, replay, scopeCounterexample } from './model.js';
 import { createGenesisResearchHandoff } from './handoff.js';
+import { auditFiniteScope } from './scope-audit.js';
 
 const $ = id => document.getElementById(id);
 const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -170,4 +171,40 @@ function renderProjection(mode) {
 $('projection-signals').addEventListener('click', () => renderProjection('SIGNALS_ONLY'));
 $('projection-gate').addEventListener('click', () => renderProjection('SIGNALS_AND_ACTOR_GATE'));
 renderProjection('SIGNALS_ONLY');
+
+const finite = auditFiniteScope();
+function formatFiniteProjection(value) {
+  const parts = [`Σ ${value.totalSignal}`, `${value.activeAgents} aktiv`, `${value.saturatedAgents} gesättigt`];
+  if (Object.hasOwn(value, 'actingGate')) parts.push(`handelndes Gate ${value.actingGate}`);
+  if (value.gates) parts.push(`Gates ${value.gates.join('/')}`);
+  return parts.join(' · ');
+}
+function renderFiniteScope(mode) {
+  const result = finite.modes[mode];
+  if (!result) throw new TypeError('Unbekannter Beobachtungsoperator');
+  const hasWitness = Boolean(result.witness);
+  $('finite-status').textContent = hasWitness ? 'Gegenzeuge gefunden' : 'Kein Gegenzeuge in diesem Ausschnitt';
+  $('finite-counts').textContent = `${result.classes} Ansichtsklassen · ${result.ambiguousClasses} mehrdeutige Klassen · ${result.divergentClasses} verschiedene Folgeklassen`;
+  $('finite-explanation').textContent = hasWitness
+    ? mode === 'SIGNALS_ONLY' ? 'Die Summe verdeckt ein wirksames Gate. Gleiche Ansicht und gleicher Input führen auseinander.'
+      : 'Die zusätzliche Information repariert einzelne Paare, lässt aber in diesem größeren Scope noch andere wirksame Unterschiede verborgen.'
+    : 'Alle 100 geprüften Zustände sind in dieser Ansicht unterscheidbar. Der Test findet deshalb hier keine Kollision; außerhalb der Enumeration bleibt die Frage offen.';
+  $('finite-witness').hidden = !hasWitness;
+  if (hasWitness) {
+    const witness = result.witness;
+    $('finite-input').textContent = `IMPULS ${witness.input}`;
+    $('finite-before').textContent = `Gleiche Ansicht vorher: ${formatFiniteProjection(witness.before)}`;
+    $('finite-left-id').textContent = witness.left.id;
+    $('finite-right-id').textContent = witness.right.id;
+    $('finite-left-after').textContent = formatFiniteProjection(witness.left.after);
+    $('finite-right-after').textContent = formatFiniteProjection(witness.right.after);
+  }
+  for (const button of document.querySelectorAll('[data-scope-mode]')) {
+    button.setAttribute('aria-pressed', String(button.dataset.scopeMode === mode));
+  }
+}
+for (const button of document.querySelectorAll('[data-scope-mode]')) {
+  button.addEventListener('click', () => renderFiniteScope(button.dataset.scopeMode));
+}
+renderFiniteScope('SIGNALS_ONLY');
 render();
