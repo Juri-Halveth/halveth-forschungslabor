@@ -2,6 +2,7 @@ import { appendImpulse, createSession, projectEvent, replay, scopeCounterexample
 import { createGenesisResearchHandoff } from './handoff.js';
 import { auditFiniteScope } from './scope-audit.js';
 import { saturationFiberAudit } from './preimage-audit.js';
+import { predictionControlAudit } from './prediction-audit.js';
 
 const $ = id => document.getElementById(id);
 const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -235,4 +236,25 @@ const fiberCards = fiberAudit.fibers.map(fiber => {
   return card;
 });
 $('fiber-list').replaceChildren(...fiberCards);
+
+const predictionAudit = predictionControlAudit(createSession(1).initialState, 'A000');
+$('prediction-expected').textContent = `${predictionAudit.prediction.expected.totalSignal} Gesamtsignal`;
+$('prediction-fingerprint').textContent = `Lokaler Fingerabdruck ${predictionAudit.prediction.fingerprint}`;
+function renderPrediction(mode) {
+  const outcome = predictionAudit[mode];
+  if (!outcome) throw new TypeError('Unbekannte Kontrollbeobachtung');
+  $('prediction-status').textContent = mode === 'pending' ? 'OFFEN'
+    : mode === 'matching' ? 'PASST IM MODELL' : 'WEICHT IM MODELL AB';
+  $('prediction-observed').textContent = outcome.observed === null
+    ? 'Noch kein Y: Der Vergleich bleibt offen.'
+    : `Kontrollwert: ${outcome.observed.totalSignal} Gesamtsignal · ${outcome.observationKind}`;
+  $('prediction-boundary').textContent = `Kandidat unverändert: ${predictionAudit.candidateUnchanged ? 'ja' : 'nein'} · Der abweichende Wert ist ein künstlich verändertes Nachbild. Eine externe Messung braucht Quelle, Zeitbasis und Beobachtungsvertrag.`;
+  for (const button of document.querySelectorAll('[data-prediction-mode]')) {
+    button.setAttribute('aria-pressed', String(button.dataset.predictionMode === mode));
+  }
+}
+for (const button of document.querySelectorAll('[data-prediction-mode]')) {
+  button.addEventListener('click', () => renderPrediction(button.dataset.predictionMode));
+}
+renderPrediction('pending');
 render();

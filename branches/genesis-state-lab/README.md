@@ -68,6 +68,12 @@ Die zweite Ansicht repariert das erste Gate-Paar, aber nicht alle anderen Paare:
 
 Der Codec gruppiert nach dem vollständigen kanonischen Nachzustand, nicht nach dem kurzen FNV-Fingerabdruck. Seine exakte Rückrechnung gilt nur für die ausdrücklich variierte Fünferfamilie. Sie ist keine Umkehrfunktion für alle Genesis-Zustände oder für historische Ereignisse außerhalb des aktuellen Tabs. Die ältere lokale Reversibilitätsidee war eine methodische Anregung; Codebytes wurden nicht übernommen.
 
+## Beobachtungsspiegel: Kandidat vor Ergebnis
+
+[`prediction-audit.js`](prediction-audit.js) berechnet für einen gebundenen Anfangszustand und Impuls A000 **einmal** die erwartete Makroansicht. Die Funktion erhält kein späteres Ergebnis als Eingabe. Der Browser hält diesen Kandidaten während dreier synthetischer Kontrollfälle fest: noch keine Beobachtung (`UNKNOWN_NO_OBSERVATION`), dieselbe Modelltransition (`MATCH_IN_MODEL_CONTROL`) und ein künstlich um ein Signal verändertes Nachbild (`MISMATCH_IN_MODEL_CONTROL`). Der letzte Fall ist kein zweiter Anfangszustand und keine gemessene Abweichung. Der Test prüft, dass Kandidat und Fingerabdruck unverändert bleiben und dass die beiden Kontrollwerte in der verwendeten Ansicht wirklich unterscheidbar sind.
+
+Der Fingerabdruck ist nur ein lokaler Änderungsindikator, keine kryptografische Signatur und kein Zeitstempel. Beide `Y`-Werte werden **innerhalb desselben Modells** erzeugt. Ein späterer Abgleich mit der Außenwelt benötigt eine unabhängige Quelle, Zeitpunkt, Messoperator, Kalibrierung, Coverage und einen vorher gebundenen Vergleich. Der archivierte Gedanke der Wahrheitsgrenze und Nichtinterferenz wurde als Frage übernommen; kein privater Code wurde in dieses Modul kopiert.
+
 ## Konzeptquellen und Herkunft
 
 - Von Juri im Auftrag verlinkter [Chat-Link zur Genesis-/KOSMOS-X9-Idee](https://chatgpt.com/share/6ada12f4-d720-83eb-95f4-840c4e6a64ad): Impuls → Relation → neuer Zustand, `STATE → TRANSITION → FEEDBACK → CONTEXT → LAYER`, zwei Perspektiven auf ein Geschehen. Der Link ist hier ein Ideengeber; Originaldateien, Entstehungszeit und Außenwirkung wurden in diesem Branch nicht verifiziert.
