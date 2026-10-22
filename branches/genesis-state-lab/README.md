@@ -62,6 +62,12 @@ Der Schalter **Nur Signale / Signale + Gate** hält Zustände und Impuls fest un
 
 Die zweite Ansicht repariert das erste Gate-Paar, aber nicht alle anderen Paare: Die Verteilung gleicher Gesamtsignale auf A000 und A001 kann weiterhin verschiedene Folgen erzeugen. Auch beide Gates allein schließen diese Lücke nicht. Der letzte Lauf ist **kein** Closure-Beweis über das Gesamtsystem: Die 200 Klassen sind im geprüften Ausschnitt sämtlich Singletons; Zustände anderer Agenten und weitere Inputs wurden nicht variiert. Die Oberfläche zeigt zu jeder abweichenden Ansicht einen erneut berechneten konkreten Zeugen statt nur eines Statusworts. Der Code in [`scope-audit.js`](scope-audit.js) ist neu geschrieben; der archivierte Scope-Closure-Code wurde nicht kopiert.
 
+## Rückweg mit explizitem Residuum
+
+[`preimage-audit.js`](preimage-audit.js) isoliert eine andere endliche Frage. Beim Impuls A001 sind alle Felder außer dem Vor-Signal dieses Agenten fest; sein Gate steht offen. Die fünf Vorwerte `0,1,2,3,4` führen zu drei vollständigen Nachzuständen. Wegen der Sättigung kollabieren `2,3,4` auf denselben Nachzustand mit A001-Signal `4` und geschlossenem Gate. Diese größte Rückfaser hat drei Elemente. Ein festes Residuum benötigt daher mindestens `ceil(log₂ 3) = 2` Bit, wenn es den Vorwert innerhalb **dieser** Fünferfamilie wiederherstellen soll. Der implementierte Rangcode `00,01,10` rekonstruiert alle fünf aufgezählten Vorwerte; ein fremder Nachzustand oder ungültiger Rang wird abgelehnt.
+
+Der Codec gruppiert nach dem vollständigen kanonischen Nachzustand, nicht nach dem kurzen FNV-Fingerabdruck. Seine exakte Rückrechnung gilt nur für die ausdrücklich variierte Fünferfamilie. Sie ist keine Umkehrfunktion für alle Genesis-Zustände oder für historische Ereignisse außerhalb des aktuellen Tabs. Die ältere lokale Reversibilitätsidee war eine methodische Anregung; Codebytes wurden nicht übernommen.
+
 ## Konzeptquellen und Herkunft
 
 - Von Juri im Auftrag verlinkter [Chat-Link zur Genesis-/KOSMOS-X9-Idee](https://chatgpt.com/share/6ada12f4-d720-83eb-95f4-840c4e6a64ad): Impuls → Relation → neuer Zustand, `STATE → TRANSITION → FEEDBACK → CONTEXT → LAYER`, zwei Perspektiven auf ein Geschehen. Der Link ist hier ein Ideengeber; Originaldateien, Entstehungszeit und Außenwirkung wurden in diesem Branch nicht verifiziert.

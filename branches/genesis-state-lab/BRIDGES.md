@@ -38,7 +38,7 @@ Die Frage „`-T` zweimal“ hat mindestens zwei verschiedene Lesarten:
 - Für eine **Zahl** `t` ist `(-t) × (-t) = t²`. Bei einer Zeitgröße wäre die Einheit Zeit².
 - Für einen **Negationsoperator** `N(x) = -x` über derselben passenden Domäne ist `N(N(x)) = x`. Das ist eine Selbstinvolution.
 
-Multiplikation von Werten und Komposition von Operatoren sind getrennte Rechnungen. Für einen Zustand des Genesis-Labors gibt es derzeit keinen definierten Operator `-T` und keine inverse Transition; die Sättigungsregel löscht sogar unterscheidende Vorzustandsinformation. Ein späterer Inversionsversuch braucht Domäne, Invariante, Residuum, Gegenbeispiel und Test.
+Multiplikation von Werten und Komposition von Operatoren sind getrennte Rechnungen. Für den gesamten Genesis-Zustandsraum gibt es keinen definierten Operator `-T` und keine inverse Transition; die Sättigungsregel löscht unterscheidende Vorzustandsinformation. Der [enge Rückweg](preimage-audit.js) zeigt für fünf fixierte Vorzustände, wie ein Zwei-Bit-Residuum die verlorene Unterscheidung innerhalb genau dieser Familie trägt. Domäne, Fixierungen und Gegenbeispiele gehören zum Vertrag; daraus entsteht kein globaler Rückweg.
 
 ## Status und Rechte
 

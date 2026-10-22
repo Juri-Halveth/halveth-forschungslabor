@@ -1,6 +1,7 @@
 import { appendImpulse, createSession, projectEvent, replay, scopeCounterexample } from './model.js';
 import { createGenesisResearchHandoff } from './handoff.js';
 import { auditFiniteScope } from './scope-audit.js';
+import { saturationFiberAudit } from './preimage-audit.js';
 
 const $ = id => document.getElementById(id);
 const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -207,4 +208,31 @@ for (const button of document.querySelectorAll('[data-scope-mode]')) {
   button.addEventListener('click', () => renderFiniteScope(button.dataset.scopeMode));
 }
 renderFiniteScope('SIGNALS_ONLY');
+
+const fiberAudit = saturationFiberAudit();
+$('fiber-max').textContent = String(fiberAudit.maxPreimage);
+$('fiber-bits').textContent = String(fiberAudit.minimumBits);
+$('fiber-roundtrips').textContent = `${fiberAudit.roundTrips}/${fiberAudit.familySize}`;
+const fiberCards = fiberAudit.fibers.map(fiber => {
+  const card = document.createElement('article');
+  const label = document.createElement('span');
+  label.textContent = fiber.beforeSignals.length > 1 ? 'MEHRERE VORBILDER' : 'EIN VORBILD';
+  const path = document.createElement('div');
+  path.className = 'fiber-path';
+  const before = document.createElement('strong');
+  before.textContent = fiber.beforeSignals.join(' · ');
+  const arrow = document.createElement('b');
+  arrow.textContent = '→';
+  arrow.setAttribute('aria-label', 'führt zu');
+  const after = document.createElement('strong');
+  after.textContent = String(fiber.afterActorSignal);
+  path.append(before, arrow, after);
+  const detail = document.createElement('p');
+  detail.textContent = fiber.beforeSignals.length > 1
+    ? `Rang als Zusatz: ${fiber.beforeSignals.map((value, rank) => `${value} = ${rank.toString(2).padStart(fiberAudit.minimumBits, '0')}`).join(' · ')}`
+    : 'Dieser Nachzustand hat im geprüften Fünferraum genau einen Vorwert.';
+  card.append(label, path, detail);
+  return card;
+});
+$('fiber-list').replaceChildren(...fiberCards);
 render();
