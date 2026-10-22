@@ -14,6 +14,16 @@
       "claimCeiling": "LOCAL_SYNTHETIC_TEST_AND_BROWSER_CAPTURE"
     },
     {
+      "id": "LUCINET_CORE_RUST",
+      "subject": "Standalone-Rust-Kern aus lokalem LUCINET-Commit",
+      "repository": "Juri-Halveth/halveth-forschungslabor",
+      "commit": "60af89edbcc10f47c37ad1d4337a9ca8f35ccdec",
+      "path": "branches/lucinet-core-rust/README.md",
+      "publicationState": "PUBLIC_DRAFT_PR",
+      "url": "https://github.com/Juri-Halveth/halveth-forschungslabor/blob/60af89edbcc10f47c37ad1d4337a9ca8f35ccdec/branches/lucinet-core-rust/README.md",
+      "claimCeiling": "STANDALONE_RUST_CORE_LOCAL_TESTS_ONLY"
+    },
+    {
       "id": "DOCUMENTS_EXCAVATION",
       "subject": "Endliche lokale Ausgrabung und synthetischer Ableger",
       "repository": "Juri-Halveth/halveth-forschungslabor",
