@@ -17,6 +17,8 @@ der semantische Kern, kein vollständiger LUCINET-Installer.
 ## Lokal prüfen
 
 Voraussetzung: Rust 1.85 oder neuer.
+Der CI-Lauf ist für reproduzierbare Format- und Clippy-Prüfungen auf Rust
+1.97.0 festgelegt; neue Clippy-Versionen können zusätzliche Lints einführen.
 
 ```sh
 cargo test --locked --manifest-path branches/lucinet-core-rust/Cargo.toml

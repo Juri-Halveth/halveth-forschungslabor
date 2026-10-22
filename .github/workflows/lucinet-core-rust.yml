@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
-      - run: rustup toolchain install stable --profile minimal
-      - run: cargo +stable fmt --check --manifest-path branches/lucinet-core-rust/Cargo.toml
-      - run: cargo +stable test --locked --manifest-path branches/lucinet-core-rust/Cargo.toml
-      - run: cargo +stable clippy --locked --manifest-path branches/lucinet-core-rust/Cargo.toml --all-targets -- -D warnings
+      - run: rustup toolchain install 1.97.0 --profile minimal
+      - run: cargo +1.97.0 fmt --check --manifest-path branches/lucinet-core-rust/Cargo.toml
+      - run: cargo +1.97.0 test --locked --manifest-path branches/lucinet-core-rust/Cargo.toml
+      - run: cargo +1.97.0 clippy --locked --manifest-path branches/lucinet-core-rust/Cargo.toml --all-targets -- -D warnings

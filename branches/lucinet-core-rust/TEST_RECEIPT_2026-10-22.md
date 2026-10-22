@@ -25,6 +25,11 @@ absolute lokale Buildpfade enthält. Ihre SHA-256-Digests sind:
 - Clippy-Log: `b51a6a0731e8a58bdc3e049b14b6297fccfc6bc5159ad6bfbf2e654a7b88e1d5`
 - Repository-Testlog: `18c7372f19c43e0fb41b917e98cb4aec41013b8a12382f772c492de4548fc021`
 
+Der erste GitHub-Workflow verwendete am 22. Oktober 2026 `stable` (1.99.0):
+Format und 70 Tests bestanden, aber eine in 1.99 neu hinzugekommene
+Clippy-Regel beanstandete eine unveränderte Test-Assertion. Die CI-Toolchain
+wurde daraufhin auf den lokal vollständig geprüften Stand 1.97.0 gebunden.
+
 Das ist ein lokaler Code- und Testbeleg für diesen Slice. Der gesamte
 LUCINET-Installer, Browseradapter, lokale Modelle, reale Webziele und
 externe Wirkungen waren nicht Teil dieses Standalone-Laufs.
