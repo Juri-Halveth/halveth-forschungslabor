@@ -32,6 +32,14 @@ Interaktiver 100-Agenten-Graph mit typisierten Relationen, deterministischem Rep
 Eine kleine, versionsgebundene Karte zu bereits veröffentlichten Belegen und
 zu GENESIS im integrierten Kandidatenstand. [Maschinenlesbare Fassung](catalog/evidence-routes.json).
 
+### [Essence Detector – Speicher-Schichten prüfbar machen](branches/system-essence-detector/)
+
+Lesender, begrenzter Metadaten-Scan, ein bytegebundener Zwei-Ordner-Vergleich
+und eine lokale Browseransicht. Cargo-, Unreal- und Site-Zwischenstände
+erhalten Quellprüfungen; unvollständige Downloads
+bleiben sichtbar. Es gibt keine automatische Löschung und keine Übertragung
+privater Inventare.
+
 ### [Drei-Gabel – ein dritter Weg im Konflikt](branches/three-actor-fork/)
 
 Interaktives Drei-Akteure-Modell: C tritt zwischen A und B ein; zwei Reaktionen erzeugen prüfbare Kandidaten statt eines vorweggenommenen Sieges.
