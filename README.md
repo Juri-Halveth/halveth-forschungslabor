@@ -40,6 +40,12 @@ erhalten Quellprüfungen; unvollständige Downloads
 bleiben sichtbar. Es gibt keine automatische Löschung und keine Übertragung
 privater Inventare.
 
+### [LUCINET Script Lab – Textschichten prüfen](branches/lucinet-script-lab/)
+
+Eigenständige Rust-Bibliothek und CLI für UTF-8-Bytes, Unicode-Skalare,
+Normalisierung, Grapheme und Bidi-Anzeigeordnung. Originalbytes und
+Provider-Versionsgrenzen sind quellengebunden dokumentiert.
+
 ### [Drei-Gabel – ein dritter Weg im Konflikt](branches/three-actor-fork/)
 
 Interaktives Drei-Akteure-Modell: C tritt zwischen A und B ein; zwei Reaktionen erzeugen prüfbare Kandidaten statt eines vorweggenommenen Sieges.
