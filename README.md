@@ -23,6 +23,13 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [Exact Percent Kernel – Anteile ohne Fließkomma prüfen](branches/exact-percent-kernel/)
+
+Reine Dezimal- und Prozentrechnung mit explizitem Dezimalzeichen,
+Eingabegrenzen und sichtbarer Restmenge. Der lokale historische
+PowerShell-Prototyp blieb am Originalort; veröffentlicht wurde ein
+getrennt neu geschriebener Baustein.
+
 ### [Drei-Gabel – ein dritter Weg im Konflikt](branches/three-actor-fork/)
 
 Interaktives Drei-Akteure-Modell: C tritt zwischen A und B ein; zwei Reaktionen erzeugen prüfbare Kandidaten statt eines vorweggenommenen Sieges.
