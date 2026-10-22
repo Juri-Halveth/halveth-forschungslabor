@@ -53,6 +53,9 @@ class InventoryTests(unittest.TestCase):
             source = Path(temporary)
             with self.assertRaisesRegex(ValueError, "outside this repository"):
                 MODULE.inventory(source, SCRIPT.parents[1] / "private-index", 1, 1)
+            (source / "other-checkout" / ".git").mkdir(parents=True)
+            with self.assertRaisesRegex(ValueError, "outside any Git checkout"):
+                MODULE.inventory(source, source / "other-checkout" / "private-index", 1, 1)
 
 
 if __name__ == "__main__":

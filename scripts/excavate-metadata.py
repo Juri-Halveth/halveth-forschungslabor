@@ -40,6 +40,8 @@ def inventory(root: Path, output: Path, max_files: int, max_seconds: float) -> d
         raise ValueError("root must be a directory")
     if output == repo or repo in output.parents:
         raise ValueError("the private inventory must be written outside this repository")
+    if any((ancestor / ".git").exists() for ancestor in (output, *output.parents)):
+        raise ValueError("the private inventory must be written outside any Git checkout")
     if max_files < 1 or max_seconds <= 0:
         raise ValueError("budgets must be positive")
     output.mkdir(parents=True, exist_ok=True)
