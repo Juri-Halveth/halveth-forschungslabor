@@ -68,6 +68,12 @@ Die zweite Ansicht repariert das erste Gate-Paar, aber nicht alle anderen Paare:
 
 Der Codec gruppiert nach dem vollständigen kanonischen Nachzustand, nicht nach dem kurzen FNV-Fingerabdruck. Seine exakte Rückrechnung gilt nur für die ausdrücklich variierte Fünferfamilie. Sie ist keine Umkehrfunktion für alle Genesis-Zustände oder für historische Ereignisse außerhalb des aktuellen Tabs. Die ältere lokale Reversibilitätsidee war eine methodische Anregung; Codebytes wurden nicht übernommen.
 
+## Das Residuum durch einen endlichen Flaschenhals
+
+[`residual-transport-audit.js`](residual-transport-audit.js) schließt an die größte Rückfaser mit den drei Vorwerten `2,3,4` an. Der vollständige Nachzustand ist für diese drei gleich; der Zusatzrang `0,1,2` muss daher getrennt übertragen werden. Bei Kanalbreite 2 und einem Takt gibt es nur zwei Symbolfolgen: Rang 0 und 2 kollidieren, sodass der Vorwert 4 fälschlich als 2 rekonstruiert würde. Zwei binäre Takte liefern `00`, `01`, `10` in Sendereihenfolge und rekonstruieren alle drei. Ein Takt mit drei Symbolen reicht ebenso. Die Oberfläche zeigt jede Symbolfolge und den tatsächlich wiedergefundenen Vorwert.
+
+Die Modulprüfung rechnet die drei Rückwege mit dem vorhandenen endlichen Decoder durch; sie verlässt sich nicht nur auf die Formel `Breite^Takte`. Der Befund lautet **Transport dieses Residualrangs in dieser Dreierfamilie**. Er beweist keinen allgemeinen physikalischen Kanal, keine Zeitreise und keine Reversibilität anderer Genesis-Transitionsfolgen. Das alte lokale Flaschenhals-Modul war Konzeptanstoß; der öffentliche Code wurde eigenständig geschrieben.
+
 ## Beobachtungsspiegel: Kandidat vor Ergebnis
 
 [`prediction-audit.js`](prediction-audit.js) berechnet für einen gebundenen Anfangszustand und Impuls A000 **einmal** die erwartete Makroansicht. Die Funktion erhält kein späteres Ergebnis als Eingabe. Der Browser hält diesen Kandidaten während dreier synthetischer Kontrollfälle fest: noch keine Beobachtung (`UNKNOWN_NO_OBSERVATION`), dieselbe Modelltransition (`MATCH_IN_MODEL_CONTROL`) und ein künstlich um ein Signal verändertes Nachbild (`MISMATCH_IN_MODEL_CONTROL`). Der letzte Fall ist kein zweiter Anfangszustand und keine gemessene Abweichung. Der Test prüft, dass Kandidat und Fingerabdruck unverändert bleiben und dass die beiden Kontrollwerte in der verwendeten Ansicht wirklich unterscheidbar sind.

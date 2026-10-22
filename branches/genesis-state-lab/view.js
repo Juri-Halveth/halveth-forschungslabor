@@ -2,6 +2,7 @@ import { appendImpulse, createSession, projectEvent, replay, scopeCounterexample
 import { createGenesisResearchHandoff } from './handoff.js';
 import { auditFiniteScope } from './scope-audit.js';
 import { saturationFiberAudit } from './preimage-audit.js';
+import { auditResidualTransport } from './residual-transport-audit.js';
 import { predictionControlAudit } from './prediction-audit.js';
 import { comparePairedScores, pairedScoreExamples } from './paired-score-audit.js';
 
@@ -237,6 +238,36 @@ const fiberCards = fiberAudit.fibers.map(fiber => {
   return card;
 });
 $('fiber-list').replaceChildren(...fiberCards);
+
+const channelModes = Object.freeze({ narrow: [2, 1], longer: [2, 2], wider: [3, 1] });
+function renderChannel(mode) {
+  const parameters = channelModes[mode];
+  if (!parameters) throw new TypeError('Unbekannter Restkanal');
+  const audit = auditResidualTransport(...parameters);
+  const rows = audit.rows.map(row => {
+    const card = document.createElement('div');
+    card.className = 'channel-row';
+    card.dataset.exact = String(row.exactRoundTrip);
+    const label = document.createElement('span');
+    label.textContent = `VORHER ${row.beforeSignal} · REST ${row.residualRank}`;
+    const symbols = document.createElement('strong');
+    symbols.textContent = row.symbols.join(' · ');
+    const outcome = document.createElement('p');
+    outcome.textContent = `durch ${audit.ticks} Takt${audit.ticks === 1 ? '' : 'e'} → rekonstruiert ${row.restoredSignal}`;
+    card.append(label, symbols, outcome);
+    return card;
+  });
+  $('channel-rows').replaceChildren(...rows);
+  $('channel-status').textContent = audit.status === 'LOSSLESS_IN_BOUND_FIBER' ? '3 VON 3 ERHALTEN' : 'EINE KOLLISION';
+  $('channel-detail').textContent = `Kapazität: ${audit.capacity} Symbolfolgen · mindestens ${audit.minimumTicks} Takt${audit.minimumTicks === 1 ? '' : 'e'} nötig · ${audit.exactRoundTrips}/3 Vorwerte rekonstruiert.`;
+  for (const button of document.querySelectorAll('[data-channel-mode]')) {
+    button.setAttribute('aria-pressed', String(button.dataset.channelMode === mode));
+  }
+}
+for (const button of document.querySelectorAll('[data-channel-mode]')) {
+  button.addEventListener('click', () => renderChannel(button.dataset.channelMode));
+}
+renderChannel('narrow');
 
 const predictionAudit = predictionControlAudit(createSession(1).initialState, 'A000');
 $('prediction-expected').textContent = `${predictionAudit.prediction.expected.totalSignal} Gesamtsignal`;
