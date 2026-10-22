@@ -23,6 +23,10 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [Projekt Ausgrabungsstätte – alte Quellen und neue Brücken](branches/documents-excavation/)
+
+Begehbare Karte einer begrenzten lokalen Suche, zwei bytegleichen Textfamilien und eines neuen synthetischen Modells für fortwirkende Effekte über Zeit und Kontext. Private Originale bleiben lokal.
+
 ### [Focus Kernel – bestätigte Ziele und Vorschläge getrennt halten](branches/focus-kernel/)
 
 Lokaler Zustandskern für bestätigte Ziele, Vorschläge und begrenzte Prüfergebnisse.

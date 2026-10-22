@@ -1,5 +1,5 @@
 {
-  "branchCount": 10,
+  "branchCount": 11,
   "branches": [
     {
       "id": "focus-kernel",
@@ -99,6 +99,18 @@
         "branches/security-impact-learning/cli-result-model.test.mjs",
         "branches/security-impact-learning/impact-model.test.mjs",
         "branches/security-impact-learning/submission-review.test.mjs"
+      ]
+    },
+    {
+      "id": "documents-excavation",
+      "sourceFiles": [
+        "branches/documents-excavation/effect-model.js",
+        "branches/documents-excavation/relics.js",
+        "branches/documents-excavation/view.js"
+      ],
+      "testFiles": [
+        "branches/documents-excavation/effect-model.test.mjs",
+        "branches/documents-excavation/relics.test.mjs"
       ]
     }
   ]
