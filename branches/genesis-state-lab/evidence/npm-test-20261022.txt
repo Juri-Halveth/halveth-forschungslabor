@@ -1,0 +1,225 @@
+
+> halveth-forschungslabor@0.1.0 test
+> node scripts/check-modules.mjs
+
+✔ zero time is exact identity; inputs remain unchanged (1.4041ms)
+✔ transitions conserve total material and stay bounded for variable time steps (2.4058ms)
+✔ invalid numerical inputs are rejected explicitly (0.3944ms)
+✔ directional changes follow the declared illustrative equations (0.1724ms)
+✔ exchange conserves arbitrary quantities without negative compartments (0.5772ms)
+✔ exchange explicitly refuses sparse or undefined compartments (0.3521ms)
+✔ both absorption and microbiome retain two subsequent levels (0.4282ms)
+✔ upper influences retain three research continuations each (0.1789ms)
+✔ expanding any node preserves the exact original prefix and collision-free IDs (0.9052ms)
+✔ graph refuses cycles, invalid sources and unidentified parents (1.4188ms)
+✔ UI compatibility rejects valid graphs missing required basis nodes (0.3441ms)
+✔ UI compatibility binds original relations, kinds and sources without migration (2.2098ms)
+✔ UI compatibility retains extra user branches, their text and export metadata (0.6864ms)
+✔ each supplied stage grouping has three named inquiries and three open continuations each (0.3142ms)
+✔ public statement digest binds exactly its UTF-8 text (0.8742ms)
+✔ all declared public branch checksums match their exact file bytes (0.8793ms)
+✔ classifies conditional, conflict and unbound input (1.9227ms)
+✔ one JA keeps the question open; two bound JA stop in agreement (0.5492ms)
+✔ bound NEIN stops as disagreement (0.1155ms)
+✔ explicit unknown stops without inventing a decision (0.081ms)
+✔ conditional input preserves the bound question (0.0859ms)
+✔ unbound tokens return to the last clear question (0.634ms)
+✔ unresolved loop ends as finite snapshot (0.1268ms)
+✔ turn order is enforced (0.2658ms)
+✔ same state and event produce the same result without mutation (0.1453ms)
+✔ an instruction never transfers responsibility or authorizes outside action (0.1164ms)
+✔ a qualified later answer retracts that side's earlier JA (0.1352ms)
+✔ a bound result takes priority over MAX_TURNS on the final turn (0.144ms)
+✔ marks a clear synthetic record as an eligible candidate without authorizing publication (1.4414ms)
+✔ rejects declared secrets before every lower-priority decision (0.6764ms)
+✔ holds active, privately submitted, or unresolved-rights records (0.0952ms)
+✔ requires a new derivative for operational or highly linkable material (0.0761ms)
+✔ requires a public derivative for recipient-minimized or weakly linkable material (0.6623ms)
+✔ allows link-only only for an already-public source (0.0906ms)
+✔ fails closed on raw-content fields and credential-shaped titles (0.3238ms)
+✔ assesses the synthetic fixture with stable decision counts (0.8149ms)
+✔ rejects duplicate IDs (0.1618ms)
+✔ only the issue coordinate changes when moving to the previous synthetic reference (0.92ms)
+✔ a successive pair is a relation between references, not proof of identity (0.106ms)
+✔ the current reference bound to the external authenticated principal is accepted (0.8654ms)
+✔ retired, unknown, wrong-principal and forged-claim failures are indistinguishable (0.3628ms)
+✔ enumerating the bounded issue grammar reveals no record or lifecycle detail (0.4833ms)
+✔ a principal written into the request never becomes authentication context (0.1097ms)
+✔ an altered registry fails the separately supplied digest anchor (0.1304ms)
+✔ non-canonical and over-broad inputs fail closed (0.3265ms)
+✔ a registry cannot declare two current references for one record set (0.2085ms)
+✔ public results contain neither identifiers nor lifecycle labels (0.3527ms)
+✔ time and context are independent candidate signals (1.3092ms)
+✔ continuity needs current authority and does not erase a context mismatch (0.2517ms)
+✔ missing observations stay unknown and cannot become a pass (0.1293ms)
+✔ inactive or unobserved effects do not invent continuing authority issues (0.1545ms)
+✔ reject malformed or silently expanded records (0.5281ms)
+✔ public relation graph has unique explicit endpoints and no hidden path exports (0.8663ms)
+✔ only explicitly public modules expose outbound source links (0.2661ms)
+✔ Snell and mirror symmetry hold across 60 synthetic rays (1.1478ms)
+✔ small-angle ray agrees with the independently stated paraxial power (0.1408ms)
+✔ a change in curvature separates the two reference foci (0.054ms)
+✔ past-sample extrapolation helps straight motion and fails at an unseen turn (0.1104ms)
+✔ zero delay retains the present position regardless of gain (0.0816ms)
+✔ a focus requires an explicit non-empty main goal (1.4674ms)
+✔ a proposal does not mutate the focus and confirmation creates one new version (2.4751ms)
+✔ a stale or foreign focus proposal is rejected (0.1702ms)
+✔ control-like wording remains untrusted data and cannot change the focus (0.9679ms)
+✔ missing current task or project context remains visible (0.3962ms)
+✔ a low-overlap input requests a user decision instead of changing direction (0.1732ms)
+✔ an aligned bounded input produces a safe next-step state (0.116ms)
+✔ all reviewer results are explicitly untrusted data (0.6683ms)
+✔ the decision log is immutable and does not retain raw input or reviewer output (0.7204ms)
+✔ public workplace scenarios expose their break-even assumptions (0.3392ms)
+✔ public access scenario reports social time value without implying cash return (0.1876ms)
+✔ scenario arithmetic rejects non-finite or invalid planning inputs (0.0982ms)
+✔ research handoff leaves all external-effect axes open before and after an impulse (28.9655ms)
+✔ tampered Genesis history cannot produce a research handoff (5.1358ms)
+✔ graph has 100 distinct agents and 120 directed, typed sparse relations (1.7318ms)
+✔ initial state is deterministic, finite and depends on an explicit seed (2.9923ms)
+✔ canonical JSON and checksum are stable under key order only (0.4029ms)
+✔ one impulse records state, transition, feedback, context and layer separately (5.5077ms)
+✔ a closed context gate prevents relay but does not erase the impulse (2.1263ms)
+✔ forward and anti projections share one event identity and both state references (1.6587ms)
+✔ event identity is distinct from identical state content (3.6526ms)
+✔ append-only timeline replays to the bound final snapshot (13.9583ms)
+✔ replay detects event, graph and state tampering (8.1892ms)
+✔ the macro view counterexample is equal now and divergent after the same impulse (8.1919ms)
+✔ projection comparison distinguishes a counterexample from a pair with no divergence (3.9464ms)
+✔ invalid actor, state and sequence are rejected before a transition (1.7168ms)
+✔ state validator rejects hidden, extra and accessor fields before they can be lost (0.8268ms)
+✔ a forward transition can collapse distinct pre-states, so replay is not inversion (5.7899ms)
+✔ a positive mean without paired majority never says the control is better (0.8105ms)
+✔ consistent original and control advantages remain distinct (0.1771ms)
+✔ small advantages and invalid series do not become a directional win (0.5025ms)
+✔ the prediction is fixed before three distinct synthetic observation outcomes (9.9994ms)
+✔ the evaluation rejects a changed prediction and an invalid observation (3.7489ms)
+✔ fresh generator processes give exact same candidate before separate evaluations (458.2507ms)
+✔ process evaluator rejects a different input binding and modified candidate (224.9711ms)
+✔ the saturated actor has three distinct preimages and needs two residual bits in this family (16.9342ms)
+✔ the finite decoder reconstructs every bound signal and rejects missing or forged residuals (14.343ms)
+✔ one binary tick collides but two reconstruct the same three-preimage fiber (28.6557ms)
+✔ one ternary tick can carry all ranks; invalid and fractional widths fail (12.6054ms)
+✔ each reported divergence is a real same-view pair under one identical input (306.1796ms)
+✔ one repaired pair is not promoted to global closure (482.1794ms)
+✔ jeder Arbeitsweg erhält sämtliche Pflichtachsen (1.2524ms)
+✔ UNKNOWN hält eine Achse sichtbar, ohne sie als bewiesen auszugeben (0.9909ms)
+✔ Security ohne Autoritätsbindung bleibt im lokalen oder lesenden Pfad (0.2602ms)
+✔ ein eingetragener Autoritätstext schaltet keine Live-Aktion frei (0.2188ms)
+✔ Gegenhypothese fehlt: keine Probe wird vorgezogen (0.1204ms)
+✔ Ausschluss einer Achse braucht eine benannte Begründung (0.103ms)
+✔ ohne Wiedervorlage bleibt ein fertiger Durchlauf offen (0.131ms)
+✔ fremde Achsen und ungültige Evidenzzustände werden abgelehnt (0.4028ms)
+✔ detects only threshold-reaching changes inside the declared region (2.4472ms)
+✔ reports discrete-sample gaps and never upgrades absence to a world claim (0.3288ms)
+✔ uses explicit relation endpoints, digests, and no authority effect (1.3418ms)
+✔ rejects a region outside the frame (0.3985ms)
+✔ rejects malformed pixels and non-increasing time (0.1436ms)
+✔ fails closed on foreground or session metadata (0.0958ms)
+✔ requires a closed synthetic-source declaration without treating it as proof (0.1952ms)
+✔ nonzero exit and unavailable controls never become an invented 403 (0.5312ms)
+✔ a captured denial and readable response have distinct contracts (0.1061ms)
+✔ invalid result fields are rejected without defaults (0.2715ms)
+✔ public readable metadata is not upgraded by neighboring denied controls (1.5288ms)
+✔ unknown policy remains open rather than becoming zero or closed (0.2014ms)
+✔ a declared protected read does not require persistence (0.1683ms)
+✔ unbound deployment retains a local hardening route (0.1879ms)
+✔ source context cannot silently cross scopes or referents (0.5348ms)
+✔ source reference, evidence state and required fields are exact (0.358ms)
+✔ declared cluster labels never become independent corroboration (0.2495ms)
+✔ policy/effect contradiction is retained as a conflict (0.1426ms)
+✔ synthetic fixture does not authorize external effects or submission (0.3278ms)
+✔ evaluation leaves the supplied source records unchanged (0.7554ms)
+✔ unfilled observation and trigger cannot appear as a completed report (1.6513ms)
+✔ a downstream model cannot close an unbound input or product edge (0.1903ms)
+✔ researcher-added consumer capability remains its own missing bridge (0.9233ms)
+✔ an in-scope asset does not silently establish an in-scope impact (0.1632ms)
+✔ severity field drift is explicit and not repaired with a default (0.1139ms)
+✔ exact types and explicit states are required (0.3403ms)
+✔ a structure pass proves no truth, severity, consent or sending authority (0.0976ms)
+✔ C eröffnet einen dritten Pfad, ohne einen Gewinner zu bestimmen (1.5379ms)
+✔ zwei Sperren bleiben ein Kandidat und kein Schachmatt-Beweis (0.2351ms)
+✔ Kooperation einer Seite beseitigt die dritte Seite nicht (0.1405ms)
+✔ ohne Eintritt bleibt das Zwei-Akteure-Modell erhalten (0.7463ms)
+✔ unbekannte Aktionen werden nicht still normalisiert (0.4899ms)
+✔ catalog has distinct modules with real source and test files (5.3214ms)
+✔ provenance distinguishes unchanged bytes from adaptations (6.6371ms)
+✔ browser and Node data consumers interpret the same source-bound indication (11.7547ms)
+✔ both decoders reject malformed packet boundaries (0.8765ms)
+✔ browser adapter rejects changed bytes and markup stays payload data (1.1842ms)
+✔ a section sign binds its source and codepoint while applicability and effect remain separate (1.8184ms)
+✔ a property role is a context-bound hypothesis rather than a conclusion from its name (0.3171ms)
+✔ UTF-16 spans cannot cut through a scalar or silently repair an invalid range (0.338ms)
+ℹ tests 148
+ℹ suites 0
+ℹ pass 148
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1065.8633
+test_aperture_and_node_budget_preserve_omissions (test_fegefeuer_core.FegefeuerTests.test_aperture_and_node_budget_preserve_omissions) ... ok
+test_batch_review_preserves_unreviewed_and_return_archive (test_fegefeuer_core.FegefeuerTests.test_batch_review_preserves_unreviewed_and_return_archive) ... ok
+test_closed_frontier_retains_back_relation (test_fegefeuer_core.FegefeuerTests.test_closed_frontier_retains_back_relation) ... ok
+test_closure_idempotence_and_monotonicity_on_bound_graph (test_fegefeuer_core.FegefeuerTests.test_closure_idempotence_and_monotonicity_on_bound_graph) ... ok
+test_cumulative_bounds (test_fegefeuer_core.FegefeuerTests.test_cumulative_bounds) ... ok
+test_cycles_and_multiple_provenance_edges (test_fegefeuer_core.FegefeuerTests.test_cycles_and_multiple_provenance_edges) ... ok
+test_incoming_and_outgoing_are_distinct_bound_relations (test_fegefeuer_core.FegefeuerTests.test_incoming_and_outgoing_are_distinct_bound_relations) ... ok
+test_invalid_domain (test_fegefeuer_core.FegefeuerTests.test_invalid_domain) ... ok
+test_normalized_model_has_separate_source_digest (test_fegefeuer_core.FegefeuerTests.test_normalized_model_has_separate_source_digest) ... ok
+test_occurrence_identity_keeps_equal_content_separate (test_fegefeuer_core.FegefeuerTests.test_occurrence_identity_keeps_equal_content_separate) ... ok
+test_output_seed_is_new_occurrence_and_does_not_auto_commit (test_fegefeuer_core.FegefeuerTests.test_output_seed_is_new_occurrence_and_does_not_auto_commit) ... ok
+test_receipt_limit_prevents_partial_commit (test_fegefeuer_core.FegefeuerTests.test_receipt_limit_prevents_partial_commit) ... ok
+test_regular_25_branch_tree (test_fegefeuer_core.FegefeuerTests.test_regular_25_branch_tree) ... ok
+test_stale_tampered_and_nonboolean_commits_fail (test_fegefeuer_core.FegefeuerTests.test_stale_tampered_and_nonboolean_commits_fail) ... ok
+test_strict_decrease_does_not_force_zero_or_finite_arrival (test_fegefeuer_core.FegefeuerTests.test_strict_decrease_does_not_force_zero_or_finite_arrival) ... ok
+test_transform_patch_and_source_preservation (test_fegefeuer_core.FegefeuerTests.test_transform_patch_and_source_preservation) ... ok
+test_unknown_empty_and_depth_limit_differ (test_fegefeuer_core.FegefeuerTests.test_unknown_empty_and_depth_limit_differ) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.015s
+
+OK
+test_boolean_is_not_truth_label (test_normenkern.NormTests.test_boolean_is_not_truth_label) ... ok
+test_conflict_preserves_both (test_normenkern.NormTests.test_conflict_preserves_both) ... ok
+test_cycle_rejected (test_normenkern.NormTests.test_cycle_rejected) ... ok
+test_duplicate_json_key_is_rejected (test_normenkern.NormTests.test_duplicate_json_key_is_rejected) ... ok
+test_duplicate_query_and_norm_id_rejected (test_normenkern.NormTests.test_duplicate_query_and_norm_id_rejected) ... ok
+test_exact_input_bytes_are_bound (test_normenkern.NormTests.test_exact_input_bytes_are_bound) ... ok
+test_expired_fact_does_not_silently_keep_truth (test_normenkern.NormTests.test_expired_fact_does_not_silently_keep_truth) ... ok
+test_expired_priority_leaves_conflict (test_normenkern.NormTests.test_expired_priority_leaves_conflict) ... ok
+test_explicit_priority_retains_defeated_rule (test_normenkern.NormTests.test_explicit_priority_retains_defeated_rule) ... ok
+test_fact_is_not_imported_from_other_person (test_normenkern.NormTests.test_fact_is_not_imported_from_other_person) ... ok
+test_foreign_domain_rejected (test_normenkern.NormTests.test_foreign_domain_rejected) ... ok
+test_missing_fact_is_rejected (test_normenkern.NormTests.test_missing_fact_is_rejected) ... ok
+test_no_active_norm_is_open (test_normenkern.NormTests.test_no_active_norm_is_open) ... ok
+test_replay_detects_mutation_and_type_swap (test_normenkern.NormTests.test_replay_detects_mutation_and_type_swap) ... ok
+test_scope_cannot_be_bridged_by_priority (test_normenkern.NormTests.test_scope_cannot_be_bridged_by_priority) ... ok
+test_supported_and_model_only (test_normenkern.NormTests.test_supported_and_model_only) ... ok
+test_three_valued_conjunction_table (test_normenkern.NormTests.test_three_valued_conjunction_table) ... ok
+test_two_endpoint_addresses_for_every_relation (test_normenkern.NormTests.test_two_endpoint_addresses_for_every_relation) ... ok
+test_unbound_scalar_rank_rejected (test_normenkern.NormTests.test_unbound_scalar_rank_rejected) ... ok
+test_unknown_is_not_false (test_normenkern.NormTests.test_unknown_is_not_false) ... ok
+test_unpaired_surrogate_rejected (test_normenkern.NormTests.test_unpaired_surrogate_rejected) ... ok
+test_archive_preserves_exact_result_bytes (test_universe.UniverseTests.test_archive_preserves_exact_result_bytes) ... ok
+test_catalog_matches_all_registered_branches (test_universe.UniverseTests.test_catalog_matches_all_registered_branches) ... ok
+test_four_outcomes_and_full_replay (test_universe.UniverseTests.test_four_outcomes_and_full_replay) ... ok
+test_hold_keeps_core_unchanged_and_candidate_present (test_universe.UniverseTests.test_hold_keeps_core_unchanged_and_candidate_present) ... ok
+test_invalid_saved_record_stops_integration (test_universe.UniverseTests.test_invalid_saved_record_stops_integration) ... ok
+test_ledger_chain_binds_predecessor (test_universe.UniverseTests.test_ledger_chain_binds_predecessor) ... ok
+test_repeated_runs_have_same_result_without_network (test_universe.UniverseTests.test_repeated_runs_have_same_result_without_network) ... ok
+test_twenty_four_blocks_have_unique_ids_and_existing_sources (test_universe.UniverseTests.test_twenty_four_blocks_have_unique_ids_and_existing_sources) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.032s
+
+OK
+test_bounded_metadata_excludes_generated_and_reparse (test_excavate_metadata.InventoryTests.test_bounded_metadata_excludes_generated_and_reparse) ... ok
+test_budget_retains_incomplete_state (test_excavate_metadata.InventoryTests.test_budget_retains_incomplete_state) ... ok
+test_private_output_cannot_be_placed_inside_public_repo (test_excavate_metadata.InventoryTests.test_private_output_cannot_be_placed_inside_public_repo) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.029s
+
+OK
+All selected local module suites passed. This proves only the tested contracts.
