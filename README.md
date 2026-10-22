@@ -27,6 +27,11 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 Interaktiver 100-Agenten-Graph mit typisierten Relationen, deterministischem Replay und einer Gegenprobe: Zwei grob gleiche Zustände können nach demselben Impuls auseinanderlaufen. Die ANTI-DATEI ist eine zweite Ansicht desselben Ereignisses.
 
+### [Belegwege – öffentliche Quellen und offene Prüfkanten](BELEGWEGE.md)
+
+Eine kleine, versionsgebundene Karte zu bereits veröffentlichten Belegen und
+zu GENESIS im integrierten Kandidatenstand. [Maschinenlesbare Fassung](catalog/evidence-routes.json).
+
 ### [Drei-Gabel – ein dritter Weg im Konflikt](branches/three-actor-fork/)
 
 Interaktives Drei-Akteure-Modell: C tritt zwischen A und B ein; zwei Reaktionen erzeugen prüfbare Kandidaten statt eines vorweggenommenen Sieges.
