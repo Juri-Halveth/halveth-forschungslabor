@@ -8,8 +8,8 @@ if(!tests.length)throw Error('No JavaScript tests selected');
 let r=spawnSync(process.execPath,['--test',...tests],{cwd:root,stdio:'inherit'});
 if(r.status!==0)process.exit(r.status??1);
 const python=process.env.PYTHON||(process.platform==='win32'?'python':'python3');
-for(const name of ['fegefeuer-provenance-transducer','normenwerk-rule-universe']){
- r=spawnSync(python,['-m','unittest','discover','-s','branches/'+name,'-p','test_*.py','-v'],{cwd:root,stdio:'inherit'});
+for(const directory of ['branches/fegefeuer-provenance-transducer','branches/normenwerk-rule-universe','scripts']){
+ r=spawnSync(python,['-m','unittest','discover','-s',directory,'-p','test_*.py','-v'],{cwd:root,stdio:'inherit'});
  if(r.status!==0)process.exit(r.status??1);
 }
 console.log('All selected local module suites passed. This proves only the tested contracts.');

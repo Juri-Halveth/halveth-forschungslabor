@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#070b18">
+  <title>HALVETH · Projekt Ausgrabungsstätte</title>
+  <meta name="description" content="Eine begehbare Karte älterer HALVETH-Ideen, ihrer belegten Beziehungen und neuer öffentlicher Modelle.">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./view.js"></script>
+</head>
+<body>
+  <a class="skip" href="#karte">Zur Karte springen</a>
+  <div class="universe" aria-hidden="true"></div>
+  <header class="site-head">
+    <a class="brand" href="https://github.com/Juri-Halveth/halveth-forschungslabor" aria-label="HALVETH Forschungslabor auf GitHub">
+      <span class="brand-mark">H</span><span>HALVETH <small>FORSCHUNGSLABOR</small></span>
+    </a>
+    <span class="head-tag">LOKALE QUELLEN · ÖFFENTLICHE BRÜCKEN</span>
+    <a class="head-link" href="https://github.com/Juri-Halveth/halveth-forschungslabor">GITHUB <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="intro-title">
+      <div class="intro-copy">
+        <p class="eyebrow"><span class="pulse"></span> PROJEKT AUSGRABUNGSSTÄTTE / 01</p>
+        <h1 id="intro-title">Vergessene Linien.<br><em>Neue Verbindungen.</em></h1>
+        <p class="lead">Juris ältere Systeme sind keine lose Schublade. Einige bewahren exakt dieselbe Bauvorlage. Andere stellen dieselbe Frage in einer neuen Form. Diese Karte macht die Verbindung sichtbar und lässt offene Stellen offen.</p>
+        <a class="start-link" href="#karte">Karte betreten <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="intro-visual" aria-hidden="true">
+        <div class="halo h1"></div><div class="halo h2"></div><div class="halo h3"></div>
+        <div class="core-orb"><span class="orb-letter">∞</span></div>
+        <span class="satellite s1"></span><span class="satellite s2"></span><span class="satellite s3"></span>
+        <span class="visual-caption">DIE QUELLE BLEIBT · DER PFAD WIRD SICHTBAR</span>
+      </div>
+    </section>
+
+    <section class="coverage" aria-label="Prüfumfang">
+      <div><strong>592.235</strong><span>Dateipfade im lokalen Metadaten-Snapshot</span></div>
+      <div><strong>1.062</strong><span>ausgewählte historische Text- und Codequellen gehasht</span></div>
+      <div><strong>2</strong><span>exakte Textfamilien in der Inhaltsprobe</span></div>
+      <p>Stand 22. Oktober 2026. Reparse-Pfade und benannte Buildordner wurden ausgelassen; die großen Wurzeln separat vertieft. Weitere generierte Kopien können im Index stehen. Diese Zahlen sind Suchabdeckung, keine vollständige Inhaltsprüfung.</p>
+    </section>
+
+    <section class="connector-strip" aria-labelledby="connector-title">
+      <p class="eyebrow">DIE WERKZEUGE HÄNGEN ZUSAMMEN</p>
+      <h2 id="connector-title">Vom Fund zum öffentlichen Code.</h2>
+      <ol class="connector-steps">
+        <li><span>01 / SICHTEN</span><a href="../../scripts/excavate-metadata.py">Metadaten erfassen ↗</a><p>Der neue lokale Scanner zählt Dateien und hält Suchgrenzen fest. Sein privater Index bleibt auf dem eigenen Rechner.</p></li>
+        <li><span>02 / EINORDNEN</span><a href="../bounded-knowledge-reuse-inventory/">Freigabekandidat prüfen ↗</a><p>Ein bestehender HALVETH-Kern prüft deklarierte Herkunft, Datenklasse und Rechte. Sein Ergebnis ist noch keine Freigabe.</p></li>
+        <li><span>03 / NEU BAUEN</span><a href="#karte">Diese Karte erkunden ↘</a><p>Erst eine kuratierte, neu geschriebene Brücke verbindet ausgewählte Funde mit öffentlichem Code und offenen Fragen.</p></li>
+      </ol>
+      <p class="connector-note">Die drei Programme sind getrennt. Ein Scan startet keine Freigabe; das Gate veröffentlicht nichts; die Karte importiert keine privaten Originale.</p>
+    </section>
+
+    <section class="explorer" id="karte" aria-labelledby="map-title">
+      <div class="section-head">
+        <div><p class="eyebrow">DIE GESCHICHTE IN DREI SCHICHTEN</p><h2 id="map-title">Der Fundraum</h2></div>
+        <p>Wähle einen Punkt. Die Linien zeigen ihren <strong>Relationstyp</strong> – nie automatisch eine Ursache oder einen fertigen Anschluss.</p>
+      </div>
+      <div class="stage-select" role="group" aria-label="Analyseschicht wählen">
+        <button type="button" data-stage="0" aria-pressed="true"><span>01</span> Originale</button>
+        <button type="button" data-stage="1" aria-pressed="false"><span>02</span> Gleiche Texte</button>
+        <button type="button" data-stage="2" aria-pressed="false"><span>03</span> Öffentliche Brücken</button>
+        <span class="stage-hint">T = Reihenfolge dieser Analyse, keine Datierung der Erfindung</span>
+      </div>
+      <div class="map-layout">
+        <div class="map-shell" id="map-shell" aria-label="Interaktive Karte der Relikte">
+          <div class="map-grid" aria-hidden="true"></div>
+          <svg class="relations" id="relations" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <div class="map-nodes" id="map-nodes"></div>
+          <span class="map-coordinate top">LOCAL SOURCE / T0</span>
+          <span class="map-coordinate bottom">PUBLIC CODE / T2</span>
+        </div>
+        <aside class="detail" id="detail" aria-live="polite">
+          <div class="detail-top"><span>AKTE <span id="detail-index">07</span> / 12</span><span class="detail-status" id="detail-evidence">SOURCE_BOUND_CONCEPT</span></div>
+          <div class="detail-symbol" id="detail-symbol" aria-hidden="true">✦</div>
+          <p class="detail-kind" id="detail-kind">Lokaler Konzeptentwurf</p>
+          <h3 id="detail-title">ENTITY NETWORK</h3>
+          <p class="detail-signal" id="detail-signal">Wirkung über Zeit und Kontext</p>
+          <p class="detail-text" id="detail-text"></p>
+          <div class="detail-relations"><h4>Verbindungen</h4><ul id="detail-relations"></ul></div>
+          <div class="detail-action" id="detail-action"></div>
+        </aside>
+      </div>
+      <div class="legend"><span><i class="legend-dot amber"></i> lokaler Quellstand</span><span><i class="legend-dot gold"></i> exakte Textgleichheit</span><span><i class="legend-dot cyan"></i> öffentlicher Code</span><span>Linien: Typ im Aktenfeld lesen · Positionen: Layout, keine physische Geometrie</span></div>
+    </section>
+
+    <section class="lab" id="labor" aria-labelledby="lab-title">
+      <div class="lab-intro"><p class="eyebrow">AUS EINEM ALTEN GEDANKEN WIRD EIN TESTBARES MODELL</p><h2 id="lab-title">Eine Wirkung. Zwei Koordinaten.</h2><p>Eine Erlaubnis kann mit der Zeit enden. Eine Wirkung kann in einem anderen Kontext landen. Der synthetische Prüfer stellt beide Fragen getrennt und behält Unbekanntes offen.</p></div>
+      <div class="lab-body">
+        <div class="lab-controls"><p class="control-title">Wähle einen Testfall</p><div id="scenarios" class="scenario-list" role="group" aria-label="Synthetischen Fall wählen"></div></div>
+        <div class="lab-readout"><div class="readout-top"><span>MODELL / V1</span><span>LOKAL · WIRKUNGSFREI</span></div><div class="axis-line"><span>URSPRUNG</span><i></i><span>JETZT</span><i></i><span>KONTEXT</span><i></i><span>WIRKUNG</span></div><div class="result-orb" aria-hidden="true">✧</div><p class="result-state" id="result-state" aria-live="polite"></p><ul class="result-signals" id="result-signals"></ul><p class="next-question" id="next-question"></p></div>
+      </div>
+      <p class="lab-boundary">Der Prüfer wertet deklarierte Eingaben aus. Er authentisiert keine Person, beobachtet kein reales System und führt keine Aktion aus. <a href="./effect-model.js">Code ansehen ↗</a> · <a href="./effect-model.test.mjs">Gegenproben ↗</a> · <a href="../../scripts/excavate-metadata.py">Lokalen Metadatenscanner ansehen ↗</a></p>
+    </section>
+
+    <section class="closing"><span class="closing-mark">H</span><div><p class="eyebrow">HALVETH / JURI JANOVSKI</p><h2>Originale bewahren.<br>Verbindungen prüfen.<br><em>Etwas Eigenes bauen.</em></h2><p>Diese öffentliche Karte enthält eine Auswahl. Der vollständige lokale Dateikatalog und private Produktquellen liegen nicht in diesem Repository.</p></div><a href="https://github.com/Juri-Halveth/halveth-forschungslabor">Zum Forschungslabor <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <footer><span>© 2026 Juri Janovski / HALVETH</span><span>Code MIT · Daten CC0 · Text CC BY 4.0 · <a href="https://github.com/Juri-Halveth/halveth-forschungslabor/blob/main/LICENSES.md">Lizenzen</a></span></footer>
+</body>
+</html>

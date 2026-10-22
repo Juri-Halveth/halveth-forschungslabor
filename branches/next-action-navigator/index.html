@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="theme-color" content="#080c16">
+  <title>HALVETH · Nächster Schritt</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="view.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar"><div class="brand"><span class="brand-icon">H</span><span>HALVETH <small>／ LUCINET</small></span></div><a href="../../README.md">Forschungslabor ↗</a></header>
+    <section class="hero" aria-labelledby="title">
+      <div class="hero-copy"><p class="eyebrow">Arbeitswege · v0.1</p><h1 id="title">Was ist der<br><em>nächste sinnvolle Schritt?</em></h1><p>Eine Frage wird zum Pfad. Jede Station zeigt, was bereits vorliegt, was offen ist und welche kleinste Prüfung jetzt weiterhilft.</p></div>
+      <div class="orbit" aria-hidden="true"><span class="orbit-one"></span><span class="orbit-two"></span><span class="orbit-core">?</span><i class="orbit-dot dot-a"></i><i class="orbit-dot dot-b"></i><i class="orbit-dot dot-c"></i></div>
+    </section>
+    <section class="workspace" aria-label="Nächster-Schritt-Navigator">
+      <div class="path-side"><p class="section-kicker">01 / WEG WÄHLEN</p><h2>Woran arbeitest du?</h2><div id="tracks" class="tracks"></div><div class="privacy"><strong>Dein Arbeitsraum</strong><p>Die Eingaben bleiben in dieser Browseransicht. Nur du kannst eine JSON-Kopie herunterladen. Es gibt hier keinen Netzabruf und keinen automatischen Versand.</p></div></div>
+      <div class="work-main">
+        <div class="next-card"><div><span class="signal"><span class="signal-dot"></span> JETZT</span><h2 id="next-title">Gegenstand binden</h2><p id="next-question"></p></div><span id="next-state" class="next-state">IN ARBEIT</span></div>
+        <div id="boundary" class="boundary" hidden></div>
+        <div class="flow-wrap"><div class="flow-heading"><span>DER WEG</span><span id="progress">0 / 8 gebunden</span></div><ol id="flow" class="flow"></ol></div>
+        <div class="connections"><span class="section-kicker">DANACH IM CODE</span><p>Passende bestehende Bausteine für diesen Weg:</p><div id="connections-links"></div></div>
+        <form id="navigator-form" novalidate>
+          <div class="form-heading"><p class="section-kicker">02 / EINGABEN</p><h2>Fülle aus, was du schon weißt.</h2><p>Offenes bleibt sichtbar. Das Modell erfindet keine Belege.</p></div>
+          <div class="field-grid"><label class="field" data-step="object"><span>Gegenstand / Ziel</span><textarea name="goal" rows="2" placeholder="Welche konkrete Frage oder Wirkung?" maxlength="2000"></textarea></label><label class="field" data-step="source"><span>Quelle / Beobachtung</span><textarea name="source" rows="2" placeholder="Link, Commit, Messung oder eigene Beobachtung mit Zeitpunkt" maxlength="2000"></textarea></label><label class="field" data-step="scope"><span>Projekt und Geltungsbereich</span><textarea name="scope" rows="2" placeholder="Worauf genau bezieht sich die Aussage?" maxlength="2000"></textarea></label><label id="authority-field" class="field" data-step="scope"><span>Security: Eigentümer und aktuelle Programmpolicy</span><textarea name="authority" rows="2" placeholder="Nur deklarieren; diese Eingabe bestätigt keine fremde Autorisierung" maxlength="2000"></textarea></label></div>
+          <div class="axis-section" data-step="axes"><div class="axis-heading"><div><span class="section-kicker">03 / GANZES FELD</span><h3>Alle Pflichtachsen</h3></div><span id="axis-count"></span></div><p>Ordne jede Achse ein. <code>UNKNOWN</code> darf stehen bleiben; eine tiefe Spur ersetzt die anderen nicht.</p><div id="axes" class="axes"></div></div>
+          <div class="field-grid lower"><label class="field" data-step="models"><span>Hypothese</span><textarea name="hypothesis" rows="2" placeholder="Was könnte der Mechanismus sein?" maxlength="2000"></textarea></label><label class="field" data-step="models"><span>Gegenhypothese</span><textarea name="counter" rows="2" placeholder="Welche andere Erklärung passt ebenfalls?" maxlength="2000"></textarea></label><label class="field" data-step="check"><span>Kleinste unterscheidende Probe</span><textarea name="check" rows="2" placeholder="Lokal oder im ausdrücklich autorisierten Scope" maxlength="2000"></textarea></label><label class="field" data-step="result"><span>Beobachtetes Ergebnis</span><textarea name="result" rows="2" placeholder="Was trat wirklich ein? Falls noch nichts: offen lassen." maxlength="2000"></textarea></label><label class="field" data-step="result"><span>Evidenzstand</span><select name="evidenceState"><option value="">Bitte wählen</option><option>OBSERVED</option><option>STRONGLY_SUPPORTED</option><option>INFERRED</option><option>UNKNOWN</option><option>NOT_PROVEN</option><option>FALSIFIED</option></select></label><label class="field" data-step="handoff"><span>Wiedervorlage</span><textarea name="reopen" rows="2" placeholder="Welcher neue Beleg oder welche Entscheidung öffnet den Pfad erneut?" maxlength="2000"></textarea></label></div>
+          <div class="actions"><button id="export" type="button">Stand als JSON herunterladen ↘</button><button id="clear" class="ghost" type="button">Neuen Weg beginnen</button></div>
+        </form>
+      </div>
+    </section>
+    <footer class="footer"><span>HALVETH / LUCINET · Quelle → Frage → Gegenmodell → Probe → Stand</span><a href="README.md">Methode &amp; Anschlussmodule</a></footer>
+  </main>
+</body>
+</html>

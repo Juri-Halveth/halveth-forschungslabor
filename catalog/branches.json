@@ -80,6 +80,14 @@
       "path": "branches/security-impact-learning",
       "entry": "submission-review.mjs",
       "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
+      "id": "documents-excavation",
+      "title": "Projekt Ausgrabungsstätte – alte Quellen und neue Brücken",
+      "description": "Visuelle Karte einer begrenzten lokalen Inventur mit typisierten Relationen und einem synthetischen Effektmodell.",
+      "path": "branches/documents-excavation",
+      "entry": "effect-model.js",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
     }
   ]
 }
