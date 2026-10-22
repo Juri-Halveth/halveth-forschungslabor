@@ -1,0 +1,57 @@
+{
+  "schema": "halveth.evidence-routes.v1",
+  "asOf": "2026-10-22",
+  "coverage": "SELECTED_PUBLIC_ROUTES",
+  "routes": [
+    {
+      "id": "GENESIS_STATE_LAB",
+      "subject": "Synthetisches Zustandslabor",
+      "repository": "Juri-Halveth/halveth-forschungslabor",
+      "commit": "89f21d0db4f1ac8749a6796f86fa7092b3a76b86",
+      "path": "branches/genesis-state-lab/evidence/README.md",
+      "publicationState": "PUBLIC_DRAFT_PR",
+      "url": "https://github.com/Juri-Halveth/halveth-forschungslabor/blob/89f21d0db4f1ac8749a6796f86fa7092b3a76b86/branches/genesis-state-lab/evidence/README.md",
+      "claimCeiling": "LOCAL_SYNTHETIC_TEST_AND_BROWSER_CAPTURE"
+    },
+    {
+      "id": "DOCUMENTS_EXCAVATION",
+      "subject": "Endliche lokale Ausgrabung und synthetischer Ableger",
+      "repository": "Juri-Halveth/halveth-forschungslabor",
+      "commit": "2a42babfe5f4fae1f46485b79168862b97ef543f",
+      "path": "branches/documents-excavation/README.md",
+      "publicationState": "PUBLIC_MAIN_SOURCE",
+      "url": "https://github.com/Juri-Halveth/halveth-forschungslabor/blob/2a42babfe5f4fae1f46485b79168862b97ef543f/branches/documents-excavation/README.md",
+      "claimCeiling": "FINITE_SOURCE_SAMPLE_AND_SYNTHETIC_MODEL"
+    },
+    {
+      "id": "C_DROHNE_TEST_RECEIPT",
+      "subject": "Historischer lokaler Teststand",
+      "repository": "Juri-Halveth/c-drohne-red-room",
+      "commit": "89398fccf993ad361a5230a6adefb8b559f547d8",
+      "path": "TEST_RECEIPT_2026-10-19.md",
+      "publicationState": "PUBLIC_MAIN_SOURCE",
+      "url": "https://github.com/Juri-Halveth/c-drohne-red-room/blob/89398fccf993ad361a5230a6adefb8b559f547d8/TEST_RECEIPT_2026-10-19.md",
+      "claimCeiling": "HISTORICAL_LOCAL_SYNTHETIC_TEST"
+    },
+    {
+      "id": "PUBLIC_RESEARCH_OS_VIEW",
+      "subject": "Browser-Consumer der Forschungsansicht",
+      "repository": "Juri-Halveth/Juri-Halveth.github.io",
+      "commit": "4c8871a8ed14812081bc62b2ea35982591080671",
+      "path": "forschung/index.html",
+      "publicationState": "PUBLIC_MAIN_SOURCE",
+      "url": "https://github.com/Juri-Halveth/Juri-Halveth.github.io/blob/4c8871a8ed14812081bc62b2ea35982591080671/forschung/index.html",
+      "claimCeiling": "SOURCE_CODE_VIEW_ONLY"
+    },
+    {
+      "id": "FIELD_DIFFERENCE_LAB",
+      "subject": "Öffentlicher Quell-Einstieg",
+      "repository": "Juri-Halveth/halveth-field-difference-lab",
+      "commit": "572734742951819993b10d89b22591951a49dbc8",
+      "path": "README.md",
+      "publicationState": "PUBLIC_MAIN_SOURCE",
+      "url": "https://github.com/Juri-Halveth/halveth-field-difference-lab/blob/572734742951819993b10d89b22591951a49dbc8/README.md",
+      "claimCeiling": "SOURCE_ENTRY_ONLY"
+    }
+  ]
+}
