@@ -86,6 +86,12 @@ Python-Regelmodell mit dreiwertiger Logik, explizitem Vorrang und Replay der mit
 
 Lokale synthetische Prüfmodelle für Befundbehauptungen. Keine aktiven Angriffe oder fremden Zielsysteme.
 
+## Forschungsdossiers
+
+### [CODEC-001 – Darstellung, Gedächtnis und vermittelte Wirkung](research/codec-001/)
+
+Quellengebundener Forschungsentwurf von Juri Halveth / HALVETH mit transparenter KI-Unterstützung. Fünf getrennte Prüfachsen, Vorarbeiten, Lizenzzuordnung und ein exakter Dateizeitanker. Der ausführbare Prüfer kontrolliert die Integrität dieser Veröffentlichung; ein neuer Codec oder ein Produkt-Sicherheitsbefund wird damit nicht behauptet.
+
 ## Technischer Umfang
 
 Die Tests prüfen die implementierten Verträge und synthetischen Gegenbeispiele. Sie sind kein Nachweis einer realen Sicherheitslücke, klinischen Wirkung, externen Infrastruktur oder verliehenen Qualifikation. Ein Datenmodell bewertet die eingegebenen Daten; deren Außenwahrheit ist eine andere Frage.
