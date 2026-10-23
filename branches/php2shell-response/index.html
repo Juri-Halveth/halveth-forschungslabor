@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>PHP2Shell | HALVETH Betreiberhilfe</title>
+  <meta name="description" content="Quellengebundene Betreiberhilfe zu CVE-2026-109618 und CVE-2026-109619: PHP-Runtime aktualisieren, aktive Worker prüfen, Altaktivität getrennt untersuchen.">
+  <style>
+    :root { --bg:#081219; --panel:#10212a; --panel2:#152c36; --ink:#f4f6ed; --muted:#b8c8c5; --line:#3c5960; --mint:#67ead0; --amber:#ffd48a; --red:#ff746a; --shadow:0 20px 60px #0005; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:radial-gradient(circle at 75% 0,#1b3c43 0,transparent 32rem),var(--bg); color:var(--ink); font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif; }
+    a { color:var(--mint); text-underline-offset:.2em; }
+    a:focus-visible, button:focus-visible { outline:3px solid var(--amber); outline-offset:4px; }
+    .skip { position:absolute; top:-5rem; left:1rem; z-index:9; background:var(--ink); color:var(--bg); padding:.5rem; }
+    .skip:focus { top:.5rem; }
+    .shell { width:min(1160px,calc(100% - 2.5rem)); margin:auto; }
+    header { border-bottom:1px solid var(--line); }
+    .topbar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; min-height:5rem; }
+    .brand { display:flex; align-items:center; gap:.7rem; color:var(--ink); text-decoration:none; font-weight:800; letter-spacing:.12em; font-size:.85rem; }
+    .brand-mark { display:grid; place-items:center; width:2.3rem; height:2.3rem; border:1px solid var(--mint); border-radius:50%; color:var(--mint); font-size:1.3rem; }
+    nav { display:flex; gap:1.4rem; flex-wrap:wrap; }
+    nav a { color:var(--muted); text-decoration:none; font-size:.9rem; }
+    nav a:hover { color:var(--ink); }
+    .hero { padding:5rem 0 4rem; display:grid; grid-template-columns:minmax(0,1.2fr) minmax(18rem,.8fr); gap:3rem; align-items:center; }
+    .eyebrow { text-transform:uppercase; font-size:.72rem; letter-spacing:.2em; color:var(--mint); font-weight:800; }
+    h1,h2,h3 { line-height:1.12; margin:0 0 .7em; }
+    h1 { font-size:clamp(3.1rem,7vw,6.3rem); letter-spacing:-.055em; max-width:9ch; }
+    h1 span { color:var(--mint); }
+    h2 { font-size:clamp(2rem,3vw,3.2rem); letter-spacing:-.035em; }
+    h3 { font-size:1.2rem; }
+    p { margin:.3rem 0 1.2rem; }
+    .lead { font-size:clamp(1.1rem,1.6vw,1.4rem); color:var(--muted); max-width:45rem; }
+    .buttonrow { display:flex; gap:.7rem; flex-wrap:wrap; margin-top:2rem; }
+    .button { display:inline-flex; align-items:center; min-height:2.9rem; padding:.55rem 1rem; border:1px solid var(--mint); border-radius:.55rem; color:var(--bg); background:var(--mint); text-decoration:none; font-weight:750; }
+    .button.secondary { color:var(--mint); background:transparent; }
+    .alert { background:linear-gradient(145deg,#203a3f,#10252c); border:1px solid var(--line); border-radius:1rem; box-shadow:var(--shadow); padding:1.6rem; }
+    .alert b { display:inline-block; color:var(--amber); text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; margin-bottom:.7rem; }
+    .alert strong { display:block; font-size:1.35rem; line-height:1.2; margin-bottom:.6rem; }
+    .alert p { color:var(--muted); }
+    .versionlist { display:grid; grid-template-columns:repeat(4,1fr); gap:.35rem; }
+    .versionlist span { background:#08171d; border:1px solid var(--line); border-radius:.45rem; padding:.55rem .3rem; text-align:center; font-size:.83rem; font-weight:700; color:var(--mint); }
+    .band { border-block:1px solid var(--line); background:#0b1b22; }
+    .band-inner { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; padding:1.3rem 0; }
+    .band strong { display:block; font-size:.82rem; color:var(--mint); text-transform:uppercase; letter-spacing:.12em; }
+    .band span { color:var(--muted); font-size:.9rem; }
+    section { padding:5rem 0; }
+    .section-intro { max-width:47rem; color:var(--muted); font-size:1.06rem; }
+    .flow { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:2rem 0 1rem; }
+    .flow article { position:relative; background:var(--panel); border:1px solid var(--line); border-radius:.8rem; padding:1.5rem; min-height:13rem; }
+    .flow article:not(:last-child)::after { content:"→"; position:absolute; right:-.83rem; top:44%; z-index:2; font-size:1.5rem; line-height:1; background:var(--bg); padding:0 .15rem; color:var(--amber); }
+    .flow .num { font:700 .78rem/1.2 ui-monospace,Consolas,monospace; color:var(--mint); }
+    .flow p { color:var(--muted); }
+    .callout { border-left:4px solid var(--amber); background:#3b321f88; padding:1.1rem 1.3rem; margin-top:1.4rem; border-radius:0 .55rem .55rem 0; }
+    .callout strong { color:var(--amber); }
+    .cards { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:2rem; }
+    .card { background:var(--panel); border:1px solid var(--line); border-radius:.8rem; padding:1.5rem; }
+    .card .tag { color:var(--mint); font:700 .73rem/1.4 ui-monospace,Consolas,monospace; letter-spacing:.08em; }
+    .card p { color:var(--muted); }
+    .steps { list-style:none; margin:2rem 0 0; padding:0; counter-reset:step; border-top:1px solid var(--line); }
+    .steps li { counter-increment:step; display:grid; grid-template-columns:3.2rem 1fr; gap:1rem; padding:1.4rem 0; border-bottom:1px solid var(--line); }
+    .steps li::before { content:counter(step,decimal-leading-zero); color:var(--mint); font:700 1.1rem/1.4 ui-monospace,Consolas,monospace; }
+    .steps strong { display:block; color:var(--ink); margin-bottom:.2rem; }
+    .steps span { color:var(--muted); }
+    .timeline { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:2rem; }
+    .timeline div { border-top:2px solid var(--mint); padding:1rem .5rem 0 0; }
+    .timeline time { display:block; color:var(--mint); font-weight:700; }
+    .timeline p { color:var(--muted); font-size:.92rem; }
+    .offer { background:linear-gradient(130deg,#1d3d42,#10242b); border:1px solid var(--line); border-radius:1.2rem; padding:clamp(1.5rem,4vw,3rem); display:grid; grid-template-columns:1.1fr .9fr; gap:2rem; box-shadow:var(--shadow); }
+    .offer ul { margin:0; padding-left:1.2rem; color:var(--muted); }
+    .offer li { margin-bottom:.7rem; }
+    .sources { border-top:1px solid var(--line); }
+    .sources ul { columns:2; padding-left:1.2rem; }
+    .sources li { break-inside:avoid; margin-bottom:.65rem; }
+    footer { border-top:1px solid var(--line); color:var(--muted); padding:2rem 0; font-size:.88rem; }
+    footer .shell { display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+    @media(max-width:800px) { .hero,.offer { grid-template-columns:1fr; } .flow,.band-inner,.timeline { grid-template-columns:1fr; } .flow article { min-height:auto; } .flow article:not(:last-child)::after { content:"↓"; top:auto; bottom:-.75rem; right:50%; } .cards { grid-template-columns:1fr; } .sources ul { columns:1; } .hero { padding:3rem 0; } section { padding:3rem 0; } }
+    @media(max-width:560px) { .shell { width:min(100% - 1.3rem,1160px); } nav { gap:.75rem; } .versionlist { grid-template-columns:repeat(2,1fr); } .steps li { grid-template-columns:2.5rem 1fr; } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+    @media print { :root { --bg:#fff; --panel:#fff; --ink:#101820; --muted:#304047; --line:#65777b; --mint:#0a7667; --amber:#6c4900; } body { background:#fff; color:#101820; } .hero { padding:1rem 0; } section { padding:1.2rem 0; } .alert,.offer { box-shadow:none; } nav,.buttonrow { display:none; } a { color:#064a82; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Zum Inhalt springen</a>
+  <header>
+    <div class="shell topbar">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">H</span> HALVETH / PHP2SHELL</a>
+      <nav aria-label="Abschnitte"><a href="#mechanismus">Mechanismus</a><a href="#handeln">Maßnahmen</a><a href="#zeit">Zeitlinie</a><a href="#pilot">Pilot</a><a href="#quellen">Quellen</a></nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="shell hero" id="top">
+      <div>
+        <div class="eyebrow">Betreiberhilfe · Quellenstand 23.10.2026</div>
+        <h1>Zwei Requests. <span>Eine Grenze.</span></h1>
+        <p class="lead">Die neuen PHP-Kernlücken betreffen die Speicher- und Zustandsverarbeitung der Web-Runtime. Hier steht, was passiert, wie man die aktive Version prüft und was bei einem Update nachzuweisen ist.</p>
+        <div class="buttonrow"><a class="button" href="#handeln">Sofortmaßnahmen ansehen</a><a class="button secondary" href="#mechanismus">Ablauf verstehen</a></div>
+      </div>
+      <aside class="alert" aria-label="Update-Stand">
+        <b>Priorität: Internetdienende PHP-Runtime</b>
+        <strong>Der Runtime-Patch ist die vollständige technische Abhilfe.</strong>
+        <p>Aktive Worker neu starten und den tatsächlich laufenden Build prüfen. Ein CMS-Update oder eine WAF-Regel ersetzt das nicht.</p>
+        <div class="versionlist" aria-label="Erste korrigierte PHP-Versionen"><span>8.2.35</span><span>8.3.36</span><span>8.4.27</span><span>8.5.12</span></div>
+        <p style="font-size:.78rem;margin:1rem 0 0">Quelle: <a href="https://www.php.net/archive/2026.php">PHP Security Release, 21.10.2026</a></p>
+      </aside>
+    </div>
+    <div class="band"><div class="shell band-inner"><div><strong>01 / Identifizieren</strong><span>Welche aktive PHP-Webruntime dient welche Anwendung?</span></div><div><strong>02 / Aktualisieren</strong><span>Upstream-Fix oder belegter Anbieter-Backport.</span></div><div><strong>03 / Nachweisen</strong><span>Worker, Funktion und historische Telemetrie getrennt prüfen.</span></div></div></div>
+    <section id="mechanismus" class="shell">
+      <div class="eyebrow">Technik verständlich</div><h2>Was liegt „dazwischen“?</h2>
+      <p class="section-intro">Bei CVE-2026-109619 geht es um den Speicher eines wiederverwendeten PHP-Workers. Eine frühere Anfrage kann internen Zustand zurücklassen, dessen Speicher schon freigegeben wurde. Eine spätere Anfrage kann diesen Zustand vor dem normalen Zurücksetzen berühren.</p>
+      <div class="flow" role="group" aria-label="Vereinfachtes Zustandsmodell"><article><div class="num">REQUEST A</div><h3>Ein Zustand wird gesetzt</h3><p>Die erste Anfrage nutzt PHP-interne Daten. Ein Fehler kann den vorgesehenen Reset unterbrechen.</p></article><article><div class="num">WORKER</div><h3>Speicher wird freigegeben</h3><p>Der Worker lebt weiter, während ein Verweis auf anfragegebundenen Speicher zurückbleibt.</p></article><article><div class="num">REQUEST B</div><h3>Alter Verweis wird benutzt</h3><p>Vor der normalen Initialisierung greift PHP unter bestimmten Bedingungen auf den veralteten Zustand zu.</p></article></div>
+      <div class="callout"><strong>Begriffsklärung:</strong> Das ist ein Request-übergreifender Speicherfehler im PHP-Kern. Die bisher belegte Fehlerkette ist kein klassischer Man-in-the-Middle im Netzwerk und kein allgemein belegter Authentifizierungs-Bypass. <a href="https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp">Original-Advisory lesen</a>.</div>
+      <div class="cards"><article class="card"><div class="tag">CVE-2026-109618</div><h3>Unvollständig initialisierter Speicher</h3><p>Ein Speicherfehler kann PHP mitten in der Request-Verarbeitung verlassen. Die Bereinigung verarbeitet anschließend möglicherweise ungültige interne Daten.</p><a href="https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w">PHP-Advisory</a></article><article class="card"><div class="tag">CVE-2026-109619</div><h3>Alter globaler Zustand</h3><p>Interner Zustand einer früheren Anfrage kann nach Freigabe des Speichers in einem späteren Request desselben Workers wirksam werden.</p><a href="https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp">PHP-Advisory</a></article></div>
+    </section>
+    <section id="handeln" class="shell"><div class="eyebrow">Betreiberablauf</div><h2>Die sechs Prüfhandlungen</h2><p class="section-intro">Ein nachvollziehbarer Fix besteht aus mehreren beobachteten Zuständen. Eine installierte Datei ist noch kein Beleg, dass der Web-Worker diese Datei ausführt.</p><ol class="steps"><li><div><strong>Aktive Runtime inventarisieren</strong><span>Pro Webanwendung PHP-Version, SAPI, Paket- oder Image-Quelle, Erreichbarkeit und Verantwortliche erfassen. Die CLI-Version kann von der Web-Runtime abweichen.</span></div></li><li><div><strong>Passenden Patch anwenden</strong><span>PHP 8.2.35, 8.3.36, 8.4.27, 8.5.12 oder den konkret belegten Vendor-Backport einsetzen. Alte Zweige benötigen eine eigene Migrationsentscheidung.</span></div></li><li><div><strong>Alle betroffenen Worker neu starten</strong><span>Damit nicht weiter ein alter Prozess läuft. Der Neustart und sein Zeitpunkt gehören zum Nachweis.</span></div></li><li><div><strong>Den laufenden Build prüfen</strong><span>Über einen internen Administrationsweg SAPI, Paketbuild und aktiven Worker nach dem Neustart beobachten. Keine öffentliche Diagnose-Seite hinterlassen.</span></div></li><li><div><strong>Normale Funktionen testen</strong><span>Login, Sessions, Uploads, Formulare und zentrale Fehlerpfade mit harmlosen Tests prüfen. Das zeigt Funktion, nicht die Abwesenheit früherer Angriffe.</span></div></li><li><div><strong>Altaktivität getrennt untersuchen</strong><span>Erhaltene eigene Telemetrie seit mindestens 17. Oktober auswerten. Exploit-Versuch, erfolgreiche Wirkung und Datenabfluss sind verschiedene Befunde.</span></div></li></ol>
+      <div class="callout"><strong>Neuer Hinweis vom 23. Oktober:</strong> PHP nennt mit CVE-2026-115560 einen zusätzlichen, ungewöhnlichen Session-Upload-Progress-Pfad und empfiehlt bei der genannten Konfiguration vorübergehend <code>session.upload_progress.enabled=0</code>. <a href="https://www.php.net/archive/2026.php">Aktuelle PHP-Meldung</a>.</div>
+    </section>
+    <section id="zeit" class="shell"><div class="eyebrow">Quellengebundene Zeitlinie</div><h2>Wie sich der Kenntnisstand entwickelte</h2><div class="timeline"><div><time>2024</time><p>Bei PHP wurden erste Hinweise auf das OOM-Problem gesehen; der konkrete Exploitpfad war noch offen.</p></div><div><time>17.10.2026</time><p>AWS beobachtete einen Exploit-Versuch gegen eigene Honeypots. Ein Erfolg auf realen Systemen ist daraus nicht abzuleiten.</p></div><div><time>21.10.2026</time><p>PHP veröffentlichte die beiden kritischen Advisories und korrigierte Runtime-Versionen.</p></div><div><time>23.10.2026</time><p>PHP ergänzte einen Hinweis zum seltenen Session-Upload-Progress-Pfad.</p></div></div></section>
+    <section id="pilot" class="shell"><div class="offer"><div><div class="eyebrow">HALVETH / Zusammenarbeit</div><h2>Ein bezahlbarer Pilot mit klarem Ergebnis.</h2><p>Für ein ausdrücklich beauftragtes System kann HALVETH die Inventur, Patchquelle, Worker-Neustart, Funktionsprüfung und offene Telemetrielücken in einem prüfbaren Betreiber-Receipt zusammenführen.</p><p>Das ist eine konkrete Dienstleistung. Die zwei CVEs sind bereits öffentlich gemeldet; ihre bloße Beschreibung begründet keine Bug-Bounty-Prämie.</p></div><div><h3>Abgabe pro System</h3><ul><li>Aktive PHP-Runtime und SAPI samt Quelle</li><li>Patch- oder Backport-Beleg</li><li>Neustart- und Laufzeit-Nachweis</li><li>Benigne Funktionsprüfung</li><li>Historische Telemetrie: Umfang und Lücken</li><li>Offener Rest und Verantwortlichkeit</li></ul><a class="button secondary" href="TECHNICAL_BRIEF.md">Technisches Briefing öffnen</a></div></div></section>
+    <section id="quellen" class="shell sources"><div class="eyebrow">Primärbelege</div><h2>Direkt zu den Quellen</h2><ul><li><a href="https://www.php.net/archive/2026.php">PHP: Sicherheitsrelease und Hinweis vom 23. Oktober</a></li><li><a href="https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w">PHP-Advisory: CVE-2026-109618</a></li><li><a href="https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp">PHP-Advisory: CVE-2026-109619</a></li><li><a href="https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/">PHP Foundation: Entdeckung und Patchprozess</a></li><li><a href="https://www.cert.europa.eu/publications/security-advisories/2026-018">CERT-EU: technische Warnung</a></li><li><a href="https://aws.amazon.com/blogs/security/amazon-threat-intelligence-identifies-php2shell-exploitation-prior-to-public-disclosure-in-madpot/">AWS: beobachtete Angriffsversuche</a></li></ul><p>Umfang, Gegenbelege und Grenzen der eingebrachten Nachricht stehen in <a href="SOURCE_AUDIT.md">SOURCE_AUDIT.md</a>.</p></section>
+  </main>
+  <footer><div class="shell"><span>Juri Janovski · HALVETH · Quellenstand 23.10.2026</span><span>Lokaler Entwurf · Keine externe Asset-Prüfung</span></div></footer>
+</body>
+</html>
