@@ -9,6 +9,13 @@ import {
   transition,
   sha256,
 } from "./model.mjs";
+import {
+  RESEARCH_CASES,
+  RESEARCH_SOURCES,
+  RESEARCH_VERSION,
+  researchFor,
+} from "./number-research.mjs";
+import { renderNumberResearch } from "./number-research-view.mjs";
 const $ = (id) => document.getElementById(id),
   el = (tag, text, cls) => {
     const e = document.createElement(tag);
@@ -22,7 +29,7 @@ const svg = (tag, attrs) => {
   return e;
 };
 const all = Array.from({ length: 1001 }, (_, n) => door(n));
-let selected = 555,
+let selected = 666,
   page = 8,
   filtered = all,
   panel = "explore",
@@ -90,12 +97,12 @@ function renderGrid() {
       const b = el(
         "button",
         String(d.number).padStart(3, "0"),
-        `${d.design ? "motif " : ""}${d.number === selected ? "selected" : ""}`,
+        `${d.design ? "motif " : ""}${researchFor(d.number) ? "researched " : ""}${d.number === selected ? "selected" : ""}`,
       );
       b.type = "button";
       b.setAttribute(
         "aria-label",
-        `Tür ${d.number}${d.design ? " · " + d.design.title : ""}`,
+        `Tür ${d.number}${researchFor(d.number) ? " · recherchiert: " + researchFor(d.number).shortTitle : d.design ? " · " + d.design.title : ""}`,
       );
       b.setAttribute("aria-pressed", String(d.number === selected));
       b.addEventListener("click", () => selectDoor(d.number, true));
@@ -124,7 +131,9 @@ function selectDoor(n, focusDetail = false) {
   $("door-number").value = String(n);
   $("selected-id").textContent = d.id;
   $("selected-number").textContent = n;
-  $("selected-title").textContent = d.design?.title ?? `Zahl ${n}`;
+  const research = researchFor(n);
+  $("selected-title").textContent =
+    research?.shortTitle ?? d.design?.title ?? `Zahl ${n}`;
   const names = [];
   if (n === 0) names.push("Additive Identität");
   if (n === 1) names.push("Multiplikative Identität");
@@ -164,8 +173,10 @@ function selectDoor(n, focusDetail = false) {
     ...facts.flatMap(([k, v]) => [el("dt", k), el("dd", v)]),
   );
   $("door-question").textContent = d.investigation.question;
+  $("door-question").hidden = Boolean(research);
   $("research-state").textContent =
-    `Arithmetik: berechnet. ${d.http ? "HTTP: datierter IANA-Snapshot. " : ""}${[27, 33, 555].includes(n) ? "Technische Primärquelle im jeweiligen Laborbereich." : "Historische Einzelrecherche: offen."}${d.design ? (n === 27 ? " Technischer Referenzeintrag." : " Entwurfsmotiv: aus dem gelieferten Register.") : ""}`;
+    `Arithmetik: berechnet. ${d.http ? "HTTP: datierter IANA-Snapshot. " : ""}${research ? "Eigener Quellenpfad und Versuch unten. Weitere Verbindungen bleiben offen." : [27, 33, 555].includes(n) ? "Technische Primärquelle im jeweiligen Laborbereich." : "Historische Einzelrecherche: offen."}${d.design ? (n === 27 ? " Technischer Referenzeintrag." : " Entwurfsmotiv: aus dem gelieferten Register.") : ""}`;
+  renderNumberResearch($("number-research"), n);
   const links = [];
   for (const value of [n - 1, n + 1])
     if (value >= 0 && value <= 1000) {
@@ -178,6 +189,15 @@ function selectDoor(n, focusDetail = false) {
     const target = n === 555 ? "pulse" : n >= 999 ? "gate" : "codes",
       b = el("button", "Versuch öffnen ↗");
     b.addEventListener("click", () => showPanel(target));
+    links.push(b);
+  }
+  if (research) {
+    const b = el(
+      "button",
+      `Weiterer ausgewählter Pfad: ${research.nextDoor} ↗`,
+    );
+    b.type = "button";
+    b.addEventListener("click", () => selectDoor(research.nextDoor, true));
     links.push(b);
   }
   $("neighbours").replaceChildren(...links);
@@ -212,6 +232,7 @@ $("filter").addEventListener("change", () => {
       (f === "power" && d.math.isPowerOfTwo) ||
       (f === "square" && d.math.isSquare) ||
       (f === "triangle" && d.math.isTriangular) ||
+      (f === "research" && researchFor(d.number)) ||
       (f === "motif" && d.design),
   );
   page = 0;
@@ -241,14 +262,26 @@ $("save-note").addEventListener("click", () => {
 $("export-door").addEventListener(
   "click",
   safe(async () => {
-    const d = door(selected);
-    download(`halveth-door-${String(selected).padStart(4, "0")}.json`, {
-      schema: "halveth.doors.local-note.v1",
+    const d = door(selected),
+      research = researchFor(d.number),
+      note = $("note").value;
+    download(`halveth-door-${String(d.number).padStart(4, "0")}.json`, {
+      schema: "halveth.doors.local-note.v2",
       record: d,
       recordDigest: await sha256(d),
-      note: $("note").value,
+      note,
       recordedAt: new Date().toISOString(),
       noteEvidence: "USER_ENTERED_UNVERIFIED",
+      research,
+      researchVersion: RESEARCH_VERSION,
+      researchDigest: research ? await sha256(research) : null,
+      researchSources: research
+        ? Object.fromEntries(
+            [...new Set(research.claims.flatMap((c) => c.sources))].map(
+              (id) => [id, RESEARCH_SOURCES[id]],
+            ),
+          )
+        : {},
     });
   }),
 );
@@ -502,6 +535,15 @@ $("export-event").addEventListener("click", () => {
       exportedAt: new Date().toISOString(),
     });
 });
+$("research-jumps").replaceChildren(
+  ...RESEARCH_CASES.map((record) => {
+    const b = el("button");
+    b.type = "button";
+    b.append(el("strong", record.number), el("span", record.shortTitle));
+    b.addEventListener("click", () => selectDoor(record.number, true));
+    return b;
+  }),
+);
 selectDoor(selected);
 drawPulse();
 renderGate();

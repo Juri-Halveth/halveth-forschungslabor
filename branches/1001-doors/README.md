@@ -126,3 +126,27 @@ reproduziert die dortige Kopplung noch nicht.
 Code: MIT. Neu berechnete Daten: CC0-1.0. Erläuterungen: CC BY 4.0, entsprechend
 den [Repository-Lizenzen](../../LICENSES.md). Rechte fremder Quellen bleiben bei
 deren jeweiligen Inhabern. Ein Digest bindet die Bytes einer Fassung.
+
+## Quellenrecherche: sieben ausgewählte Zahlen
+
+Die neue [Recherche](NUMBER_RESEARCH.md) öffnet **3, 6, 28, 55, 64, 137 und 666**:
+Rosetta, Kohlenstoff, vollständige Paarvergleiche, Pflanzenmuster, Bit-/DNA-
+Darstellungen, Feinstrukturkonstante und Agrippas Sonnenquadrat mit getrennten
+Siegeltraditionen. Die Auswahl folgt der Nutzerfrage; sie behauptet keine
+Vollrecherche oder repräsentative Häufigkeit für alle 1001 Zahlen.
+
+Direkt im Browser stehen Quellenkarten, ein auswählbarer Quadratvergleich,
+umschaltbare sechs Bits mit reversibler DNA-Triplettabbildung, ein veränderbares
+geometrisches Setzmodell, Molekül- und Paargraphschemas zur Verfügung.
+Die ursprünglichen generierten Registerdateien bleiben unverändert. Das neue
+Wissen liegt als eigener versionierter Forschungsaufsatz in `number-research.mjs`.
+Der Notizexport v2 bindet Originalrecord, Forschungsrecord und Quellen getrennt.
+
+```sh
+node --test branches/1001-doors/number-research.test.mjs
+```
+
+Die Tests prüfen auch beschädigte Zahlengitter, sämtliche 64 Roundtrips,
+ungültige Eingaben und den Unterschied zwischen einem vollständigen Paargraphen
+und bloßer Nachbarschaft. [NUMBER_RESEARCH_RECEIPT.json](NUMBER_RESEARCH_RECEIPT.json)
+bindet Quellenverweise, Datenfassung und den erhaltenen Registerstand.
