@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="HALVETH Signallabor: Eine Nachricht, ein berechneter Kanal und drei Decoder. Mit Gegenproben, Messwerten und getrennten biologischen Forschungsfragen."
+    />
+    <title>Vom Signal zum Bild · HALVETH Forschungslabor</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="signal.css" />
+    <script type="module" src="signal-view.mjs"></script>
+  </head>
+  <body>
+    <a class="skip" href="#signal-experiment">Zum Signalversuch</a>
+    <header class="site-header">
+      <a class="brand" href="index.html">HALVETH<span>RESEARCH / 02</span></a>
+      <nav aria-label="Seitennavigation">
+        <a href="index.html">Begegnungen</a
+        ><a href="#signal-experiment">Signalversuch</a
+        ><a href="#signal-frontiers">Forschungsäste</a>
+      </nav>
+      <a
+        class="source-link"
+        href="https://github.com/Juri-Halveth/halveth-forschungslabor/tree/main/branches/encounter-systems"
+        >Quellcode ↗</a
+      >
+    </header>
+    <main>
+      <section class="hero">
+        <div class="eyebrow">
+          SIGNAL COUPLING · AUSFÜHRBARER SOFTWAREVERSUCH
+        </div>
+        <h1>
+          Eine Welle transportiert.<br /><em>Ein Empfänger entscheidet.</em>
+        </h1>
+        <p>
+          Dasselbe Signal kann als passendes Bild, als falsches Bild oder als
+          unentscheidbarer Inhalt ankommen. Verändere eine Verbindung und prüfe,
+          was wirklich erhalten bleibt.
+        </p>
+        <div class="hero-foot">
+          <a class="btn btn-primary" href="#signal-experiment"
+            >Selbst vergleichen ↓</a
+          ><span
+            >64 Bildwerte · 2.048 berechnete Samples · kein Funksender</span
+          >
+        </div>
+      </section>
+      <section id="signal-experiment">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">01 / KOPPLUNG UNTERSUCHEN</div>
+            <h2>Was kommt auf der anderen Seite an?</h2>
+          </div>
+          <a href="SIGNAL_PLAN.json">Versuchsplan ↗</a>
+        </div>
+        <div class="signal-controls">
+          <label
+            >Ausgangsbild<select id="signal-pattern">
+              <option value="window">Fenster</option>
+              <option value="pulse">Puls</option>
+            </select></label
+          >
+          <label
+            >Empfänger<select id="signal-mode">
+              <option value="matched">Passend abgestimmt</option>
+              <option value="inverted">Bitzuordnung vertauscht</option>
+              <option value="detuned">Falsche Trägerabstimmung</option>
+            </select></label
+          >
+          <label
+            >Störamplitude <output id="signal-noise-value">0</output
+            ><input
+              type="range"
+              id="signal-noise"
+              min="0"
+              max="8"
+              value="0"
+              step="0.5"
+          /></label>
+          <label class="signal-connection"
+            ><input type="checkbox" id="signal-connected" checked /> Signalweg
+            verbunden</label
+          >
+        </div>
+        <div class="signal-stages">
+          <article>
+            <span class="eyebrow">A / GESENDETER INHALT</span>
+            <h3>Du bestimmst die Nachricht.</h3>
+            <div
+              id="signal-input"
+              class="pixel-grid"
+              aria-label="64 veränderbare Bildwerte"
+            ></div>
+            <p>
+              Klicke ein Feld, um genau einen Bildwert zu ändern. Das Bild
+              bleibt die Referenz für den Vergleich.
+            </p>
+          </article>
+          <article class="signal-channel">
+            <span class="eyebrow">B / BERECHNETER SIGNALWEG</span>
+            <h3>Der Kanal verändert Samples.</h3>
+            <svg
+              id="signal-wave"
+              viewBox="0 0 520 200"
+              role="img"
+              aria-labelledby="signal-wave-title"
+            >
+              <title id="signal-wave-title">
+                Gesendete und empfangene Samples der ersten acht Symbole
+              </title>
+              <path d="M0 100H520" class="wave-axis" />
+              <path id="signal-sent-path" class="wave-sent" />
+              <path id="signal-received-path" class="wave-received" />
+            </svg>
+            <div class="wave-legend">
+              <span>● Gesendet</span><span>● Empfangen</span>
+            </div>
+            <p>
+              Die ersten 8 von 64 Symbolen. Türkis zeigt die berechnete
+              Trägerwelle; Gold die Samples nach Störung oder Unterbrechung.
+              Amplitude in Modell-Einheiten.
+            </p>
+          </article>
+          <article>
+            <span class="eyebrow">C / REKONSTRUIERTER INHALT</span>
+            <h3>Der Decoder sieht nur Samples.</h3>
+            <div
+              id="signal-output"
+              class="pixel-grid"
+              role="img"
+              aria-label="Aus den empfangenen Samples berechnetes Bild"
+            ></div>
+            <p>
+              Ein Fragezeichen bedeutet: Der Entscheidungswert reicht für keine
+              Zuordnung. Es wird kein Bildwert ergänzt.
+            </p>
+          </article>
+        </div>
+        <div class="signal-metrics" aria-live="polite">
+          <div><span>Richtig</span><strong id="signal-correct">—</strong></div>
+          <div><span>Falsch</span><strong id="signal-wrong">—</strong></div>
+          <div>
+            <span>Unentschieden</span><strong id="signal-unknown">—</strong>
+          </div>
+        </div>
+        <p id="signal-verdict" class="signal-verdict"></p>
+        <p class="muted">
+          Deterministisches Modell: 32 Samples pro Symbol, zwei Trägerzyklen pro
+          Symbol, feste Schwelle 0,25. Gleiche Einstellungen erzeugen dieselbe
+          Störung. Das sind keine Messwerte eines Routers oder Gehirns.
+        </p>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">02 / GEGENPROBEN</div>
+            <h2>Ein sichtbares Bild ist noch kein richtiges Bild.</h2>
+          </div>
+          <a href="signal-results.json">Ergebnisdatei ↗</a>
+        </div>
+        <div class="result-grid">
+          <article>
+            <span>Festgelegte Vergleichsläufe</span
+            ><strong id="signal-runs">—</strong>
+            <p>
+              Zwei Ausgangsbilder, zwei Störamplituden, drei Decoder. Zusätzlich
+              wird der unterbrochene Kanal geprüft.
+            </p>
+          </article>
+          <article>
+            <span>Gleiche Samples, andere Zuordnung</span
+            ><strong>64 falsche Bits</strong>
+            <p>
+              Ohne Störung liefert die vertauschte Zuordnung ein vollständiges,
+              aber vollständig falsches Bild.
+            </p>
+          </article>
+          <article>
+            <span>Keine ausreichende Kopplung</span
+            ><strong>64 offene Bits</strong>
+            <p>
+              Bei unterbrochenem Kanal und bei der festgelegten falschen
+              Abstimmung ohne Störung bleibt jede Entscheidung offen.
+            </p>
+          </article>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Bild</th>
+                <th>Störung</th>
+                <th>Decoder</th>
+                <th>Richtig</th>
+                <th>Falsch</th>
+                <th>Offen</th>
+              </tr>
+            </thead>
+            <tbody id="signal-results-table"></tbody>
+          </table>
+        </div>
+      </section>
+      <section id="signal-frontiers">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">03 / BREITER FORSCHEN</div>
+            <h2>Die biologischen Wege bleiben eigene Fragen.</h2>
+          </div>
+        </div>
+        <p class="frontier-intro">
+          Dieses Labor untersucht Übertragung und Decodierung in Software. Die
+          folgenden Arbeiten zeigen andere Schnittstellen. Ihre Ergebnisse
+          werden dadurch weder nachgebaut noch auf eine weltweite biologische
+          Kopplung übertragen.
+        </p>
+        <div class="frontier-grid">
+          <article>
+            <span class="index">01 / FUNK</span>
+            <h3>Ein passender Empfänger</h3>
+            <p>
+              Technische Funkkommunikation bindet Träger, Kanal, Modulation und
+              Empfänger. Unser Modell variiert genau deklarierte Teile davon.
+            </p>
+            <a
+              href="https://www.nasa.gov/smallsat-institute/sst-soa/soa-communications/"
+              >NASA: Kommunikationssysteme ↗</a
+            ><small
+              >Offene Erweiterung: Messdaten eines eigenen, autorisierten
+              Funkversuchs.</small
+            >
+          </article>
+          <article>
+            <span class="index">02 / NETZHAUT</span>
+            <h3>Licht und Implantat</h3>
+            <p>
+              PRIMA verbindet projiziertes Nahinfrarotlicht mit einem
+              Netzhautimplantat. Der beschriebene klinische Aufbau ist eine
+              konkrete Kopplung.
+            </p>
+            <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2501396"
+              >Klinische Originalarbeit ↗</a
+            ><small
+              >Hier offen: biologische Empfängerreaktion. Kein Implantat wird
+              simuliert oder angesteuert.</small
+            >
+          </article>
+          <article>
+            <span class="index">03 / VISUELLER KORTEX</span>
+            <h3>Begrenzte Formwahrnehmung</h3>
+            <p>
+              Eine Studie zeigte erkennbare einfache Formen durch zeitlich
+              geordnete Stimulation implantierter Elektroden.
+            </p>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/32413298/"
+              >Cell: Originalarbeit ↗</a
+            ><small
+              >Hier offen: Wie aus einem Reizmuster eine bestimmte Wahrnehmung
+              entsteht.</small
+            >
+          </article>
+          <article>
+            <span class="index">04 / DEKODIERUNG</span>
+            <h3>Messdaten und Bildmodell</h3>
+            <p>
+              Die CVPR-Arbeit rekonstruierte betrachtete Bilder aus fMRT-Daten
+              mit einem Diffusionsmodell. Messung und generiertes Bild bleiben
+              verschiedene Objekte.
+            </p>
+            <a
+              href="https://openaccess.thecvf.com/content/CVPR2023/html/Takagi_High-Resolution_Image_Reconstruction_With_Latent_Diffusion_Models_From_Human_Brain_CVPR_2023_paper.html"
+              >CVPR: Originalarbeit ↗</a
+            ><small
+              >Hier offen: Übertragbarkeit auf andere Personen, Inhalte und
+              Messverfahren.</small
+            >
+          </article>
+          <article>
+            <span class="index">05 / PFLANZEN</span>
+            <h3>Biochemische Signale</h3>
+            <p>
+              Eine Arbeit beschreibt glutamatvermittelte Calcium-Signale bei
+              pflanzlichen Abwehrreaktionen.
+            </p>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/30213912/"
+              >Science: Originalarbeit ↗</a
+            ><small
+              >Eigener Forschungsast: Ein biologischer Signalweg ist noch kein
+              Decoder für beliebige Bilddaten.</small
+            >
+          </article>
+          <article>
+            <span class="index">06 / OFFENE HYPOTHESE</span>
+            <h3>Übertragung bis zur Wahrnehmung</h3>
+            <p>
+              Eine großräumige Welle, ein biologischer Empfänger und ein
+              bestimmter Seheindruck benötigen jeweils einen gebundenen
+              Mechanismus und eigene Evidenz.
+            </p>
+            <a href="SIGNAL_RESEARCH.md">Prüfbare Fragen und Grenzen ↗</a
+            ><small
+              >Offen erhalten: Kopplung, Selektivität, Informationsrate,
+              Rückmeldung und unabhängige Gegenproben.</small
+            >
+          </article>
+          <article>
+            <span class="index">07 / ULTRASCHALL</span>
+            <h3>Eine andere physikalische Kopplung</h3>
+            <p>
+              Eine Studie berichtet einfache visuelle Lichterscheinungen bei
+              einem Teil der Teilnehmenden unter fokussiertem Ultraschall.
+            </p>
+            <a href="https://www.nature.com/articles/srep34026"
+              >Scientific Reports: Originalarbeit ↗</a
+            >
+            <small
+              >Hier offen: Reproduzierbarkeit und Inhaltsselektivität.
+              Ultraschall und Funk sind verschiedene Signalarten.</small
+            >
+          </article>
+          <article>
+            <span class="index">08 / OPTISCHE ANZEIGE</span>
+            <h3>Ein Bild über den natürlichen Sehweg</h3>
+            <p>
+              Eine Anzeige liefert Licht an das Auge. Die Netzhaut wandelt Licht
+              in Nervensignale um; die Linse fokussiert das einfallende Licht.
+            </p>
+            <a
+              href="https://www.nei.nih.gov/eye-health-information/healthy-vision/how-eyes-work"
+              >National Eye Institute: Sehweg ↗</a
+            >
+            <small
+              >Eigener Weg: Die hier gezeigte Browsergrafik ist eine Anzeige,
+              kein Nachweis einer Rückprojektion aus dem Gehirn.</small
+            >
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <span>Juri Halveth / HALVETH · Entwicklung mit KI-Unterstützung</span
+      ><a href="index.html">Zurück zum Encounter-Labor</a
+      ><a href="SIGNAL_RESEARCH.md">Methode &amp; Reproduktion</a
+      ><a href="release.json">Veröffentlichter Quellstand</a>
+    </footer>
+  </body>
+</html>

@@ -1,6 +1,60 @@
 // SPDX-License-Identifier: MIT
 import { test, expect } from "@playwright/test";
 import path from "node:path";
+test("signal controls change received samples and decoded image", async ({
+  page,
+}, info) => {
+  const errors = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  await page.goto("/signals.html");
+  await expect(page.locator("#signal-correct")).toHaveText("64 / 64");
+  const sent = await page.locator("#signal-sent-path").getAttribute("d");
+  const received = await page
+    .locator("#signal-received-path")
+    .getAttribute("d");
+  await page.locator("#signal-mode").selectOption("inverted");
+  await expect(page.locator("#signal-wrong")).toHaveText("64 / 64");
+  expect(await page.locator("#signal-received-path").getAttribute("d")).toBe(
+    received,
+  );
+  await page.locator("#signal-mode").selectOption("detuned");
+  await expect(page.locator("#signal-unknown")).toHaveText("64 / 64");
+  await page.locator("#signal-mode").selectOption("matched");
+  await page.locator("#signal-connected").uncheck();
+  await expect(page.locator("#signal-unknown")).toHaveText("64 / 64");
+  expect(
+    await page.locator("#signal-received-path").getAttribute("d"),
+  ).not.toBe(received);
+  await page.locator("#signal-connected").check();
+  await page.locator("#signal-input button").first().click();
+  expect(await page.locator("#signal-sent-path").getAttribute("d")).not.toBe(
+    sent,
+  );
+  await expect(page.locator("#signal-correct")).toHaveText("64 / 64");
+  await page.locator("#signal-noise").fill("4");
+  expect(
+    await page.locator("#signal-received-path").getAttribute("d"),
+  ).not.toBe(await page.locator("#signal-sent-path").getAttribute("d"));
+  await page.locator("#signal-pattern").selectOption("pulse");
+  await expect(page.locator("#signal-results-table tr")).toHaveCount(12);
+  await page.screenshot({
+    path: info.outputPath("signal-desktop.png"),
+    fullPage: true,
+  });
+  for (const width of [390, 320]) {
+    await page.setViewportSize({ width, height: 900 });
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+  }
+  await page.screenshot({
+    path: info.outputPath("signal-mobile.png"),
+    fullPage: true,
+  });
+  expect(errors).toEqual([]);
+});
 test("commands, timeline, workloads, corruption and repair are connected to model state", async ({
   page,
 }, info) => {
@@ -104,7 +158,8 @@ test("commands, timeline, workloads, corruption and repair are connected to mode
   ).toBe(true);
   // Header navigation must reflow when a platform uses wider system glyphs.
   await page.addStyleTag({
-    content: ".site-header { font-family: monospace } .site-header nav a { font-size: 14px }",
+    content:
+      ".site-header { font-family: monospace } .site-header nav a { font-size: 14px }",
   });
   expect(
     await page.evaluate(

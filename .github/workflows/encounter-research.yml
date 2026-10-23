@@ -23,6 +23,8 @@ jobs:
         run: |
           node --test branches/encounter-systems/model.test.mjs branches/encounter-systems/geometry.test.mjs
           node branches/encounter-systems/research.mjs --check
+          node --test branches/encounter-systems/signal-model.test.mjs
+          node branches/encounter-systems/signal-research.mjs --check
       - name: Install locked browser test tooling
         run: npm ci --prefix branches/encounter-systems --ignore-scripts --no-audit --no-fund
       - name: Install test browser

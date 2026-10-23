@@ -1,12 +1,70 @@
 {
- "schema":"halveth.encounter-knowledge.v1",
- "learningMode":"VERSIONED_EXPERIMENTS_AND_REGRESSION_TESTS",
- "modelWeightTraining":false,
- "records":[
-  {"id":"K-001","question":"Can help change scheduling without changing the result?","answer":"Both workloads finish with identical reference bytes; partner execution changes model completion ticks.","evidence":["model.test.mjs","results.json"],"scope":"DECLARED_SCHEDULER_MODEL_ONLY","application":"Render or task queues; a real distributed adapter needs new tests."},
-  {"id":"K-002","question":"Does revocation erase an already received copy?","answer":"The existing copy remains; revocation applies to future delivery.","evidence":["model.test.mjs"],"scope":"SYNTHETIC_IN_MEMORY_COPY","application":"Explain data retention and distinguish withdrawal from deletion."},
-  {"id":"K-003","question":"Can a new permission revive an old transfer?","answer":"Grant epochs bind each transfer to its original permission. A later grant does not validate an earlier withdrawn transfer.","evidence":["RESEARCH_PLAN.json","model.test.mjs","results.json"],"scope":"LOCAL_GRANT_EPOCH_MODEL","application":"Design async tool or job interfaces; production enforcement remains separate."},
-  {"id":"K-004","question":"How do we distinguish a picture of a failure from a computed failure?","answer":"Compare stored image bytes before writing, after writing and after repair.","evidence":["results.json"],"scope":"EXACT_LOCAL_IMAGE_BYTES","application":"Make demonstrations inspectable instead of relying on an animation label."},
-  {"id":"K-005","question":"What does the GitHub workflow learn?","answer":"It checks an expanding, reviewed set of source-bound cases and deterministic results. It neither trains an AI nor proves external system behavior.","evidence":[".github/workflows/encounter-research.yml (repository root)","research.mjs"],"scope":"CI_REGRESSION_MEMORY","application":"Require new mechanisms and regressions to add a reproducible case."}
- ]
+  "schema": "halveth.encounter-knowledge.v1",
+  "learningMode": "VERSIONED_EXPERIMENTS_AND_REGRESSION_TESTS",
+  "modelWeightTraining": false,
+  "records": [
+    {
+      "id": "K-001",
+      "question": "Can help change scheduling without changing the result?",
+      "answer": "Both workloads finish with identical reference bytes; partner execution changes model completion ticks.",
+      "evidence": ["model.test.mjs", "results.json"],
+      "scope": "DECLARED_SCHEDULER_MODEL_ONLY",
+      "application": "Render or task queues; a real distributed adapter needs new tests."
+    },
+    {
+      "id": "K-002",
+      "question": "Does revocation erase an already received copy?",
+      "answer": "The existing copy remains; revocation applies to future delivery.",
+      "evidence": ["model.test.mjs"],
+      "scope": "SYNTHETIC_IN_MEMORY_COPY",
+      "application": "Explain data retention and distinguish withdrawal from deletion."
+    },
+    {
+      "id": "K-003",
+      "question": "Can a new permission revive an old transfer?",
+      "answer": "Grant epochs bind each transfer to its original permission. A later grant does not validate an earlier withdrawn transfer.",
+      "evidence": ["RESEARCH_PLAN.json", "model.test.mjs", "results.json"],
+      "scope": "LOCAL_GRANT_EPOCH_MODEL",
+      "application": "Design async tool or job interfaces; production enforcement remains separate."
+    },
+    {
+      "id": "K-004",
+      "question": "How do we distinguish a picture of a failure from a computed failure?",
+      "answer": "Compare stored image bytes before writing, after writing and after repair.",
+      "evidence": ["results.json"],
+      "scope": "EXACT_LOCAL_IMAGE_BYTES",
+      "application": "Make demonstrations inspectable instead of relying on an animation label."
+    },
+    {
+      "id": "K-005",
+      "question": "What does the GitHub workflow learn?",
+      "answer": "It checks an expanding, reviewed set of source-bound cases and deterministic results. It neither trains an AI nor proves external system behavior.",
+      "evidence": [
+        ".github/workflows/encounter-research.yml (repository root)",
+        "research.mjs"
+      ],
+      "scope": "CI_REGRESSION_MEMORY",
+      "application": "Require new mechanisms and regressions to add a reproducible case."
+    },
+    {
+      "id": "K-006",
+      "question": "Does a definite decoder output guarantee correct information?",
+      "answer": "The inverted mapping decides all 64 bits but disagrees with every source bit in the noiseless cases.",
+      "evidence": [
+        "SIGNAL_PLAN.json",
+        "signal-model.test.mjs",
+        "signal-results.json"
+      ],
+      "scope": "DECLARED_DISCRETE_TIME_SIGNAL_MODEL",
+      "application": "Test decoder conventions and source oracles separately."
+    },
+    {
+      "id": "K-007",
+      "question": "How is insufficient signal evidence represented?",
+      "answer": "Values below the declared correlation threshold remain null. They are neither guessed nor silently filled with zero.",
+      "evidence": ["signal-model.mjs", "signal-results.json"],
+      "scope": "EXPLICIT_THRESHOLD_MODEL_ONLY",
+      "application": "Preserve unknown decisions instead of presenting an invented reconstruction."
+    }
+  ]
 }
