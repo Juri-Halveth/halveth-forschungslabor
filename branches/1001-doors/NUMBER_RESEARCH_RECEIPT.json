@@ -1,0 +1,358 @@
+{
+  "schema": "halveth.number-research-receipt.v1",
+  "version": "1.0.0",
+  "recordedAt": "2026-10-23T15:41:15.600Z",
+  "dataClass": "PUBLIC",
+  "sourceObservationWindow": {
+    "start": "2026-10-23T15:23:42Z",
+    "end": "2026-10-23T15:41:15.600Z",
+    "individualSourceExactReadTimes": "UNKNOWN",
+    "clock": "LOCAL_TOOL_UTC_OBSERVATION_WINDOW",
+    "coverage": "Selected search and fetched passages, not whole websites or all linked literature"
+  },
+  "parentCommit": "3383a2265e69a706cd299dbaf3ccc82382ddb19b",
+  "projectAttribution": "Juri Halveth / HALVETH; research synthesis and software developed with AI assistance",
+  "sourceAttribution": "Historical texts, scientific results and institutional definitions retain their named source authors.",
+  "coverage": {
+    "selectedNumbers": [
+      3,
+      6,
+      28,
+      55,
+      64,
+      137,
+      666
+    ],
+    "range": [
+      0,
+      1000
+    ],
+    "selectedCount": 7,
+    "otherNumberResearch": "OPEN_NOT_COVERED_BY_THIS_REVIEW",
+    "selectionRule": "User-requested 666, binary patterns and ancient writing, plus explicit mathematical and scientific counterparts; not a random sample",
+    "fullTextLimit": "Douady-Couder 1992: original research abstract only"
+  },
+  "sourceReferences": [
+    {
+      "id": "rosetta",
+      "title": "British Museum · Rosetta-Stein, 196 v. Chr.",
+      "url": "https://www.britishmuseum.org/blog/everything-you-ever-wanted-know-about-rosetta-stone",
+      "kind": "HOLDING_INSTITUTION_OBJECT_DESCRIPTION",
+      "referenceDigest": "f9434489222feb246628e4da3747a17d6ece7c833db3469e5f6a90b36914fb3e",
+      "digestScope": "URL_TITLE_AND_KIND_ONLY_NOT_REMOTE_CONTENT"
+    },
+    {
+      "id": "euclid",
+      "title": "Euklid · Elemente IX, Proposition 36",
+      "url": "https://mathcs.clarku.edu/~djoyce/elements/bookIX/propIX36.html",
+      "kind": "PRIMARY_TEXT_TRANSLATION",
+      "referenceDigest": "688011a64e16c092fd5b4424a9636a9c902ece1c2b1511ba60ce3f8cd9640958",
+      "digestScope": "URL_TITLE_AND_KIND_ONLY_NOT_REMOTE_CONTENT"
+    },
+    {
+      "id": "carbon",
+      "title": "IUPAC Gold Book · Kohlenstoff",
+      "url": "https://goldbook.iupac.org/terms/view/C00821",
+      "kind": "OFFICIAL_CHEMICAL_DEFINITION",
+      "referenceDigest": "e15cea355c6e82558a6d9c0a56360d80e691578f6daa3f292c15bd4c30594700",
+      "digestScope": "URL_TITLE_AND_KIND_ONLY_NOT_REMOTE_CONTENT"
+    },
+    {
+      "id": "atomicNumber",
+      "title": "Royal Society of Chemistry · Ordnungszahl und Kohlenstoff",
+      "url": "https://periodic-table.rsc.org/element/6/carbon",
+      "kind": "CHEMICAL_SOCIETY_ELEMENT_REFERENCE",
+      "referenceDigest": "aa7c73db01f90a09ffcca6240d69a98e82d28cc975930ece804055c4465c123e",
+      "digestScope": "URL_TITLE_AND_KIND_ONLY_NOT_REMOTE_CONTENT"
+    },
+    {
+      "id": "benzene",
+      "title": "NIST WebBook · Benzol, C6H6",
+      "url": "https://webbook.nist.gov/cgi/cbook.cgi?ID=71-43-2",
+      "kind": "OFFICIAL_CHEMICAL_REFERENCE",
+      "referenceDigest": "8f698aef837d4978fad2a689d8d7b334fd40531180e0360e3a67e095c58ebaf4",
+      "digestScope": "URL_TITLE_AND_KIND_ONLY_NOT_REMOTE_CONTENT"
+    },
+    {
+      "id": "sunflower",
+      "title": "Swinton, Ochu et al. 2016 · 657 Sonnenblumen",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4892450/",
+      "kind": "ORIGINAL_EMPIRICAL_RESEARCH",
+      "referenceDigest": "4b32184ea00f2eb2cec01b24364c5b5785927321f9bbe26e4449fda02abc46e8",
+      "digestScope": "URL_TITLE_AND_KIND_ONLY_NOT_REMOTE_CONTENT"
+    },
+    {
+      "id": "growth",
+      "title": "Douady & Couder 1992 · Selbstorganisation der Phyllotaxis",
+      "url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.68.2098",
+      "kind": "ORIGINAL_RESEARCH_ABSTRACT",
+      "referenceDigest": "9cf901fe417e6ed26fd86e8fecf1ea9c85f4714b7400ad83fb1d713459fae945",
+      "digestScope": "URL_TITLE_AND_KIND_ONLY_NOT_REMOTE_CONTENT"
+    },
+    {
+      "id": "genetic",
+      "title": "NCBI · Genetische Codes, Tabelle 1",
+      "url": "https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi#SG1",
+      "kind": "OFFICIAL_BIOLOGICAL_REFERENCE",
+      "referenceDigest": "e1e28dd41341f7a992c0b7185f7bb9d5fc747d32d5961f54da34a5f21b89086d",
+      "digestScope": "URL_TITLE_AND_KIND_ONLY_NOT_REMOTE_CONTENT"
+    },
+    {
+      "id": "leibniz",
+      "title": "Leibniz–Bouvet · Briefedition, Swarthmore College",
+      "url": "https://archive.swarthmore.edu/leibniz-bouvet/",
+      "kind": "PRIMARY_CORRESPONDENCE_EDITION",
+      "referenceDigest": "04bf974eb3aa9b20a99dc05f6f0722007b0adcb0c939783d2f8c69f6ede355ca",
+      "digestScope": "URL_TITLE_AND_KIND_ONLY_NOT_REMOTE_CONTENT"
+    },
+    {
+      "id": "alpha",
+      "title": "CODATA 2022 · Inverse Feinstrukturkonstante",
+      "url": "https://api.codata.org/drum/constants/constants/InverseFineStructureConstant",
+      "kind": "OFFICIAL_MEASURED_REFERENCE_WITH_UNCERTAINTY",
+      "referenceDigest": "ac4b9bca6ed7b530d5c109e889c78191626f30bef7527e4bd34f6ebd605d4b98",
+      "digestScope": "URL_TITLE_AND_KIND_ONLY_NOT_REMOTE_CONTENT"
+    },
+    {
+      "id": "alphaDefinition",
+      "title": "NIST · Bedeutung der Feinstrukturkonstante",
+      "url": "https://physics.nist.gov/cuu/Constants/alpha.html",
+      "kind": "OFFICIAL_DEFINITION_EXPLANATION_ONLY_HISTORICAL_NUMERIC_VALUES_NOT_USED",
+      "referenceDigest": "eaf078c1ece37b48d1068b4fbe20e119c41935b85639a579bf03097a8bfd7da6",
+      "digestScope": "URL_TITLE_AND_KIND_ONLY_NOT_REMOTE_CONTENT"
+    },
+    {
+      "id": "agrippa",
+      "title": "Agrippa · Sonnentafel, englische Ausgabe 1651, S. 246",
+      "url": "https://en.wikisource.org/wiki/Page:Three_Books_of_Occult_Philosophy_(De_Occulta_Philosophia)_(1651).djvu/271",
+      "kind": "PRIMARY_HISTORICAL_TEXT_AND_TABLE",
+      "referenceDigest": "04676b4504eb1660848d1cc33e49ee01fbf1f8c610b23a0dea9176a93815d7fb",
+      "digestScope": "URL_TITLE_AND_KIND_ONLY_NOT_REMOTE_CONTENT"
+    },
+    {
+      "id": "revelation",
+      "title": "Offenbarung 13,18 · Text und Editionsanmerkung",
+      "url": "https://bible.usccb.org/bible/revelation/13",
+      "kind": "PRIMARY_SCRIPTURAL_TEXT_WITH_EDITORIAL_NOTES",
+      "referenceDigest": "ae1d10cd56e3f53e8bf407e5399af1b795454a5fba45c9c0438efef876ee7972",
+      "digestScope": "URL_TITLE_AND_KIND_ONLY_NOT_REMOTE_CONTENT"
+    },
+    {
+      "id": "irenaeus",
+      "title": "Irenäus · Gegen die Häresien V,30",
+      "url": "https://www.newadvent.org/fathers/0103530.htm",
+      "kind": "PRIMARY_TEXT_TRANSLATION",
+      "referenceDigest": "b3aa24e6ecb65f2f168a499397f7f789ae028de5d04ee047e861c6d3c72251eb",
+      "digestScope": "URL_TITLE_AND_KIND_ONLY_NOT_REMOTE_CONTENT"
+    },
+    {
+      "id": "sigils",
+      "title": "Grimorium Verum · Textedition von Joseph H. Peterson",
+      "url": "https://www.esotericarchives.com/solomon/gv.htm",
+      "kind": "PRIMARY_GRIMOIRE_TEXT_WITH_VARIANT_APPARATUS",
+      "referenceDigest": "9b60c7278c4c6cfa19b8a6b7f6d5cc6506afaadc58b783d3d990676218d55e04",
+      "digestScope": "URL_TITLE_AND_KIND_ONLY_NOT_REMOTE_CONTENT"
+    }
+  ],
+  "researchRecords": [
+    {
+      "id": "RESEARCH-0003-V1",
+      "number": 3,
+      "digest": "1042b8dab1cd05553851fff4d52a4c7bd52ab4c256298282192a342554112c5b",
+      "digestScope": "UTF8_JSON_STRINGIFY_OF_RESEARCH_RECORD",
+      "sourceIds": [
+        "rosetta"
+      ]
+    },
+    {
+      "id": "RESEARCH-0006-V1",
+      "number": 6,
+      "digest": "aab62beb18c0de6f893cc764044e6e5e89838e48d013c0e02a63b2cc853eefb7",
+      "digestScope": "UTF8_JSON_STRINGIFY_OF_RESEARCH_RECORD",
+      "sourceIds": [
+        "carbon",
+        "atomicNumber",
+        "benzene"
+      ]
+    },
+    {
+      "id": "RESEARCH-0028-V1",
+      "number": 28,
+      "digest": "4f9683f7204f9c229fbbba7d3c847f9c29faef63f24d70636f53a1d3fcee371b",
+      "digestScope": "UTF8_JSON_STRINGIFY_OF_RESEARCH_RECORD",
+      "sourceIds": [
+        "euclid"
+      ]
+    },
+    {
+      "id": "RESEARCH-0055-V1",
+      "number": 55,
+      "digest": "c920f99af32f06ed4d122453afc4742736c73c7a3c5c1f788ac4001bfe5ac6bd",
+      "digestScope": "UTF8_JSON_STRINGIFY_OF_RESEARCH_RECORD",
+      "sourceIds": [
+        "sunflower",
+        "growth"
+      ]
+    },
+    {
+      "id": "RESEARCH-0064-V1",
+      "number": 64,
+      "digest": "0bb61bc8ccadf7b50a5b25c48ed70b12f86350f77d90346aebab089e4c14823d",
+      "digestScope": "UTF8_JSON_STRINGIFY_OF_RESEARCH_RECORD",
+      "sourceIds": [
+        "genetic",
+        "leibniz"
+      ]
+    },
+    {
+      "id": "RESEARCH-0137-V1",
+      "number": 137,
+      "digest": "3e1b79e2f83d4b9e27081d4f2f4f1df35b93df26b5c5a47b05480b3c330bd7e9",
+      "digestScope": "UTF8_JSON_STRINGIFY_OF_RESEARCH_RECORD",
+      "sourceIds": [
+        "alpha",
+        "alphaDefinition"
+      ]
+    },
+    {
+      "id": "RESEARCH-0666-V1",
+      "number": 666,
+      "digest": "4bcbd60c2860cfc6be073688c0a102816bb91c0209c4075fc0ecbbd5528aee30",
+      "digestScope": "UTF8_JSON_STRINGIFY_OF_RESEARCH_RECORD",
+      "sourceIds": [
+        "agrippa",
+        "revelation",
+        "irenaeus",
+        "sigils"
+      ]
+    }
+  ],
+  "observedLocalComputation": {
+    "sunSquare": {
+      "n": 6,
+      "normal": true,
+      "rows": [
+        111,
+        111,
+        111,
+        111,
+        111,
+        111
+      ],
+      "columns": [
+        111,
+        111,
+        111,
+        111,
+        111,
+        111
+      ],
+      "diagonals": [
+        111,
+        111
+      ],
+      "total": 666,
+      "expected": 111,
+      "magic": true
+    },
+    "goldenAngleDegrees": 137.50776405003785,
+    "encodingContract": {
+      "alphabet": "ACGT",
+      "mapping": {
+        "A": "00",
+        "C": "01",
+        "G": "10",
+        "T": "11"
+      },
+      "tripletCount": 64,
+      "fixedWidthBits": 6,
+      "representationOfInteger64": "1000000",
+      "hexagramLineOrder": "TOP_TO_BOTTOM_DEMO_NOT_TRADITIONAL_NUMBERING"
+    },
+    "claimCeiling": "LOCAL_ARITHMETIC_AND_SOURCE_BOUND_HISTORICAL_OR_SCIENTIFIC_REFERENCES"
+  },
+  "preservedBaseFiles": [
+    {
+      "path": "branches/1001-doors/registry.json",
+      "sha256": "8f7b7013809dca3fc436dfbf49b8a5c2cd173c139e7d9c29cef2992e9814c7e5",
+      "baseCommit": "3383a2265e69a706cd299dbaf3ccc82382ddb19b",
+      "comparison": "EXACT_BYTES_EQUAL"
+    },
+    {
+      "path": "branches/1001-doors/relations.json",
+      "sha256": "033facdd26125b4aa24ed5d352068e311cb8cab596af265d73bb6610fafc643c",
+      "baseCommit": "3383a2265e69a706cd299dbaf3ccc82382ddb19b",
+      "comparison": "EXACT_BYTES_EQUAL"
+    },
+    {
+      "path": "branches/1001-doors/SOURCE_RECEIPT.json",
+      "sha256": "ca5e7b4bcdba9ee1809a0c508221f13735d5e72678926cd7ac697396146bffc5",
+      "baseCommit": "3383a2265e69a706cd299dbaf3ccc82382ddb19b",
+      "comparison": "EXACT_BYTES_EQUAL"
+    },
+    {
+      "path": "branches/1001-doors/model.mjs",
+      "sha256": "da4ab1cb7cb5758c3296b78526d8d82180147163b80a6c17808bcf2add9b8ab7",
+      "baseCommit": "3383a2265e69a706cd299dbaf3ccc82382ddb19b",
+      "comparison": "EXACT_BYTES_EQUAL"
+    }
+  ],
+  "files": [
+    {
+      "path": "branches/1001-doors/number-research.mjs",
+      "bytes": 18090,
+      "sha256": "aa98743a77f68aff5e28b06296b2f3d367794ea7964b593ff429c6ffcc0cf8a6"
+    },
+    {
+      "path": "branches/1001-doors/number-research-view.mjs",
+      "bytes": 11419,
+      "sha256": "5d3d93ae9dd845e28de00f28103f9560739e883d09e99a19e2c9036d969399e2"
+    },
+    {
+      "path": "branches/1001-doors/number-research.test.mjs",
+      "bytes": 3922,
+      "sha256": "d6050d9ef8f0194aed3d7876faaa5cba8f24d93006286208972ed04698ccbf90"
+    },
+    {
+      "path": "branches/1001-doors/NUMBER_RESEARCH.md",
+      "bytes": 11318,
+      "sha256": "159f5baaf0d03d046b5063f27213c1b918fd80f3838dbc1d4e3256ab3cc056c8"
+    },
+    {
+      "path": "branches/1001-doors/app.mjs",
+      "bytes": 17444,
+      "sha256": "fd7e6e895544c143349adc783b9a461d21fe875cc4177760c79bffc753112319"
+    },
+    {
+      "path": "branches/1001-doors/index.html",
+      "bytes": 16594,
+      "sha256": "8ca3bd709eee62aa6a7b5748087c91db19cf273e7b83582efb6c769698975191"
+    },
+    {
+      "path": "branches/1001-doors/style.css",
+      "bytes": 15724,
+      "sha256": "15c83089a3544955f2a0ec4c6c6e16d95235d5b24f5400cdf743899727a5f9b3"
+    },
+    {
+      "path": "branches/1001-doors/README.md",
+      "bytes": 8665,
+      "sha256": "9b43e2bba5701c11a09f2cdb12413698777ca4c903f1144825f5f5d8ab549a67"
+    }
+  ],
+  "licenses": {
+    "code": "MIT",
+    "originalComputedData": "CC0-1.0",
+    "originalExplanations": "CC-BY-4.0",
+    "thirdPartySources": "Their respective licenses; linked and paraphrased, no wholesale article copies."
+  },
+  "navigation": {
+    "mode": "CURATED_EXPLORATION_LINKS_NOT_CAUSAL_ASSERTIONS",
+    "method": "Frozen status-quo entity 1.0.0; local navigation receipt contains eight axes and six material-candidate comparisons."
+  },
+  "state": "FINITE_SNAPSHOT_WITH_REOPEN_TRIGGER",
+  "reopenTriggers": [
+    "A further primary source or a changed code/CODATA reference",
+    "A distinguishing measurement for a proposed external physical effect",
+    "A user-selected additional integer or a failing local counterexample"
+  ]
+}
