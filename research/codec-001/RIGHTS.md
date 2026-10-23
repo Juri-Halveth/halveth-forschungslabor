@@ -1,12 +1,12 @@
 # CODEC-001 · Beitrag, Lizenz und Zeitanker
 
-**Zuschreibung dieser Fassung: Juri Halveth / HALVETH — Forschungsimpuls, Fragestellung und Projektleitung. Ausarbeitung mit KI-Unterstützung.** Stand: 24. Oktober 2026.
+**Zuschreibung dieser Fassung: Juri / HALVETH — Forschungsimpuls, Fragestellung und Projektleitung. Ausarbeitung mit KI-Unterstützung.** Stand: 24. Oktober 2026.
 
 Die Zuschreibung dokumentiert den erklärten Beitrag. Sie behauptet keine unabhängige Prüfung der Urheberschaft sämtlicher Formulierungen oder der Schutzfähigkeit einzelner KI-unterstützter Bestandteile.
 
 ## Anwendbare Freigaben
 
-- Neue Markdown-Erläuterungen: [CC BY 4.0](../../LICENSE-CONTENT.md). Namensnennung und weitere Lizenzbedingungen richten sich nach dieser Freigabe. Die empfohlene Zuschreibung lautet „Juri Halveth / HALVETH; Ausarbeitung mit KI-Unterstützung“.
+- Neue Markdown-Erläuterungen: [CC BY 4.0](../../LICENSE-CONTENT.md). Namensnennung und weitere Lizenzbedingungen richten sich nach dieser Freigabe. Die empfohlene Zuschreibung lautet „Juri / HALVETH; Ausarbeitung mit KI-Unterstützung“.
 - `verify.mjs` und zugehörige Tests: [MIT](../../LICENSE). Die bestehenden Copyright- und Lizenzhinweise sind zu erhalten, soweit die Lizenz dies verlangt.
 - `SOURCES.json` und `ANCHOR.json`: [CC0 1.0](../../LICENSE-DATA.md). Die empfohlene Quellenangabe für die Metadaten ist keine zusätzliche CC0-Bedingung.
 - Verlinkte Normen, Studien und Gesetze: ihre jeweiligen Rechte und Bedingungen. Ihre Inhalte werden hier nicht neu lizenziert.

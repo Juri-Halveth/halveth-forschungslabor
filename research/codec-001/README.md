@@ -1,8 +1,13 @@
 # CODEC-001 · Darstellung, Gedächtnis und vermittelte Wirkung
 
-**Forschungsrichtung und Projektleitung: Juri Halveth / HALVETH. Ausarbeitung mit KI-Unterstützung.**
+**Forschungsrichtung und Projektleitung: Juri. Projekt: HALVETH. Ausarbeitung mit KI-Unterstützung.**
 
-Fassung 1.0.0 · 24. Oktober 2026 · **Quellengebundener Forschungsentwurf**
+Fassung 1.0.1 · 24. Oktober 2026 · **Quellengebundener Forschungsentwurf**
+
+Diese Fassung korrigiert die Namenszuordnung: Person **Juri**, Projekt
+**HALVETH**. Der Zeitanker verweist auf die unveränderte vorherige Revision
+und bindet die korrigierten Dateien neu. Forschungsfragen und Lizenzfreigaben
+bleiben erhalten. [Aktuelle Zuschreibung](../../IDENTITY.md).
 
 Wie verändert sich eine Information auf ihrem Weg durch Encoder, gespeicherte Referenzen, Parser und Empfänger? Und welche andere Art von Veränderung entsteht, wenn ein physisches Medium Kräfte zwischen Objekten vermittelt?
 
@@ -57,9 +62,9 @@ Ein positiver Prüflauf belegt die Übereinstimmung mit dem vorliegenden Manifes
 
 ## Beitrag, Nutzung und Zitation
 
-Juri Halveth initiiert die Forschungsrichtung und stellt die Fragen sowie die Verbindungen zwischen Zeit, Darstellung und vermittelter Wirkung. Auswahl, Quellenabgleich und Formulierung dieser Fassung erfolgten mit KI-Unterstützung. Diese Zuschreibung ist transparent dokumentiert; sie ist keine unabhängige Feststellung des Umfangs urheberrechtlich geschützter menschlicher Beiträge.
+Juri initiiert die Forschungsrichtung und stellt die Fragen sowie die Verbindungen zwischen Zeit, Darstellung und vermittelter Wirkung. Auswahl, Quellenabgleich und Formulierung dieser Fassung erfolgten mit KI-Unterstützung. Diese Zuschreibung ist transparent dokumentiert; sie ist keine unabhängige Feststellung des Umfangs urheberrechtlich geschützter menschlicher Beiträge.
 
-Zitiervorschlag: **Juri Halveth / HALVETH (2026): CODEC-001 — Darstellung, Gedächtnis und vermittelte Wirkung. Version 1.0.0. HALVETH Forschungslabor.** Ergänze den tatsächlich verwendeten vollständigen Git-Commit und diesen Dokumentpfad.
+Zitiervorschlag: **Juri / HALVETH (2026): CODEC-001 — Darstellung, Gedächtnis und vermittelte Wirkung. Version 1.0.1. HALVETH Forschungslabor.** Ergänze den tatsächlich verwendeten vollständigen Git-Commit und diesen Dokumentpfad.
 
 Neue Erläuterungen: **CC BY 4.0**, mit Namensnennung gemäß Lizenz. Prüfer und Tests: **MIT**. JSON-Metadaten: **CC0 1.0**. Die [Rechtezuordnung](RIGHTS.md) erhält bestehende Freigaben und grenzt Vorarbeiten ab.
 

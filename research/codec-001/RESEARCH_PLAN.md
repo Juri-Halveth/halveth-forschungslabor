@@ -1,6 +1,6 @@
 # CODEC-001 · Forschungsplan 1.0.0
 
-Projektleitung und Forschungsrichtung: **Juri Halveth / HALVETH**. Ausarbeitung mit KI-Unterstützung. Lizenz: CC BY 4.0.
+Projektleitung und Forschungsrichtung: **Juri / HALVETH**. Ausarbeitung mit KI-Unterstützung. Lizenz: CC BY 4.0.
 
 Status am 24. Oktober 2026: **Geplante Untersuchungen; keine Ergebnisse dieser Versuche materialisiert.** Der gleichzeitig vorhandene Integritätsprüfer prüft nur das Veröffentlichungsmanifest.
 

@@ -20,5 +20,5 @@ hier ausgewählten Dateien. Das Originalregister bleibt im privaten Quellarchiv.
 `SOURCE_PROVENANCE.json` bezeichnet exakte Übernahmen und Bearbeitungen einzeln.
 Frühere wirksame Freigaben bleiben erhalten; [Rechteklarstellung](RIGHTS-RESERVATION.md).
 
-Projektleitung und Zusammenstellung: Juri Halveth / HALVETH. Entwicklung mit
+Projektleitung und Zusammenstellung: Juri / HALVETH. Entwicklung mit
 KI-Unterstützung. Fremde Beiträge behalten ihre Attribution und Bedingungen.

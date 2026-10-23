@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Copyright (c) 2026 Juri Halveth. Developed with AI assistance.
+// Copyright (c) 2026 Juri. Developed with AI assistance.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -20,6 +20,14 @@ test('one changed byte is rejected without altering the source file', () => {
     if (name === 'RIGHTS.md') bytes[0] ^= 1;
     return bytes;
   }), /Payload differs: RIGHTS.md/);
+});
+
+test('the corrected attribution and predecessor binding are required before reads', () => {
+  let reads = 0;
+  for (const [key, value] of [['projectLead', 'HALVETH'], ['projectName', 'Juri'], ['supersedes', null]]) {
+    assert.throws(() => verifyAnchor({ ...anchor, [key]: value }, () => { reads++; }), /metadata/);
+  }
+  assert.equal(reads, 0);
 });
 
 test('an added or substituted path is rejected before file access', () => {

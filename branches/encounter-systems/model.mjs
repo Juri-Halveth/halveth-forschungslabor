@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Juri Halveth / HALVETH. Developed with AI assistance.
+// Juri / HALVETH. Developed with AI assistance.
 
 export const VERSION = "1.0.0";
 function validateOptions(input) {
