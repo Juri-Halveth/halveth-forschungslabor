@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="HALVETH Encounter Systems: ausführbares Forschungslabor für Kooperation, Datenkopien, Freigabeversionen und reproduzierbare Zustandsvergleiche."
+    />
+    <meta name="color-scheme" content="dark" />
+    <title>Encounter Systems · HALVETH Forschungslabor</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="view.mjs"></script>
+    <script type="module" src="dashboard.mjs"></script>
+  </head>
+  <body>
+    <a class="skip" href="#experiment">Zum Experiment</a>
+    <header class="site-header">
+      <a class="brand" href="#">HALVETH<span>RESEARCH / 01</span></a>
+      <nav aria-label="Seitennavigation">
+        <a href="#experiment">Experiment</a><a href="#results">Ergebnisse</a
+        ><a href="#applications">Anwendung</a
+        ><a href="README.md">Forschungsnotiz</a>
+      </nav>
+      <a
+        class="source-link"
+        href="https://github.com/Juri-Halveth/halveth-forschungslabor/tree/codex/encounter-systems-research-20261023/branches/encounter-systems"
+        >Quellcode ↗</a
+      >
+    </header>
+    <main>
+      <section class="hero">
+        <div class="eyebrow">ENCOUNTER SYSTEMS · VERSION 1.0</div>
+        <h1>Eigenständig arbeiten.<br /><em>Gemeinsam etwas schaffen.</em></h1>
+        <p>
+          Ein System baut ein Bild. Andere dürfen mitarbeiten, vereinbarte Teile
+          übernehmen oder an einer Grenze scheitern. Jede sichtbare Veränderung
+          folgt berechneten Zuständen und tatsächlichen Bildbytes.
+        </p>
+        <div class="hero-foot">
+          <a class="btn btn-primary" href="#experiment">Begegnung starten ↓</a
+          ><span>3D-Raum · Zeitspur · Zustandsvergleich</span>
+        </div>
+      </section>
+      <section id="experiment" class="experiment-section">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">01 / AUSFÜHRBARES MODELL</div>
+            <h2>Was verändert eine Begegnung?</h2>
+          </div>
+          <span class="scope-tag"
+            >Lokal · synthetisch · ohne externe Dienste</span
+          >
+        </div>
+        <div id="halveth-encounter-work" class="lab">
+          <div class="lab-toolbar">
+            <label
+              >Arbeitsauftrag<select id="ew-task">
+                <option value="fractal">Fraktalbild berechnen</option>
+                <option value="wave">Wellentextur berechnen</option>
+              </select></label
+            >
+            <div class="ew-actions">
+              <button class="btn btn-primary" id="ew-partner" type="button">
+                Partner mitbauen lassen</button
+              ><button class="btn" id="ew-visit" type="button">
+                3 Kacheln mitnehmen</button
+              ><button class="btn" id="ew-write" type="button">
+                Überschreiben versuchen
+              </button>
+            </div>
+          </div>
+          <div class="ew-settings">
+            <label
+              ><input type="checkbox" id="ew-consent" checked /> Mitarbeit &amp;
+              Kopien erlauben</label
+            ><label
+              ><input type="checkbox" id="ew-guard" checked /> Fremdes
+              Überschreiben sperren</label
+            ><span id="grant-epoch" class="scope-tag">Freigabe 0</span>
+          </div>
+          <div class="ew-values">
+            <span>Fertige Kacheln <output id="ew-done">0 / 48</output></span
+            ><span>Partnerbeitrag <output id="ew-contribution">0</output></span
+            ><span>Besucherkopien <output id="ew-copies">0 / 3</output></span
+            ><span>Modellzeit <output id="model-time">0,0 s</output></span>
+          </div>
+          <canvas
+            id="ew-canvas"
+            role="img"
+            aria-label="Dreidimensionale Darstellung eines Bildauftrags mit Partner, Besucher und Schreibversuch. Die dargestellten Kacheln enthalten die berechneten Bildwerte. Ziehen dreht die Ansicht."
+            >Bildaufträge werden berechnet, geprüfte Partnerkacheln ergänzt und
+            erlaubte Kopien sichtbar übertragen.</canvas
+          >
+          <div class="lab-footer">
+            <div class="ew-actions">
+              <button class="btn" id="ew-play" type="button">Pause</button
+              ><button class="btn btn-ghost" id="ew-reset" type="button">
+                Neu beginnen</button
+              ><button
+                class="btn"
+                id="ew-view"
+                type="button"
+                aria-pressed="true"
+              >
+                3D</button
+              ><span id="ew-repair-slot" hidden
+                ><button class="btn" id="ew-repair" type="button">
+                  Bild reparieren
+                </button></span
+              >
+            </div>
+            <span class="muted">Ziehen: Raum drehen</span>
+          </div>
+          <div id="ew-event" class="ew-event" aria-live="polite"></div>
+          <div class="timeline">
+            <div>
+              <label for="history"
+                >Zeitspur <output id="history-label">Gegenwart</output></label
+              ><button class="btn btn-ghost" id="history-live" type="button">
+                Zur Gegenwart
+              </button>
+            </div>
+            <input
+              type="range"
+              id="history"
+              min="0"
+              max="0"
+              value="0"
+              step="1"
+              aria-label="Gespeicherten Modellzustand ansehen"
+            /><span class="muted small"
+              >Vergangene Zustände ansehen. Die laufende Gegenwart bleibt
+              erhalten.</span
+            >
+          </div>
+        </div>
+        <div class="under-lab">
+          <div>
+            <h3>Ereignisspur</h3>
+            <ol id="event-trace" aria-label="Letzte Modellereignisse"></ol>
+          </div>
+          <div class="reading">
+            <h3>Wie das Bild zu lesen ist</h3>
+            <p>
+              In der Mitte liegt der Auftrag. Eine reisende Kachel zeigt genau
+              die gespeicherten Pixelwerte. Kopien bleiben beim Besucher. Die
+              Freigabe wird bei der Ankunft erneut geprüft.
+            </p>
+            <p>
+              Raumkoordinaten, Modellzeit und alternative Zustände sind
+              getrennte Ansichten. Sie sind keine Behauptung zusätzlicher
+              physischer Dimensionen.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="results">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">02 / REPRODUZIERBARE ERGEBNISSE</div>
+            <h2>Erst vergleichen. Dann behaupten.</h2>
+          </div>
+          <a href="results.json">Messdaten ↗</a>
+        </div>
+        <div class="result-grid">
+          <article>
+            <span>Vergleichsläufe</span><strong id="result-runs">—</strong>
+            <p>
+              Zwei Arbeitsaufträge, drei Lieferzeiten, jeweils allein und mit
+              Partner.
+            </p>
+          </article>
+          <article>
+            <span>Ausgabeprüfung</span><strong>12.288 Bytes</strong>
+            <p>
+              Jeder vollständige Lauf wird mit einem separat geschriebenen
+              Bildoracle verglichen.
+            </p>
+          </article>
+          <article>
+            <span>Neue Regressionsregel</span><strong>Freigabeversion</strong>
+            <p>
+              Eine neue Freigabe belebt eine alte, entzogene Lieferung nicht
+              wieder.
+            </p>
+          </article>
+        </div>
+        <div class="comparison">
+          <h3>Gleiche Ausgabe, anderer Ablauf</h3>
+          <p>
+            Standardfall im Modell. Die Zeiten zählen simulierte Arbeit und
+            Lieferverzögerung; sie messen keinen Hardware-Speedup.
+          </p>
+          <div id="comparison-bars"></div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Arbeitsauftrag</th>
+                  <th>Allein</th>
+                  <th>Mit Partner</th>
+                  <th>Ausgabe</th>
+                </tr>
+              </thead>
+              <tbody id="comparison-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      <section id="applications">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">03 / WOFÜR DAS NÜTZLICH SEIN KANN</div>
+            <h2>Ein kleiner Kern. Konkrete Anschlussstellen.</h2>
+          </div>
+        </div>
+        <div class="application-grid">
+          <article>
+            <span class="index">A</span>
+            <h3>Renderaufträge verteilen</h3>
+            <p>
+              Ein Partner bearbeitet abgegrenzte Kacheln. Ergebnisse werden
+              geprüft; abgebrochene Aufträge kehren in die Warteschlange zurück.
+            </p>
+            <small
+              >Nächster Adapter: echte Worker oder Renderprozesse und ein
+              Leistungstest.</small
+            >
+          </article>
+          <article>
+            <span class="index">B</span>
+            <h3>KI-Werkzeuge begrenzen</h3>
+            <p>
+              Ein Agent erhält Zugriff auf benannte Aufgaben und Daten. Eine
+              Zustimmungsänderung beendet die dazugehörige Freigabeversion.
+            </p>
+            <small
+              >Nächster Adapter: getrennte Identitäten und serverseitige
+              Durchsetzung.</small
+            >
+          </article>
+          <article>
+            <span class="index">C</span>
+            <h3>Datenräume verständlich teilen</h3>
+            <p>
+              Ein Gast übernimmt vereinbarte Kopien. Herkunft, Übernahme und
+              späterer Widerruf bleiben als verschiedene Zustände sichtbar.
+            </p>
+            <small
+              >Nächster Adapter: reale Datenarten, Aufbewahrung und
+              Exportvertrag.</small
+            >
+          </article>
+        </div>
+      </section>
+      <section class="research-note">
+        <div>
+          <div class="eyebrow">04 / EINORDNUNG</div>
+          <h2>Forschung, die man nachprüfen kann.</h2>
+        </div>
+        <div>
+          <p>
+            Das Labor verbindet einen deterministischen Arbeitsplaner,
+            Datenkopien, Freigabeversionen und räumliche Beobachtung. Die
+            Bausteine haben etablierte Vorläufer. Der Beitrag hier ist die
+            gemeinsam ausführbare und prüfbare Darstellung.
+          </p>
+          <p>
+            GitHub hält Quellstände, Versuchspläne, Gegenproben und Ergebnisse
+            zusammen. Jeder Änderungsvorschlag kann die Versuche erneut
+            ausführen. Daraus entsteht ein wachsendes Regressionswissen;
+            Modellgewichte werden dabei nicht trainiert.
+          </p>
+          <div class="doc-links">
+            <a href="README.md">Fragestellung &amp; Reproduktion</a
+            ><a href="RESEARCH_PLAN.json">Vorab festgelegte Vorhersagen</a
+            ><a href="KNOWLEDGE.json">Wissensregister</a
+            ><a href="SOURCES.md">Primärquellen</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <span>Juri Halveth / HALVETH · Entwicklung mit KI-Unterstützung</span
+      ><span>Code: MIT · Daten: CC0 · Texte: CC BY 4.0</span
+      ><a href="mailto:security@halveth.de">security@halveth.de</a>
+    </footer>
+  </body>
+</html>

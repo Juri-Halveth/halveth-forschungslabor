@@ -1,0 +1,14 @@
+{
+  "schema": "halveth.source-derivation.v1",
+  "sourceLabel": "accepted local encounter browser prototype",
+  "sourceSha256": "2edafc74fe01b7cd32e1bd0f970ef7c3a4d5bfbecd4f448e9010a009628b2bfa",
+  "sourceBytes": 23014,
+  "derivation": "Extracted deterministic model and canvas view; historical prototype preserved locally. Research additions are separately versioned.",
+  "author": "Juri Halveth / HALVETH",
+  "development": "AI-assisted",
+  "licenses": {
+    "code": "MIT",
+    "data": "CC0-1.0",
+    "documentation": "CC-BY-4.0"
+  }
+}

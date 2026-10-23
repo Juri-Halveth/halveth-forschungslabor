@@ -1,0 +1,43 @@
+name: Encounter systems research
+on:
+  push:
+    paths: ['branches/encounter-systems/**', '.github/workflows/encounter-research.yml']
+  pull_request:
+    paths: ['branches/encounter-systems/**', '.github/workflows/encounter-research.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproduce:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Check model, reference and deterministic results
+        run: |
+          node --test branches/encounter-systems/model.test.mjs branches/encounter-systems/geometry.test.mjs
+          node branches/encounter-systems/research.mjs --check
+      - name: Install locked browser test tooling
+        run: npm ci --prefix branches/encounter-systems --ignore-scripts --no-audit --no-fund
+      - name: Install test browser
+        working-directory: branches/encounter-systems
+        run: npx playwright install --with-deps chromium
+      - name: Check desktop, mobile, controls and historical isolation
+        run: npm run browser --prefix branches/encounter-systems
+      - name: Retain source-bound experiment artifacts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: encounter-research-${{ github.sha }}
+          retention-days: 14
+          path: |
+            branches/encounter-systems/results.json
+            branches/encounter-systems/RESEARCH_PLAN.json
+            branches/encounter-systems/KNOWLEDGE.json
+            branches/encounter-systems/test-results

@@ -1,6 +1,21 @@
 {
-  "branchCount": 11,
+  "branchCount": 12,
   "branches": [
+    {
+      "id": "encounter-systems",
+      "sourceFiles": [
+        "branches/encounter-systems/model.mjs",
+        "branches/encounter-systems/reference.mjs",
+        "branches/encounter-systems/view.mjs",
+        "branches/encounter-systems/dashboard.mjs",
+        "branches/encounter-systems/geometry.mjs"
+      ],
+      "testFiles": [
+        "branches/encounter-systems/model.test.mjs",
+        "branches/encounter-systems/geometry.test.mjs",
+        "branches/encounter-systems/browser.spec.mjs"
+      ]
+    },
     {
       "id": "focus-kernel",
       "sourceFiles": [
