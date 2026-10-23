@@ -1,0 +1,6 @@
+asset_id,php_version,sapi,internet_facing,vendor_backport_ref
+demo-a,8.2.34,FPM,yes,
+demo-b,8.3.36,mod_php,yes,
+demo-c,8.1.34,FPM,unknown,
+demo-d,8.2.29-ubuntu0,FPM,yes,EXAMPLE-ONLY-VENDOR-ADVISORY
+demo-e,,UNKNOWN,unknown,

@@ -23,6 +23,10 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [PHP2Shell – Betreiberhilfe und passive Inventur](branches/php2shell-response/)
+
+Quellengebundener Prüfpfad für die PHP-Sicherheitsmeldungen vom Oktober 2026: aktive Runtime und Patchquelle binden, Worker-Neustart nachweisen, normale Funktionen prüfen und Altaktivität getrennt untersuchen. Die CSV-Hilfe wertet nur vom Betreiber gelieferte Angaben aus.
+
 ### [Drei-Gabel – ein dritter Weg im Konflikt](branches/three-actor-fork/)
 
 Interaktives Drei-Akteure-Modell: C tritt zwischen A und B ein; zwei Reaktionen erzeugen prüfbare Kandidaten statt eines vorweggenommenen Sieges.
