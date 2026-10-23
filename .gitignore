@@ -4,3 +4,4 @@ node_modules/
 *.log
 inventory_local.jsonl
 inventory_summary_local.json
+_encounter-site/
