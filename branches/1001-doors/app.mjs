@@ -10,12 +10,28 @@ import {
   sha256,
 } from "./model.mjs";
 import {
-  RESEARCH_CASES,
-  RESEARCH_SOURCES,
-  RESEARCH_VERSION,
-  researchFor,
+  RESEARCH_CASES as BASE_RESEARCH_CASES,
+  RESEARCH_SOURCES as BASE_RESEARCH_SOURCES,
+  RESEARCH_VERSION as BASE_RESEARCH_VERSION,
+  researchFor as baseResearchFor,
 } from "./number-research.mjs";
 import { renderNumberResearch } from "./number-research-view.mjs";
+import { renderRoleJourney } from "./role-journey-view.mjs";
+import {
+  POWER_CASES,
+  POWER_SOURCES,
+  STRUCTURE_VERSION,
+  powerResearchFor,
+} from "./powers-square.mjs";
+import { renderStructures, renderPowerDetail } from "./powers-square-view.mjs";
+const RESEARCH_CASES = [
+  ...BASE_RESEARCH_CASES,
+  ...POWER_CASES.filter((x) => x.number <= 1000),
+].sort((a, b) => a.number - b.number);
+const RESEARCH_SOURCES = { ...BASE_RESEARCH_SOURCES, ...POWER_SOURCES };
+const RESEARCH_VERSION = `${BASE_RESEARCH_VERSION}+powers-${STRUCTURE_VERSION}`;
+const researchFor = (number) =>
+  baseResearchFor(number) ?? powerResearchFor(number);
 const $ = (id) => document.getElementById(id),
   el = (tag, text, cls) => {
     const e = document.createElement(tag);
@@ -177,7 +193,17 @@ function selectDoor(n, focusDetail = false) {
   $("research-state").textContent =
     `Arithmetik: berechnet. ${d.http ? "HTTP: datierter IANA-Snapshot. " : ""}${research ? "Eigener Quellenpfad und Versuch unten. Weitere Verbindungen bleiben offen." : [27, 33, 555].includes(n) ? "Technische Primärquelle im jeweiligen Laborbereich." : "Historische Einzelrecherche: offen."}${d.design ? (n === 27 ? " Technischer Referenzeintrag." : " Entwurfsmotiv: aus dem gelieferten Register.") : ""}`;
   renderNumberResearch($("number-research"), n);
+  if (powerResearchFor(n))
+    renderPowerDetail($("number-research"), n, openStructures);
+  renderRoleJourney($("number-roles"), n);
   const links = [];
+  const journeyButton = el("button", "Rollenreise öffnen ↘");
+  journeyButton.type = "button";
+  journeyButton.addEventListener("click", () => {
+    $("number-roles").open = true;
+    $("number-roles").scrollIntoView({ block: "start", behavior: "instant" });
+  });
+  links.push(journeyButton);
   for (const value of [n - 1, n + 1])
     if (value >= 0 && value <= 1000) {
       const b = el("button", `${value < n ? "←" : "→"} Tür ${value}`);
@@ -191,7 +217,7 @@ function selectDoor(n, focusDetail = false) {
     b.addEventListener("click", () => showPanel(target));
     links.push(b);
   }
-  if (research) {
+  if (Number.isInteger(research?.nextDoor)) {
     const b = el(
       "button",
       `Weiterer ausgewählter Pfad: ${research.nextDoor} ↗`,
@@ -544,6 +570,18 @@ $("research-jumps").replaceChildren(
     return b;
   }),
 );
+const structures = renderStructures($("structures"));
+function openStructures(number) {
+  structures.selectNumber(number);
+  showPanel("structures");
+  $("structures").scrollIntoView({ block: "start", behavior: "instant" });
+}
+const extraPower = el("button");
+extraPower.type = "button";
+extraPower.append(el("strong", "1024"), el("span", "Zusatzpfad · 10 Bits"));
+extraPower.addEventListener("click", () => openStructures(1024));
+$("research-jumps").append(extraPower);
 selectDoor(selected);
 drawPulse();
 renderGate();
+if (location.hash === "#structures") showPanel("structures");

@@ -27,6 +27,10 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 Alle Ganzzahlen von 0 bis 1000 mit gleichzeitig sichtbaren Eigenschaften, ein 033-Darstellungsvergleich, ein ideales 555-Zeitmodell und ein lokaler 999-Stimmen-Übergang mit erhaltenem Kern, fehlenden Antworten und expliziter Vergleichsregel.
 
+Neu: [Rollenreisen und Sitzungshive](branches/1001-doors/ROLE_JOURNEY_RESEARCH.md)
+sowie [256/512/1024 und historische Namenspfade](branches/1001-doors/POWERS_SQUARE_RESEARCH.md).
+Die zusätzlichen Modelle bewahren das ursprüngliche Register und die früheren Quellenfassungen.
+
 ### [Drei-Gabel – ein dritter Weg im Konflikt](branches/three-actor-fork/)
 
 Interaktives Drei-Akteure-Modell: C tritt zwischen A und B ein; zwei Reaktionen erzeugen prüfbare Kandidaten statt eines vorweggenommenen Sieges.

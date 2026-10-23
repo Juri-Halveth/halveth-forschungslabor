@@ -1,0 +1,240 @@
+{
+  "schema": "halveth.doors.role-and-structure-research-receipt.v1",
+  "recordedAt": "2026-10-23T16:34:31.956Z",
+  "predecessorCommit": "7dc5e0685b3d5ff80ad9a8d3d2f11311e7625578",
+  "authoring": {
+    "projectDesign": "Juri Halveth / HALVETH",
+    "implementation": "AI-assisted development",
+    "rights": "Existing repository licenses retained; no third-party ownership inferred"
+  },
+  "sourceReferences": {
+    "XSD": {
+      "title": "W3C · Schreibweise, Wert und Abbildung",
+      "url": "https://www.w3.org/TR/xmlschema11-2/#dt-lexical-space"
+    },
+    "PROV": {
+      "title": "W3C PROV · Entitäten, Aktivitäten und Herkunft",
+      "url": "https://www.w3.org/TR/prov-o/#description-starting-point-terms"
+    },
+    "SKOS": {
+      "title": "W3C SKOS · exakte und nahe Zuordnungen",
+      "url": "https://www.w3.org/TR/skos-reference/#mapping"
+    },
+    "YONEDA": {
+      "title": "Tom Leinster · Basic Category Theory, Kap. 4",
+      "url": "https://arxiv.org/abs/1612.09375"
+    },
+    "STIGMERGY": {
+      "title": "Theraulaz & Bonabeau 1999 · Stigmergie",
+      "url": "https://santafe.edu/research/results/papers/1112-a-brief-history-of-stigmergy"
+    },
+    "SI": {
+      "title": "BIPM · Zahlenwert und Einheit",
+      "url": "https://www.bipm.org/en/publications/si-brochure"
+    },
+    "binaryUnits": {
+      "title": "NIST · Binäre Präfixe",
+      "url": "https://pml.nist.gov/cuu/Units/binary.html",
+      "kind": "OFFICIAL_UNIT_REFERENCE"
+    },
+    "numerals": {
+      "title": "Hebcal · Buchstabenwerte des eigenen Kalendersystems",
+      "url": "https://www.hebcal.com/home/1824/numerical-values-of-hebrew-letters",
+      "kind": "IMPLEMENTER_NUMERAL_REFERENCE"
+    },
+    "agrippaNames": {
+      "title": "Agrippa II.22 · Textedition J. H. Peterson",
+      "url": "https://www.esotericarchives.com/agrippa/agripp2b.htm",
+      "kind": "PRIMARY_HISTORICAL_TEXT_WITH_EDITORIAL_NOTES"
+    },
+    "agrippaScan": {
+      "title": "Agrippa 1651 · Sonnentafel und Zeichen, S. 246",
+      "url": "https://en.wikisource.org/wiki/Page:Three_Books_of_Occult_Philosophy_(De_Occulta_Philosophia)_(1651).djvu/271",
+      "kind": "PRIMARY_HISTORICAL_SCAN_AND_TRANSCRIPTION"
+    },
+    "nowotny": {
+      "title": "K. A. Nowotny 1949 · Konstruktion der Siegel und Zeichen",
+      "url": "https://www.marianotomatis.it/biblioteca/repository/NOW1949.pdf",
+      "kind": "ORIGINAL_HISTORICAL_RECONSTRUCTION_WITH_VARIANTS"
+    },
+    "sudoku": {
+      "title": "Nikoli · Sudoku-Regeln",
+      "url": "https://www.nikoli.co.jp/en/puzzles/sudoku/",
+      "kind": "PUZZLE_PUBLISHER_RULES"
+    },
+    "unicodeHebrew": {
+      "title": "Unicode 17 · Hebräische Schrift, Abschnitt 9.1.1",
+      "url": "https://www.unicode.org/versions/Unicode17.0.0/core-spec/chapter-9/",
+      "kind": "OFFICIAL_SCRIPT_ENCODING_REFERENCE"
+    }
+  },
+  "reportOnlySources": {
+    "historicalZeroInstitution": "https://www.glam.ox.ac.uk/article/carbon-dating-finds-bakhshali-manuscript-contains-oldest-recorded-origins-symbol-zero",
+    "historicalZeroScholarlyResponse": "https://hssa-journal.org/index.php/hssa/article/view/22",
+    "agrippaArgumentHistory": "https://scholarworks.wmich.edu/cgi/viewcontent.cgi?article=1063&context=accessus"
+  },
+  "sourceCoverage": "Relevant primary/institutional/implementer passages and original historical scholarship; not full reading of every work or every numeric meaning.",
+  "computationCoverage": {
+    "roleInputs": {
+      "from": 0,
+      "to": 1000,
+      "count": 1001
+    },
+    "finiteOrderProbeCount": 1002001,
+    "distinctOrderProfiles": 1001,
+    "binaryStateCount": 1792,
+    "cubeRoundtripCount": 512,
+    "modernAndAdditiveNumeralRange": "1..36",
+    "historicalNames": [
+      "Nachiel",
+      "Sorath"
+    ]
+  },
+  "validation": {
+    "localJavaScriptTests": 147,
+    "localPythonTests": 49,
+    "state": "LOCAL_SUITES_PASSED",
+    "registryCheck": "1001 records and 1000 original neighbor relations reproduced exactly",
+    "browser": [
+      "Representation roundtrip 33 -> binary -> hexadecimal -> 33",
+      "6 and 18 separated by order probe 7",
+      "Modulo-12 inverse set contains all 83 allowed candidates for remainder 6",
+      "Repeated collection idempotent; two repeated runs yield one claim and one model cluster",
+      "Actual journey, Hive, power and name JSON downloads checked against current model",
+      "Responsive 390px and 320px; new tab overflow at 320px located and corrected"
+    ]
+  },
+  "preserved": [
+    {
+      "path": "branches/1001-doors/model.mjs",
+      "sha256": "da4ab1cb7cb5758c3296b78526d8d82180147163b80a6c17808bcf2add9b8ab7",
+      "bytes": 17095,
+      "comparison": "EXACT_BYTES_EQUAL",
+      "baseCommit": "7dc5e0685b3d5ff80ad9a8d3d2f11311e7625578"
+    },
+    {
+      "path": "branches/1001-doors/registry.json",
+      "sha256": "8f7b7013809dca3fc436dfbf49b8a5c2cd173c139e7d9c29cef2992e9814c7e5",
+      "bytes": 1188603,
+      "comparison": "EXACT_BYTES_EQUAL",
+      "baseCommit": "7dc5e0685b3d5ff80ad9a8d3d2f11311e7625578"
+    },
+    {
+      "path": "branches/1001-doors/relations.json",
+      "sha256": "033facdd26125b4aa24ed5d352068e311cb8cab596af265d73bb6610fafc643c",
+      "bytes": 678641,
+      "comparison": "EXACT_BYTES_EQUAL",
+      "baseCommit": "7dc5e0685b3d5ff80ad9a8d3d2f11311e7625578"
+    },
+    {
+      "path": "branches/1001-doors/SOURCE_RECEIPT.json",
+      "sha256": "ca5e7b4bcdba9ee1809a0c508221f13735d5e72678926cd7ac697396146bffc5",
+      "bytes": 2523,
+      "comparison": "EXACT_BYTES_EQUAL",
+      "baseCommit": "7dc5e0685b3d5ff80ad9a8d3d2f11311e7625578"
+    },
+    {
+      "path": "branches/1001-doors/number-research.mjs",
+      "sha256": "aa98743a77f68aff5e28b06296b2f3d367794ea7964b593ff429c6ffcc0cf8a6",
+      "bytes": 18090,
+      "comparison": "EXACT_BYTES_EQUAL",
+      "baseCommit": "7dc5e0685b3d5ff80ad9a8d3d2f11311e7625578"
+    },
+    {
+      "path": "branches/1001-doors/number-research-view.mjs",
+      "sha256": "5d3d93ae9dd845e28de00f28103f9560739e883d09e99a19e2c9036d969399e2",
+      "bytes": 11419,
+      "comparison": "EXACT_BYTES_EQUAL",
+      "baseCommit": "7dc5e0685b3d5ff80ad9a8d3d2f11311e7625578"
+    },
+    {
+      "path": "branches/1001-doors/number-research.test.mjs",
+      "sha256": "d6050d9ef8f0194aed3d7876faaa5cba8f24d93006286208972ed04698ccbf90",
+      "bytes": 3922,
+      "comparison": "EXACT_BYTES_EQUAL",
+      "baseCommit": "7dc5e0685b3d5ff80ad9a8d3d2f11311e7625578"
+    },
+    {
+      "path": "branches/1001-doors/NUMBER_RESEARCH.md",
+      "sha256": "159f5baaf0d03d046b5063f27213c1b918fd80f3838dbc1d4e3256ab3cc056c8",
+      "bytes": 11318,
+      "comparison": "EXACT_BYTES_EQUAL",
+      "baseCommit": "7dc5e0685b3d5ff80ad9a8d3d2f11311e7625578"
+    },
+    {
+      "path": "branches/1001-doors/NUMBER_RESEARCH_RECEIPT.json",
+      "sha256": "81344bbd489b242dc324d86f3fa9b321906a440ac2a2a71ef06a6ab4cbc2b0d5",
+      "bytes": 13147,
+      "comparison": "EXACT_BYTES_EQUAL",
+      "baseCommit": "7dc5e0685b3d5ff80ad9a8d3d2f11311e7625578"
+    }
+  ],
+  "files": [
+    {
+      "path": "branches/1001-doors/app.mjs",
+      "bytes": 19163,
+      "sha256": "cf01d70adceccf1ccb69a1f3fa9403057b848511cb0aae864f8876c02f47dfa3"
+    },
+    {
+      "path": "branches/1001-doors/index.html",
+      "bytes": 16979,
+      "sha256": "40c1dbb7fbfe7ec86cb1e8d6f668f8d896e776031c4abcf0dbf1ebe1127e296f"
+    },
+    {
+      "path": "branches/1001-doors/style.css",
+      "bytes": 19246,
+      "sha256": "d5f3ddc96b22d64ab14e01ecc1acd9510402826ff33e2c84b798af5a62d3f601"
+    },
+    {
+      "path": "branches/1001-doors/README.md",
+      "bytes": 11742,
+      "sha256": "9ce8f0337c5e87425b3dff7de5c1eca5517a5245966f11e243e4f72ca7d0a265"
+    },
+    {
+      "path": "branches/1001-doors/role-journey.mjs",
+      "bytes": 13353,
+      "sha256": "eebde74cd7882e359bad9e6dcf20fc737f4aee199aed730967fc978736598986"
+    },
+    {
+      "path": "branches/1001-doors/role-journey-view.mjs",
+      "bytes": 10353,
+      "sha256": "f3e5b4fddbc798aa29ed974f2e04c79134e634517c93f744a9600f1c45d01bfa"
+    },
+    {
+      "path": "branches/1001-doors/role-journey.test.mjs",
+      "bytes": 6330,
+      "sha256": "4e04ce2920c9608ce819a3a21f52a5633b1c34c8a7087a68dbbac91d2b7eb3ea"
+    },
+    {
+      "path": "branches/1001-doors/ROLE_JOURNEY_RESEARCH.md",
+      "bytes": 10528,
+      "sha256": "1514bec54318fba2d5aa130e0dc12e4bd33b46f80dc02c0685f313d4fffad11c"
+    },
+    {
+      "path": "branches/1001-doors/powers-square.mjs",
+      "bytes": 10898,
+      "sha256": "ca538d54d1d84dfdb75dacb33e8d757f13ea1990efdd76749f9761605fffc639"
+    },
+    {
+      "path": "branches/1001-doors/powers-square-view.mjs",
+      "bytes": 13336,
+      "sha256": "cddd7dbda4413aefbeb7106c089ec81fbd2dfb7a6da9a434c4ecc969dfb5dff4"
+    },
+    {
+      "path": "branches/1001-doors/powers-square.test.mjs",
+      "bytes": 4395,
+      "sha256": "8c7217c64d1bd766e57d3b1fe9083371c128f009facb022dad2fa7b720602c7d"
+    },
+    {
+      "path": "branches/1001-doors/POWERS_SQUARE_RESEARCH.md",
+      "bytes": 9321,
+      "sha256": "e4b4d9eddd7111523d156bfcaebcd286092c6612d662360007dba7b59986dd63"
+    }
+  ],
+  "limits": [
+    "1024 is a supplemental research case outside the preserved 0..1000 registry",
+    "The Hive is session-local; repeated runs are correlated, not independent evidence",
+    "Modern numeral rendering and declared path construction are separate from historical scan identity",
+    "No physical effects, autonomous entity, hidden destination or extraterrestrial ancestry established by these computations"
+  ]
+}

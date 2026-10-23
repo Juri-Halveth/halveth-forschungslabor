@@ -46,7 +46,9 @@
         ><button type="button" data-panel="pulse" aria-pressed="false">
           03 / 555</button
         ><button type="button" data-panel="gate" aria-pressed="false">
-          04 / 999 → 1000
+          04 / 999 → 1000</button
+        ><button type="button" data-panel="structures" aria-pressed="false">
+          05 / 256 · 512 · 1024
         </button>
       </nav>
       <p id="global-error" class="error" role="alert" hidden></p>
@@ -54,7 +56,7 @@
         <section class="research-intro" aria-labelledby="research-heading">
           <div>
             <p class="eyebrow">
-              SIEBEN QUELLENPFADE / MATHEMATIK · NATUR · GESCHICHTE
+              ZAHLENPFAD-SAMMLUNG / MATHEMATIK · NATUR · GESCHICHTE
             </p>
             <h2 id="research-heading">Wo Zahlen Welten verbinden.</h2>
             <p>
@@ -66,12 +68,12 @@
           <div
             id="research-jumps"
             class="research-jumps"
-            aria-label="Sieben recherchierte Zahlen"
+            aria-label="Neun recherchierte Registerzahlen und Zusatzpfad 1024"
           ></div>
           <p class="hint">
-            Quellenstand: 23.10.2026 · 7 ausgewählte Beispiele aus 1001 Zahlen.
-            Mathematische Identität, Messwert und kulturelle Zuordnung besitzen
-            jeweils eigene Regeln.
+            Quellenstand: 23.10.2026 · 9 ausgewählte Registerzahlen und
+            Zusatzpfad 1024. Mathematische Identität, Messwert und kulturelle
+            Zuordnung besitzen jeweils eigene Regeln.
           </p>
         </section>
         <div class="explorer">
@@ -102,7 +104,7 @@
               <option value="square">Quadratzahlen</option>
               <option value="triangle">Dreieckszahlen</option>
               <option value="motif">Entwurfsmotive</option>
-              <option value="research">7 recherchierte Quellenpfade</option>
+              <option value="research">9 recherchierte Registerzahlen</option>
             </select>
             <div id="door-grid" class="door-grid" aria-label="Türnummern"></div>
             <div class="paging">
@@ -146,6 +148,7 @@
             <div id="traits" class="traits"></div>
             <p id="factors" class="factor-line"></p>
             <div id="neighbours" class="related"></div>
+            <details id="number-roles" class="number-roles"></details>
             <section
               id="number-research"
               class="number-research"
@@ -398,6 +401,12 @@
           <p id="event-count" class="hint"></p>
         </div>
       </section>
+      <section
+        id="structures"
+        class="panel"
+        aria-label="256, 512, 1024 und historische Namenspfade"
+        hidden
+      ></section>
       <footer>
         <p>
           <strong>Juri Halveth / HALVETH · LUCINET</strong> — Entwurfsmotive aus

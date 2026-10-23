@@ -29,7 +29,7 @@ npm test
 Node 24+, Python nur für den lokalen Webserver. Keine externen Pakete,
 Netzabfragen, Konten oder Zahlungen. JSON-Downloads funktionieren lokal.
 
-## Vier Ansichten
+## Ansichten und Versuche
 
 1. **Türen:** Alle 1001 Werte sind direkt erreichbar und filterbar. Primzahl,
    Zweierpotenz, Quadrat, Dreieckszahl und Palindrom sind unabhängige Prädikate.
@@ -73,8 +73,9 @@ festes UTF-8 mit LF und liefert deterministische Ausgaben.
 Die Primfaktorzerlegung von 0 erhält `UNDEFINED_FOR_ZERO`. Für 1 ist die Liste
 leer und ihr Produkt 1. Die Bitlänge von 0 ist 0, während seine sichtbare
 Binärschreibweise eine Ziffer besitzt. Gemessenes 0 und fehlende Beobachtung
-bleiben verschieden. Die im alten Wörterbuch erwähnten Werte 1024 und 2048
-bleiben als Erweiterungsfronten außerhalb des gebundenen Bereichs sichtbar.
+bleiben verschieden. 1024 ist jetzt als eigener Zusatzversuch erreichbar;
+2048 bleibt eine Erweiterungsfront. Beide liegen außerhalb des historischen
+Registerbereichs 0–1000.
 
 Das neue [Register](registry.json) enthält alle 1001 berechneten Records und ihre
 Digests. [relations.json](relations.json) bindet ausschließlich die 1000 direkten
@@ -150,3 +151,62 @@ Die Tests prüfen auch beschädigte Zahlengitter, sämtliche 64 Roundtrips,
 ungültige Eingaben und den Unterschied zwischen einem vollständigen Paargraphen
 und bloßer Nachbarschaft. [NUMBER_RESEARCH_RECEIPT.json](NUMBER_RESEARCH_RECEIPT.json)
 bindet Quellenverweise, Datenfassung und den erhaltenen Registerstand.
+
+## Rollenreise und Sitzungshive
+
+Die [Vertiefung zu Rollen und Wegen](ROLE_JOURNEY_RESEARCH.md) ergänzt für jede
+der 1001 Registerzahlen ein berechnetes Rollenprofil: Stellenwert, Schreibweisen,
+Anzahl und Indices sowie das vollständige Ordnungsprofil `p <= n`.
+Der vollständige Test prüft 1.002.001 Proben und unterscheidet alle 1001 Werte
+innerhalb dieses endlichen Ordnungsmodells.
+
+Vier auswählbare Wege zeigen Darstellungswechsel, unterschiedliche Reihenfolgen
+von Addition/Verdopplung und die vielen möglichen Urbilder eines Modulo-Restes.
+Jeder Lauf erhält getrennte Inhalts-, Vorkommens-, Ereignis- und Relationsrecords.
+Der Originalinput bleibt erhalten. Ein Ortwechsel oder gleiches Endergebnis
+behauptet keine unaufgezeichnete historische Reise.
+
+„Pollen ins Hive sammeln“ prüft und sammelt den Lauf **nur in dieser Sitzung**.
+Doppelte Klicks erzeugen keinen zusätzlichen Lauf. Neue Wiederholungen bleiben
+als eigene Witnesses erhalten, erhöhen aber nicht die Zahl verschiedener
+Rechenbefunde oder unabhängiger Provenienzcluster. Lauf und Hive können als JSON
+heruntergeladen werden; ein Reload beginnt ein neues Sitzungshive.
+
+```sh
+node --test branches/1001-doors/role-journey.test.mjs
+```
+
+## 256, 512, 1024 und historische Namenspfade
+
+Der fünfte Laborbereich öffnet die im Original bereits benannten
+GENESIS-256-/GENESIS-512-Motive und die binäre Schwelle 1024 als bedienbare
+Zustandsräume. 256 und 512 ergänzen die Quellenkarten im Register. 1024 erhält
+einen eigenen Zusatzpfad. Die Auswahl umfasst damit neun Registerzahlen plus
+einen Zusatzwert; die ursprünglichen sieben Forschungsrecords bleiben unverändert.
+
+Alle 1792 Bitmuster lassen sich anwählen; Rasteradresse, Bitfolge, Zustandsanzahl
+und höchster Index bleiben getrennt. Für 512 ist zusätzlich die 8×8×8-Adresse
+sichtbar. Das ist eine vollständige Koordinatenabbildung, noch kein dynamischer
+Graph oder autonomer Agentenschwarm.
+
+Daneben verbindet ein Quellenversuch die Namen Nachiel und Sorath mit ihren
+hebräischen Buchstabenwerten, Summen und einer ausdrücklich gewählten Gitterspur.
+Historische Textaussage, heutige Zahlenschreibweise, deklarierte Pfadregel und
+Sudoku-Regeln bleiben unterscheidbar. Der Scan dient als historische Referenz;
+die Demo beansprucht keine pixelgenaue Reproduktion der alten Siegel.
+
+[Quellenprüfung und Versuchsvertrag](POWERS_SQUARE_RESEARCH.md)
+
+```sh
+node --test branches/1001-doors/powers-square.test.mjs
+```
+
+## Zeitlich gebundene Receipts
+
+`NUMBER_RESEARCH_RECEIPT.json` bleibt der historische Snapshot der ersten sieben
+Zahlenpfade auf Commit `7dc5e0685b3d5ff80ad9a8d3d2f11311e7625578`.
+Die dort gebundenen damaligen UI-Dateien werden durch spätere Änderungen nicht
+rückwirkend umgebunden. [ROLE_JOURNEY_RECEIPT.json](ROLE_JOURNEY_RECEIPT.json)
+bindet die neuen Rollen-/Strukturmodule, die aktuelle Oberfläche und die
+unverändert erhaltenen Vorgängerdateien. Ein Dateidigest belegt seine Bytefassung;
+Quellenlinks und lokale Tests haben jeweils den im Bericht beschriebenen Scope.
