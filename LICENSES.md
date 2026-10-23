@@ -5,6 +5,7 @@ verleiht keine Rechte an verlinkten Quellen oder an fremden Projekten.
 
 | Dateien | Bedingungen |
 | --- | --- |
+| IANA-HTTP-Registry-Snapshot `branches/1001-doors/http-status-codes-source.csv` und dessen Datenmodul `http-status-data.mjs` | [IANA/IETF CC0 1.0](https://www.iana.org/help/licensing-terms); spezifische Datenregel vor der allgemeinen Coderegel |
 | Quellcode, Tests, HTML und CSS unter `branches/` und `scripts/` | [MIT](LICENSE) |
 | JSON-Daten, Modelle, Fixtures und Katalogmetadaten | [CC0 1.0](LICENSE-DATA.md) |
 | Neu geschriebene Erläuterungen und Markdown-Dateien | [CC BY 4.0](LICENSE-CONTENT.md) |

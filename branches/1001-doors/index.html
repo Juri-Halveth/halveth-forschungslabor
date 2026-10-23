@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; style-src 'self'; script-src 'self'; connect-src 'none'; img-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'"
+    />
+    <title>1001 Türen · HALVETH / LUCINET</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="app.mjs"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Zum Labor</a>
+    <header>
+      <a class="brand" href="../../README.md"
+        ><span class="sigil">L</span
+        ><span>HALVETH <small>LUCINET · FORSCHUNGSLABOR</small></span></a
+      ><span class="header-note">ZAHLEN · ZEICHEN · ZUSTÄNDE</span>
+    </header>
+    <main id="main">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">THE 1001 DOORS / 0–1000</p>
+          <h1>Jede Zahl.<br />Ein neuer Blick.</h1>
+          <p class="intro">
+            Öffne eine Tür. Sieh ihre Eigenschaften gleichzeitig.<br />
+            Wechsle die Darstellung. Prüfe, was sich wirklich ändert.
+          </p>
+        </div>
+        <div class="hero-number" aria-hidden="true">
+          1001<span>TÜREN IM REGISTER</span>
+        </div>
+      </section>
+      <nav class="tabs" aria-label="Laborbereiche">
+        <button
+          type="button"
+          class="active"
+          data-panel="explore"
+          aria-pressed="true"
+        >
+          01 / Türen</button
+        ><button type="button" data-panel="codes" aria-pressed="false">
+          02 / 033</button
+        ><button type="button" data-panel="pulse" aria-pressed="false">
+          03 / 555</button
+        ><button type="button" data-panel="gate" aria-pressed="false">
+          04 / 999 → 1000
+        </button>
+      </nav>
+      <p id="global-error" class="error" role="alert" hidden></p>
+      <section id="explore" class="panel" aria-label="Alle 1001 Türen">
+        <div class="explorer">
+          <div class="index card">
+            <div class="section-heading">
+              <h2>Wähle deine Tür</h2>
+              <span class="status">1001 berechnet</span>
+            </div>
+            <form id="jump-form">
+              <label for="door-number">Direkt öffnen · dezimal 0–1000</label>
+              <div class="input-row">
+                <input
+                  id="door-number"
+                  type="text"
+                  inputmode="numeric"
+                  pattern="[0-9]{1,4}"
+                  value="555"
+                  maxlength="4"
+                  required
+                /><button type="submit" class="primary">Öffnen ↗</button>
+              </div>
+            </form>
+            <label for="filter">Eigenschaft filtern</label
+            ><select id="filter">
+              <option value="all">Alle 1001</option>
+              <option value="prime">Primzahlen</option>
+              <option value="power">Zweierpotenzen</option>
+              <option value="square">Quadratzahlen</option>
+              <option value="triangle">Dreieckszahlen</option>
+              <option value="motif">Entwurfsmotive</option>
+            </select>
+            <div id="door-grid" class="door-grid" aria-label="Türnummern"></div>
+            <div class="paging">
+              <button
+                id="page-prev"
+                type="button"
+                aria-label="Vorherige Türseite"
+              >
+                ←</button
+              ><span id="page-label" aria-live="polite"></span
+              ><button
+                id="page-next"
+                type="button"
+                aria-label="Nächste Türseite"
+              >
+                →
+              </button>
+            </div>
+            <p class="hint">
+              64 Türen je Ansicht. Der Filter blendet Eigenschaften ein; das
+              vollständige Register bleibt erhalten.
+            </p>
+          </div>
+          <article class="detail card" aria-labelledby="selected-title">
+            <p class="eyebrow" id="selected-id"></p>
+            <div class="number-row">
+              <span id="selected-number" class="selected-number"></span>
+              <div class="stepper">
+                <button
+                  id="door-prev"
+                  type="button"
+                  aria-label="Vorherige Zahl"
+                >
+                  ←</button
+                ><button id="door-next" type="button" aria-label="Nächste Zahl">
+                  →
+                </button>
+              </div>
+            </div>
+            <h2 id="selected-title"></h2>
+            <div id="traits" class="traits"></div>
+            <p id="factors" class="factor-line"></p>
+            <dl id="facts" class="facts"></dl>
+            <p id="door-question" class="question"></p>
+            <p id="research-state" class="hint"></p>
+            <div id="neighbours" class="related"></div>
+            <details>
+              <summary>Meine Forschungsnotiz</summary>
+              <label for="note"
+                >Bleibt in diesem Browser · maximal 2000 Zeichen</label
+              ><textarea
+                id="note"
+                maxlength="2000"
+                rows="3"
+                placeholder="Meine Frage, Quelle oder nächste Gegenprobe …"
+              ></textarea>
+              <div class="input-row">
+                <button id="save-note" type="button">Lokal speichern</button
+                ><button id="export-door" type="button">
+                  Tür + Notiz als JSON ↓
+                </button>
+              </div>
+              <p id="note-state" class="hint" aria-live="polite"></p>
+            </details>
+          </article>
+        </div>
+        <div class="download-row">
+          <span
+            >Alles auf einen Blick:
+            <strong
+              >1001 Datensätze · 1000 adressierte Nachbarschaften</strong
+            ></span
+          ><a href="registry.json" download>Register ↓</a
+          ><a href="relations.json" download>Relationen ↓</a>
+        </div>
+      </section>
+      <section id="codes" class="panel" aria-labelledby="codes-title" hidden>
+        <p class="eyebrow">DIE GLEICHE SCHREIBWEISE, EIN ANDERER VERTRAG</p>
+        <h2 id="codes-title" class="panel-title">033. Welche Basis?</h2>
+        <p class="lede">
+          Der Wert entsteht zusammen mit seiner Darstellungsregel. Die dezimale
+          Tür 33 und das oktale ESC-Zeichen besitzen unterschiedliche Adressen.
+        </p>
+        <div id="interpretations" class="code-grid"></div>
+        <div class="card explanation">
+          <h3>Der Empfänger bestimmt die Interpretation.</h3>
+          <p>
+            <code>\033[31m</code> ist hier sichtbarer Text. Ein passendes
+            Terminal kann die entsprechenden Bytes als Farbsteuerung
+            interpretieren. Die Zahl allein legt diese Wirkung nicht fest.
+          </p>
+          <p>
+            Die 7-Bit-ASCII-Tabelle bindet <strong>ESC = 27</strong>,
+            <strong>! = 33</strong> und <strong>3 = 51</strong>. ECMA-48
+            beschreibt die Steuerfunktionen und deren Kontext.
+          </p>
+          <p>
+            <a href="https://datatracker.ietf.org/doc/html/rfc0020"
+              >RFC 20 ↗</a
+            >
+            ·
+            <a
+              href="https://ecma-international.org/publications-and-standards/standards/ecma-48/"
+              >ECMA-48 ↗</a
+            >
+          </p>
+        </div>
+      </section>
+      <section id="pulse" class="panel" aria-labelledby="pulse-title" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">IDEALES RC-MODELL / STATIONÄRER ZYKLUS</p>
+            <h2 id="pulse-title" class="panel-title">
+              555. Zwei Rhythmen.<br />Ein beobachteter Unterschied.
+            </h2>
+          </div>
+          <button id="play-pulse" type="button" aria-pressed="false">
+            Zeit starten ▷
+          </button>
+        </div>
+        <p class="lede">
+          A und B laufen hier ungekoppelt. C ist die Softwareansicht, die ihre
+          Spannungen und Impulse sichtbar macht.
+        </p>
+        <div class="card pulse-card">
+          <svg
+            id="wave"
+            viewBox="0 0 900 300"
+            role="img"
+            aria-label="Berechnete Ausgangssignale zweier idealer 555-Timer und ihre Kondensatorspannungen"
+          >
+            <g id="wave-base"></g>
+            <path id="wave-a" class="wave a"></path>
+            <path id="wave-b" class="wave b"></path>
+            <path id="cap-a" class="cap a"></path>
+            <path id="cap-b" class="cap b"></path>
+            <line
+              id="time-marker"
+              x1="55"
+              y1="15"
+              x2="55"
+              y2="280"
+              class="marker"
+            ></line>
+          </svg>
+          <div class="pulse-legend">
+            <span class="a">A · R_B = 68 kΩ</span
+            ><span class="b">B · einstellbar</span
+            ><span>12 Modellsekunden · unten: Kondensator</span>
+          </div>
+          <label for="rb"
+            >Widerstand R_B von Timer B
+            <output id="rb-value" for="rb"></output></label
+          ><input id="rb" type="range" min="45" max="95" step="1" value="62" />
+          <div id="pulse-facts" class="pulse-stats" aria-live="polite"></div>
+        </div>
+        <div class="two-col">
+          <div class="card">
+            <h3>Zusammentreffen prüfen</h3>
+            <p>
+              Wiederkehrend nahe Impulsflanken entstehen bereits durch zwei
+              verschiedene freie Frequenzen. Für Phasenkopplung brauchen wir
+              zusätzlich eine definierte Wechselwirkung und einen stabilen
+              Verlauf über ein festes Messfenster.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Was die reale Forschung zeigt</h3>
+            <p>
+              Ein Experiment mit zwei gekoppelten 555-Schaltungen fand
+              verschiedene feste Rhythmusverhältnisse. Sehr starke Kopplung
+              konnte auch zu einem stationären Zustand führen. Die Kopplung ist
+              ein eigener nächster Versuch.
+            </p>
+            <p>
+              <a href="https://www.ti.com/lit/ds/symlink/ne555.pdf"
+                >TI-Datenblatt ↗</a
+              >
+              ·
+              <a href="https://doi.org/10.31349/RevMexFis.64.107"
+                >Santillán 2018 ↗</a
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="gate" class="panel" aria-labelledby="gate-title" hidden>
+        <p class="eyebrow">
+          999 STIMMEN / EIN ERHALTENER KERN / EIN LOKALES EREIGNIS
+        </p>
+        <h2 id="gate-title" class="panel-title">Wann öffnet sich 1000?</h2>
+        <p class="lede">
+          Deine Ausgangsregel: Alle 999 stimmen demselben Vorschlag im selben
+          Scope zu. Jede Stimme bleibt im Kern K erhalten.
+        </p>
+        <div class="two-col">
+          <div class="card">
+            <div class="presets">
+              <button type="button" data-vote="all">Alle einig</button
+              ><button type="button" data-vote="missing">Eine fehlt</button
+              ><button type="button" data-vote="no">Eine dagegen</button
+              ><button type="button" data-vote="veto">Veto</button>
+            </div>
+            <svg
+              id="vote-map"
+              viewBox="0 0 450 230"
+              role="img"
+              aria-label="999 synthetische Modellstimmen"
+            ></svg>
+            <div id="vote-counts" class="traits"></div>
+            <p class="hint">
+              Diese Punkte sind deklarierte Teststimmen. Reale Personen, Nodes
+              und Einwilligungen brauchen ihre eigenen Nachweise.
+            </p>
+          </div>
+          <div class="card">
+            <label for="policy">Bewusst gewählte Regel</label
+            ><select id="policy">
+              <option value="UNANIMOUS">Einstimmigkeit · alle 999</option>
+              <option value="QUORUM_WITH_VETO">
+                Vergleich · Ja-Schwelle mit Veto
+              </option>
+            </select>
+            <div class="vote-fields">
+              <label
+                >Nein<input
+                  id="no-count"
+                  type="number"
+                  min="0"
+                  max="999"
+                  step="1"
+                  value="0" /></label
+              ><label
+                >Fehlend<input
+                  id="missing-count"
+                  type="number"
+                  min="0"
+                  max="999"
+                  step="1"
+                  value="1" /></label
+              ><label
+                >Veto<input
+                  id="veto-count"
+                  type="number"
+                  min="0"
+                  max="999"
+                  step="1"
+                  value="0"
+              /></label>
+            </div>
+            <label for="required">Benötigte Ja-Stimmen von 999</label
+            ><input
+              id="required"
+              type="number"
+              min="1"
+              max="999"
+              step="1"
+              value="999"
+              disabled
+            /><label for="window">Modellzeitfenster</label
+            ><select id="window">
+              <option value="closed">Geschlossen · t = 1000 ms</option>
+              <option value="open">Offen · t = 999 ms</option>
+            </select>
+            <p id="gate-state" class="gate-state" role="status"></p>
+            <p id="gate-explanation"></p>
+            <button id="trigger" type="button" class="primary" disabled>
+              Übergang 1000 auslösen ↗
+            </button>
+            <p class="hint">
+              Der Button materialisiert ausschließlich ein lokales
+              Modellereignis.
+            </p>
+          </div>
+        </div>
+        <div id="transition-result" class="card transition-result" hidden>
+          <p class="eyebrow">MODELLEREIGNIS GESCHRIEBEN</p>
+          <h3>1000 ist geöffnet.</h3>
+          <p>
+            999 Einzelstimmen → ein Kern K → ein adressiertes Übergangsereignis.
+          </p>
+          <p id="kernel-digest" class="digest"></p>
+          <button type="button" id="export-event">
+            Kern + alle Stimmen als JSON ↓
+          </button>
+          <p id="event-count" class="hint"></p>
+        </div>
+      </section>
+      <footer>
+        <p>
+          <strong>Juri Halveth / HALVETH · LUCINET</strong> — Entwurfsmotive aus
+          deinem gelieferten Register, neue endliche Berechnungen und lokale
+          Modelle.
+        </p>
+        <p>
+          Die Mathematik aller 1001 Einträge ist prüfbar. Historische
+          Einzelrecherchen, physische Wirkungen und reale Abstimmungen führen
+          einen eigenen Stand.
+          <a href="README.md">Code, Prüfungen & Quellen</a> ·
+          <a href="SOURCE_RECEIPT.json">Herkunft</a>
+        </p>
+      </footer>
+    </main>
+    <noscript
+      ><p>
+        Dieses Labor benötigt JavaScript. Das vollständige
+        <a href="registry.json">JSON-Register</a> und die
+        <a href="README.md">Erläuterung</a> bleiben direkt lesbar.
+      </p></noscript
+    >
+  </body>
+</html>

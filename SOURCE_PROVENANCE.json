@@ -359,6 +359,13 @@
       "source": "scripts/halveth-entry.mjs"
     }
   ],
+  "moduleAdditions": [
+    {
+      "path": "branches/1001-doors/",
+      "sourceReceipt": "branches/1001-doors/SOURCE_RECEIPT.json",
+      "derivation": "New implementation and recomputed data from user-supplied archive properties; original source bytes preserved separately."
+    }
+  ],
   "adaptations": [
     {
       "path": "branches/banana-transition-field/statement.json",
