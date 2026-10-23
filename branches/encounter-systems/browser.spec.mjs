@@ -93,6 +93,19 @@ test("commands, timeline, workloads, corruption and repair are connected to mode
   ).toBe(true);
   expect(errors).toEqual([]);
   await page.setViewportSize({ width: 320, height: 900 });
+  await page.screenshot({
+    path: info.outputPath("mobile-320.png"),
+    fullPage: true,
+  });
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
+  // Header navigation must reflow when a platform uses wider system glyphs.
+  await page.addStyleTag({
+    content: ".site-header { font-family: monospace } .site-header nav a { font-size: 14px }",
+  });
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,

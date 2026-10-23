@@ -316,6 +316,7 @@ h2 {
 }
 .timeline > div {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
@@ -524,6 +525,7 @@ footer {
 @media (max-width: 560px) {
   .site-header {
     padding: 18px;
+    flex-wrap: wrap;
     align-items: start;
     justify-content: space-between;
   }
