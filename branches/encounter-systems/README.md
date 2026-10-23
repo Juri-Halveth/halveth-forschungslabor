@@ -26,6 +26,8 @@ Absichten werden nicht aus einer Form oder einer behaupteten Identität abgeleit
 
 ## Direkt ausführen
 
+Öffentliche Forschungsseite: **https://juri-halveth.github.io/halveth-forschungslabor/**. Die Datei `release.json` auf der veröffentlichten Seite bindet den tatsächlich ausgelieferten Quellcommit und die SHA-256-Digests der freigegebenen Dateien. Ein erfolgreiches Deployment und der Abruf der Seite werden getrennt geprüft.
+
 Für Modell und Versuche genügt **Node.js 24 oder neuer**. Es gibt keine Laufzeitabhängigkeiten und keine externen Dienste.
 
 Vom Repository-Stamm:
@@ -111,7 +113,7 @@ Das Modell zeigt den Unterschied zwischen einer eigenen Berechnung, einer Kopie,
 
 Das ist ein **wachsendes, überprüfbares Regressionswissen**. GitHub trainiert hier keine KI und ändert keine Modellgewichte. Ein grüner Lauf ersetzt keine Begutachtung und keine Messung eines später angeschlossenen Produkts.
 
-Die neue Workflowdatei arbeitet mit lesenden Repository-Berechtigungen, gebundenen Action-Revisionen und Testartefakten. Sie veröffentlicht keine Website und führt keine fremden Nachrichten oder Aufgaben aus.
+Der Forschungsworkflow arbeitet mit lesenden Repository-Berechtigungen, gebundenen Action-Revisionen und Testartefakten. Ein eigener Pages-Workflow veröffentlicht ausschließlich die festgelegten öffentlichen Moduldateien und Lizenztexte. Sein Deployment-Schritt hat die dafür erforderlichen Pages-/OIDC-Berechtigungen; Pull Requests bauen und prüfen nur das Paket. Die Veröffentlichung benötigt kein Enterprise-Abonnement.
 
 ## Dateien und Herkunft
 
