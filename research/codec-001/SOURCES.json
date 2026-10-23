@@ -1,0 +1,61 @@
+{
+  "schema": "halveth.codec-research-sources.v1",
+  "version": "1.0.0",
+  "checkedOn": "2026-10-24",
+  "timezone": "Europe/Berlin",
+  "coverage": "Specific sections and abstracts, not an exhaustive prior-art search",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "ITU-T H.264 (08/2024): Advanced video coding",
+      "url": "https://www.itu.int/dms_pubrec/itu-t/rec/h/T-REC-H.264-202408-I%21%21TOC-HTM-E.htm",
+      "publisher": "ITU-T",
+      "kind": "PRIMARY_STANDARD_CONTENTS",
+      "scope": "Sections 8.2.1, 8.2.4 and Annex C identify picture ordering, reference lists and decoded-picture buffering",
+      "limit": "No H.264 conformance implementation or full normative audit performed"
+    },
+    {
+      "id": "S002",
+      "title": "RFC 3986: Uniform Resource Identifier (URI): Generic Syntax",
+      "url": "https://www.rfc-editor.org/rfc/rfc3986.html",
+      "publisher": "IETF / RFC Editor",
+      "kind": "PRIMARY_STANDARD",
+      "scope": "Sections 2.4 and 7.3: component separation, decoding and security-relevant interpretation",
+      "limit": "An interpretation difference alone is not a demonstrated product vulnerability"
+    },
+    {
+      "id": "S003",
+      "title": "Evaluation of the use of ultrasound within a power toothbrush to dislodge oral bacteria using an in vitro Streptococcus mutans biofilm model",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20608294/",
+      "publisher": "American Journal of Dentistry / PubMed",
+      "kind": "PRIMARY_STUDY_ABSTRACT",
+      "year": 2010,
+      "scope": "Laboratory biofilm on hydroxyapatite disks, toothpaste slurry, 3 mm separation, 5 second activation",
+      "limit": "No independent replication, clinical extrapolation, individual device diagnosis or claim of harmlessness"
+    },
+    {
+      "id": "S004",
+      "title": "Urheberrecht",
+      "url": "https://www.dpma.de/service/schutzrechte_kurz_erklaert/urheberrecht/",
+      "publisher": "Deutsches Patent- und Markenamt",
+      "kind": "OFFICIAL_GUIDANCE",
+      "scope": "Personal intellectual creation and automatic origin of German copyright when its requirements are met",
+      "limit": "No determination of this dossier's individual protectable human contributions"
+    },
+    {
+      "id": "S005",
+      "title": "Urheberrechtsgesetz, section 69a",
+      "url": "https://www.gesetze-im-internet.de/urhg/__69a.html",
+      "publisher": "Gesetze im Internet",
+      "kind": "PRIMARY_LEGISLATION",
+      "scope": "Computer-program expression versus underlying ideas and principles",
+      "limit": "No patent, ownership registration or exclusive-right grant is inferred"
+    }
+  ],
+  "researchAttribution": {
+    "projectLead": "Juri Halveth / HALVETH",
+    "declaredContribution": "Research direction, questions and conceptual connections",
+    "assistance": "AI-assisted curation, source checking and drafting",
+    "verification": "DECLARED_CONTRIBUTION_NOT_INDEPENDENT_AUTHORSHIP_CERTIFICATION"
+  }
+}
