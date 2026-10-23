@@ -14,6 +14,16 @@ function validBits(bits) {
   )
     throw Error("Expected exactly 64 binary values");
 }
+function validOptions(options, allowed) {
+  if (
+    !options ||
+    typeof options !== "object" ||
+    Object.getPrototypeOf(options) !== Object.prototype
+  )
+    throw Error("Expected a plain configuration object");
+  if (Object.keys(options).some((k) => !allowed.includes(k)))
+    throw Error("Unknown configuration option");
+}
 export function pattern(name) {
   if (!["window", "pulse"].includes(name)) throw Error("Unknown pattern");
   return Array.from({ length: 64 }, (_, i) => {
@@ -48,10 +58,9 @@ function random(seed) {
     return (state >>> 0) / 4294967296;
   };
 }
-export function channel(
-  samples,
-  { noise = 0, seed = 917, connected = true } = {},
-) {
+export function channel(samples, options = {}) {
+  validOptions(options, ["noise", "seed", "connected"]);
+  const { noise = 0, seed = 917, connected = true } = options;
   if (
     !(samples instanceof Float64Array) ||
     samples.length !== 64 * SAMPLES ||
@@ -103,12 +112,7 @@ export function decode(samples, mode = "matched") {
 }
 export function experiment(bits, options = {}) {
   validBits(bits);
-  if (
-    Object.keys(options).some(
-      (k) => !["noise", "seed", "connected", "mode"].includes(k),
-    )
-  )
-    throw Error("Unknown experiment option");
+  validOptions(options, ["noise", "seed", "connected", "mode"]);
   const { mode = "matched", ...channelOptions } = options;
   const sent = transmit(bits),
     received = channel(sent, channelOptions);

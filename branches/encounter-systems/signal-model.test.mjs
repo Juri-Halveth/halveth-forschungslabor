@@ -65,6 +65,11 @@ test("invalid values and undeclared configurations are rejected", () => {
   ])
     assert.throws(() => transmit(bits));
   for (const options of [
+    null,
+    2,
+    true,
+    [],
+    new Date(0),
     { mode: "neural" },
     { noise: -1 },
     { noise: NaN },

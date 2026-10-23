@@ -4,7 +4,7 @@ export const signalReport = {
   "schema": "halveth.signal-results.v1",
   "modelVersion": "1.0.0",
   "scope": "DISCRETE_TIME_SOFTWARE_MODEL_ONLY",
-  "modelSha256": "982cd657c2870bfc2854737dbfa96fbb10be2e4212ec9b3a3f622f24391fc177",
+  "modelSha256": "ba78612acd85057e6093e5e42fb0c028046c6e255f521856c6e1355a491568fc",
   "planSha256": "7779fd6d84d54ff91c178f59fd34f487ff544608cf2ac214a2157b844e67f966",
   "generatorSha256": "19eea92a589bf4b3210e305a046ba36fe69c737d1dcefc2b1c6304095bf63270",
   "runs": [
