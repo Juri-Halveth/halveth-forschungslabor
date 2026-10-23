@@ -41,6 +41,8 @@ jobs:
         run: |
           node --test scripts/build-encounter-site.test.mjs
           node branches/encounter-systems/research.mjs --check
+          node --test branches/encounter-systems/signal-model.test.mjs
+          node branches/encounter-systems/signal-research.mjs --check
       - name: Package only the approved public module
         run: node scripts/build-encounter-site.mjs _encounter-site "$GITHUB_SHA"
       - name: Configure Pages

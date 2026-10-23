@@ -1,0 +1,58 @@
+{
+  "schema": "halveth.signal-plan.v1",
+  "scope": "DETERMINISTIC_DISCRETE_TIME_SOFTWARE_MODEL",
+  "question": "Which changes to a channel and decoder alter recovery of the same 64-bit image?",
+  "priorPredictions": [
+    {
+      "id": "S1",
+      "condition": "matched carrier, no noise, connected",
+      "expected": "64 exact bits"
+    },
+    {
+      "id": "S2",
+      "condition": "same received samples, inverted bit mapping",
+      "expected": "64 wrong bits, no erasures"
+    },
+    {
+      "id": "S3",
+      "condition": "different integer carrier, no noise",
+      "expected": "64 undecidable bits under the declared threshold"
+    },
+    {
+      "id": "S4",
+      "condition": "channel disconnected",
+      "expected": "zero received samples, 64 undecidable bits"
+    },
+    {
+      "id": "S5",
+      "condition": "same finite seed and configuration",
+      "expected": "identical received samples and decisions"
+    },
+    {
+      "id": "S6",
+      "condition": "isolated single source-bit change",
+      "expected": "only its transmitted symbol block changes"
+    }
+  ],
+  "parameters": {
+    "imageBits": 64,
+    "samplesPerSymbol": 32,
+    "transmitterCyclesPerSymbol": 2,
+    "decisionThreshold": 0.25,
+    "noiseDistribution": "seeded uniform in [-amplitude, amplitude]"
+  },
+  "comparisonMatrix": {
+    "patterns": ["window", "pulse"],
+    "noiseAmplitudes": [0, 4],
+    "decoders": ["matched", "inverted", "detuned"]
+  },
+  "oracle": "Original source bits; exact sample comparisons for deterministic and isolation checks",
+  "exclusions": [
+    "No RF transmission or reception",
+    "No human or plant experiment",
+    "No neural decoder or stimulation",
+    "No proof of biological or global coupling",
+    "No Wi-Fi implementation or physical link budget"
+  ],
+  "developmentProvenance": "Same AI-assisted development cluster; source and tests are not an independent audit"
+}

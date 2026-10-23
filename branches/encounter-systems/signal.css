@@ -1,0 +1,233 @@
+/* SPDX-License-Identifier: MIT */
+.signal-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  align-items: end;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #101923;
+}
+.signal-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted-foreground);
+  max-width: 100%;
+}
+.signal-controls select {
+  max-width: 100%;
+  background: #182635;
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.signal-controls .signal-connection {
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 10px;
+}
+.signal-controls input {
+  accent-color: #9ad4ed;
+}
+.signal-stages {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  gap: 34px;
+  margin: 38px 0;
+}
+.signal-stages article {
+  min-width: 0;
+}
+.signal-stages h3 {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.4;
+  min-height: 48px;
+}
+.signal-stages p,
+.frontier-intro {
+  font-size: 13px;
+  color: var(--muted-foreground);
+}
+.pixel-grid {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 3px;
+  max-width: 256px;
+  aspect-ratio: 1;
+}
+.pixel-grid button,
+.pixel-grid span {
+  aspect-ratio: 1;
+  border: 1px solid #334458;
+  border-radius: 3px;
+  background: #101a26;
+  color: #91a4ba;
+  min-width: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+}
+.pixel-grid .pixel-on {
+  background: #cae7f1;
+  border-color: #cae7f1;
+  color: #142333;
+}
+.pixel-grid .pixel-unknown {
+  border-style: dashed;
+  background: #1e1c29;
+  color: #e7c48d;
+}
+.pixel-grid button:hover {
+  outline: 2px solid #e7c48d;
+  outline-offset: 0;
+}
+#signal-wave {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #0d1520;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-top: 16px;
+}
+#signal-wave path {
+  fill: none;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+#signal-wave .wave-axis {
+  stroke: #293747;
+  stroke-dasharray: 4 5;
+}
+#signal-wave .wave-sent {
+  stroke: #81cce8;
+}
+#signal-wave .wave-received {
+  stroke: #e9b886;
+  opacity: 0.8;
+}
+.wave-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 11px;
+  margin: 12px 0;
+}
+.wave-legend span:first-child {
+  color: #81cce8;
+}
+.wave-legend span:last-child {
+  color: #e9b886;
+}
+.signal-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+.signal-metrics span {
+  display: block;
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+.signal-metrics strong {
+  font-size: 30px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.signal-verdict {
+  font-size: 15px;
+  color: #a4d4e5;
+  min-height: 50px;
+}
+.frontier-intro {
+  max-width: 800px;
+  margin-bottom: 35px;
+}
+.frontier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+.frontier-grid article {
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+.frontier-grid h3 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+.frontier-grid p {
+  color: var(--muted-foreground);
+  font-size: 13px;
+}
+.frontier-grid a {
+  font-size: 12px;
+  color: #a8ccdf;
+}
+.frontier-grid small {
+  display: block;
+  font-size: 11px;
+  color: var(--muted-foreground);
+  margin-top: 18px;
+}
+@media (max-width: 900px) {
+  .signal-stages {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .signal-channel {
+    grid-column: 1/-1;
+    grid-row: 2;
+  }
+  .frontier-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .signal-stages,
+  .frontier-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .signal-channel {
+    grid-row: auto;
+    grid-column: auto;
+  }
+  .signal-controls {
+    padding: 16px;
+    gap: 20px;
+  }
+  .signal-controls label {
+    width: 100%;
+  }
+  .signal-stages h3 {
+    min-height: 0;
+  }
+  .signal-stages {
+    gap: 30px;
+  }
+  .signal-metrics {
+    gap: 10px;
+  }
+  .signal-metrics strong {
+    font-size: 25px;
+  }
+  .signal-metrics span {
+    font-size: 11px;
+  }
+  .pixel-grid {
+    max-width: 256px;
+  }
+  .frontier-grid {
+    gap: 28px;
+  }
+}

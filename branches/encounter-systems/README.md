@@ -26,6 +26,8 @@ Absichten werden nicht aus einer Form oder einer behaupteten Identität abgeleit
 
 ## Direkt ausführen
 
+**Neu: [Vom Signal zum Bild](signals.html)** – ein zweites bedienbares Labor mit 64 Quellbits, berechneten Trägersamples, Störungen, drei Decodern und acht getrennten Forschungsästen. [Methode und Quellen](SIGNAL_RESEARCH.md), [zwölf Vergleichsläufe](signal-results.json). Die Signalversuche sind Softwaremodelle; biologische Kopplungen bleiben gesonderte Forschungsfragen.
+
 Öffentliche Forschungsseite: **https://juri-halveth.github.io/halveth-forschungslabor/**. Die Datei `release.json` auf der veröffentlichten Seite bindet den tatsächlich ausgelieferten Quellcommit und die SHA-256-Digests der freigegebenen Dateien. Ein erfolgreiches Deployment und der Abruf der Seite werden getrennt geprüft.
 
 Für Modell und Versuche genügt **Node.js 24 oder neuer**. Es gibt keine Laufzeitabhängigkeiten und keine externen Dienste.

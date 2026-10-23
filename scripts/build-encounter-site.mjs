@@ -20,6 +20,14 @@ export const moduleFiles = Object.freeze([
   "SOURCES.md",
   "README.md",
   "preview.png",
+  "signals.html",
+  "signal.css",
+  "signal-view.mjs",
+  "signal-model.mjs",
+  "signal-results.json",
+  "signal-results-data.mjs",
+  "SIGNAL_PLAN.json",
+  "SIGNAL_RESEARCH.md",
 ]);
 export const licenseFiles = Object.freeze([
   "LICENSE",
