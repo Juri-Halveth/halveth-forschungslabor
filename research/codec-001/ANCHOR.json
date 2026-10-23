@@ -1,11 +1,11 @@
 {
   "schema": "halveth.codec-publication-anchor.v1",
-  "version": "1.0.0",
-  "projectLead": "Juri Halveth / HALVETH",
-  "recordedAt": "2026-10-23T23:31:32.240Z",
+  "version": "1.0.1",
+  "projectLead": "Juri",
+  "recordedAt": "2026-10-23T23:42:34.832Z",
   "displayTimezone": "Europe/Berlin",
   "timeSource": "LOCAL_SYSTEM_CLOCK_NOT_INDEPENDENT_TIMESTAMP",
-  "baseCommit": "493c8570600c9738b2a707f89793b8b52e72a73b",
+  "baseCommit": "ffc3ed6b38424ddfe8a0b9e7914359739bb0512b",
   "publicationState": "LOCAL_CANDIDATE_AT_RECORD_CREATION",
   "historicalBinding": "Use the full published Git commit plus this manifest; commit and PR receipt recorded separately",
   "claimCeiling": "Exact bytes and declared attribution; not proof of invention, legal ownership, independent time or external technical effect",
@@ -13,28 +13,34 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 6001,
-      "sha256": "927cc8a3adf0b10a39c2587fb305630aba71086f491e3631c3cf37afd851b820"
+      "bytes": 6274,
+      "sha256": "405619f25830b031a3bb169a92f01fc474504f81d4909b7fd98915ad53c27521"
     },
     {
       "path": "RESEARCH_PLAN.md",
-      "bytes": 4352,
-      "sha256": "a323606ff09831032cf098d8df293344e3f1d3855c48b509ccc43bc3f7bb906b"
+      "bytes": 4344,
+      "sha256": "5b2ffe53ac0ddc10367575b7e410ec912cbf3062f19bc048417e20d75dff54c6"
     },
     {
       "path": "RIGHTS.md",
-      "bytes": 2936,
-      "sha256": "5c0f2825829c55af8e324c99025710a8bd3f3c652a1590d6133d6dbd93644cd5"
+      "bytes": 2920,
+      "sha256": "5fce350a4d70071b09e4161aaef1baf405cb30ff71ce40c7005c0f286c2e516e"
     },
     {
       "path": "SOURCES.json",
-      "bytes": 2954,
-      "sha256": "22cb1d25597202ce6fc7c986b1bb5becf7fb625be212fe6339ee1494263df649"
+      "bytes": 2966,
+      "sha256": "14b21da4f1c0bbcb79a2d1599638d3eccdab792df1e3edc209fcf673c11ac615"
     },
     {
       "path": "verify.mjs",
-      "bytes": 2236,
-      "sha256": "351989bfb121c869a67753801f5b0c502fbd867b6f01fd8175f4fe3ac5bfc190"
+      "bytes": 2440,
+      "sha256": "123d5cc1683ef7676ec0afc4f8d5b7879ef388c9557aba37fc03b73bb98fac4f"
     }
-  ]
+  ],
+  "projectName": "HALVETH",
+  "supersedes": {
+    "commit": "ffc3ed6b38424ddfe8a0b9e7914359739bb0512b",
+    "anchorSha256": "178f419675bc589c11c1af4a19c97a687f02deb984086ef3b4ebb6685c6d1a41",
+    "reason": "Person Juri; project HALVETH. Attribution correction; research scope and grants preserved."
+  }
 }

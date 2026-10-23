@@ -1,6 +1,6 @@
 # Vom Signal zum Bild
 
-Projektleitung und Forschungsrichtung: **Juri Halveth / HALVETH**. Entwicklung mit KI-Unterstützung. Version 1.0.0, deterministisches Softwaremodell.
+Projektleitung und Forschungsrichtung: **Juri / HALVETH**. Entwicklung mit KI-Unterstützung. Version 1.0.0, deterministisches Softwaremodell.
 
 **Frage:** Welche Änderung an Kanal oder Decoder verändert die Rekonstruktion derselben Nachricht?
 

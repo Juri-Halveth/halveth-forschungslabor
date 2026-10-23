@@ -1,6 +1,6 @@
 {
   "schema": "halveth.codec-research-sources.v1",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "checkedOn": "2026-10-24",
   "timezone": "Europe/Berlin",
   "coverage": "Specific sections and abstracts, not an exhaustive prior-art search",
@@ -53,9 +53,10 @@
     }
   ],
   "researchAttribution": {
-    "projectLead": "Juri Halveth / HALVETH",
+    "projectLead": "Juri",
     "declaredContribution": "Research direction, questions and conceptual connections",
     "assistance": "AI-assisted curation, source checking and drafting",
-    "verification": "DECLARED_CONTRIBUTION_NOT_INDEPENDENT_AUTHORSHIP_CERTIFICATION"
+    "verification": "DECLARED_CONTRIBUTION_NOT_INDEPENDENT_AUTHORSHIP_CERTIFICATION",
+    "projectName": "HALVETH"
   }
 }

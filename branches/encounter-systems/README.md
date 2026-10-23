@@ -6,7 +6,7 @@ Ein eigenes System berechnet ein Bild. Ein Partner übernimmt abgegrenzte Rechen
 
 ![Desktopansicht des Encounter-Systems-Labors](preview.png)
 
-Projektleitung und Idee: **Juri Halveth / HALVETH**. Entwicklung mit KI-Unterstützung. Forschungsstand: **ausführbarer, synthetischer Prototyp**.
+Projektleitung und Idee: **Juri / HALVETH**. Entwicklung mit KI-Unterstützung. Forschungsstand: **ausführbarer, synthetischer Prototyp**.
 
 ## Was ist die Forschungsfrage?
 

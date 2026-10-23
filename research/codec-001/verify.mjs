@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Copyright (c) 2026 Juri Halveth. Developed with AI assistance.
+// Copyright (c) 2026 Juri. Developed with AI assistance.
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -13,12 +13,14 @@ const root = path.dirname(fileURLToPath(import.meta.url));
 // Reads only the fixed dossier payload. A manifest cannot add arbitrary paths.
 export function verifyAnchor(anchor, read = (name) => readFileSync(path.join(root, name))) {
   if (!anchor || anchor.schema !== 'halveth.codec-publication-anchor.v1' ||
-      anchor.version !== '1.0.0' || anchor.dataLicense !== 'CC0-1.0' ||
+      anchor.version !== '1.0.1' || anchor.dataLicense !== 'CC0-1.0' ||
       anchor.timeSource !== 'LOCAL_SYSTEM_CLOCK_NOT_INDEPENDENT_TIMESTAMP' ||
       !/^\d{4}-\d{2}-\d{2}T.*(?:Z|[+-]\d{2}:\d{2})$/.test(anchor.recordedAt) ||
       !Number.isFinite(Date.parse(anchor.recordedAt)) ||
       !/^[a-f0-9]{40}$/.test(anchor.baseCommit) ||
-      anchor.projectLead !== 'Juri Halveth / HALVETH') {
+      anchor.projectLead !== 'Juri' || anchor.projectName !== 'HALVETH' ||
+      anchor.supersedes?.commit !== 'ffc3ed6b38424ddfe8a0b9e7914359739bb0512b' ||
+      anchor.supersedes?.anchorSha256 !== '178f419675bc589c11c1af4a19c97a687f02deb984086ef3b4ebb6685c6d1a41') {
     throw new Error('Invalid publication-anchor metadata');
   }
   if (!Array.isArray(anchor.files) || anchor.files.length !== PAYLOAD.length) {

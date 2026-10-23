@@ -2,7 +2,7 @@
 
 **Kleine Werkzeuge. Konkrete Modelle. Nachvollziehbare Prüfungen.**
 
-Dieses Repository enthält eine ausgewählte technische Sammlung von Juri Halveth: lokale JavaScript- und Python-Bausteine, ihre Eingaben, Grenzen und Gegenproben.
+Dieses Repository enthält eine ausgewählte technische Sammlung von Juri im Projekt HALVETH: lokale JavaScript- und Python-Bausteine, ihre Eingaben, Grenzen und Gegenproben. [Person und Projektname](IDENTITY.md) sind getrennt zugeordnet.
 
 ## Direkt anfangen
 
@@ -90,7 +90,7 @@ Lokale synthetische Prüfmodelle für Befundbehauptungen. Keine aktiven Angriffe
 
 ### [CODEC-001 – Darstellung, Gedächtnis und vermittelte Wirkung](research/codec-001/)
 
-Quellengebundener Forschungsentwurf von Juri Halveth / HALVETH mit transparenter KI-Unterstützung. Fünf getrennte Prüfachsen, Vorarbeiten, Lizenzzuordnung und ein exakter Dateizeitanker. Der ausführbare Prüfer kontrolliert die Integrität dieser Veröffentlichung; ein neuer Codec oder ein Produkt-Sicherheitsbefund wird damit nicht behauptet.
+Quellengebundener Forschungsentwurf von Juri / HALVETH mit transparenter KI-Unterstützung. Fünf getrennte Prüfachsen, Vorarbeiten, Lizenzzuordnung und ein exakter Dateizeitanker. Der ausführbare Prüfer kontrolliert die Integrität dieser Veröffentlichung; ein neuer Codec oder ein Produkt-Sicherheitsbefund wird damit nicht behauptet.
 
 ## Technischer Umfang
 
@@ -100,6 +100,6 @@ Gemeinsame Hilfsfunktionen unter `scripts/` prüfen Plain-JSON, Quellenpakete un
 
 ## Herkunft
 
-Projektleitung: **Juri Halveth / HALVETH**. Entwicklung mit KI-Unterstützung. `SOURCE_PROVENANCE.json` bindet die übernommenen Codebytes und ihre historische Commitfassung. Die bisherigen Lizenzbedingungen gelten weiter; siehe `LICENSES.md`. Frühere nichttechnische Arbeiten werden getrennt privat erhalten.
+Projektleitung: **Juri / HALVETH**. Entwicklung mit KI-Unterstützung. `SOURCE_PROVENANCE.json` bindet die übernommenen Codebytes und ihre historische Commitfassung. Die bisherigen Lizenzbedingungen gelten weiter; siehe `LICENSES.md`. Frühere nichttechnische Arbeiten werden getrennt privat erhalten.
 
 [Portfolio](https://juri-halveth.github.io/) · [Kontakt](mailto:security@halveth.de)
