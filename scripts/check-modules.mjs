@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
 const root=path.resolve(import.meta.dirname,'..');
-function walk(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()&&e.name!=='__pycache__'?walk(path.join(dir,e.name)):e.isFile()&&/\.test\.(?:mjs|js)$/.test(e.name)?[path.join(dir,e.name)]:[]);}
+function walk(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()&&!['__pycache__','node_modules','test-results','playwright-report'].includes(e.name)?walk(path.join(dir,e.name)):e.isFile()&&/\.test\.(?:mjs|js)$/.test(e.name)?[path.join(dir,e.name)]:[]);}
 const tests=[...walk(path.join(root,'branches')),...walk(path.join(root,'scripts'))].sort();
 if(!tests.length)throw Error('No JavaScript tests selected');
 let r=spawnSync(process.execPath,['--test',...tests],{cwd:root,stdio:'inherit'});

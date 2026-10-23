@@ -10,6 +10,14 @@
       "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
     },
     {
+      "id": "encounter-systems",
+      "title": "Encounter Systems – Kooperation, Kopien und veränderbare Grenzen",
+      "description": "Ausführbares Browserlabor mit Zeitspur, Freigabeversionen und reproduzierbaren Modellvergleichen.",
+      "path": "branches/encounter-systems",
+      "entry": "model.mjs",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
       "id": "focus-kernel",
       "title": "Focus Kernel – bestätigte Ziele und Vorschläge getrennt halten",
       "description": "Lokaler Zustandskern für bestätigte Ziele, Vorschläge und begrenzte Prüfergebnisse.",

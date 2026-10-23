@@ -1,5 +1,5 @@
 {
-  "branchCount": 12,
+  "branchCount": 13,
   "branches": [
     {
       "id": "1001-doors",
@@ -8,10 +8,34 @@
         "branches/1001-doors/http-status-data.mjs",
         "branches/1001-doors/app.mjs",
         "branches/1001-doors/generate.mjs",
-        "branches/1001-doors/serve.py"
+        "branches/1001-doors/serve.py",
+        "branches/1001-doors/number-research.mjs",
+        "branches/1001-doors/number-research-view.mjs",
+        "branches/1001-doors/role-journey.mjs",
+        "branches/1001-doors/role-journey-view.mjs",
+        "branches/1001-doors/powers-square.mjs",
+        "branches/1001-doors/powers-square-view.mjs"
       ],
       "testFiles": [
-        "branches/1001-doors/model.test.mjs"
+        "branches/1001-doors/model.test.mjs",
+        "branches/1001-doors/number-research.test.mjs",
+        "branches/1001-doors/role-journey.test.mjs",
+        "branches/1001-doors/powers-square.test.mjs"
+      ]
+    },
+    {
+      "id": "encounter-systems",
+      "sourceFiles": [
+        "branches/encounter-systems/model.mjs",
+        "branches/encounter-systems/reference.mjs",
+        "branches/encounter-systems/view.mjs",
+        "branches/encounter-systems/dashboard.mjs",
+        "branches/encounter-systems/geometry.mjs"
+      ],
+      "testFiles": [
+        "branches/encounter-systems/model.test.mjs",
+        "branches/encounter-systems/geometry.test.mjs",
+        "branches/encounter-systems/browser.spec.mjs"
       ]
     },
     {

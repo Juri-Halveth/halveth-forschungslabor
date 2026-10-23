@@ -1,0 +1,151 @@
+{
+  "schema": "halveth.encounter-results.v1",
+  "modelVersion": "1.0.0",
+  "sourceSha256": "99b1e81c6da25a85bc9e012ac737a8a106f0dc6fc1db060d13e571c01f6bed21",
+  "oracleSha256": "4cde6a23366d6b4d61f18e1899241fd3a739b6925955b6de5c4011393217a16b",
+  "planSha256": "0a5399d0c30cca7967f97aaa4117df242c10251f9fb6ce35db43eea96ef5e7d2",
+  "measurement": "deterministic model ticks; no hardware speedup measured",
+  "scenarios": [
+    {
+      "id": "fractal-delay-0-solo",
+      "task": "fractal",
+      "buildDelay": 0,
+      "partner": false,
+      "done": 48,
+      "ticks": 2041,
+      "modelSeconds": 34.016667,
+      "partnerTiles": 0,
+      "outputSha256": "90561ce0169e198f7b41f0c4ef6b459b0b5744c409c8ec9cf13de55b77f5eff4"
+    },
+    {
+      "id": "fractal-delay-0-partner",
+      "task": "fractal",
+      "buildDelay": 0,
+      "partner": true,
+      "done": 48,
+      "ticks": 1081,
+      "modelSeconds": 18.016667,
+      "partnerTiles": 24,
+      "outputSha256": "90561ce0169e198f7b41f0c4ef6b459b0b5744c409c8ec9cf13de55b77f5eff4"
+    },
+    {
+      "id": "fractal-delay-1.1-solo",
+      "task": "fractal",
+      "buildDelay": 1.1,
+      "partner": false,
+      "done": 48,
+      "ticks": 2041,
+      "modelSeconds": 34.016667,
+      "partnerTiles": 0,
+      "outputSha256": "90561ce0169e198f7b41f0c4ef6b459b0b5744c409c8ec9cf13de55b77f5eff4"
+    },
+    {
+      "id": "fractal-delay-1.1-partner",
+      "task": "fractal",
+      "buildDelay": 1.1,
+      "partner": true,
+      "done": 48,
+      "ticks": 1148,
+      "modelSeconds": 19.133333,
+      "partnerTiles": 24,
+      "outputSha256": "90561ce0169e198f7b41f0c4ef6b459b0b5744c409c8ec9cf13de55b77f5eff4"
+    },
+    {
+      "id": "fractal-delay-4-solo",
+      "task": "fractal",
+      "buildDelay": 4,
+      "partner": false,
+      "done": 48,
+      "ticks": 2041,
+      "modelSeconds": 34.016667,
+      "partnerTiles": 0,
+      "outputSha256": "90561ce0169e198f7b41f0c4ef6b459b0b5744c409c8ec9cf13de55b77f5eff4"
+    },
+    {
+      "id": "fractal-delay-4-partner",
+      "task": "fractal",
+      "buildDelay": 4,
+      "partner": true,
+      "done": 48,
+      "ticks": 1322,
+      "modelSeconds": 22.033333,
+      "partnerTiles": 24,
+      "outputSha256": "90561ce0169e198f7b41f0c4ef6b459b0b5744c409c8ec9cf13de55b77f5eff4"
+    },
+    {
+      "id": "wave-delay-0-solo",
+      "task": "wave",
+      "buildDelay": 0,
+      "partner": false,
+      "done": 48,
+      "ticks": 2041,
+      "modelSeconds": 34.016667,
+      "partnerTiles": 0,
+      "outputSha256": "3c0cf0fb4d122b9afa78326ea5869f4039f3a22ad5d6f733371ec55a471a5396"
+    },
+    {
+      "id": "wave-delay-0-partner",
+      "task": "wave",
+      "buildDelay": 0,
+      "partner": true,
+      "done": 48,
+      "ticks": 1081,
+      "modelSeconds": 18.016667,
+      "partnerTiles": 24,
+      "outputSha256": "3c0cf0fb4d122b9afa78326ea5869f4039f3a22ad5d6f733371ec55a471a5396"
+    },
+    {
+      "id": "wave-delay-1.1-solo",
+      "task": "wave",
+      "buildDelay": 1.1,
+      "partner": false,
+      "done": 48,
+      "ticks": 2041,
+      "modelSeconds": 34.016667,
+      "partnerTiles": 0,
+      "outputSha256": "3c0cf0fb4d122b9afa78326ea5869f4039f3a22ad5d6f733371ec55a471a5396"
+    },
+    {
+      "id": "wave-delay-1.1-partner",
+      "task": "wave",
+      "buildDelay": 1.1,
+      "partner": true,
+      "done": 48,
+      "ticks": 1148,
+      "modelSeconds": 19.133333,
+      "partnerTiles": 24,
+      "outputSha256": "3c0cf0fb4d122b9afa78326ea5869f4039f3a22ad5d6f733371ec55a471a5396"
+    },
+    {
+      "id": "wave-delay-4-solo",
+      "task": "wave",
+      "buildDelay": 4,
+      "partner": false,
+      "done": 48,
+      "ticks": 2041,
+      "modelSeconds": 34.016667,
+      "partnerTiles": 0,
+      "outputSha256": "3c0cf0fb4d122b9afa78326ea5869f4039f3a22ad5d6f733371ec55a471a5396"
+    },
+    {
+      "id": "wave-delay-4-partner",
+      "task": "wave",
+      "buildDelay": 4,
+      "partner": true,
+      "done": 48,
+      "ticks": 1322,
+      "modelSeconds": 22.033333,
+      "partnerTiles": 24,
+      "outputSha256": "3c0cf0fb4d122b9afa78326ea5869f4039f3a22ad5d6f733371ec55a471a5396"
+    }
+  ],
+  "observations": {
+    "oldEpoch": 0,
+    "newEpoch": 2,
+    "oldDeliveryAccepted": false,
+    "retainedCopies": 3,
+    "protectedBeforeSha256": "c03a12a8f0b5b2b3c7733abcb0f01c7cd9ecefb57280f706e60a81180901c339",
+    "unprotectedAfterSha256": "ec43b4cd969a95a412591911bb04bb1da39c0d041560088ff1318d0191812b66",
+    "repairedSha256": "c03a12a8f0b5b2b3c7733abcb0f01c7cd9ecefb57280f706e60a81180901c339"
+  }
+}

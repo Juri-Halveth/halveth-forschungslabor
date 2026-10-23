@@ -1,0 +1,9 @@
+{
+ "name":"@halveth/encounter-systems-lab",
+ "version":"1.0.0",
+ "private":true,
+ "type":"module",
+ "license":"MIT",
+ "scripts":{"test":"node --test model.test.mjs geometry.test.mjs","research":"node research.mjs --check","browser":"playwright test"},
+ "devDependencies":{"@playwright/test":"1.62.1"}
+}

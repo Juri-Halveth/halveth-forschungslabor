@@ -1,0 +1,24 @@
+{
+  "schema": "halveth.encounter-research-plan.v1",
+  "writtenBeforeExperimentSuite": true,
+  "scope": "Deterministic browser/Node model; synthetic image data; no external agents or security target",
+  "question": "How can useful cooperation, bounded copying, withdrawal and an attempted overwrite coexist with an ongoing computation?",
+  "models": [
+    {"id": "M1", "kind": "IDEAL_COUNTERMODEL", "source": "reference.mjs", "definition": "Whole-image scalar oracle plus exact grant-epoch continuity at delivery"},
+    {"id": "M2", "kind": "SOURCE_BOUND_SHADOW", "source": "model.mjs", "definition": "Migrated executable tile scheduler from the accepted local prototype; candidate changes tested against M1"}
+  ],
+  "predictions": [
+    {"id": "P1", "change": "enable partner", "expected": "Identical final image and fewer model ticks for both declared workloads", "falsifier": "Any output-byte difference or no reduction in the declared model"},
+    {"id": "P2", "change": "withdraw copy permission during transfer", "expected": "No new copy is delivered; already received copies remain", "falsifier": "Delivery from the withdrawn grant or removal of earlier copy"},
+    {"id": "P3", "change": "withdraw then grant again before old delivery", "expected": "The old transfer remains invalid because its authorization epoch ended", "falsifier": "An old transfer is accepted under a new grant"},
+    {"id": "P4", "change": "disable write guard", "expected": "A requested overwrite changes actual image bytes; repair restores exact reference bytes", "falsifier": "Only the displayed label changes, or repair fails exact equality"},
+    {"id": "P5", "change": "change only transport delay", "expected": "Completion time may change while completed output bytes remain equal", "falsifier": "Different final pixels"},
+    {"id": "P6", "change": "change camera or revisit history", "expected": "The active simulation state and its bytes remain unchanged", "falsifier": "A view operation mutates the simulation"}
+  ],
+  "measurements": ["integer model ticks", "completed tile count", "full output SHA-256", "copy-byte equality", "retained grant epoch", "denials", "corrupted tile IDs"],
+  "notMeasured": ["real distributed speedup", "GPU benchmark", "OS process isolation", "cryptographic actor identity", "real-world mutual benefit", "physical vacuum dynamics"],
+  "acceptance": "All declared invariants pass the same reference oracle, the suite detects safe guard mutants, and the desktop/mobile interface is directly inspected.",
+  "authority": "User requested research development and professional GitHub presentation of this own local model. Public delivery is limited to the new synthetic module and minimal repository integration.",
+  "rollback": "Keep the accepted prototype unchanged; develop on codex/encounter-systems-research-20261023; omit or revert this isolated module to recover.",
+  "stop": "Private input, external service mutation beyond the requested GitHub branch/PR, unrelated project changes, or an unexplained oracle mismatch."
+}

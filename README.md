@@ -31,6 +31,13 @@ Neu: [Rollenreisen und Sitzungshive](branches/1001-doors/ROLE_JOURNEY_RESEARCH.m
 sowie [256/512/1024 und historische Namenspfade](branches/1001-doors/POWERS_SQUARE_RESEARCH.md).
 Die zusätzlichen Modelle bewahren das ursprüngliche Register und die früheren Quellenfassungen.
 
+### [Encounter Systems – Kooperation, Kopien und veränderbare Grenzen](branches/encounter-systems/)
+
+Ein ausführbares Browserlabor: Systeme berechnen gemeinsam ein Bild, übernehmen erlaubte Kopien und prüfen Lieferungen gegen ihre Freigabeversion. Mit Desktop-/Mobilansicht, Zeitspur, zwei Arbeitsaufträgen, zwölf reproduzierbaren Vergleichen und einem maschinenlesbaren Wissensregister.
+
+![Encounter Systems Forschungslabor](branches/encounter-systems/preview.png)
+
+
 ### [Drei-Gabel – ein dritter Weg im Konflikt](branches/three-actor-fork/)
 
 Interaktives Drei-Akteure-Modell: C tritt zwischen A und B ein; zwei Reaktionen erzeugen prüfbare Kandidaten statt eines vorweggenommenen Sieges.
