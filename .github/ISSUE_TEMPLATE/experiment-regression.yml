@@ -1,0 +1,31 @@
+name: Experiment oder Darstellung verbessern
+description: Einen nachvollziehbaren Fall mit Beobachtung, Erwartung und Gegenprobe vorschlagen.
+title: "[Experiment] "
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Geöffnete Seite und Quellstand
+      description: Öffentliche URL und, falls vorhanden, sourceCommit aus release.json.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Schritte zum Wiederholen
+      description: Gewählter Vergleich, Modellzeit, Bedienelement und Bildschirmbreite.
+    validations:
+      required: true
+  - type: textarea
+    id: observation
+    attributes:
+      label: Was ist tatsächlich passiert?
+    validations:
+      required: true
+  - type: textarea
+    id: expectation
+    attributes:
+      label: Welche Eigenschaft sollte erhalten bleiben?
+      description: Erwartung und mögliche Gegenprobe. Bitte Zugangsdaten und persönliche Originalbelege lokal behalten.
+    validations:
+      required: true

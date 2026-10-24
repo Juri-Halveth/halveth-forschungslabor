@@ -1,0 +1,56 @@
+{
+  "schema": "halveth.endeck-knowledge.v1",
+  "version": "1.1.0",
+  "learningMode": "EXPLICIT_LESSONS_AND_TESTED_COUNTEREXAMPLES",
+  "modelWeightTraining": false,
+  "source": {
+    "path": "branches/endeck-observer/model.mjs",
+    "sha256": "3824d725caaed2d437561573533a59bee1251cc4b0a224902ca0965d0b578c11"
+  },
+  "records": [
+    {
+      "id": "projection",
+      "question": "Am Ende siehst du links einen Bildort. Wie viele verschiedene Raumorte gibt es?",
+      "answer": "Vier. Die x/y-Projektion blendet z aus. Der gekippte Blick unterscheidet die vier Raumorte.",
+      "scope": "DECLARED_GEOMETRIC_MODEL",
+      "evidence": [
+        "branches/endeck-observer/model.test.mjs",
+        "branches/endeck-observer/learning.test.mjs"
+      ],
+      "reopenTrigger": "A changed model rule or a counterexample that violates the stated property"
+    },
+    {
+      "id": "shrink",
+      "question": "Bei Skalierung null teilen die Punkte einen Ort. Wie viele Datensätze bleiben erhalten?",
+      "answer": "Vier. Der Zustandsoperator verändert die Koordinaten; die Identitäten A, B, C und D bleiben bestehen.",
+      "scope": "DECLARED_GEOMETRIC_MODEL",
+      "evidence": [
+        "branches/endeck-observer/model.test.mjs",
+        "branches/endeck-observer/learning.test.mjs"
+      ],
+      "reopenTrigger": "A changed model rule or a counterexample that violates the stated property"
+    },
+    {
+      "id": "merge",
+      "question": "Stelle die Modellzeit auf 0,667 (genau 2/3). Wie viele verschiedene Orte gibt es dort?",
+      "answer": "Zwei. B und C haben A bereits erreicht. D liegt noch an einem anderen Ort.",
+      "scope": "DECLARED_GEOMETRIC_MODEL",
+      "evidence": [
+        "branches/endeck-observer/model.test.mjs",
+        "branches/endeck-observer/learning.test.mjs"
+      ],
+      "reopenTrigger": "A changed model rule or a counterexample that violates the stated property"
+    },
+    {
+      "id": "history",
+      "question": "Welche zusätzliche Beobachtung kann die beiden festgelegten Wege unterscheiden?",
+      "answer": "Die Aufnahme bei t = 0,5. An dieser Stelle liegen Gerade und Bogen verschieden, während beide Endbilder übereinstimmen.",
+      "scope": "DECLARED_GEOMETRIC_MODEL",
+      "evidence": [
+        "branches/endeck-observer/model.test.mjs",
+        "branches/endeck-observer/learning.test.mjs"
+      ],
+      "reopenTrigger": "A changed model rule or a counterexample that violates the stated property"
+    }
+  ]
+}

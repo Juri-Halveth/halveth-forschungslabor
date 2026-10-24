@@ -23,6 +23,11 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+**[Wissen & Code – der GitHub-Tunnel](https://juri-halveth.github.io/halveth-forschungslabor/wissen/)**
+verknüpft alle aktuellen Modul- und Forschungsordner mit konkreten Quellen,
+Tests, Erklärungen und den veröffentlichten Ansichten. Dateibindungen und
+Gegenbeispiele werden in CI erneut geprüft. [Methode für Mitwirkende](catalog/LEARNING_PIPELINE.md).
+
 ### [ENDECK – Was sieht ein Quadrat?](branches/endeck-observer/)
 
 Vier bewegte Punkte, eine flache und eine räumliche Ansicht: Projektion,

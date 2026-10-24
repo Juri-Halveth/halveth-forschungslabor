@@ -1,6 +1,123 @@
 // SPDX-License-Identifier: MIT
 import { test, expect } from "@playwright/test";
 import path from "node:path";
+
+test("ENDECK uses native controls, preserves source identities and remembers only correct learning answers",async({page},info)=>{
+  const errors=[];page.on("pageerror",e=>errors.push(e.message));
+  await page.goto("/endeck/");
+  await expect(page.locator("html")).toHaveAttribute("data-endeck-ready","true");
+  await expect(page.locator("iframe")).toHaveCount(0);
+  await expect(page.locator("#endeck-flat-count")).toHaveText("1 Bildort");
+  await expect(page.locator("#endeck-space-count")).toHaveText("4 Raumorte · 4 IDs");
+  await page.getByLabel("Was möchtest du vergleichen?",{exact:true}).selectOption("merge");
+  for(const [t,n]of [["0",4],["1000",3],["2000",2],["3000",1]]){
+    await page.getByLabel("Modellzeit",{exact:true}).fill(t);
+    await expect(page.locator("#endeck-space-count")).toHaveText(`${n} ${n===1?"Raumort":"Raumorte"} · 4 IDs`);
+  }
+  await page.getByRole("button",{name:"Einen Ort",exact:true}).click();
+  await expect(page.locator("#learning-count")).toHaveText("0 / 4");
+  await page.getByRole("button",{name:"Zwei Orte",exact:true}).click();
+  await expect(page.locator("#learning-count")).toHaveText("1 / 4");
+  await page.getByRole("button",{name:"Zwei Orte",exact:true}).click();
+  await expect(page.locator("#learning-count")).toHaveText("1 / 4");
+  await page.reload();await expect(page.locator("#learning-count")).toHaveText("1 / 4");
+  await page.getByLabel("Was möchtest du vergleichen?",{exact:true}).selectOption("history");
+  await page.getByLabel("Modellzeit",{exact:true}).fill("1500");
+  const flat=await page.locator("#endeck-flat").innerHTML(),straight=await page.locator("#endeck-space").innerHTML();
+  await page.getByRole("button",{name:"Bogen",exact:true}).click();
+  expect(await page.locator("#endeck-flat").innerHTML()).toBe(flat);
+  expect(await page.locator("#endeck-space").innerHTML()).not.toBe(straight);
+  await page.getByRole("button",{name:"Eine Aufnahme bei t = 0,5",exact:true}).click();
+  await expect(page.locator("#learning-count")).toHaveText("2 / 4");
+  await page.screenshot({path:info.outputPath("endeck-desktop.png"),fullPage:true});
+  expect(errors).toEqual([]);
+});
+
+test("ENDECK mobile controls and labels fit without nested scrolling at four widths",async({page},info)=>{
+  const errors=[];page.on("pageerror",e=>errors.push(e.message));
+  await page.goto("/endeck/");await expect(page.locator("html")).toHaveAttribute("data-endeck-ready","true");
+  for(const width of [320,390,768,1024]){
+    await page.setViewportSize({width,height:900});
+    for(const mode of ["projection","shrink","merge","history"]){
+      await page.getByLabel("Was möchtest du vergleichen?",{exact:true}).selectOption(mode);
+      for(const time of ["0","1000","2000","3000"]){
+        await page.getByLabel("Modellzeit",{exact:true}).fill(time);
+        const layout=await page.evaluate(()=>{
+          const labelsFit=[...document.querySelectorAll(".chart")].every(svg=>{
+            const box=svg.getBoundingClientRect();
+            return[...svg.querySelectorAll(".point-label")].every(label=>{
+              const b=label.getBoundingClientRect();return b.left>=box.left-1&&b.right<=box.right+1&&b.top>=box.top-1&&b.bottom<=box.bottom+1;
+            });
+          });
+          const controls=[...document.querySelectorAll(".experiment-top button,.experiment-top select")].map(el=>el.getBoundingClientRect());
+          return{horizontal:document.documentElement.scrollWidth<=innerWidth,labelsFit,touch:controls.every(b=>b.height>=44),frames:document.querySelectorAll("iframe").length};
+        });
+        expect(layout).toEqual({horizontal:true,labelsFit:true,touch:true,frames:0});
+      }
+    }
+    await page.getByLabel("Was möchtest du vergleichen?",{exact:true}).selectOption("projection");
+    await page.screenshot({path:info.outputPath(`endeck-${width}.png`),fullPage:true});
+  }
+  expect(errors).toEqual([]);
+});
+
+test("a corrupt saved score is visible and cannot award progress",async({page})=>{
+  await page.addInitScript(()=>{try{localStorage.setItem("halveth.endeck.learning.v1",'{"schema":"endeck.learning.v1","completed":["invented"]}');}catch{}});
+  await page.goto("/endeck/");
+  await expect(page.locator("#learning-count")).toHaveText("0 / 4");
+  await expect(page.locator("#storage-note")).toContainText("nicht übernommen");
+  await page.getByRole("button",{name:"Vier Raumorte",exact:true}).click();
+  await expect(page.locator("#learning-count")).toHaveText("1 / 4");
+  await page.getByRole("button",{name:"Lernstand zurücksetzen",exact:true}).click();
+  await expect(page.locator("#learning-count")).toHaveText("0 / 4");
+});
+
+test("animation pauses correctly and reduced motion stops the active run",async({page})=>{
+  await page.emulateMedia({reducedMotion:"no-preference"});
+  await page.goto("/endeck/");
+  await page.getByLabel("Modellzeit",{exact:true}).fill("0");
+  await page.getByRole("button",{name:"Ablauf zeigen",exact:true}).click();
+  await expect.poll(async()=>Number(await page.locator("#experiment").getAttribute("data-progress"))).toBeGreaterThan(0);
+  await page.getByRole("button",{name:"Anhalten",exact:true}).click();
+  const paused=await page.locator("#experiment").getAttribute("data-progress");
+  await page.getByRole("button",{name:"Blick kippen",exact:true}).click();
+  await expect(page.locator("#camera-label")).toHaveText("0° · x / y / z");
+  expect(await page.locator("#experiment").getAttribute("data-progress")).toBe(paused);
+  await page.getByRole("button",{name:"Ablauf zeigen",exact:true}).click();
+  await page.emulateMedia({reducedMotion:"reduce"});
+  await expect(page.locator("#endeck-play")).toHaveText("Endzustand zeigen");
+  await page.getByRole("button",{name:"Endzustand zeigen",exact:true}).click();
+  await expect(page.locator("#experiment")).toHaveAttribute("data-progress","1");
+});
+
+test("unavailable browser storage keeps the experiment and temporary learning usable",async({page})=>{
+  const errors=[];page.on("pageerror",e=>errors.push(e.message));
+  await page.addInitScript(()=>Object.defineProperty(window,"localStorage",{get(){throw new DOMException("Synthetic storage denial","SecurityError");}}));
+  await page.goto("/endeck/");
+  await expect(page.locator("html")).toHaveAttribute("data-endeck-ready","true");
+  await expect(page.locator("#storage-note")).toContainText("nicht verfügbar");
+  await page.getByRole("button",{name:"Vier Raumorte",exact:true}).click();
+  await expect(page.locator("#learning-count")).toHaveText("1 / 4");
+  await page.getByLabel("Was möchtest du vergleichen?",{exact:true}).selectOption("merge");
+  await expect(page.locator("#learning-count")).toHaveText("1 / 4");
+  expect(errors).toEqual([]);
+});
+
+test("the repository tunnel has eighteen usable source and test routes and mobile navigation fits",async({page},info)=>{
+  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(18);
+  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(18);
+  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(18);
+  for(const url of ["/wissen/","/signals.html","/"]){
+    await page.goto(url);
+    for(const width of [320,390,768,1024]){
+      await page.setViewportSize({width,height:900});
+      expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+    }
+  }
+  await page.goto("/wissen/");await page.setViewportSize({width:390,height:900});
+  await page.screenshot({path:info.outputPath("learning-tunnel-mobile.png"),fullPage:true});
+});
+
 test("signal controls change received samples and decoded image", async ({
   page,
 }, info) => {
