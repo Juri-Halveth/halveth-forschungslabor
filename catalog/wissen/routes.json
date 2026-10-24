@@ -5,6 +5,46 @@
   "modelWeightTraining": false,
   "entries": [
     {
+      "id": "security-workbench",
+      "title": "Sicherheitsprüfungen – Laufzeiten, Parser und Berechtigungen",
+      "description": "Sechs lokale Prüfplätze, datierte Node.js-Patchreferenzen und ein eigener kurzlebiger HTTP-Dienst für Burp mit synthetischen Konten.",
+      "source": "branches/security-workbench/core.mjs",
+      "tests": [
+        "branches/security-workbench/core.test.mjs",
+        "branches/security-workbench/http-fixture.test.mjs",
+        "branches/encounter-systems/browser.spec.mjs"
+      ],
+      "docs": "branches/security-workbench/README.md",
+      "demo": "sicherheitslabor/",
+      "files": [
+        {
+          "path": "branches/security-workbench/core.mjs",
+          "bytes": 6944,
+          "sha256": "93180c2dce9537d1825c7ad4274a8e80907459c1b6cc3f8c76457855366d0097"
+        },
+        {
+          "path": "branches/security-workbench/README.md",
+          "bytes": 6822,
+          "sha256": "0f6a5dfd56459ae604586f5e492eb1be544a139633508c34ea1e4eec84d7152b"
+        },
+        {
+          "path": "branches/security-workbench/core.test.mjs",
+          "bytes": 5518,
+          "sha256": "a13aa0007931dfff735ccaff50d0cc1e17679a4c8e0da3d143164487359b4340"
+        },
+        {
+          "path": "branches/security-workbench/http-fixture.test.mjs",
+          "bytes": 1911,
+          "sha256": "101dccd4d746bb626a1226685fd0000edc668facd78508134323586c5ff7edc8"
+        },
+        {
+          "path": "branches/encounter-systems/browser.spec.mjs",
+          "bytes": 16668,
+          "sha256": "e271a9ca6aef63d8005a739596b30aa5d9fe93bd6715c4319f506aa2b0f872a9"
+        }
+      ]
+    },
+    {
       "id": "endeck-observer",
       "title": "ENDECK – Bild, Raum und Zeit",
       "description": "Vier geometrische Gegenbeispiele, zwei Blickwinkel und vier Lernaufgaben mit lokalem Fortschritt.",
@@ -73,8 +113,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 13409,
-          "sha256": "5c6eedf204fb69b38f1afc1c6f28b76da21d5f3977b4631105ad206d254888db"
+          "bytes": 16668,
+          "sha256": "e271a9ca6aef63d8005a739596b30aa5d9fe93bd6715c4319f506aa2b0f872a9"
         }
       ]
     },

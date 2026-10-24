@@ -12,9 +12,10 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
         with:
-          node-version: '24'
+          node-version: '24.22.1'
           package-manager-cache: false
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: '3.12'
+      - run: node branches/security-workbench/cli.mjs runtime --require-patch
       - run: npm test

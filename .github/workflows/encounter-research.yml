@@ -17,10 +17,11 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
         with:
-          node-version: '24'
+          node-version: '24.22.1'
           package-manager-cache: false
       - name: Check model, reference and deterministic results
         run: |
+          node branches/security-workbench/cli.mjs runtime --require-patch
           node --test branches/encounter-systems/model.test.mjs branches/encounter-systems/geometry.test.mjs
           node branches/encounter-systems/research.mjs --check
           node --test branches/encounter-systems/signal-model.test.mjs

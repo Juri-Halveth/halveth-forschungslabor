@@ -6,7 +6,7 @@ Dieses Repository enthält eine ausgewählte technische Sammlung von Juri im Pro
 
 ## Direkt anfangen
 
-Voraussetzungen: **Node.js 24 und Python 3.11 oder neuer**. Keine zusätzlichen Pakete.
+Voraussetzungen: **Node.js 24.22.1 oder 26.12.1 (jeweils mit neueren Patches derselben Hauptversion) und Python 3.11 oder neuer**. Keine zusätzlichen Pakete.
 
 ```sh
 npm test
@@ -22,6 +22,10 @@ python -m http.server 8847 --bind 127.0.0.1
 Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
+
+### [Sicherheitsprüfungen ausführen](branches/security-workbench/)
+
+Laufzeitstände mit dem datierten Patchkatalog vergleichen, Parser-Identitäten untersuchen und Berechtigungen gegenprüfen. Mit sechs Browser-Prüfplätzen, einem eigenen kurzlebigen HTTP-Labor für Burp und negativen Kontrollen. **[Direkt öffnen](https://juri-halveth.github.io/halveth-forschungslabor/sicherheitslabor/)**.
 
 **[Wissen & Code – der GitHub-Tunnel](https://juri-halveth.github.io/halveth-forschungslabor/wissen/)**
 verknüpft alle aktuellen Modul- und Forschungsordner mit konkreten Quellen,

@@ -35,6 +35,7 @@ test("publication copies only approved files, binds bytes and rejects reused out
     "synthetic exclusion challenge",
   );
   await fs.writeFile(path.join(source, "research/lifecycle-echo/private-receipt.json"), "synthetic private receipt");
+  await fs.writeFile(path.join(source, "branches/security-workbench/private-lab-token.json"), "synthetic private exclusion challenge");
   const output = path.join(temporary, "site");
   const args = { repoRoot: source, outputRoot: output, commit: "a".repeat(40) };
   const receipt = await buildSite(args);
@@ -54,6 +55,8 @@ test("publication copies only approved files, binds bytes and rejects reused out
   assert.match(receipt.files[0].sha256, /^[a-f0-9]{64}$/);
   assert.equal(receipt.files.find((entry) => entry.path === "endeck/index.html").sourcePath, "branches/endeck-observer/index.html");
   assert.equal(await fs.readFile(path.join(output, "lifecycle/lifecycle_probe.py"), "utf8"), "approved lifecycle/lifecycle_probe.py");
+  assert.equal(receipt.files.find(entry=>entry.path==='sicherheitslabor/core.mjs').sourcePath,'branches/security-workbench/core.mjs');
+  assert.ok(!receipt.files.some(entry=>entry.path.includes('private-lab-token')||entry.path==='sicherheitslabor/http-fixture.mjs'));
   await assert.rejects(buildSite(args), { code: "EEXIST" });
   await assert.rejects(
     buildSite({ ...args, commit: "main" }),
