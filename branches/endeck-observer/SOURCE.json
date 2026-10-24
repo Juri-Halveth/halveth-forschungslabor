@@ -1,0 +1,27 @@
+{
+  "schema": "halveth.endeck-source.v1",
+  "preparedAt": "2026-10-24T11:40:41.705942+00:00",
+  "person": "Juri",
+  "project": "HALVETH",
+  "version": "1.0.0",
+  "origin": "ENDECK conversation demonstration, 2026-10-24; source preserved byte-for-byte",
+  "fragment": {
+    "path": "fragment.html",
+    "bytes": 14405,
+    "sha256": "30ce4337ee6ef108d63d84c8fd2afa2ff3cb267e3583d3136dda5197fe274972"
+  },
+  "delivery": "Visualize standalone export with publication navigation; three unused external library loaders removed; script/style inline only and connect-src none",
+  "implementation": "AI-assisted implementation of Juri's comparison idea; geometric rules are explicit model assumptions",
+  "modelChecks": "Eight node:test cases: seven geometric/input comparisons and one publication-source check",
+  "previousDomChecks": {
+    "count": 15,
+    "method": "In-memory JSDOM with simulated widths and clocks; not a real-browser layout measurement",
+    "sourceSha256": "30ce4337ee6ef108d63d84c8fd2afa2ff3cb267e3583d3136dda5197fe274972"
+  },
+  "claimCeiling": "Declared geometric counterexamples and finite tests; no measurement of unknown real-world trajectories or cosmology",
+  "licenses": {
+    "modelAndHtml": "MIT",
+    "newProse": "CC-BY-4.0",
+    "metadata": "CC0-1.0"
+  }
+}
