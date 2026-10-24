@@ -26,13 +26,20 @@ test("four fresh own Python runs reproduce the eight published lifecycle observa
   const result = JSON.parse(await fs.readFile(resultPath, "utf8"));
   const published = JSON.parse(await fs.readFile(new URL("results.json", module), "utf8"));
   assert.equal(published.sourceSha256, createHash("sha256").update(source).digest("hex"));
+  assert.equal(result.runtime.platform, process.platform);
+  // Python's text writer uses the host newline. Preserve the historical Windows
+  // digest and verify native bytes, instead of claiming cross-platform equality.
+  const outputDigest = (platform) => createHash("sha256")
+    .update("completed-result" + (platform === "win32" ? "\r\n" : "\n"), "utf8").digest("hex");
   assert.equal(Object.keys(result.checks).length, 8);
   assert.deepEqual(result.checks, published.checks);
   assert.ok(Object.values(result.checks).every((value) => value === true));
   assert.equal(result.observations.length, 4);
   for (let i = 0; i < 4; i++) {
     const actual = result.observations[i], expected = published.observations[i];
-    for (const key of ["id", "source_sha256", "exit_code", "stdout", "file_exists_after_exit", "file_sha256"])
+    for (const key of ["id", "source_sha256", "exit_code", "stdout", "file_exists_after_exit"])
       assert.deepEqual(actual[key], expected[key], `${actual.id}: ${key}`);
+    assert.equal(expected.file_sha256, expected.file_exists_after_exit ? outputDigest(published.runtime.platform) : null);
+    assert.equal(actual.file_sha256, actual.file_exists_after_exit ? outputDigest(result.runtime.platform) : null);
   }
 });

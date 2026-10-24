@@ -43,6 +43,12 @@ weg. Die Prüfaussagen und die verwendeten Quell-Digests bleiben enthalten.
 `scripts/lifecycle-echo.test.mjs` wiederholt den Versuch in einem eigenen
 temporären Verzeichnis und prüft seine acht Ergebnisse.
 
+Die historische Messung bindet Windows-Textdateien mit CRLF-Zeilenende.
+Unter Linux schreibt derselbe Python-Textaufruf LF; deshalb ist der Dateidigest
+plattformgebunden. Der Test erhält den historischen Digest und prüft die
+exakten erwarteten Bytes je Laufzeit. Gleichheit zwischen den beiden eigenen
+Starts wird weiterhin innerhalb derselben Laufzeit geprüft.
+
 ## Reichweite
 
 Beobachtet wurden feste Ausgabemarker, Rückgabecodes und eigene Dateien.
