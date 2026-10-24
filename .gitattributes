@@ -1,2 +1,5 @@
 # Preserve source and receipt byte identity across Windows and Linux.
 * -text
+
+# Raw IANA source retains its CRLF bytes; readable derived data is kept beside it.
+branches/1001-doors/http-status-codes-source.csv -diff

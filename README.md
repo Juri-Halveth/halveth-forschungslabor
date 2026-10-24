@@ -45,6 +45,14 @@ Prozessende, abgefangene Ausnahmen, Threadende und einen neuen Start.
 [Lesbare Ergebnisse](https://juri-halveth.github.io/halveth-forschungslabor/lifecycle/)
 mit minimierten Messdaten und Quellcode.
 
+### [1001 Türen – Zahlen, Zeichen und gemeinsame Zustände](branches/1001-doors/)
+
+Alle Ganzzahlen von 0 bis 1000 mit gleichzeitig sichtbaren Eigenschaften, ein 033-Darstellungsvergleich, ein ideales 555-Zeitmodell und ein lokaler 999-Stimmen-Übergang mit erhaltenem Kern, fehlenden Antworten und expliziter Vergleichsregel.
+
+Neu: [Rollenreisen und Sitzungshive](branches/1001-doors/ROLE_JOURNEY_RESEARCH.md)
+sowie [256/512/1024 und historische Namenspfade](branches/1001-doors/POWERS_SQUARE_RESEARCH.md).
+Die zusätzlichen Modelle bewahren das ursprüngliche Register und die früheren Quellenfassungen.
+
 ### [Encounter Systems – Kooperation, Kopien und veränderbare Grenzen](branches/encounter-systems/)
 
 Ein ausführbares Browserlabor: Systeme berechnen gemeinsam ein Bild, übernehmen erlaubte Kopien und prüfen Lieferungen gegen ihre Freigabeversion. Mit Desktop-/Mobilansicht, Zeitspur, zwei Arbeitsaufträgen, zwölf reproduzierbaren Vergleichen und einem maschinenlesbaren Wissensregister.

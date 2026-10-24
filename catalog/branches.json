@@ -2,6 +2,14 @@
   "schemaVersion": "1.0.0",
   "branches": [
     {
+      "id": "1001-doors",
+      "title": "1001 Türen – Zahlen, Zeichen und gemeinsame Zustände",
+      "description": "Vollständiger Zahlenbereich 0–1000, 033-Darstellungen, ideales 555-Zeitmodell und lokaler 999-Stimmen-Übergang.",
+      "path": "branches/1001-doors",
+      "entry": "model.mjs",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
       "id": "encounter-systems",
       "title": "Encounter Systems – Kooperation, Kopien und veränderbare Grenzen",
       "description": "Ausführbares Browserlabor mit Zeitspur, Freigabeversionen und reproduzierbaren Modellvergleichen.",
