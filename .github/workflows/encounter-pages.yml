@@ -7,6 +7,8 @@ on:
         "branches/encounter-systems/**",
         "branches/endeck-observer/**",
         "research/lifecycle-echo/**",
+        "catalog/**",
+        "scripts/build-learning-hub*",
         "scripts/build-encounter-site*",
         ".github/workflows/encounter-pages.yml",
         "LICENSE*",
@@ -18,6 +20,8 @@ on:
         "branches/encounter-systems/**",
         "branches/endeck-observer/**",
         "research/lifecycle-echo/**",
+        "catalog/**",
+        "scripts/build-learning-hub*",
         "scripts/build-encounter-site*",
         ".github/workflows/encounter-pages.yml",
         "LICENSE*",
@@ -45,6 +49,8 @@ jobs:
         run: |
           node --test scripts/build-encounter-site.test.mjs
           node --test branches/endeck-observer/model.test.mjs
+          node --test branches/endeck-observer/learning.test.mjs
+          node scripts/build-learning-hub.mjs --check
           node branches/encounter-systems/research.mjs --check
           node --test branches/encounter-systems/signal-model.test.mjs
           node branches/encounter-systems/signal-research.mjs --check

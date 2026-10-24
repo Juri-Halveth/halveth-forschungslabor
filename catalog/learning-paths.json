@@ -1,0 +1,213 @@
+{
+  "schema": "halveth.learning-paths.v1",
+  "person": "Juri",
+  "project": "HALVETH",
+  "scope": "Current repository module and research entry points, not an audit of other repositories",
+  "entries": [
+    {
+      "id": "endeck-observer",
+      "title": "ENDECK – Bild, Raum und Zeit",
+      "description": "Vier geometrische Gegenbeispiele, zwei Blickwinkel und vier Lernaufgaben mit lokalem Fortschritt.",
+      "source": "branches/endeck-observer/model.mjs",
+      "tests": [
+        "branches/endeck-observer/model.test.mjs",
+        "branches/endeck-observer/learning.test.mjs"
+      ],
+      "docs": "branches/endeck-observer/README.md",
+      "demo": "endeck/"
+    },
+    {
+      "id": "encounter-systems",
+      "title": "Encounter Systems – Kooperation, Kopien und veränderbare Grenzen",
+      "description": "Ausführbares Browserlabor mit Zeitspur, Freigabeversionen und reproduzierbaren Modellvergleichen.",
+      "source": "branches/encounter-systems/model.mjs",
+      "tests": [
+        "branches/encounter-systems/model.test.mjs",
+        "branches/encounter-systems/geometry.test.mjs",
+        "branches/encounter-systems/browser.spec.mjs"
+      ],
+      "docs": "branches/encounter-systems/README.md",
+      "demo": "index.html#experiment"
+    },
+    {
+      "id": "signal-coupling",
+      "title": "Signale – Kanal und Empfänger",
+      "description": "Eine Nachricht, ein berechneter Kanal und drei Decoder: vergleiche richtige, falsche und offene Ergebnisse.",
+      "source": "branches/encounter-systems/signal-model.mjs",
+      "tests": [
+        "branches/encounter-systems/signal-model.test.mjs"
+      ],
+      "docs": "branches/encounter-systems/SIGNAL_RESEARCH.md",
+      "demo": "signals.html#signal-experiment"
+    },
+    {
+      "id": "lifecycle-echo",
+      "title": "Nachhall – Prozessende und Ergebnis",
+      "description": "Vier eigene Python-Läufe trennen Prozessende, erhaltene Daten, abgefangene Ausnahmen und neue Instanzen.",
+      "source": "research/lifecycle-echo/lifecycle_probe.py",
+      "tests": [
+        "scripts/lifecycle-echo.test.mjs"
+      ],
+      "docs": "research/lifecycle-echo/README.md",
+      "demo": "lifecycle/"
+    },
+    {
+      "id": "codec-001",
+      "title": "CODEC-001 – Darstellung und vermittelte Wirkung",
+      "description": "Ein Forschungsdossier mit fünf geplanten Prüfachsen, Quellen, Attribution und einem Integritätsprüfer.",
+      "source": "research/codec-001/verify.mjs",
+      "tests": [
+        "scripts/codec-anchor.test.mjs"
+      ],
+      "docs": "research/codec-001/README.md",
+      "demo": null
+    },
+    {
+      "id": "focus-kernel",
+      "title": "Focus Kernel – bestätigte Ziele und Vorschläge getrennt halten",
+      "description": "Lokaler Zustandskern für bestätigte Ziele, Vorschläge und begrenzte Prüfergebnisse.",
+      "source": "branches/focus-kernel/core.js",
+      "tests": [
+        "branches/focus-kernel/tests/core.test.mjs"
+      ],
+      "docs": "branches/focus-kernel/README.md",
+      "demo": null
+    },
+    {
+      "id": "document-issue-reference-verifier",
+      "title": "Referenzprüfer – Format, Zustand und Berechtigung prüfen",
+      "description": "Synthetischer Referenzprüfer mit Digest-, Schema-, Principal- und Lebenszyklusprüfung.",
+      "source": "branches/document-issue-reference-verifier/src/reference-verifier.mjs",
+      "tests": [
+        "branches/document-issue-reference-verifier/test/reference-verifier.test.mjs"
+      ],
+      "docs": "branches/document-issue-reference-verifier/README.md",
+      "demo": null
+    },
+    {
+      "id": "bounded-knowledge-reuse-inventory",
+      "title": "Metadatenprüfung – Freigabekandidaten nachvollziehbar einordnen",
+      "description": "Offline-Prüfung deklarierter Metadaten. Ein positives Ergebnis ist ein Kandidat, keine Publikationsfreigabe.",
+      "source": "branches/bounded-knowledge-reuse-inventory/src/cli.js",
+      "tests": [
+        "branches/bounded-knowledge-reuse-inventory/test/inventory.test.js"
+      ],
+      "docs": "branches/bounded-knowledge-reuse-inventory/README.md",
+      "demo": null
+    },
+    {
+      "id": "pixel-region-change-observer",
+      "title": "Bildvergleich – Änderungen in gelieferten RGBA-Daten erkennen",
+      "description": "Offline-Vergleich synthetischer Framearrays mit Region, Schwelle und ausgewiesener Beobachtungslücke.",
+      "source": "branches/pixel-region-change-observer/src/cli.js",
+      "tests": [
+        "branches/pixel-region-change-observer/test/observer.test.js"
+      ],
+      "docs": "branches/pixel-region-change-observer/README.md",
+      "demo": null
+    },
+    {
+      "id": "binary-inquiry-loop",
+      "title": "Dialogprotokoll – Zustimmung und offene Antworten modellieren",
+      "description": "Deterministisches Protokollmodell für eine gebundene Frage und zwei deklarierte Seiten.",
+      "source": "branches/binary-inquiry-loop/binary-inquiry-machine.mjs",
+      "tests": [
+        "branches/binary-inquiry-loop/binary-inquiry-machine.test.mjs"
+      ],
+      "docs": "branches/binary-inquiry-loop/README.md",
+      "demo": null
+    },
+    {
+      "id": "eye-optics-and-prediction",
+      "title": "Optiklabor – Lichtbrechung und Bewegungsvorhersage",
+      "description": "Geometrisches Lehrmodell mit Strahlen, Fokus und einem Gegenbeispiel bei plötzlicher Bewegungsumkehr.",
+      "source": "branches/eye-optics-and-prediction/model.mjs",
+      "tests": [
+        "branches/eye-optics-and-prediction/model.test.mjs"
+      ],
+      "docs": "branches/eye-optics-and-prediction/README.md",
+      "demo": null
+    },
+    {
+      "id": "banana-transition-field",
+      "title": "Zustandsmodell – Stoffanteile und Übergänge berechnen",
+      "description": "Illustratives numerisches Modell mit erhaltener Stoffsumme. Keine validierte biologische Vorhersage.",
+      "source": "branches/banana-transition-field/model.mjs",
+      "tests": [
+        "branches/banana-transition-field/model.test.mjs"
+      ],
+      "docs": "branches/banana-transition-field/README.md",
+      "demo": null
+    },
+    {
+      "id": "fegefeuer-provenance-transducer",
+      "title": "Ereigniskern – Herkunft, Kandidaten und Zustandsänderungen",
+      "description": "In-Memory-Prototyp mit Ereignisidentität, Kandidatenaufnahme, HOLD und protokollierten Zustandsänderungen.",
+      "source": "branches/fegefeuer-provenance-transducer/fegefeuer_core.py",
+      "tests": [
+        "branches/fegefeuer-provenance-transducer/test_fegefeuer_core.py"
+      ],
+      "docs": "branches/fegefeuer-provenance-transducer/README.md",
+      "demo": null
+    },
+    {
+      "id": "normenwerk-rule-universe",
+      "title": "Regelmodell – Konflikte, Vorrang und offene Zustände",
+      "description": "Python-Regelmodell mit dreiwertiger Logik, explizitem Vorrang und Replay der mitgelieferten Modelle.",
+      "source": "branches/normenwerk-rule-universe/normenkern.py",
+      "tests": [
+        "branches/normenwerk-rule-universe/test_normenkern.py",
+        "branches/normenwerk-rule-universe/test_universe.py"
+      ],
+      "docs": "branches/normenwerk-rule-universe/README.md",
+      "demo": null
+    },
+    {
+      "id": "security-impact-learning",
+      "title": "Berichtsprüfung – Beobachtung und Sicherheitswirkung einordnen",
+      "description": "Lokale synthetische Prüfmodelle für Befundbehauptungen. Keine aktiven Angriffe oder fremden Zielsysteme.",
+      "source": "branches/security-impact-learning/cli-result-model.mjs",
+      "tests": [
+        "branches/security-impact-learning/cli-result-model.test.mjs",
+        "branches/security-impact-learning/impact-model.test.mjs",
+        "branches/security-impact-learning/submission-review.test.mjs"
+      ],
+      "docs": "branches/security-impact-learning/README.md",
+      "demo": null
+    },
+    {
+      "id": "documents-excavation",
+      "title": "Projekt Ausgrabungsstätte – alte Quellen und neue Brücken",
+      "description": "Visuelle Karte einer begrenzten lokalen Inventur mit typisierten Relationen und einem synthetischen Effektmodell.",
+      "source": "branches/documents-excavation/effect-model.js",
+      "tests": [
+        "branches/documents-excavation/effect-model.test.mjs",
+        "branches/documents-excavation/relics.test.mjs"
+      ],
+      "docs": "branches/documents-excavation/README.md",
+      "demo": null
+    },
+    {
+      "id": "three-actor-fork",
+      "title": "Drei-Gabel – ein dritter Weg",
+      "description": "Ein dritter Akteur eröffnet prüfbare Alternativen in einem Konflikt zwischen zwei Seiten.",
+      "source": "branches/three-actor-fork/model.js",
+      "tests": [
+        "branches/three-actor-fork/model.test.mjs"
+      ],
+      "docs": "branches/three-actor-fork/README.md",
+      "demo": null
+    },
+    {
+      "id": "next-action-navigator",
+      "title": "Nächster-Schritt-Navigator",
+      "description": "Pflichtachsen, Gegenmodelle, kleinste Prüfungen und offene Fragen als nachvollziehbare Navigation.",
+      "source": "branches/next-action-navigator/model.js",
+      "tests": [
+        "branches/next-action-navigator/model.test.mjs"
+      ],
+      "docs": "branches/next-action-navigator/README.md",
+      "demo": null
+    }
+  ]
+}

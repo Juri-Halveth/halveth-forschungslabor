@@ -41,12 +41,16 @@ export const licenseFiles = Object.freeze([
 export const publicFiles = Object.freeze([
   ...moduleFiles.map((name) => ({ path: name, sourcePath: "branches/encounter-systems/" + name })),
   ...licenseFiles.map((name) => ({ path: name, sourcePath: name })),
-  ...["index.html", "fragment.html", "README.md", "SOURCE.json"].map((name) => ({
+  ...["index.html", "fragment.html", "README.md", "SOURCE.json", "style.css", "model.mjs", "geometry.mjs", "view.mjs", "learning.mjs", "KNOWLEDGE.json"].map((name) => ({
     path: "endeck/" + name, sourcePath: "branches/endeck-observer/" + name,
   })),
   ...["index.html", "README.md", "results.json", "lifecycle_probe.py"].map((name) => ({
     path: "lifecycle/" + name, sourcePath: "research/lifecycle-echo/" + name,
   })),
+  ...["index.html", "style.css", "routes.json"].map((name) => ({
+    path: "wissen/" + name, sourcePath: "catalog/wissen/" + name,
+  })),
+  { path:"wissen/LEARNING_PIPELINE.md", sourcePath:"catalog/LEARNING_PIPELINE.md" },
 ].map(Object.freeze));
 
 export async function buildSite({ repoRoot, outputRoot, commit }) {

@@ -1,0 +1,554 @@
+{
+  "schema": "halveth.bound-learning-routes.v1",
+  "scope": "Current repository branches and research directories; no claim of other GitHub repositories being audited",
+  "learningMode": "REVIEWED_CASES_AND_REGRESSION_TESTS",
+  "modelWeightTraining": false,
+  "entries": [
+    {
+      "id": "endeck-observer",
+      "title": "ENDECK – Bild, Raum und Zeit",
+      "description": "Vier geometrische Gegenbeispiele, zwei Blickwinkel und vier Lernaufgaben mit lokalem Fortschritt.",
+      "source": "branches/endeck-observer/model.mjs",
+      "tests": [
+        "branches/endeck-observer/model.test.mjs",
+        "branches/endeck-observer/learning.test.mjs"
+      ],
+      "docs": "branches/endeck-observer/README.md",
+      "demo": "endeck/",
+      "files": [
+        {
+          "path": "branches/endeck-observer/model.mjs",
+          "bytes": 1851,
+          "sha256": "3824d725caaed2d437561573533a59bee1251cc4b0a224902ca0965d0b578c11"
+        },
+        {
+          "path": "branches/endeck-observer/README.md",
+          "bytes": 4561,
+          "sha256": "62d1e47650ba77398b39a44260923ae9e90bc76f3ef2a358f07cf82b23ef5e72"
+        },
+        {
+          "path": "branches/endeck-observer/model.test.mjs",
+          "bytes": 4603,
+          "sha256": "99e1272253eaf146165802115ca9ee4750ad0c263cae581f2b43b83b05c0db6b"
+        },
+        {
+          "path": "branches/endeck-observer/learning.test.mjs",
+          "bytes": 2905,
+          "sha256": "0d5e1110ae0d99bfa71378e4e14d1871ed8a44095425a1e92fc1dc11a64b6ff0"
+        }
+      ]
+    },
+    {
+      "id": "encounter-systems",
+      "title": "Encounter Systems – Kooperation, Kopien und veränderbare Grenzen",
+      "description": "Ausführbares Browserlabor mit Zeitspur, Freigabeversionen und reproduzierbaren Modellvergleichen.",
+      "source": "branches/encounter-systems/model.mjs",
+      "tests": [
+        "branches/encounter-systems/model.test.mjs",
+        "branches/encounter-systems/geometry.test.mjs",
+        "branches/encounter-systems/browser.spec.mjs"
+      ],
+      "docs": "branches/encounter-systems/README.md",
+      "demo": "index.html#experiment",
+      "files": [
+        {
+          "path": "branches/encounter-systems/model.mjs",
+          "bytes": 14608,
+          "sha256": "b51870d871ac620981e60ff570afc38c4d0762b22ccee9e3d55bdca526d713bb"
+        },
+        {
+          "path": "branches/encounter-systems/README.md",
+          "bytes": 11057,
+          "sha256": "dd4a2f4075dd16a10a29b9cac4fe34779c1b61f510687139f05df9ac69d975bc"
+        },
+        {
+          "path": "branches/encounter-systems/model.test.mjs",
+          "bytes": 4436,
+          "sha256": "39561c6c7a802694fea5622887bc54f49bb8b54d6696e98f309d71b01547551a"
+        },
+        {
+          "path": "branches/encounter-systems/geometry.test.mjs",
+          "bytes": 1132,
+          "sha256": "e9a71001c1680ffcd8034d9cf5c460df2e1118b38e01eec7f7433c5095af0b57"
+        },
+        {
+          "path": "branches/encounter-systems/browser.spec.mjs",
+          "bytes": 13409,
+          "sha256": "5c6eedf204fb69b38f1afc1c6f28b76da21d5f3977b4631105ad206d254888db"
+        }
+      ]
+    },
+    {
+      "id": "signal-coupling",
+      "title": "Signale – Kanal und Empfänger",
+      "description": "Eine Nachricht, ein berechneter Kanal und drei Decoder: vergleiche richtige, falsche und offene Ergebnisse.",
+      "source": "branches/encounter-systems/signal-model.mjs",
+      "tests": [
+        "branches/encounter-systems/signal-model.test.mjs"
+      ],
+      "docs": "branches/encounter-systems/SIGNAL_RESEARCH.md",
+      "demo": "signals.html#signal-experiment",
+      "files": [
+        {
+          "path": "branches/encounter-systems/signal-model.mjs",
+          "bytes": 3807,
+          "sha256": "ba78612acd85057e6093e5e42fb0c028046c6e255f521856c6e1355a491568fc"
+        },
+        {
+          "path": "branches/encounter-systems/SIGNAL_RESEARCH.md",
+          "bytes": 6023,
+          "sha256": "d97f8453ebed32e79bc66aac42b681683eca51244fb3e294deca3e4daba3a326"
+        },
+        {
+          "path": "branches/encounter-systems/signal-model.test.mjs",
+          "bytes": 2550,
+          "sha256": "8266726c0435edb1c17f395091844f97b26589716047a68f3db15f66f502d926"
+        }
+      ]
+    },
+    {
+      "id": "lifecycle-echo",
+      "title": "Nachhall – Prozessende und Ergebnis",
+      "description": "Vier eigene Python-Läufe trennen Prozessende, erhaltene Daten, abgefangene Ausnahmen und neue Instanzen.",
+      "source": "research/lifecycle-echo/lifecycle_probe.py",
+      "tests": [
+        "scripts/lifecycle-echo.test.mjs"
+      ],
+      "docs": "research/lifecycle-echo/README.md",
+      "demo": "lifecycle/",
+      "files": [
+        {
+          "path": "research/lifecycle-echo/lifecycle_probe.py",
+          "bytes": 6370,
+          "sha256": "2559e164478ff4398f7a52caaa90da88110ec255087613888faf5091e21547bc"
+        },
+        {
+          "path": "research/lifecycle-echo/README.md",
+          "bytes": 3275,
+          "sha256": "08f6ed2dcf0ad8aa2c75d1dbe7f7eeff409927cff91d3e6f4cdc4d09b7df8e6c"
+        },
+        {
+          "path": "scripts/lifecycle-echo.test.mjs",
+          "bytes": 2801,
+          "sha256": "2b0c494f722cfdfa6e376d7ffe969b1d4db55ddf9f90621f8967dd43f3b71c0b"
+        }
+      ]
+    },
+    {
+      "id": "codec-001",
+      "title": "CODEC-001 – Darstellung und vermittelte Wirkung",
+      "description": "Ein Forschungsdossier mit fünf geplanten Prüfachsen, Quellen, Attribution und einem Integritätsprüfer.",
+      "source": "research/codec-001/verify.mjs",
+      "tests": [
+        "scripts/codec-anchor.test.mjs"
+      ],
+      "docs": "research/codec-001/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "research/codec-001/verify.mjs",
+          "bytes": 2440,
+          "sha256": "123d5cc1683ef7676ec0afc4f8d5b7879ef388c9557aba37fc03b73bb98fac4f"
+        },
+        {
+          "path": "research/codec-001/README.md",
+          "bytes": 6274,
+          "sha256": "405619f25830b031a3bb169a92f01fc474504f81d4909b7fd98915ad53c27521"
+        },
+        {
+          "path": "scripts/codec-anchor.test.mjs",
+          "bytes": 1795,
+          "sha256": "94c595a35af188a08f8dc81e376814941873246d2d795950392fd1c279816a1f"
+        }
+      ]
+    },
+    {
+      "id": "focus-kernel",
+      "title": "Focus Kernel – bestätigte Ziele und Vorschläge getrennt halten",
+      "description": "Lokaler Zustandskern für bestätigte Ziele, Vorschläge und begrenzte Prüfergebnisse.",
+      "source": "branches/focus-kernel/core.js",
+      "tests": [
+        "branches/focus-kernel/tests/core.test.mjs"
+      ],
+      "docs": "branches/focus-kernel/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/focus-kernel/core.js",
+          "bytes": 13046,
+          "sha256": "2dfab1c8af1418e00604f13fe718a1bb29f22b9e6539db723aae2a593a4b5a29"
+        },
+        {
+          "path": "branches/focus-kernel/README.md",
+          "bytes": 864,
+          "sha256": "0f4873ba6b16ba57cb7a964c339d6d82cafd097c6b82cefbc95b7398d1f150ea"
+        },
+        {
+          "path": "branches/focus-kernel/tests/core.test.mjs",
+          "bytes": 5900,
+          "sha256": "01c048097f1656864b85ff6de53d75f9057850ac680e7d9ba8efb1fe564b2447"
+        }
+      ]
+    },
+    {
+      "id": "document-issue-reference-verifier",
+      "title": "Referenzprüfer – Format, Zustand und Berechtigung prüfen",
+      "description": "Synthetischer Referenzprüfer mit Digest-, Schema-, Principal- und Lebenszyklusprüfung.",
+      "source": "branches/document-issue-reference-verifier/src/reference-verifier.mjs",
+      "tests": [
+        "branches/document-issue-reference-verifier/test/reference-verifier.test.mjs"
+      ],
+      "docs": "branches/document-issue-reference-verifier/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/document-issue-reference-verifier/src/reference-verifier.mjs",
+          "bytes": 7718,
+          "sha256": "dd45b22af670718d8800843c4350f41822e589ed4648e97690dec30d8c6d4ff3"
+        },
+        {
+          "path": "branches/document-issue-reference-verifier/README.md",
+          "bytes": 874,
+          "sha256": "329c98bb5df44b42473f57d5ee318fc6a6eef91a2c56f5e575e15e5beba429ed"
+        },
+        {
+          "path": "branches/document-issue-reference-verifier/test/reference-verifier.test.mjs",
+          "bytes": 5142,
+          "sha256": "c48716642cf5b3cf1b8bacc14701c863270e5145fd43c07587af20dac1a17683"
+        }
+      ]
+    },
+    {
+      "id": "bounded-knowledge-reuse-inventory",
+      "title": "Metadatenprüfung – Freigabekandidaten nachvollziehbar einordnen",
+      "description": "Offline-Prüfung deklarierter Metadaten. Ein positives Ergebnis ist ein Kandidat, keine Publikationsfreigabe.",
+      "source": "branches/bounded-knowledge-reuse-inventory/src/cli.js",
+      "tests": [
+        "branches/bounded-knowledge-reuse-inventory/test/inventory.test.js"
+      ],
+      "docs": "branches/bounded-knowledge-reuse-inventory/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/bounded-knowledge-reuse-inventory/src/cli.js",
+          "bytes": 916,
+          "sha256": "2d564f853e6cbf8c1dcef4060023b611d0a866da85def27cde932cdc9b0a2561"
+        },
+        {
+          "path": "branches/bounded-knowledge-reuse-inventory/README.md",
+          "bytes": 895,
+          "sha256": "d12ecdb6c98d0ada827895855d2ced9a2cab27a36d8d7732e67f94d2eca279f4"
+        },
+        {
+          "path": "branches/bounded-knowledge-reuse-inventory/test/inventory.test.js",
+          "bytes": 4186,
+          "sha256": "c3b1ecc685fcefa8069cbc05ae5074287b4c094e136da24efcf269cc08d27512"
+        }
+      ]
+    },
+    {
+      "id": "pixel-region-change-observer",
+      "title": "Bildvergleich – Änderungen in gelieferten RGBA-Daten erkennen",
+      "description": "Offline-Vergleich synthetischer Framearrays mit Region, Schwelle und ausgewiesener Beobachtungslücke.",
+      "source": "branches/pixel-region-change-observer/src/cli.js",
+      "tests": [
+        "branches/pixel-region-change-observer/test/observer.test.js"
+      ],
+      "docs": "branches/pixel-region-change-observer/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/pixel-region-change-observer/src/cli.js",
+          "bytes": 919,
+          "sha256": "bf0817e5e92d2739b20c179db51f7ef5270d6b46dac23742aa238dd46263241c"
+        },
+        {
+          "path": "branches/pixel-region-change-observer/README.md",
+          "bytes": 885,
+          "sha256": "1b5e7e2dfc478c095ea64657bc59956e42a3f192b90b5acd9ee4daadf966ccf3"
+        },
+        {
+          "path": "branches/pixel-region-change-observer/test/observer.test.js",
+          "bytes": 4666,
+          "sha256": "75033240ddb2b0a61c5af6ea9442beba08253e0c05dce28e086a188a4163dd55"
+        }
+      ]
+    },
+    {
+      "id": "binary-inquiry-loop",
+      "title": "Dialogprotokoll – Zustimmung und offene Antworten modellieren",
+      "description": "Deterministisches Protokollmodell für eine gebundene Frage und zwei deklarierte Seiten.",
+      "source": "branches/binary-inquiry-loop/binary-inquiry-machine.mjs",
+      "tests": [
+        "branches/binary-inquiry-loop/binary-inquiry-machine.test.mjs"
+      ],
+      "docs": "branches/binary-inquiry-loop/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/binary-inquiry-loop/binary-inquiry-machine.mjs",
+          "bytes": 6325,
+          "sha256": "82356f940981ceb31960d9f66ad81c3fe6543b6cbb2fb079801909d2ca887ea8"
+        },
+        {
+          "path": "branches/binary-inquiry-loop/README.md",
+          "bytes": 881,
+          "sha256": "478142cf998ff61c5f8a20b60b308e708011858583bc9401b66706259845a772"
+        },
+        {
+          "path": "branches/binary-inquiry-loop/binary-inquiry-machine.test.mjs",
+          "bytes": 4596,
+          "sha256": "1d3aa0db219a1a2ec8dac26ff330dcf258c77d904932aee095ade03cf8b1e214"
+        }
+      ]
+    },
+    {
+      "id": "eye-optics-and-prediction",
+      "title": "Optiklabor – Lichtbrechung und Bewegungsvorhersage",
+      "description": "Geometrisches Lehrmodell mit Strahlen, Fokus und einem Gegenbeispiel bei plötzlicher Bewegungsumkehr.",
+      "source": "branches/eye-optics-and-prediction/model.mjs",
+      "tests": [
+        "branches/eye-optics-and-prediction/model.test.mjs"
+      ],
+      "docs": "branches/eye-optics-and-prediction/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/eye-optics-and-prediction/model.mjs",
+          "bytes": 1590,
+          "sha256": "2e71d12bd2a898379dae06db12ab9b3c4efd3c0ba29b47965d2530c7beb0ac38"
+        },
+        {
+          "path": "branches/eye-optics-and-prediction/README.md",
+          "bytes": 867,
+          "sha256": "71b6f2562162456eeab48f97543bf87df5ea7803a9964085f5febb7486ea8692"
+        },
+        {
+          "path": "branches/eye-optics-and-prediction/model.test.mjs",
+          "bytes": 1573,
+          "sha256": "00a9fecba62a17c15eaabf4203c2b1d66c592b21e35a627995751b36177d5fbc"
+        }
+      ]
+    },
+    {
+      "id": "banana-transition-field",
+      "title": "Zustandsmodell – Stoffanteile und Übergänge berechnen",
+      "description": "Illustratives numerisches Modell mit erhaltener Stoffsumme. Keine validierte biologische Vorhersage.",
+      "source": "branches/banana-transition-field/model.mjs",
+      "tests": [
+        "branches/banana-transition-field/model.test.mjs"
+      ],
+      "docs": "branches/banana-transition-field/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/banana-transition-field/model.mjs",
+          "bytes": 8818,
+          "sha256": "f3ffe2596778037ee44ac5a0fc3d1c321a0b6aa0b60dcb93aae95f8cda53c5f8"
+        },
+        {
+          "path": "branches/banana-transition-field/README.md",
+          "bytes": 870,
+          "sha256": "0d1601b5eb149fd5be88a4c34245854819d6106740144a3fb92c41877486660d"
+        },
+        {
+          "path": "branches/banana-transition-field/model.test.mjs",
+          "bytes": 6735,
+          "sha256": "34979181e7f61c1a0e32d2291a248ef1be19dbdf2370218ea85287ccff1b63ba"
+        }
+      ]
+    },
+    {
+      "id": "fegefeuer-provenance-transducer",
+      "title": "Ereigniskern – Herkunft, Kandidaten und Zustandsänderungen",
+      "description": "In-Memory-Prototyp mit Ereignisidentität, Kandidatenaufnahme, HOLD und protokollierten Zustandsänderungen.",
+      "source": "branches/fegefeuer-provenance-transducer/fegefeuer_core.py",
+      "tests": [
+        "branches/fegefeuer-provenance-transducer/test_fegefeuer_core.py"
+      ],
+      "docs": "branches/fegefeuer-provenance-transducer/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/fegefeuer-provenance-transducer/fegefeuer_core.py",
+          "bytes": 15102,
+          "sha256": "bacd152c7e98b70901a241d3ef712d897ee4a3c84e2dcfbc2369aaf5b03b07eb"
+        },
+        {
+          "path": "branches/fegefeuer-provenance-transducer/README.md",
+          "bytes": 890,
+          "sha256": "2faf3eab5c30387dd74b233bbccdad08e80f9ac2a8d4409bf4a442dfedaf46df"
+        },
+        {
+          "path": "branches/fegefeuer-provenance-transducer/test_fegefeuer_core.py",
+          "bytes": 8944,
+          "sha256": "f390fbf814d30ba1908b648a4f6f8ff32b5cd73223ced7dd569ddaa76ff8c056"
+        }
+      ]
+    },
+    {
+      "id": "normenwerk-rule-universe",
+      "title": "Regelmodell – Konflikte, Vorrang und offene Zustände",
+      "description": "Python-Regelmodell mit dreiwertiger Logik, explizitem Vorrang und Replay der mitgelieferten Modelle.",
+      "source": "branches/normenwerk-rule-universe/normenkern.py",
+      "tests": [
+        "branches/normenwerk-rule-universe/test_normenkern.py",
+        "branches/normenwerk-rule-universe/test_universe.py"
+      ],
+      "docs": "branches/normenwerk-rule-universe/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/normenwerk-rule-universe/normenkern.py",
+          "bytes": 12325,
+          "sha256": "84dc83b2b6b93e1735b054e50f4c314a8e0e097fa5479a6ee5f773f2cdebea18"
+        },
+        {
+          "path": "branches/normenwerk-rule-universe/README.md",
+          "bytes": 872,
+          "sha256": "add118bad80acf8337b4786c7cbef6a9eebfbb39f76bfeee92c24e00df48986c"
+        },
+        {
+          "path": "branches/normenwerk-rule-universe/test_normenkern.py",
+          "bytes": 6710,
+          "sha256": "deec2a08aea9d655e304329f695defe6df08f666cd614e937f776d9c07a2dce9"
+        },
+        {
+          "path": "branches/normenwerk-rule-universe/test_universe.py",
+          "bytes": 3512,
+          "sha256": "c0627d127e8d259803163b8c74e64aee26c7580bd097914cacea90fe0e9d1889"
+        }
+      ]
+    },
+    {
+      "id": "security-impact-learning",
+      "title": "Berichtsprüfung – Beobachtung und Sicherheitswirkung einordnen",
+      "description": "Lokale synthetische Prüfmodelle für Befundbehauptungen. Keine aktiven Angriffe oder fremden Zielsysteme.",
+      "source": "branches/security-impact-learning/cli-result-model.mjs",
+      "tests": [
+        "branches/security-impact-learning/cli-result-model.test.mjs",
+        "branches/security-impact-learning/impact-model.test.mjs",
+        "branches/security-impact-learning/submission-review.test.mjs"
+      ],
+      "docs": "branches/security-impact-learning/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/security-impact-learning/cli-result-model.mjs",
+          "bytes": 1205,
+          "sha256": "3cb5e438f080709a35fba555491f15ac3e577b06e440b141317e6e2c9240082d"
+        },
+        {
+          "path": "branches/security-impact-learning/README.md",
+          "bytes": 896,
+          "sha256": "4e17cd448044d856f6d232ab33f68454263f73b6faf4a2c4723a583b30f69f7c"
+        },
+        {
+          "path": "branches/security-impact-learning/cli-result-model.test.mjs",
+          "bytes": 1224,
+          "sha256": "6b754a5ef8ca8d74dbbd3b23487232ccd6b4ac7889b20b781851e0adb69087f6"
+        },
+        {
+          "path": "branches/security-impact-learning/impact-model.test.mjs",
+          "bytes": 2649,
+          "sha256": "fba0e57b609e1d6fb51a5e6d8315d2d902d8fd3d2f58b6e6c2a85045bc502868"
+        },
+        {
+          "path": "branches/security-impact-learning/submission-review.test.mjs",
+          "bytes": 2086,
+          "sha256": "98e16e855e999f40263495340f0d9d2631cd66f5a3fb55f2da2bc3788fe5e86b"
+        }
+      ]
+    },
+    {
+      "id": "documents-excavation",
+      "title": "Projekt Ausgrabungsstätte – alte Quellen und neue Brücken",
+      "description": "Visuelle Karte einer begrenzten lokalen Inventur mit typisierten Relationen und einem synthetischen Effektmodell.",
+      "source": "branches/documents-excavation/effect-model.js",
+      "tests": [
+        "branches/documents-excavation/effect-model.test.mjs",
+        "branches/documents-excavation/relics.test.mjs"
+      ],
+      "docs": "branches/documents-excavation/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/documents-excavation/effect-model.js",
+          "bytes": 4332,
+          "sha256": "0d1772506cec8739fec2c1474286fb2df2484de4fffb0a1a2bf04a5c163fc982"
+        },
+        {
+          "path": "branches/documents-excavation/README.md",
+          "bytes": 6316,
+          "sha256": "6510e9830b462fe4d1df53d7467adc2ae4cfd72fa58a2bf9b5b89e4b4b6d5dcc"
+        },
+        {
+          "path": "branches/documents-excavation/effect-model.test.mjs",
+          "bytes": 2611,
+          "sha256": "47741bd146f01e1ddc82b32b4fce947befb1749a016bbae46d35ca6fab7f06e6"
+        },
+        {
+          "path": "branches/documents-excavation/relics.test.mjs",
+          "bytes": 1121,
+          "sha256": "a3547f0894284d7e264725224c7d919eba61e2e14cb0717291902c94b82daac6"
+        }
+      ]
+    },
+    {
+      "id": "three-actor-fork",
+      "title": "Drei-Gabel – ein dritter Weg",
+      "description": "Ein dritter Akteur eröffnet prüfbare Alternativen in einem Konflikt zwischen zwei Seiten.",
+      "source": "branches/three-actor-fork/model.js",
+      "tests": [
+        "branches/three-actor-fork/model.test.mjs"
+      ],
+      "docs": "branches/three-actor-fork/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/three-actor-fork/model.js",
+          "bytes": 2562,
+          "sha256": "d680c00bb137507a92f2bc955cd29951514661bca4835104799c67bde1d3736e"
+        },
+        {
+          "path": "branches/three-actor-fork/README.md",
+          "bytes": 3358,
+          "sha256": "01af6b15667c9e3d0becd69446bb9117e50fcb89238b417f00de2bd37c33d0c3"
+        },
+        {
+          "path": "branches/three-actor-fork/model.test.mjs",
+          "bytes": 1148,
+          "sha256": "2f837c57d945d3ab4a15a954b4b0bdaac4a1018432c3aed8c1f337440c171ee4"
+        }
+      ]
+    },
+    {
+      "id": "next-action-navigator",
+      "title": "Nächster-Schritt-Navigator",
+      "description": "Pflichtachsen, Gegenmodelle, kleinste Prüfungen und offene Fragen als nachvollziehbare Navigation.",
+      "source": "branches/next-action-navigator/model.js",
+      "tests": [
+        "branches/next-action-navigator/model.test.mjs"
+      ],
+      "docs": "branches/next-action-navigator/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/next-action-navigator/model.js",
+          "bytes": 6655,
+          "sha256": "ac0656dcf9938d3eb7bd81f6a5bfaf3b3d50f7d0617b2f5a3cbd84f3e4d4f6c5"
+        },
+        {
+          "path": "branches/next-action-navigator/README.md",
+          "bytes": 4348,
+          "sha256": "c59e60e189c5a18f5f8a04b459534e5123c14e0364ca88367cce54534dc1f406"
+        },
+        {
+          "path": "branches/next-action-navigator/model.test.mjs",
+          "bytes": 3010,
+          "sha256": "2520eb7d384a97a93951aca871383b42a37e4f4765ad5bc8792e04b9cb415031"
+        }
+      ]
+    }
+  ]
+}

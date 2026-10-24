@@ -86,6 +86,7 @@ button:disabled {
 }
 nav {
   display: flex;
+  flex-wrap: wrap;
   gap: 25px;
   flex: 1;
 }

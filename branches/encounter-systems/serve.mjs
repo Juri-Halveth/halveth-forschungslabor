@@ -3,8 +3,10 @@
 import http from "node:http";
 import fs from "node:fs/promises";
 import path from "node:path";
-const root = await fs.realpath(import.meta.dirname),
+import { publicFiles } from "../../scripts/build-encounter-site.mjs";
+const root = await fs.realpath(path.resolve(import.meta.dirname,"../..")),
   port = Number(process.argv[2] || 8849);
+const routes = new Map(publicFiles.map((entry) => [entry.path,entry.sourcePath]));
 if (!Number.isInteger(port) || port < 1024 || port > 65535)
   throw Error("Invalid local port");
 const mime = {
@@ -14,6 +16,7 @@ const mime = {
   ".json": "application/json; charset=utf-8",
   ".png": "image/png",
   ".md": "text/plain; charset=utf-8",
+  ".py": "text/plain; charset=utf-8",
 };
 const server = http.createServer(async (req, res) => {
   try {
@@ -25,13 +28,13 @@ const server = http.createServer(async (req, res) => {
     const pathname = decodeURIComponent(
         new URL(req.url, "http://127.0.0.1").pathname,
       ),
-      relative = pathname === "/" ? "index.html" : pathname.slice(1);
+      relative = pathname.endsWith("/") ? pathname.slice(1)+"index.html" : pathname.slice(1);
     if (
       relative.split(/[\\/]/).some((s) => s.startsWith(".")) ||
-      !mime[path.extname(relative)]
+      !mime[path.extname(relative)] || !routes.has(relative)
     )
       throw Error("Not served");
-    const target = await fs.realpath(path.resolve(root, relative));
+    const target = await fs.realpath(path.resolve(root, routes.get(relative)));
     if (!target.startsWith(root + path.sep)) throw Error("Out of scope");
     const bytes = await fs.readFile(target);
     res.writeHead(200, {
