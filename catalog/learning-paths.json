@@ -11,7 +11,8 @@
       "source": "branches/security-workbench/core.mjs",
       "tests": [
         "branches/security-workbench/core.test.mjs",
-        "branches/security-workbench/http-fixture.test.mjs"
+        "branches/security-workbench/http-fixture.test.mjs",
+        "branches/encounter-systems/browser.spec.mjs"
       ],
       "docs": "branches/security-workbench/README.md",
       "demo": "sicherheitslabor/"

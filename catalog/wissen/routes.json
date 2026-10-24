@@ -11,7 +11,8 @@
       "source": "branches/security-workbench/core.mjs",
       "tests": [
         "branches/security-workbench/core.test.mjs",
-        "branches/security-workbench/http-fixture.test.mjs"
+        "branches/security-workbench/http-fixture.test.mjs",
+        "branches/encounter-systems/browser.spec.mjs"
       ],
       "docs": "branches/security-workbench/README.md",
       "demo": "sicherheitslabor/",
@@ -35,6 +36,11 @@
           "path": "branches/security-workbench/http-fixture.test.mjs",
           "bytes": 1911,
           "sha256": "101dccd4d746bb626a1226685fd0000edc668facd78508134323586c5ff7edc8"
+        },
+        {
+          "path": "branches/encounter-systems/browser.spec.mjs",
+          "bytes": 16668,
+          "sha256": "e271a9ca6aef63d8005a739596b30aa5d9fe93bd6715c4319f506aa2b0f872a9"
         }
       ]
     },
@@ -107,8 +113,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 13409,
-          "sha256": "5c6eedf204fb69b38f1afc1c6f28b76da21d5f3977b4631105ad206d254888db"
+          "bytes": 16668,
+          "sha256": "e271a9ca6aef63d8005a739596b30aa5d9fe93bd6715c4319f506aa2b0f872a9"
         }
       ]
     },

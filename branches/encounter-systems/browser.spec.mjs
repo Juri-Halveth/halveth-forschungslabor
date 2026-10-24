@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 import { test, expect } from "@playwright/test";
 import path from "node:path";
+import fs from "node:fs/promises";
 
 test("ENDECK uses native controls, preserves source identities and remembers only correct learning answers",async({page},info)=>{
   const errors=[];page.on("pageerror",e=>errors.push(e.message));
@@ -103,10 +104,11 @@ test("unavailable browser storage keeps the experiment and temporary learning us
   expect(errors).toEqual([]);
 });
 
-test("the repository tunnel has eighteen usable source and test routes and mobile navigation fits",async({page},info)=>{
-  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(18);
-  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(18);
-  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(18);
+test("the repository tunnel has nineteen usable source and test routes and mobile navigation fits",async({page},info)=>{
+  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(19);
+  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(19);
+  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(19);
+  await expect(page.locator('.route').filter({hasText:'Sicherheitsprüfungen'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../sicherheitslabor/');
   for(const url of ["/wissen/","/signals.html","/"]){
     await page.goto(url);
     for(const width of [320,390,768,1024]){
@@ -116,6 +118,47 @@ test("the repository tunnel has eighteen usable source and test routes and mobil
   }
   await page.goto("/wissen/");await page.setViewportSize({width:390,height:900});
   await page.screenshot({path:info.outputPath("learning-tunnel-mobile.png"),fullPage:true});
+});
+
+test('security workbench executes counterexamples, rejects invalid input and exports actual local results',async({page})=>{
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto('/sicherheitslabor/');await expect(page.locator('#run-count')).toHaveText('6');
+  await expect(page.locator('.advisory')).toHaveCount(10);
+  await page.getByLabel('Exakte stabile Version',{exact:true}).fill('24.22');
+  await page.getByRole('button',{name:'Vergleichen',exact:true}).click();
+  await expect(page.locator('#suite-status')).toContainText('5/6');
+  await page.getByLabel('Exakte stabile Version',{exact:true}).fill('24.22.1');
+  await page.getByRole('button',{name:'Vergleichen',exact:true}).click();
+  await expect(page.locator('#runtime-summary')).toContainText('Patchschwelle erreicht');
+  await page.getByRole('button',{name:'Unicode-Gegenprobe',exact:true}).click();
+  await expect(page.locator('#identity-summary')).toContainText('127.0.0.1');
+  await page.getByLabel('Formatfehler als endgültig behandeln',{exact:true}).uncheck();
+  await expect(page.locator('#decoder-summary')).toContainText('2 Datenereignis');
+  await page.getByLabel('Subjekt vor Freigabe abgleichen',{exact:true}).uncheck();
+  await expect(page.locator('#session-summary')).toContainText('fremdes Subjekt freigegeben');
+  await page.getByLabel('Formatfehler als endgültig behandeln',{exact:true}).check();
+  await page.getByLabel('Subjekt vor Freigabe abgleichen',{exact:true}).check();
+  await expect(page.locator('#decoder-summary')).toContainText('Formatfehler beendet');
+  await expect(page.locator('#session-summary')).toContainText('zurückgewiesen');
+  await page.getByLabel('Textprobe, maximal 32768 Zeichen',{exact:true}).fill('<img src=x> // documentation: eval(example)');
+  await page.getByRole('button',{name:'Text lokal sichten',exact:true}).click();
+  await expect(page.locator('#triage img')).toHaveCount(0);
+  const downloadPromise=page.waitForEvent('download');
+  await page.getByRole('button',{name:'Ergebnisse als JSON speichern',exact:true}).click();
+  const download=await downloadPromise;
+  const result=JSON.parse(await fs.readFile(await download.path(),'utf8'));
+  expect(Object.keys(result.results)).toHaveLength(6);expect(result.networkRequests).toBe(0);
+  expect(result.results.triage.verdict).toBe('UNDETERMINED');
+  expect(errors).toEqual([]);
+});
+
+test('security workbench fits five measured viewport widths and retains six live result areas',async({page},info)=>{
+  await page.goto('/sicherheitslabor/');await expect(page.locator('#run-count')).toHaveText('6');
+  for(const width of [320,390,768,1024,1440]){
+    await page.setViewportSize({width,height:900});
+    expect(await page.evaluate(()=>({width:innerWidth,overflow:document.documentElement.scrollWidth>document.documentElement.clientWidth,results:document.querySelectorAll('.outcome').length}))).toEqual({width,overflow:false,results:6});
+  }
+  await page.screenshot({path:info.outputPath('security-workbench-desktop.png'),fullPage:true});
 });
 
 test("signal controls change received samples and decoded image", async ({
