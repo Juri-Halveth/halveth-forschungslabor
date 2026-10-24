@@ -1,0 +1,73 @@
+{
+  "schema": "halveth.lifecycle-public-observations.v1",
+  "observedAt": "2026-10-23T21:48:26.669346+00:00",
+  "status": "FINITE_SNAPSHOT",
+  "person": "Juri",
+  "project": "HALVETH",
+  "sourceSha256": "2559e164478ff4398f7a52caaa90da88110ec255087613888faf5091e21547bc",
+  "runtime": {
+    "python": "3.12.14",
+    "implementation": "CPython",
+    "platform": "win32"
+  },
+  "derivation": "Whitelisted fields from the recorded local run; paths, process IDs and random instance IDs excluded",
+  "observations": [
+    {
+      "id": "normal",
+      "source_sha256": "f079ffbe73fc1a0943d1c2c8aab22a3daebce170c87fd4472f49cc1b1577e92e",
+      "exit_code": 0,
+      "stdout": [
+        "BEFORE_EXIT",
+        "FINALLY"
+      ],
+      "file_exists_after_exit": true,
+      "file_sha256": "715b01d27c6ef7f4cdde1c3256b58586dfeae807e5a78eeeac3f62ddd5b110bb"
+    },
+    {
+      "id": "caught",
+      "source_sha256": "20777ac0fae5eb6573e5dfdc7a23ef986fb4c6ef2c64e672341260d815a22937",
+      "exit_code": 0,
+      "stdout": [
+        "CAUGHT:0",
+        "AFTER_CAUGHT_EXIT"
+      ],
+      "file_exists_after_exit": false,
+      "file_sha256": null
+    },
+    {
+      "id": "thread",
+      "source_sha256": "ea8f22fe3cf3e1fd8a2ec75e507c1fa29b924b5a7bcc8e982725ce68cd3eeec0",
+      "exit_code": 0,
+      "stdout": [
+        "THREAD_BEFORE_EXIT",
+        "MAIN_AFTER_THREAD_EXIT"
+      ],
+      "file_exists_after_exit": false,
+      "file_sha256": null
+    },
+    {
+      "id": "normal_new_instance",
+      "source_sha256": "f079ffbe73fc1a0943d1c2c8aab22a3daebce170c87fd4472f49cc1b1577e92e",
+      "exit_code": 0,
+      "stdout": [
+        "BEFORE_EXIT",
+        "FINALLY"
+      ],
+      "file_exists_after_exit": true,
+      "file_sha256": "715b01d27c6ef7f4cdde1c3256b58586dfeae807e5a78eeeac3f62ddd5b110bb"
+    }
+  ],
+  "checks": {
+    "all_exit_codes_zero": true,
+    "all_stderr_empty": true,
+    "finally_runs_subsequent_code_does_not": true,
+    "exit_can_be_caught": true,
+    "thread_exit_does_not_end_main": true,
+    "file_survives_normal_exit": true,
+    "same_source_new_run_equal_result": true,
+    "distinct_launch_records": true
+  },
+  "claimCeiling": "Four local launches; no memory sanitization, remote cancellation, full intermediate-state, astrophysical or biological proof",
+  "reopenTrigger": "A concrete supervisor, queue or receiver contract to compare against these terminal observations",
+  "primarySource": "https://docs.python.org/3.12/library/sys.html#sys.exit"
+}

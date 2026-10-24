@@ -1,0 +1,254 @@
+<div id="endeck-observer-v1">
+  <div class="viz-controls">
+    <label class="form-label" for="endeck-mode">Vergleich
+      <select class="form-select" id="endeck-mode">
+        <option value="projection">Nur die Ansicht fällt zusammen</option>
+        <option value="shrink">Vier Orte werden ein Ort</option>
+        <option value="merge">4 → 3 → 2 → 1 Orte</option>
+        <option value="history">Zwei Bilder, zwei mögliche Wege</option>
+      </select>
+    </label>
+    <button type="button" class="btn btn-primary" id="endeck-play">Ablauf zeigen</button>
+    <button type="button" class="btn" id="endeck-tilt" aria-pressed="true">Blick kippen</button>
+  </div>
+  <div class="endeck-time">
+    <label class="form-label" for="endeck-time">Modellzeit <output id="endeck-clock" class="tabular-nums">1,000</output></label>
+    <input class="form-range" id="endeck-time" type="range" min="0" max="3000" step="1" value="3000">
+  </div>
+  <div class="endeck-views">
+    <section>
+      <div class="viz-row"><h3 id="endeck-flat-heading">Ansicht des Quadrats · x/y</h3></div>
+      <svg id="endeck-flat" class="endeck-chart" role="img" aria-labelledby="endeck-flat-heading" aria-describedby="endeck-description"></svg>
+      <div class="endeck-readout tabular-nums" id="endeck-flat-count">1 Bildort</div>
+    </section>
+    <section>
+      <div class="viz-row"><h3 id="endeck-space-heading">Blick von außen · x/y/z</h3></div>
+      <svg id="endeck-space" class="endeck-chart" role="img" aria-labelledby="endeck-space-heading" aria-describedby="endeck-description"></svg>
+      <div class="endeck-readout tabular-nums" id="endeck-space-count">4 Raumorte · 4 IDs</div>
+    </section>
+  </div>
+  <div class="viz-controls" id="endeck-path-controls" hidden>
+    <span>Modellierter Zwischenweg</span>
+    <button type="button" class="btn" id="endeck-straight" aria-pressed="true">Gerade</button>
+    <button type="button" class="btn" id="endeck-arc" aria-pressed="false">Bogen</button>
+  </div>
+  <div class="endeck-status" id="endeck-status" role="status" aria-live="polite">Gemeinsames Bild · getrennte Raumorte · IDs A, B, C, D erhalten</div>
+  <div class="text-small text-muted endeck-credit">Geometrischer Modellvergleich · Juri / Projekt HALVETH</div>
+  <span class="sr-only" id="endeck-description">Vier benannte Punkte werden nach ausdrücklich festgelegten Regeln bewegt. Links erscheint ihre Projektion auf die x/y-Ebene, rechts eine kippbare Raumansicht. Der Zeitregler und die Auswahl vergleichen Projektion, tatsächliches Zusammenfallen und verschiedene Wege zwischen denselben zwei gespeicherten Bildern.</span>
+</div>
+<style>
+  #endeck-observer-v1 .endeck-time{margin:18px 0 8px}
+  #endeck-observer-v1 .endeck-views{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+  #endeck-observer-v1 .endeck-views section{min-width:0}
+  #endeck-observer-v1 .endeck-chart{width:100%;height:278px;display:block;overflow:visible}
+  #endeck-observer-v1 .endeck-chart text{fill:var(--foreground);font-size:12px;font-weight:400}
+  #endeck-observer-v1 .endeck-readout{color:var(--foreground);font-weight:500;min-height:24px}
+  #endeck-observer-v1 .endeck-status{margin-top:18px;color:var(--foreground);min-height:24px}
+  #endeck-observer-v1 .endeck-credit{margin-top:10px}
+  #endeck-observer-v1 [hidden]{display:none!important}
+  @media(max-width:580px){#endeck-observer-v1 .endeck-views{grid-template-columns:1fr;gap:18px}}
+</style>
+<script>
+(() => {
+  /* ENDECK_MODEL_START */
+  const IDs = Object.freeze(['A','B','C','D']);
+  const CORNERS = Object.freeze([[-1,-1,0],[1,-1,0],[1,1,0],[-1,1,0]].map(Object.freeze));
+  const MODES = Object.freeze(['projection','shrink','merge','history']);
+  function checked(mode,t,path='straight') {
+    if (!MODES.includes(mode) || !Number.isFinite(t) || t<0 || t>1 || !['straight','arc'].includes(path)) throw new RangeError('Invalid bound model input');
+  }
+  function source(mode,t,path='straight') {
+    checked(mode,t,path);
+    return CORNERS.map((c,i) => {
+      let x=c[0], y=c[1], z=0;
+      if (mode==='projection' || mode==='shrink') {
+        const scale=t===1?0:1-t;
+        x=c[0]*scale; y=c[1]*scale;
+        z=mode==='projection'?(i-1.5)*0.85*t:0;
+      } else if (mode==='merge' && i>0) {
+        const u=t>=i/3?1:Math.max(0,3*t-(i-1));
+        x=u===1?CORNERS[0][0]:c[0]+u*(CORNERS[0][0]-c[0]);
+        y=u===1?CORNERS[0][1]:c[1]+u*(CORNERS[0][1]-c[1]);
+      } else if (mode==='history') {
+        x+=-1.25+2.5*t;
+        y+=path==='arc' && t!==0 && t!==1 ? Math.sin(Math.PI*t)*1.15 : 0;
+      }
+      return {id:IDs[i],x,y,z};
+    });
+  }
+  function observeXY(points) { return points.map(p=>({id:p.id,x:p.x,y:p.y})); }
+  function distinct(points,axes) {
+    return new Set(points.map(p=>axes.map(a=>p[a]).join('|'))).size;
+  }
+  function project(p,tilt=0) {
+    if (!p || ![p.x,p.y,p.z].every(Number.isFinite) || !Number.isFinite(tilt) || tilt<0 || tilt>80) throw new RangeError('Invalid view input');
+    const a=tilt*Math.PI/180, yaw=0.42*Math.sin(a);
+    const x=p.x*Math.cos(yaw)-p.y*Math.sin(yaw);
+    const y=p.x*Math.sin(yaw)+p.y*Math.cos(yaw);
+    return {id:p.id,x,y:y*Math.cos(a)+p.z*Math.sin(a)};
+  }
+  /* ENDECK_MODEL_END */
+  const root=document.getElementById('endeck-observer-v1');
+  if (!root) return;
+  const el=id=>root.querySelector('#endeck-'+id);
+  const svgNS='http://www.w3.org/2000/svg';
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+  let state={mode:'projection',t:1,tilt:64,path:'straight'};
+  let running=false, frame=0, tilting=0, started=0, startT=0, lastAnnouncement='';
+  function restore(raw) {
+    const v=raw?.modelContent || raw?.privateContent || raw;
+    if (!v || v.model!=='endeck-observer-v1') return;
+    try {
+      checked(v.mode,v.t,v.path);
+      project({x:0,y:0,z:0},v.tilt);
+      state={mode:v.mode,t:v.t,tilt:v.tilt,path:v.path};
+    } catch { return; }
+  }
+  restore(window.openai?.widgetState);
+  function save() {
+    const modelContent={model:'endeck-observer-v1',...state};
+    window.openai?.setWidgetState?.({modelContent,privateContent:null})?.catch(()=>{});
+  }
+  function node(name,attrs={},text) {
+    const n=document.createElementNS(svgNS,name);
+    for (const [k,v] of Object.entries(attrs)) n.setAttribute(k,String(v));
+    if (text!==undefined) n.textContent=text;
+    return n;
+  }
+  const color=i=>'var(--viz-series-'+(i+1)+')';
+  function plot(svg,spatial) {
+    const w=Math.max(220,svg.getBoundingClientRect().width),h=278,scale=Math.min(w/6.4,h/5.8);
+    svg.setAttribute('viewBox',`0 0 ${w} ${h}`);
+    svg.replaceChildren();
+    const camera=p=>project(p,spatial?state.tilt:0);
+    const xy=p=>{const q=camera(p);return [w/2+q.x*scale,h/2-q.y*scale];};
+    const line=(a,b,attrs={})=>{
+      const [x1,y1]=xy(a),[x2,y2]=xy(b);
+      svg.append(node('line',{x1,y1,x2,y2,stroke:'var(--border)','stroke-width':1,...attrs}));
+    };
+    for(let v=-2;v<=2;v++) {
+      line({x:v,y:-2,z:0},{x:v,y:2,z:0});
+      line({x:-2,y:v,z:0},{x:2,y:v,z:0});
+    }
+    if(spatial && state.tilt>1) line({x:0,y:0,z:-1.6},{x:0,y:0,z:1.6},{stroke:'var(--muted-foreground)',opacity:0.6});
+    function polygon(points,opacity=1,dashed=false) {
+      const value=points.map(p=>xy(p).join(',')).join(' ');
+      svg.append(node('polygon',{points:value,fill:'var(--viz-series-1)','fill-opacity':0.07*opacity,stroke:'var(--viz-series-1)','stroke-width':1.6,opacity,...(dashed?{'stroke-dasharray':'4 5'}:{})}));
+    }
+    function dots(points,opacity=1,showLabels=true) {
+      const groups=new Map();
+      for(const p of points) {
+        const q=camera(p),key=[q.x,q.y].join('|');
+        if(!groups.has(key)) groups.set(key,[]);
+        groups.get(key).push(p);
+      }
+      const list=[...groups.values()];
+      const crowded=list.some((g,i)=>list.some((other,j)=>{
+        if(i===j)return false;
+        const a=xy(g[0]),b=xy(other[0]);return Math.hypot(a[0]-b[0],a[1]-b[1])<48;
+      }));
+      for(const group of groups.values()) {
+        const [x,y]=xy(group[0]);
+        group.forEach((p,j)=>svg.append(node('circle',{cx:x,cy:y,r:5+j*2.6,fill:j?'none':color(IDs.indexOf(p.id)),stroke:color(IDs.indexOf(p.id)),'stroke-width':2,opacity})));
+        if(showLabels) {
+          const label=group.map(p=>p.id).join(' · ');
+          if(crowded){
+            const slot=IDs.indexOf(group[0].id),right=slot===1||slot===2;
+            const lx=right?w-18:18,ly=slot<2?h-20:54;
+            svg.append(node('line',{x1:x,y1:y,x2:lx,y2:ly-5,stroke:'var(--muted-foreground)','stroke-width':1,opacity:0.5*opacity}));
+            svg.append(node('text',{x:lx,y:ly,'text-anchor':right?'end':'start',opacity},label));
+          }else{
+            const lx=Math.min(w-14-label.length*7,Math.max(14,x+15));
+            svg.append(node('text',{x:lx,y:Math.max(47,Math.min(h-14,y-12)),opacity},label));
+          }
+        }
+      }
+    }
+    if(state.mode==='history') {
+      if(!spatial) {
+        polygon(source('history',0),0.45);polygon(source('history',1),0.8);
+        dots(source('history',0),0.45,false);dots(source('history',1),0.8,false);
+        svg.append(node('text',{x:12,y:25},'Gespeichert: t = 0 und t = 1'));
+        const a=xy({x:-1.25,y:-1.5,z:0}),b=xy({x:1.25,y:-1.5,z:0});
+        svg.append(node('text',{x:a[0],y:a[1]+18,'text-anchor':'middle'},'t = 0'));
+        svg.append(node('text',{x:b[0],y:b[1]+18,'text-anchor':'middle'},'t = 1'));
+      } else {
+        for(const path of ['straight','arc']) {
+          const d=Array.from({length:81},(_,i)=>{
+            const points=source('history',i/80,path);
+            const center={x:points.reduce((n,p)=>n+p.x,0)/4,y:points.reduce((n,p)=>n+p.y,0)/4,z:0};
+            return xy(center).join(',');
+          }).join(' ');
+          svg.append(node('polyline',{points:d,fill:'none',stroke:path===state.path?'var(--viz-series-1)':'var(--muted-foreground)','stroke-width':path===state.path?2:1,opacity:path===state.path?0.9:0.4,'stroke-dasharray':path===state.path?'none':'4 5'}));
+        }
+        const points=source('history',state.t,state.path);polygon(points);dots(points);
+        svg.append(node('text',{x:12,y:25},'Gewählter Modellpfad: '+(state.path==='arc'?'Bogen':'Gerade')));
+      }
+    } else {
+      const points=source(state.mode,state.t);
+      if(spatial && state.mode==='projection') for(const p of points) line(p,{...p,z:0},{'stroke-dasharray':'3 5',opacity:0.65});
+      polygon(points);dots(points);
+      const label=spatial?'Raumansicht · '+Math.round(state.tilt)+'°':'Flache Projektion · z ausgeblendet';
+      svg.append(node('text',{x:12,y:25},label));
+    }
+    const axes=[['x',{x:2.3,y:0,z:0}],['y',{x:0,y:2.3,z:0}]];
+    if(spatial && state.tilt>1) axes.push(['z',{x:0,y:0,z:1.8}]);
+    for(const [name,p] of axes) {
+      const [x,y]=xy(p);
+      svg.append(node('text',{x:Math.min(w-16,Math.max(10,x+5)),y:Math.min(h-12,Math.max(40,y-5)),opacity:0.7},name));
+    }
+  }
+  function render(announce=false) {
+    el('mode').value=state.mode;
+    el('time').value=String(Math.round(state.t*3000));
+    el('clock').textContent=state.t.toLocaleString('de-DE',{minimumFractionDigits:3,maximumFractionDigits:3});
+    el('path-controls').hidden=state.mode!=='history';
+    el('straight').setAttribute('aria-pressed',String(state.path==='straight'));
+    el('arc').setAttribute('aria-pressed',String(state.path==='arc'));
+    el('tilt').setAttribute('aria-pressed',String(state.tilt>20));
+    el('play').textContent=running?'Anhalten':reduced.matches?'Endzustand zeigen':'Ablauf zeigen';
+    plot(el('flat'),false);plot(el('space'),true);
+    const points=source(state.mode,state.t,state.path),n2=distinct(points,['x','y']),n3=distinct(points,['x','y','z']);
+    let text;
+    if(state.mode==='history') {
+      el('flat-count').textContent='2 gespeicherte Zustände';
+      el('space-count').textContent='2 mögliche Modellpfade · 4 IDs';
+      text='Tatsächlicher Zwischenweg aus den zwei Aufnahmen: offen';
+    } else {
+      el('flat-count').textContent=n2+' '+(n2===1?'Bildort':'Bildorte');
+      el('space-count').textContent=n3+' '+(n3===1?'Raumort':'Raumorte')+' · 4 IDs';
+      text=n2<n3?'Gemeinsames Bild · getrennte Raumorte · IDs A, B, C, D erhalten':n3===1?'Ein gemeinsamer Raumort · vier erhaltene Datensätze A, B, C, D':'Unterschiedliche Orte · vier erhaltene Datensätze A, B, C, D';
+    }
+    root.dataset.mode=state.mode;root.dataset.sourcePlaces=String(n3);root.dataset.imagePlaces=String(n2);root.dataset.progress=String(state.t);
+    if(announce || text!==lastAnnouncement) {el('status').textContent=text;lastAnnouncement=text;}
+  }
+  function stop() {running=false;cancelAnimationFrame(frame);}
+  function animate(now) {
+    if(!running)return;
+    state.t=Math.min(1,startT+(now-started)/8000);
+    render();
+    if(state.t===1){stop();render(true);save();}else frame=requestAnimationFrame(animate);
+  }
+  el('play').addEventListener('click',()=>{
+    if(running){stop();render(true);save();return;}
+    if(reduced.matches){state.t=1;render(true);save();return;}
+    if(state.t===1)state.t=0;
+    startT=state.t;started=performance.now();running=true;render(true);save();frame=requestAnimationFrame(animate);
+  });
+  el('time').addEventListener('input',()=>{stop();state.t=Number(el('time').value)/3000;render(true);});
+  el('time').addEventListener('change',save);
+  el('mode').addEventListener('change',()=>{stop();state.mode=el('mode').value;render(true);save();});
+  el('tilt').addEventListener('click',()=>{
+    cancelAnimationFrame(tilting);const from=state.tilt,to=state.tilt>20?0:64,start=performance.now();
+    if(reduced.matches){state.tilt=to;render(true);save();return;}
+    const step=now=>{const t=Math.min(1,(now-start)/700);state.tilt=from+(to-from)*(t*t*(3-2*t));render();if(t<1)tilting=requestAnimationFrame(step);else{render(true);save();}};
+    tilting=requestAnimationFrame(step);
+  });
+  for(const path of ['straight','arc'])el(path).addEventListener('click',()=>{state.path=path;render(true);save();});
+  new ResizeObserver(()=>render()).observe(root);
+  addEventListener('openai:set_globals',event=>{if(event.detail?.globals?.widgetState){stop();restore(event.detail.globals.widgetState);render(true);}});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden&&running){stop();render(true);save();}});
+  reduced.addEventListener('change',()=>{stop();render(true);});
+  render(true);
+})();
+</script>

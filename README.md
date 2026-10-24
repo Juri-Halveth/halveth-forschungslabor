@@ -23,6 +23,19 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [ENDECK – Was sieht ein Quadrat?](branches/endeck-observer/)
+
+Vier bewegte Punkte, eine flache und eine räumliche Ansicht: Projektion,
+tatsächliches Zusammenfallen, 4 → 3 → 2 → 1 Orte und zwei mögliche Wege
+zwischen denselben gespeicherten Bildern. [Direkt ausprobieren](https://juri-halveth.github.io/halveth-forschungslabor/endeck/).
+
+### [Nachhall – Prozessende und erhaltene Ergebnisse](research/lifecycle-echo/)
+
+Vier ausführbare eigene Python-Läufe und acht Ausgabevergleiche trennen
+Prozessende, abgefangene Ausnahmen, Threadende und einen neuen Start.
+[Lesbare Ergebnisse](https://juri-halveth.github.io/halveth-forschungslabor/lifecycle/)
+mit minimierten Messdaten und Quellcode.
+
 ### [Encounter Systems – Kooperation, Kopien und veränderbare Grenzen](branches/encounter-systems/)
 
 Ein ausführbares Browserlabor: Systeme berechnen gemeinsam ein Bild, übernehmen erlaubte Kopien und prüfen Lieferungen gegen ihre Freigabeversion. Mit Desktop-/Mobilansicht, Zeitspur, zwei Arbeitsaufträgen, zwölf reproduzierbaren Vergleichen und einem maschinenlesbaren Wissensregister.

@@ -37,36 +37,41 @@ export const licenseFiles = Object.freeze([
   "RIGHTS-RESERVATION.md",
 ]);
 
+// Source and public addresses are explicit; adjacent files never enter Pages.
+export const publicFiles = Object.freeze([
+  ...moduleFiles.map((name) => ({ path: name, sourcePath: "branches/encounter-systems/" + name })),
+  ...licenseFiles.map((name) => ({ path: name, sourcePath: name })),
+  ...["index.html", "fragment.html", "README.md", "SOURCE.json"].map((name) => ({
+    path: "endeck/" + name, sourcePath: "branches/endeck-observer/" + name,
+  })),
+  ...["index.html", "README.md", "results.json", "lifecycle_probe.py"].map((name) => ({
+    path: "lifecycle/" + name, sourcePath: "research/lifecycle-echo/" + name,
+  })),
+].map(Object.freeze));
+
 export async function buildSite({ repoRoot, outputRoot, commit }) {
   if (!/^[a-f0-9]{40}$/.test(commit))
     throw Error("A full source commit is required");
   const source = await fs.realpath(repoRoot);
   const destination = path.resolve(outputRoot);
   const files = [];
-  for (const [prefix, names] of [
-    ["branches/encounter-systems", moduleFiles],
-    ["", licenseFiles],
-  ]) {
-    for (const name of names) {
-      const input = path.join(source, prefix, name);
-      const stat = await fs.lstat(input);
-      if (!stat.isFile() || stat.isSymbolicLink())
-        throw Error("Only regular files: " + name);
-      const real = await fs.realpath(input);
-      if (!real.startsWith(source + path.sep))
-        throw Error("Source boundary: " + name);
-      const bytes = await fs.readFile(real);
-      files.push({
-        name,
-        bytes,
-        sourcePath: [prefix, name].filter(Boolean).join("/"),
-      });
-    }
+  for (const { path: name, sourcePath } of publicFiles) {
+    const input = path.join(source, sourcePath);
+    const stat = await fs.lstat(input);
+    if (!stat.isFile() || stat.isSymbolicLink())
+      throw Error("Only regular files: " + name);
+    const real = await fs.realpath(input);
+    if (!real.startsWith(source + path.sep))
+      throw Error("Source boundary: " + name);
+    const bytes = await fs.readFile(real);
+    files.push({ name, bytes, sourcePath });
   }
   // A fresh output is mandatory: stale files can never enter the published artifact.
   await fs.mkdir(destination);
-  for (const file of files)
+  for (const file of files) {
+    await fs.mkdir(path.dirname(path.join(destination, file.name)), { recursive: true });
     await fs.writeFile(path.join(destination, file.name), file.bytes);
+  }
   const receipt = {
     schema: "halveth.encounter-publication.v1",
     sourceCommit: commit,

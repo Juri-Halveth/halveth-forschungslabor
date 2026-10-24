@@ -5,6 +5,8 @@ on:
     paths:
       [
         "branches/encounter-systems/**",
+        "branches/endeck-observer/**",
+        "research/lifecycle-echo/**",
         "scripts/build-encounter-site*",
         ".github/workflows/encounter-pages.yml",
         "LICENSE*",
@@ -14,6 +16,8 @@ on:
     paths:
       [
         "branches/encounter-systems/**",
+        "branches/endeck-observer/**",
+        "research/lifecycle-echo/**",
         "scripts/build-encounter-site*",
         ".github/workflows/encounter-pages.yml",
         "LICENSE*",
@@ -40,6 +44,7 @@ jobs:
       - name: Check publication boundary and research results
         run: |
           node --test scripts/build-encounter-site.test.mjs
+          node --test branches/endeck-observer/model.test.mjs
           node branches/encounter-systems/research.mjs --check
           node --test branches/encounter-systems/signal-model.test.mjs
           node branches/encounter-systems/signal-research.mjs --check
