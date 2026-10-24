@@ -5,9 +5,13 @@
   "type": "module",
   "license": "SEE LICENSE IN LICENSES.md",
   "engines": {
-    "node": ">=24"
+    "node": ">=24.22.1 <25 || >=26.12.1 <27"
   },
   "scripts": {
-    "test": "node scripts/check-modules.mjs"
+    "test": "node scripts/check-modules.mjs",
+    "security:runtime": "node branches/security-workbench/cli.mjs runtime --require-patch",
+    "security:selftest": "node branches/security-workbench/cli.mjs selftest",
+    "security:report": "node branches/security-workbench/cli.mjs report",
+    "security:lab": "node branches/security-workbench/cli.mjs lab"
   }
 }

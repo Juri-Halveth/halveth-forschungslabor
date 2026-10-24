@@ -5,6 +5,18 @@
   "scope": "Current repository module and research entry points, not an audit of other repositories",
   "entries": [
     {
+      "id": "security-workbench",
+      "title": "Sicherheitsprüfungen – Laufzeiten, Parser und Berechtigungen",
+      "description": "Sechs lokale Prüfplätze, datierte Node.js-Patchreferenzen und ein eigener kurzlebiger HTTP-Dienst für Burp mit synthetischen Konten.",
+      "source": "branches/security-workbench/core.mjs",
+      "tests": [
+        "branches/security-workbench/core.test.mjs",
+        "branches/security-workbench/http-fixture.test.mjs"
+      ],
+      "docs": "branches/security-workbench/README.md",
+      "demo": "sicherheitslabor/"
+    },
+    {
       "id": "endeck-observer",
       "title": "ENDECK – Bild, Raum und Zeit",
       "description": "Vier geometrische Gegenbeispiele, zwei Blickwinkel und vier Lernaufgaben mit lokalem Fortschritt.",
