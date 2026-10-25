@@ -23,6 +23,16 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [Security Research – Methoden, Quellen und nächste Gegenprobe](branches/security-research-hub/)
+
+**[Den Forschungsraum öffnen](https://juri-halveth.github.io/halveth-forschungslabor/security/)**.
+18 Prüfmethoden und 13 Werkzeugprofile verbinden PHP-Lebenszyklen, Web-Identität,
+Protokollzustände und Geräte-/IPC-Fragen. Vier lokale Gegenproben, vier
+veröffentlichte HackerOne-/Immunefi-Fallanalysen und ein regelbasierter
+Prüfplan mit JSON-/Markdown-Export machen den nächsten Schritt konkret.
+Private Fallakten und vertrauliche Reportmetadaten bleiben außerhalb dieses
+öffentlichen Katalogs. [Methode und Datenvertrag](branches/security-research-hub/README.md).
+
 ### [Sicherheitsprüfungen ausführen](branches/security-workbench/)
 
 Laufzeitstände mit dem datierten Patchkatalog vergleichen, Parser-Identitäten untersuchen und Berechtigungen gegenprüfen. Mit sechs Browser-Prüfplätzen, einem eigenen kurzlebigen HTTP-Labor für Burp und negativen Kontrollen. **[Direkt öffnen](https://juri-halveth.github.io/halveth-forschungslabor/sicherheitslabor/)**.

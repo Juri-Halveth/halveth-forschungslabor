@@ -5,6 +5,34 @@
   "modelWeightTraining": false,
   "entries": [
     {
+      "id": "security-research-hub",
+      "title": "Security Research – Methoden, Quellen und nächste Gegenprobe",
+      "description": "18 Prüfmethoden, vier lokale Gegenproben, öffentliche Fallanalysen und ein exportierbarer Forschungsplan mit getrenntem Arbeits- und Belegstand.",
+      "source": "branches/security-research-hub/model.mjs",
+      "tests": [
+        "branches/security-research-hub/model.test.mjs"
+      ],
+      "docs": "branches/security-research-hub/README.md",
+      "demo": "security/",
+      "files": [
+        {
+          "path": "branches/security-research-hub/model.mjs",
+          "bytes": 9813,
+          "sha256": "4fd27b6c4df80ce4ded2c442118818a22de8a90d4b497d9912efebd77c2904df"
+        },
+        {
+          "path": "branches/security-research-hub/README.md",
+          "bytes": 5341,
+          "sha256": "5bf200855b6749cd40f4a0bc67ba724ef2139f7c13150de79023f6c881853f56"
+        },
+        {
+          "path": "branches/security-research-hub/model.test.mjs",
+          "bytes": 6570,
+          "sha256": "7fd03b583cf76690927cd60c2385801d0988ecedee754245a2092cdf9d0c39b9"
+        }
+      ]
+    },
+    {
       "id": "security-workbench",
       "title": "Sicherheitsprüfungen – Laufzeiten, Parser und Berechtigungen",
       "description": "Sechs lokale Prüfplätze, datierte Node.js-Patchreferenzen und ein eigener kurzlebiger HTTP-Dienst für Burp mit synthetischen Konten.",
