@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="HALVETH Security Research: Methoden, lokaler Denkprozess, vier ausführbare Gegenproben und veröffentlichte HackerOne- und Immunefi-Fallanalysen. Quellen, Code und Werkzeuge an einem Ort.">
+  <title>Security Research · HALVETH</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="view.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#inhalt">Zum Inhalt</a>
+  <header class="topbar">
+    <a class="brand" href="https://juri-halveth.github.io/"><span class="brand-icon" aria-hidden="true">H</span><span>HALVETH<small>SECURITY RESEARCH</small></span></a>
+    <nav aria-label="Bereiche"><a href="#denkprozess">Denkprozess</a><a href="#methoden">Methoden</a><a href="#faelle">Fallanalysen</a><a href="../sicherheitslabor/">Prüfplätze ↗</a></nav>
+    <a class="code-link" href="https://github.com/Juri-Halveth/halveth-forschungslabor/tree/main/branches/security-research-hub">Code <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="inhalt">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> SYSTEME VERSTEHEN. GRENZEN PRÜFEN.</p>
+        <h1 id="hero-title">Eine Beobachtung.<br>Ein <em>belegbarer</em><br>Befund.</h1>
+        <p class="lead">Quellcode lesen. Unterschiede erklären. Die entscheidende Gegenprobe finden. Ein Forschungsraum verbindet Methoden, Werkzeuge und nächste Schritte.</p>
+        <div class="hero-actions"><button class="primary" id="start-thinking">Denkprozess starten <span aria-hidden="true">↗</span></button><a href="#labor">Gegenprobe ausprobieren <span aria-hidden="true">↓</span></a></div>
+        <p class="micro">Lokal im Browser · ohne Konto · ohne Zielsystemkontakt</p>
+      </div>
+      <div class="signal-map" aria-label="Vier getrennte Prüffragen: Darstellung, Identität, Berechtigung und beobachtete Wirkung">
+        <div class="map-grid" aria-hidden="true"></div>
+        <div class="map-title"><span>01 / TRUST BOUNDARY</span><span>LOKALES MODELL</span></div>
+        <svg class="map-svg" viewBox="0 0 560 410" role="img" aria-labelledby="map-label"><title id="map-label">Ein Eingabepaket und vier getrennte Prüfschichten</title>
+          <defs><linearGradient id="signal" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#a9f1d4"/><stop offset="1" stop-color="#f56676"/></linearGradient></defs>
+          <g class="map-orbits"><ellipse cx="280" cy="206" rx="208" ry="92"/><ellipse cx="280" cy="206" rx="152" ry="67"/><path d="M72 206v52c0 51 93 92 208 92s208-41 208-92v-52M128 206v37c0 37 68 67 152 67s152-30 152-67v-37"/></g>
+          <path class="map-thread" d="M75 276 L171 233 L275 191 L385 146 L483 105"/>
+          <g class="map-plane"><path d="M124 222l80-35 0 76-80 35z"/><path d="M226 181l80-35 0 76-80 35z"/><path d="M332 139l80-35 0 76-80 35z"/></g>
+          <g class="map-nodes"><circle cx="76" cy="276" r="8"/><circle cx="171" cy="233" r="7"/><circle cx="275" cy="191" r="7"/><circle cx="385" cy="146" r="7"/><circle class="end-node" cx="483" cy="105" r="10"/></g>
+          <g class="map-labels"><text x="40" y="315">EINGABE</text><text x="109" y="174">DARSTELLUNG</text><text x="220" y="132">IDENTITÄT</text><text x="327" y="89">BERECHTIGUNG</text><text x="429" y="68">WIRKUNG?</text></g>
+        </svg>
+        <div class="map-caption"><span>Was wurde geprüft?</span><strong>Jede Schicht hat ihre eigene Frage.</strong><span>Eine Verbindung wird erst durch ihren Beleg belastbar.</span></div>
+      </div>
+    </section>
+    <div class="stats" aria-label="Umfang des öffentlichen Katalogs"><p><strong id="method-count">18</strong><span>Prüfmethoden</span></p><p><strong>4</strong><span>lokale Gegenproben</span></p><p><strong>4</strong><span>veröffentlichte Fallanalysen</span></p><p><strong id="tool-count">13</strong><span>Werkzeugprofile</span></p></div>
+
+    <section class="section" id="denkprozess" aria-labelledby="think-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / DER NÄCHSTE KLARE SCHRITT</p><h2 id="think-title">Aus einer Frage<br>wird ein <em>Prüfplan.</em></h2></div><p>Wähle den Ausgangszustand. Der Navigator ordnet passende Methoden, Gegenfragen und Werkzeuge zu. Die Berechnung erfolgt auf deinem Gerät.</p></div>
+      <div class="planner">
+        <form id="plan-form" class="plan-form">
+          <div class="form-row"><div class="field"><label for="family">Was untersuchst du?</label><select id="family" name="family"><option value="identity">Identität & Rechte</option><option value="web">Web & Parser</option><option value="runtime">Runtime & Fehler</option><option value="device">Geräte & IPC</option><option value="network">Netz & Beobachtung</option><option value="chain">Chain & Contracts</option><option value="evidence">Beleg & Korrektur</option></select></div><div class="field"><label for="environment">Wo beginnt die Arbeit?</label><select id="environment" name="environment"><option value="PUBLIC_SOURCES">Öffentliche Quellen</option><option value="OWN_LOCAL">Eigener lokaler Prüfstand</option><option value="PROGRAM">Konkretes Bounty-Programm</option></select></div></div>
+          <div class="field"><label for="observation">Was liegt bereits vor?</label><select id="observation" name="observation"><option value="IDEA">Eine Idee oder Frage</option><option value="SOURCE">Ein konkreter Quellpfad</option><option value="LOCAL">Eine lokale Beobachtung</option><option value="IMPACT">Eine von mir behauptete Wirkung</option></select></div>
+          <label>Deine konkrete Frage <span class="optional">optional · bleibt hier</span><textarea id="question" name="question" rows="3" maxlength="2400" placeholder="Welche Identität kommt beim tatsächlichen Consumer an?"></textarea></label>
+          <details id="scope-fields"><summary>Scope und Programmpolicy ergänzen</summary><div class="scope-inputs"><label>Exaktes Asset / eigener Prüfstand<input id="target" maxlength="500" autocomplete="off"></label><label>Eigentümer / zuständige Stelle<input id="owner" maxlength="500" autocomplete="off"></label><label>Aktuelle Policy-URL<input id="policy-url" type="url" maxlength="1500" placeholder="https://…" autocomplete="off"></label><label>Erlaubte konkrete Handlung<input id="allowed-action" maxlength="500" autocomplete="off"></label></div></details>
+          <button type="submit" class="primary">Prüfplan berechnen <span aria-hidden="true">↗</span></button>
+          <p class="micro">Keine Übertragung, kein KI-Aufruf. Eingaben sind Angaben des Nutzers. Eine ausgefüllte Policy-URL wird hier nicht abgerufen.</p><p id="plan-error" role="alert" hidden></p>
+        </form>
+        <div class="plan-output" id="plan-output" aria-live="polite"><div class="plan-empty"><span class="reticle" aria-hidden="true">⊕</span><p class="eyebrow">DEIN AUSGANGSPUNKT</p><h3>Eine gute Frage<br>öffnet den nächsten Schritt.</h3><p>Du erhältst sechs bearbeitbare Aufgaben, passende Werkzeuge und die Fragen, die deine Vermutung unterscheiden können.</p><span class="tag">REGELBASIERTER NAVIGATOR</span></div></div>
+      </div>
+    </section>
+
+    <section class="section lab-section" id="labor" aria-labelledby="lab-title">
+      <div class="section-heading"><div><p class="eyebrow">02 / SEHEN, WAS DER CODE UNTERSCHEIDET</p><h2 id="lab-title">Gleiche Eingabe.<br>Andere <em>Regel.</em></h2></div><p>Vier ausführbare Modelle. Erst die auffällige Eingabe, dann die normale Gegenkontrolle. Jede Ausgabe benennt ihren Geltungsbereich.</p></div>
+      <div class="lab-tabs" role="group" aria-label="Lokaler Versuch"><button data-fixture="serialization" aria-pressed="true">01 Feldgrenzen</button><button data-fixture="identity" aria-pressed="false">02 Objektbindung</button><button data-fixture="lifecycle" aria-pressed="false">03 Request-Zustand</button><button data-fixture="finality" aria-pressed="false">04 Chain-Sichten</button></div>
+      <div class="lab"><div class="lab-bar"><span class="tag">SYNTHETISCHE DATEN</span><label class="control-switch"><input type="checkbox" id="control"> Normale Gegenkontrolle</label></div><div id="fixture-output" aria-live="polite"></div><div class="lab-footer"><span>Ausführung: eigenes JavaScript-Modell</span><a href="https://github.com/Juri-Halveth/halveth-forschungslabor/blob/main/branches/security-research-hub/model.mjs">Berechnung ansehen ↗</a></div></div>
+    </section>
+
+    <section class="section" id="forschung" aria-labelledby="tracks-title"><div class="section-heading"><div><p class="eyebrow">03 / EIN ORT, MEHRERE FORSCHUNGSSPUREN</p><h2 id="tracks-title">Die Verbindung<br>liegt im <em>Mechanismus.</em></h2></div><p>PHP, Protokollzustände, Geräte-Software und Web-Identität stellen verwandte Prüffragen. Hier findest du die öffentlichen Quellen, den passenden Code und seine Beleggrenze.</p></div><div class="tracks-grid" id="tracks-grid"></div></section>
+
+    <section class="section" id="methoden" aria-labelledby="methods-title"><div class="section-heading"><div><p class="eyebrow">04 / DER WERKZEUGKASTEN HINTER DER FRAGE</p><h2 id="methods-title">Verstehen.<br>Gezielt <em>unterscheiden.</em></h2></div><div class="search-box"><label for="method-search">Methoden durchsuchen</label><input id="method-search" type="search" maxlength="160" placeholder="Parser, Tunnel, Rechte, Worker …" autocomplete="off"><span id="method-results" role="status"></span></div></div><div class="filters" id="family-filters" role="group" aria-label="Methodenfamilie"></div><div class="methods-grid" id="methods-grid"></div><p class="empty-message" id="no-methods" hidden>Hier passt gerade keine Methode. Suchbegriff oder Bereich ändern.</p></section>
+
+    <section class="section" id="faelle" aria-labelledby="cases-title"><div class="section-heading"><div><p class="eyebrow">05 / AUS ÖFFENTLICHEN ERFOLGEN LERNEN</p><h2 id="cases-title">Warum diese<br>Befunde <em>getragen haben.</em></h2></div><p>Vier bereits veröffentlichte Fälle anderer Forschender. Ursache, Beleg, Korrektur und übertragbare Frage bleiben einzeln sichtbar. Die Beträge gehören zu diesen historischen Fällen.</p></div><div id="cases-grid" class="cases-grid"></div><p class="section-note">Die Beispiele beschreiben frühere Softwarestände. Sie sind keine Aussage über heutige Angreifbarkeit oder erreichbare Prämien.</p></section>
+
+    <section class="section" id="werkzeuge" aria-labelledby="tools-title"><div class="section-heading"><div><p class="eyebrow">06 / DAS PASSENDE INSTRUMENT</p><h2 id="tools-title">Werkzeug nach<br><em>Messfrage.</em></h2></div><p>Ein Werkzeugprofil benennt Fähigkeit und Einsatzgrenze. Der Link führt zur offiziellen Dokumentation. Installiert und gestartet wird hier nichts.</p></div><div class="tools-grid" id="tools-grid"></div></section>
+
+    <section class="section roles-section" aria-labelledby="roles-title"><div class="section-heading"><div><p class="eyebrow">07 / ZUSAMMENARBEIT MIT KLAREN ROLLEN</p><h2 id="roles-title">Ein Raum.<br>Drei <em>Aufgaben.</em></h2></div><p>HALVETH, LUCINET und Rachel bezeichnen hier funktionale Rollen im Arbeitsmodell. Der exportierte Plan hält die Zuständigkeit jedes Schritts fest.</p></div><div class="roles-grid" id="roles-grid"></div><div class="handoff-callout"><div><h3>Dein Plan gehört zu deinem Fall.</h3><p>Frage, Gegenmodell, Quellstand, Beleg und Wiederaufnahme lassen sich als JSON oder Markdown mitnehmen. Fortschritt ist manuell markiert. Eine Einreichung oder Auszahlung wird damit nicht ausgelöst.</p></div><a href="#denkprozess">Zum eigenen Prüfplan ↗</a></div></section>
+
+    <section class="section sources-section" id="quellen" aria-labelledby="sources-title"><div class="section-heading"><div><p class="eyebrow">08 / NACHLESEN UND WEITERBAUEN</p><h2 id="sources-title">Die Quellen<br>bleiben <em>erreichbar.</em></h2></div><p>Redaktionell zusammengestellter öffentlicher Katalog, Quellenstand <time datetime="2026-10-25">25. Oktober 2026</time>. Programmpolicies können sich ändern. Die aktuelle Quelle ist für einen konkreten Test erneut zu prüfen.</p></div><details><summary>Alle Primärquellen öffnen <span id="source-count"></span></summary><div class="sources-grid" id="sources-grid"></div></details><div class="local-links"><a href="../wissen/">Gesamtes Labor: Wissen & Code ↗</a><a href="../release.json">Veröffentlichter Quellstand</a><a href="README.md">Startanleitung</a><a href="https://github.com/Juri-Halveth/halveth-forschungslabor/actions">Aktuelle CI-Prüfläufe ↗</a></div></section>
+  </main>
+  <footer><a class="footer-brand" href="https://juri-halveth.github.io/">HALVETH / SECURITY RESEARCH</a><p>Projektleitung: Juri · Entwicklung mit KI-Unterstützung</p><p>Code: MIT · eigene Texte: CC BY 4.0 · Katalogmetadaten: CC0. Verlinkte Werke behalten ihre Rechte.</p><p><a href="mailto:security@halveth.de">security@halveth.de</a> · <a href="../LICENSES.md">Lizenzen & Herkunft</a></p></footer>
+  <noscript><p class="no-script">Die interaktiven Modelle benötigen JavaScript. Die <a href="README.md">Startanleitung</a> und der <a href="https://github.com/Juri-Halveth/halveth-forschungslabor/tree/main/branches/security-research-hub">Quellcode</a> sind direkt lesbar.</p></noscript>
+</body>
+</html>

@@ -5,6 +5,34 @@
   "modelWeightTraining": false,
   "entries": [
     {
+      "id": "security-research-hub",
+      "title": "Security Research – Methoden, Quellen und nächste Gegenprobe",
+      "description": "18 Prüfmethoden, vier lokale Gegenproben, öffentliche Fallanalysen und ein exportierbarer Forschungsplan mit getrenntem Arbeits- und Belegstand.",
+      "source": "branches/security-research-hub/model.mjs",
+      "tests": [
+        "branches/security-research-hub/model.test.mjs"
+      ],
+      "docs": "branches/security-research-hub/README.md",
+      "demo": "security/",
+      "files": [
+        {
+          "path": "branches/security-research-hub/model.mjs",
+          "bytes": 10767,
+          "sha256": "5ed22307c6b8704f24f5cc7cf0d13ad642be288c025961b1142ca2657e053ad1"
+        },
+        {
+          "path": "branches/security-research-hub/README.md",
+          "bytes": 5843,
+          "sha256": "2ab4e43ac027bd7d696187c49dae0f88827cd6a53af5cd89dde5654e7b78f15d"
+        },
+        {
+          "path": "branches/security-research-hub/model.test.mjs",
+          "bytes": 7696,
+          "sha256": "028258c0f383a297f2cd57584f3aa2727eec217d0c9f9f6b10b02450e9439adf"
+        }
+      ]
+    },
+    {
       "id": "security-workbench",
       "title": "Sicherheitsprüfungen – Laufzeiten, Parser und Berechtigungen",
       "description": "Sechs lokale Prüfplätze, datierte Node.js-Patchreferenzen und ein eigener kurzlebiger HTTP-Dienst für Burp mit synthetischen Konten.",
@@ -39,8 +67,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 16668,
-          "sha256": "e271a9ca6aef63d8005a739596b30aa5d9fe93bd6715c4319f506aa2b0f872a9"
+          "bytes": 20497,
+          "sha256": "27c9f74a16d1be33988d83c56e6bf07564ddcb39a830dc3083e7e7a0231cae07"
         }
       ]
     },
@@ -113,8 +141,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 16668,
-          "sha256": "e271a9ca6aef63d8005a739596b30aa5d9fe93bd6715c4319f506aa2b0f872a9"
+          "bytes": 20497,
+          "sha256": "27c9f74a16d1be33988d83c56e6bf07564ddcb39a830dc3083e7e7a0231cae07"
         }
       ]
     },

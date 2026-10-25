@@ -1,0 +1,12 @@
+{
+  "family": "identity",
+  "environment": "OWN_LOCAL",
+  "observation": "IDEA",
+  "question": "Bleibt das synthetische Konto Alice an sein eigenes Dokument gebunden?",
+  "scope": {
+    "target": "Eigene In-Memory-Fixture mit Alice und Bob",
+    "owner": "Betreiber des eigenen lokalen Prüfstands",
+    "policyUrl": "",
+    "allowedAction": "Feste synthetische Daten vergleichen; keine externe Anfrage"
+  }
+}

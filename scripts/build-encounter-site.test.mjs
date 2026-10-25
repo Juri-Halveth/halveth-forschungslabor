@@ -36,6 +36,7 @@ test("publication copies only approved files, binds bytes and rejects reused out
   );
   await fs.writeFile(path.join(source, "research/lifecycle-echo/private-receipt.json"), "synthetic private receipt");
   await fs.writeFile(path.join(source, "branches/security-workbench/private-lab-token.json"), "synthetic private exclusion challenge");
+  await fs.writeFile(path.join(source, "branches/security-research-hub/private-case-index.json"), "synthetic confidential-report metadata");
   const output = path.join(temporary, "site");
   const args = { repoRoot: source, outputRoot: output, commit: "a".repeat(40) };
   const receipt = await buildSite(args);
@@ -57,6 +58,8 @@ test("publication copies only approved files, binds bytes and rejects reused out
   assert.equal(await fs.readFile(path.join(output, "lifecycle/lifecycle_probe.py"), "utf8"), "approved lifecycle/lifecycle_probe.py");
   assert.equal(receipt.files.find(entry=>entry.path==='sicherheitslabor/core.mjs').sourcePath,'branches/security-workbench/core.mjs');
   assert.ok(!receipt.files.some(entry=>entry.path.includes('private-lab-token')||entry.path==='sicherheitslabor/http-fixture.mjs'));
+  assert.equal(receipt.files.find(entry=>entry.path==='security/model.mjs').sourcePath,'branches/security-research-hub/model.mjs');
+  assert.ok(!receipt.files.some(entry=>entry.path.includes('private-case-index')));
   await assert.rejects(buildSite(args), { code: "EEXIST" });
   await assert.rejects(
     buildSite({ ...args, commit: "main" }),

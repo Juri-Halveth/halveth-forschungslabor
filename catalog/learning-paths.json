@@ -5,6 +5,15 @@
   "scope": "Current repository module and research entry points, not an audit of other repositories",
   "entries": [
     {
+      "id": "security-research-hub",
+      "title": "Security Research – Methoden, Quellen und nächste Gegenprobe",
+      "description": "18 Prüfmethoden, vier lokale Gegenproben, öffentliche Fallanalysen und ein exportierbarer Forschungsplan mit getrenntem Arbeits- und Belegstand.",
+      "source": "branches/security-research-hub/model.mjs",
+      "tests": ["branches/security-research-hub/model.test.mjs"],
+      "docs": "branches/security-research-hub/README.md",
+      "demo": "security/"
+    },
+    {
       "id": "security-workbench",
       "title": "Sicherheitsprüfungen – Laufzeiten, Parser und Berechtigungen",
       "description": "Sechs lokale Prüfplätze, datierte Node.js-Patchreferenzen und ein eigener kurzlebiger HTTP-Dienst für Burp mit synthetischen Konten.",
