@@ -31,6 +31,10 @@ export const SOURCES = Object.freeze([
   {id:'cvss',publisher:'FIRST',title:'CVSS 4.0: technische Schwere einordnen',url:'https://www.first.org/cvss/v4.0/specification-document'},
   {id:'tron',publisher:'TRON',title:'java-tron: offizieller Quellcode',url:'https://github.com/tronprotocol/java-tron'},
   {id:'harman',publisher:'HARMAN',title:'Offizieller Product-Security-Kanal',url:'https://www.harman.com/report-vulnerability'},
+  {id:'git',publisher:'Git',title:'Git-Dokumentation',url:'https://git-scm.com/docs'},
+  {id:'ripgrep',publisher:'ripgrep',title:'ripgrep: Quelltext und Anleitung',url:'https://github.com/BurntSushi/ripgrep'},
+  {id:'devtools',publisher:'Chrome for Developers',title:'Chrome DevTools',url:'https://developer.chrome.com/docs/devtools/'},
+  {id:'debugger',publisher:'Microsoft',title:'Windows Debugging',url:'https://learn.microsoft.com/windows-hardware/drivers/debugger/'},
 ].map(Object.freeze));
 
 export const METHODS = Object.freeze([
@@ -55,13 +59,13 @@ export const METHODS = Object.freeze([
 ].map(Object.freeze));
 
 export const TOOLS = Object.freeze([
-  {id:'source',name:'rg + Git',role:'Quellpfad, Version, Diff und Consumer binden.',mode:'LOKAL / READ-ONLY',source:'tron'},
-  {id:'browser',name:'Browser DevTools',role:'Eigene DOM-, Storage- und Request-Zustände untersuchen.',mode:'EIGENE SITZUNG',source:'wstg'},
+  {id:'source',name:'rg + Git',role:'Quellpfad, Version, Diff und Consumer binden.',mode:'LOKAL / READ-ONLY',source:'git'},
+  {id:'browser',name:'Browser DevTools',role:'Eigene DOM-, Storage- und Request-Zustände untersuchen.',mode:'EIGENE SITZUNG',source:'devtools'},
   {id:'burp',name:'Burp Suite',role:'Eine freigegebene HTTP-Anfrage wiederholen und genau eine Eigenschaft ändern.',mode:'EXAKTER SCOPE',source:'burp'},
   {id:'mitmproxy',name:'mitmproxy / ZAP',role:'Eigene HTTP-Flüsse beobachten; passive Hinweise gegenprüfen.',mode:'EXAKTER SCOPE',source:'mitmproxy'},
   {id:'wireshark',name:'Wireshark / TShark',role:'Autorisierte Transportbeobachtung mit Filtern und ausgewiesenem Messfenster.',mode:'GEBUNDENER CAPTURE',source:'wireshark'},
   {id:'pktmon',name:'Windows PktMon',role:'Komponenten-, Paket- und Drop-Metadaten am eigenen Windows-Endpunkt.',mode:'EIGENER ENDPOINT',source:'pktmon'},
-  {id:'debugger',name:'Debugger / Trace',role:'Tatsächlich durchlaufene Funktionen und Zustandswechsel am eigenen Prozess beobachten.',mode:'LOKAL / ISOLIERT',source:'wstg'},
+  {id:'debugger',name:'Debugger / Trace',role:'Tatsächlich durchlaufene Funktionen und Zustandswechsel am eigenen Prozess beobachten.',mode:'LOKAL / ISOLIERT',source:'debugger'},
   {id:'property',name:'Property- und Differentialtests',role:'Invarianten, Gegenbeispiele und dieselbe Eingabe unter zwei Regeln prüfen.',mode:'SYNTHETISCHE DATEN',source:'asvs'},
   {id:'foundry',name:'Foundry',role:'Smart-Contract-Tests in einer lokalen Umgebung oder einem lokalen Fork.',mode:'LOKALER FORK',source:'foundry'},
   {id:'slither',name:'Slither',role:'Solidity-Code und mögliche Datenflusspfade statisch untersuchen.',mode:'STATISCHE HINWEISE',source:'slither'},

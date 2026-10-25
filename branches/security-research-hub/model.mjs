@@ -22,7 +22,7 @@ function text(value, max, label) {
 }
 export function validateInput(input) {
   plain(input,['family','environment','observation','question','scope'],'Eingabe');
-  if (!Object.hasOwn(FAMILIES,input.family)) throw Error('Unbekannte Forschungsfamilie');
+  if (typeof input.family!=='string' || !Object.hasOwn(FAMILIES,input.family)) throw Error('Unbekannte Forschungsfamilie');
   if (!ENVIRONMENTS.includes(input.environment) || !OBSERVATIONS.includes(input.observation)) throw Error('Unbekannter Ausgangszustand');
   text(input.question,2400,'Frage');
   plain(input.scope,['target','owner','policyUrl','allowedAction'],'Scope');
@@ -72,12 +72,20 @@ export function updateTask(plan,id,state) {
   return {...plan,tasks:plan.tasks.map(t=>t.id===id?{...t,state,evidenceState:'USER_DECLARED_PROGRESS'}:t)};
 }
 export function planMarkdown(plan) {
+  const quoted=value=>String(value).replace(/\r\n?/g,'\n').split('\n').map(line=>'    '+line).join('\n');
   const lines=['# Lokaler Security-Forschungsplan','',`Methode: ${plan.logicVersion}`,`Bereich: ${FAMILIES[plan.input.family]}`,
-    `Route: ${plan.route}`,`Frage: ${plan.input.question||'Noch zu formulieren'}`,'',
-    'Die Angaben sind Nutzereingaben. Dieser Plan führt keine Netzprüfung aus.',''];
+    `Route: ${plan.route}`,'','Die Angaben sind Nutzereingaben. Dieser Plan führt keine Netzprüfung aus.','',
+    '## Angegebene Frage','',quoted(plan.input.question||'Noch zu formulieren'),'','## Angegebener Scope',''];
+  for(const [key,label]of [['target','Asset / Prüfstand'],['owner','Eigentümer'],['policyUrl','Policy-Quelle'],['allowedAction','Erlaubte Handlung']])lines.push(label+':','',quoted(plan.input.scope[key]||'UNKNOWN'),'');
+  if(plan.exportReceipt)lines.push('Exportzeit: '+plan.exportReceipt.recordedAt,'Zeitbasis: '+plan.exportReceipt.timeBasis,'');
   for (const t of plan.tasks) lines.push(`## ${t.title}`,`Rolle: ${t.role} · Arbeitsstand: ${t.state}`,t.detail,'');
   lines.push('## Offene Fragen',...plan.openQuestions.map(q=>'- '+q),'','## Werkzeuge',...plan.tools.map(id=>'- '+TOOLS.find(t=>t.id===id).name),'','## Grenze',plan.stop,'','## Wiederaufnahme',plan.reopen,'','## Beleggrenze',plan.claimCeiling,plan.progressMeaning);
   return lines.join('\n')+'\n';
+}
+
+export function stampExport(plan,recordedAt) {
+  if(typeof recordedAt!=='string'||!Number.isFinite(Date.parse(recordedAt))||new Date(recordedAt).toISOString()!==recordedAt)throw Error('Exakte ISO-UTC-Exportzeit erforderlich');
+  return {...plan,exportReceipt:{recordedAt,timeBasis:'CLIENT_WALL_CLOCK_NOT_CALIBRATED',meaning:'Export event only; no source discovery, authorization, submission or payment time'}};
 }
 
 export function runFixture(id,control=false) {

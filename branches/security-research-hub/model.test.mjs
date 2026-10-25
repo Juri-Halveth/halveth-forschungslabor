@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildPlan, validateInput, updateTask, planMarkdown, runFixture } from './model.mjs';
+import { buildPlan, validateInput, updateTask, planMarkdown, runFixture, stampExport } from './model.mjs';
 import { METHODS, SOURCES, TOOLS, TRACKS, CASE_STUDIES, FAMILIES } from './catalog.mjs';
 const input=()=>({family:'identity',environment:'OWN_LOCAL',observation:'IDEA',question:'Welche Identität kommt an?',scope:{target:'own-fixture',owner:'local-owner',policyUrl:'',allowedAction:'synthetic comparison'}});
 
@@ -44,7 +44,16 @@ test('unknown, oversized, executable-shaped and malformed inputs are rejected',(
   const cases=[null,[],Object.assign(input(),{extra:1}),{...input(),family:'constructor'},{...input(),family:'__proto__'},{...input(),environment:'INTERNET_SCAN'},{...input(),observation:'CONFIRMED'}, {...input(),question:'x'.repeat(2401)},{...input(),question:'\ud800'},{...input(),question:'a\u0000b'}, {...input(),scope:{...input().scope,policyUrl:'javascript:alert(1)'}},{...input(),scope:{...input().scope,policyUrl:'https://name:secret@example.org'}},{...input(),scope:{...input().scope,policyUrl:'file:///C:/private'}},{...input(),scope:{...input().scope,token:'secret'}}];
   for(const v of cases) assert.throws(()=>validateInput(v));
   const dynamic=input();Object.defineProperty(dynamic,'question',{get(){throw Error('getter executed');},enumerable:true});assert.throws(()=>validateInput(dynamic),/dynamisches Feld/);
+  const coercion={...input(),family:{toString(){throw Error('coercion executed');}}};assert.throws(()=>validateInput(coercion),/Unbekannte Forschungsfamilie/);
   assert.doesNotThrow(()=>validateInput({...input(),question:'🔬 Äquivalenz?'}));
+});
+
+test('Markdown keeps user markup and scope values in literal indented blocks',()=>{
+  const v=input();v.question='# New claim\n![remote](https://example.org/image)\n<script>example</script>';v.scope.owner='## Forged authority';
+  const md=planMarkdown(buildPlan(v));assert.ok(md.includes('    # New claim\n    ![remote]'));assert.ok(md.includes('    <script>example</script>'));assert.ok(md.includes('    ## Forged authority'));assert.ok(!/^# New claim$/m.test(md));
+});
+test('export time describes the local export event and grants no authority',()=>{
+  const p=buildPlan(input()),e=stampExport(p,'2026-10-25T14:00:00.000Z');assert.equal(p.exportReceipt,undefined);assert.equal(e.exportReceipt.timeBasis,'CLIENT_WALL_CLOCK_NOT_CALIBRATED');assert.deepEqual(e.authority,p.authority);assert.match(planMarkdown(e),/2026-10-25T14:00:00.000Z/);assert.throws(()=>stampExport(p,'yesterday'));assert.throws(()=>stampExport(p,'2026-02-30T00:00:00.000Z'));
 });
 
 test('different tuples collide under concatenation while typed representation separates them',()=>{

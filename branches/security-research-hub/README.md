@@ -26,10 +26,23 @@ Sie führt keine Netztests, Policy-Abrufe, Scans, Exploits oder Einreichungen au
 Formulareingaben bleiben im Arbeitsspeicher der Seite bis zum Export oder
 Schließen. Ein Download enthält die eigenen Eingaben; vor Weitergabe prüfen.
 Externe Quellen öffnen sich erst durch bewusstes Anklicken.
+Der Export erhält einen eigenen Zeitbeleg aus der unkalibrierten lokalen Uhr.
+Dieser Zeitpunkt bezeichnet den Downloadstand. Nutzertexte und Scope-Angaben
+stehen im Markdown als eingerückter Literaltext.
 
 ## Lokal verwenden
 
 Vom Repository-Hauptordner:
+
+```sh
+node scripts/serve-public-preview.mjs
+```
+
+Danach `http://127.0.0.1:8867/security/` öffnen. Dieser Server liefert `.mjs`
+plattformunabhängig als JavaScript und liest ausschließlich die explizite
+öffentliche Dateiliste. Die Vorschau endet mit `Strg+C`.
+
+Prüfungen und Konsolenbetrieb:
 
 ```sh
 node --test branches/security-research-hub/model.test.mjs

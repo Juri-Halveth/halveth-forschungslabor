@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 import { METHODS, TOOLS, TRACKS, CASE_STUDIES, SOURCES, FAMILIES, ROLES } from './catalog.mjs';
-import { buildPlan, updateTask, planMarkdown, runFixture } from './model.mjs';
+import { buildPlan, updateTask, planMarkdown, runFixture, stampExport } from './model.mjs';
 
 const $=id=>document.getElementById(id);
 const el=(tag,className,content)=>{const node=document.createElement(tag);if(className)node.className=className;if(content!==undefined)node.textContent=content;return node;};
@@ -39,7 +39,8 @@ function emptyPlan() {
 }
 function download(type) {
   if(!plan)return;
-  const content=type==='json'?JSON.stringify(plan,null,2)+'\n':planMarkdown(plan);
+  const exported=stampExport(plan,new Date().toISOString());
+  const content=type==='json'?JSON.stringify(exported,null,2)+'\n':planMarkdown(exported);
   const url=URL.createObjectURL(new Blob([content],{type:type==='json'?'application/json;charset=utf-8':'text/markdown;charset=utf-8'}));
   const a=el('a');a.href=url;a.download='halveth-security-pruefplan.'+(type==='json'?'json':'md');document.body.append(a);a.click();a.remove();
   window.setTimeout(()=>URL.revokeObjectURL(url),10000);
