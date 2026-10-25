@@ -3,6 +3,45 @@ import { test, expect } from "@playwright/test";
 import path from "node:path";
 import fs from "node:fs/promises";
 
+test('security research creates a declared plan, preserves literal input and downloads its real state',async({page})=>{
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto('/security/');await expect(page.locator('.method-card')).toHaveCount(18);
+  await page.getByRole('button',{name:'Denkprozess starten',exact:true}).click();
+  await expect(page.locator('.task')).toHaveCount(6);
+  await page.getByLabel('Was untersuchst du?',{exact:true}).selectOption('runtime');
+  await page.getByLabel('Wo beginnt die Arbeit?',{exact:true}).selectOption('PROGRAM');
+  await page.getByLabel('Deine konkrete Frage',{exact:false}).fill('<img src=x onerror=alert(1)> is literal input');
+  await page.getByRole('button',{name:'Prüfplan berechnen',exact:true}).click();
+  await expect(page.locator('#plan-title')).toContainText('Runtime & Fehler');
+  await expect(page.locator('.task').first()).toContainText('Noch offen: target, owner, policyUrl, allowedAction');
+  await page.getByLabel('Arbeitsstand: Gegenmodell und kleinste Gegenprobe formulieren',{exact:true}).selectOption('DONE');
+  await expect(page.locator('.task').nth(2)).toHaveAttribute('data-state','DONE');
+  const pending=page.waitForEvent('download');await page.getByRole('button',{name:'JSON herunterladen',exact:true}).click();
+  const download=await pending;const doc=JSON.parse(await fs.readFile(await download.path(),'utf8'));
+  expect(doc.tasks[2].state).toBe('DONE');expect(doc.tasks[2].evidenceState).toBe('USER_DECLARED_PROGRESS');
+  expect(doc.authority.state).toBe('DECLARED_NOT_VERIFIED');expect(doc.authority.externalExecution).toBe('NONE');
+  expect(doc.exportReceipt.timeBasis).toBe('CLIENT_WALL_CLOCK_NOT_CALIBRATED');expect(doc.input.question).toContain('<img');
+  await expect(page.locator('#plan-output img')).toHaveCount(0);
+  await page.getByRole('button',{name:'Plan & Eingaben leeren',exact:true}).click();
+  await expect(page.locator('.task')).toHaveCount(0);await expect(page.locator('#question')).toHaveValue('');
+  expect(errors).toEqual([]);
+});
+
+test('security research countercontrols, search and mobile layout stay usable',async({page},info)=>{
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto('/security/');await expect(page.locator('.method-card')).toHaveCount(18);
+  for(const name of ['01 Feldgrenzen','02 Objektbindung','03 Request-Zustand','04 Chain-Sichten']){
+    await page.getByRole('button',{name,exact:true}).click();const before=await page.locator('#fixture-output').innerText();
+    await page.getByLabel('Normale Gegenkontrolle',{exact:true}).check();expect(await page.locator('#fixture-output').innerText()).not.toBe(before);
+  }
+  await page.getByLabel('Methoden durchsuchen',{exact:true}).fill('no-such-method');await expect(page.locator('.method-card')).toHaveCount(0);await expect(page.locator('#no-methods')).toBeVisible();
+  await page.getByLabel('Methoden durchsuchen',{exact:true}).fill('');await page.getByRole('button',{name:'Chain & Contracts',exact:true}).click();await expect(page.locator('.method-card')).toHaveCount(4);
+  for(const width of [320,390,768,1280]){await page.setViewportSize({width,height:844});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);}
+  await page.setViewportSize({width:390,height:844});await page.goto('/security/#labor');
+  await expect.poll(()=>page.evaluate(()=>scrollY)).toBe(0);
+  await page.screenshot({path:info.outputPath('security-mobile-390.png'),fullPage:false});expect(errors).toEqual([]);
+});
+
 test("ENDECK uses native controls, preserves source identities and remembers only correct learning answers",async({page},info)=>{
   const errors=[];page.on("pageerror",e=>errors.push(e.message));
   await page.goto("/endeck/");
@@ -104,11 +143,12 @@ test("unavailable browser storage keeps the experiment and temporary learning us
   expect(errors).toEqual([]);
 });
 
-test("the repository tunnel has nineteen usable source and test routes and mobile navigation fits",async({page},info)=>{
-  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(19);
-  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(19);
-  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(19);
+test("the repository tunnel has twenty usable source and test routes and mobile navigation fits",async({page},info)=>{
+  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(20);
+  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(20);
+  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(20);
   await expect(page.locator('.route').filter({hasText:'Sicherheitsprüfungen'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../sicherheitslabor/');
+  await expect(page.locator('.route').filter({hasText:'Security Research'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../security/');
   for(const url of ["/wissen/","/signals.html","/"]){
     await page.goto(url);
     for(const width of [320,390,768,1024]){

@@ -16,6 +16,7 @@ export async function createPreview(repoRoot) {
   return http.createServer((request,response)=>{
     const port=response.socket.localPort;
     response.setHeader('Cache-Control','no-store');response.setHeader('X-Content-Type-Options','nosniff');response.setHeader('Referrer-Policy','no-referrer');
+    response.setHeader('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; frame-ancestors 'self'");
     if(request.headers.host!==`127.0.0.1:${port}`){response.writeHead(403);response.end('Host rejected');return;}
     if(!['GET','HEAD'].includes(request.method)){response.writeHead(405,{'Allow':'GET, HEAD'});response.end('Read-only preview');return;}
     const route=request.url.split('?',1)[0];
