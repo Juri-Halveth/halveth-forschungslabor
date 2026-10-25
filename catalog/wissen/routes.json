@@ -67,8 +67,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 16668,
-          "sha256": "e271a9ca6aef63d8005a739596b30aa5d9fe93bd6715c4319f506aa2b0f872a9"
+          "bytes": 20398,
+          "sha256": "a2c350b553027fd03af3b1560c16398cb4611cfeb41a8519a68cc3f281ed1aa3"
         }
       ]
     },
@@ -141,8 +141,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 16668,
-          "sha256": "e271a9ca6aef63d8005a739596b30aa5d9fe93bd6715c4319f506aa2b0f872a9"
+          "bytes": 20398,
+          "sha256": "a2c350b553027fd03af3b1560c16398cb4611cfeb41a8519a68cc3f281ed1aa3"
         }
       ]
     },
