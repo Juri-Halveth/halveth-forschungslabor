@@ -37,7 +37,8 @@ test('security research countercontrols, search and mobile layout stay usable',a
   await page.getByLabel('Methoden durchsuchen',{exact:true}).fill('no-such-method');await expect(page.locator('.method-card')).toHaveCount(0);await expect(page.locator('#no-methods')).toBeVisible();
   await page.getByLabel('Methoden durchsuchen',{exact:true}).fill('');await page.getByRole('button',{name:'Chain & Contracts',exact:true}).click();await expect(page.locator('.method-card')).toHaveCount(4);
   for(const width of [320,390,768,1280]){await page.setViewportSize({width,height:844});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);}
-  await page.setViewportSize({width:390,height:844});await page.goto('/security/#labor');
+  // A changed query creates a fresh document; an in-page anchor must still work normally.
+  await page.setViewportSize({width:390,height:844});await page.goto('/security/?fresh=1#labor');
   await expect.poll(()=>page.evaluate(()=>scrollY)).toBe(0);
   await page.screenshot({path:info.outputPath('security-mobile-390.png'),fullPage:false});expect(errors).toEqual([]);
 });
