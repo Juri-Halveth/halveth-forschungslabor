@@ -7,9 +7,9 @@
     {
       "id": "lagefaden",
       "title": "LAGEFADEN – drei Meldungen, wie viele Beobachtungen?",
-      "description": "Fünf Modellfälle und datierte öffentliche USGS-, EONET- und CEMS-Abrufe trennen Kopien, Ereigniszeit, Metadatenänderungen und behauptete Herkunft.",
+      "description": "Fünf Modellfälle, drei datierte Katalogfälle und eine W-Coverage-Karte zeigen Kopien, Zeitstände, gebundene Teilantworten und offene Fragen mit Belegstellen.",
       "source": "branches/lagefaden/model.mjs",
-      "tests": ["branches/lagefaden/model.test.mjs", "branches/lagefaden/usgs-source.test.mjs", "branches/lagefaden/public-sources.test.mjs"],
+      "tests": ["branches/lagefaden/model.test.mjs", "branches/lagefaden/usgs-source.test.mjs", "branches/lagefaden/public-sources.test.mjs", "branches/lagefaden/coverage.test.mjs"],
       "docs": "branches/lagefaden/README.md",
       "demo": "lagefaden/"
     },

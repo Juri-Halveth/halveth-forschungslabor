@@ -56,7 +56,7 @@ export const publicFiles = Object.freeze([
   ...["index.html", "style.css", "view.mjs", "model.mjs", "catalog.mjs", "README.md", "SOURCES.md", "example-input.json"].map((name) => ({
     path: "security/" + name, sourcePath: "branches/security-research-hub/" + name,
   })),
-  ...["index.html", "style.css", "view.mjs", "model.mjs", "cases.mjs", "usgs-source.mjs", "public-sources.mjs", "README.md", "PORTFOLIO_DECISION.md", "REAL_DATA_PLAN.md"].map((name) => ({
+  ...["index.html", "style.css", "view.mjs", "model.mjs", "cases.mjs", "usgs-source.mjs", "public-sources.mjs", "w-space.mjs", "coverage.mjs", "coverage-view.mjs", "README.md", "COVERAGE_DESIGN.md", "PORTFOLIO_DECISION.md", "REAL_DATA_PLAN.md"].map((name) => ({
     path: "lagefaden/" + name, sourcePath: "branches/lagefaden/" + name,
   })),
   { path:"lagefaden/data/usgs-example.json", sourcePath:"branches/lagefaden/data/usgs-example.json" },

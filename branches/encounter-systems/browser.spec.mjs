@@ -262,6 +262,66 @@ test('LAGEFADEN shows separate EONET and CEMS receipts, revision difference, and
   expect(errors).toEqual([]);
 });
 
+test('LAGEFADEN coverage keeps facets, evidence, case identity and export connected',async({page})=>{
+  const errors=[];page.on('pageerror',error=>errors.push(error.message));
+  await page.goto('/lagefaden/#coverage');
+  await expect(page.locator('#coverage-status')).toContainText('3 von 3');
+  await expect(page.locator('#coverage-body tr')).toHaveCount(22);
+  await expect(page.locator('.coverage-cell')).toHaveCount(66);
+  const usgsLocation=page.locator('.coverage-cell[data-question="WO?"][data-source="USGS"]');
+  await usgsLocation.click();
+  await expect(page.locator('#coverage-detail-title')).toHaveText('WO? · USGS');
+  await expect(page.locator('#coverage-detail-answer')).toContainText('Ortsbezug nur im Titel');
+  await expect(page.locator('#coverage-facets')).toContainText('Dieses Feld ist im gespeicherten Snapshot');
+  await expect(page.locator('#coverage-receipt')).toContainText('SHA-256:');
+  await page.locator('.coverage-cell[data-question="WO?"][data-source="EONET"]').click();
+  await expect(page.locator('#coverage-detail-case')).toContainText('EONET_25730');
+  await expect(page.locator('#coverage-facets')).toContainText('176.8');
+  await page.locator('[data-coverage-filter="contrast"]').click();
+  await expect(page.locator('.coverage-cell[data-question="WO?"]')).toHaveCount(3);
+  await expect(page.locator('.coverage-cell[data-question="WARUM?"]')).toHaveCount(0);
+  await expect(page.locator('#coverage-contrast')).toContainText('Koordinaten');
+  await page.locator('[data-coverage-filter="all"]').click();
+  await usgsLocation.focus();await page.keyboard.press('Enter');
+  await expect(usgsLocation).toHaveAttribute('aria-pressed','true');
+  const downloadPromise=page.waitForEvent('download');await page.locator('#coverage-export').click();
+  const download=await downloadPromise;
+  const exported=JSON.parse(await fs.readFile(await download.path(),'utf8'));
+  expect(exported.rows).toHaveLength(22);
+  expect(exported.crossCatalogEventIdentity).toBe('NOT_EVALUATED');
+  expect(new Set(exported.sources.map(source=>source.caseId)).size).toBe(3);
+  expect(exported.sharedUnknown.some(f=>f.id==='cause')).toBe(true);
+  expect(exported.answerInventory.every(f=>f.sourceId&&f.caseId&&f.snapshotReceipt.sha256)).toBe(true);
+  expect(errors).toEqual([]);
+});
+
+test('LAGEFADEN coverage survives outages and fits narrow viewports without hiding source columns',async({page},info)=>{
+  await page.goto('/lagefaden/#coverage');
+  await expect(page.locator('#coverage-status')).toContainText('3 von 3');
+  for(const width of [320,390,768,1440]) {
+    await page.setViewportSize({width,height:900});
+    const sizes=await page.evaluate(()=>({viewport:innerWidth,page:document.documentElement.scrollWidth,table:document.getElementById('coverage-table').getBoundingClientRect().width}));
+    expect(sizes.page,`page overflow at ${width}px`).toBeLessThanOrEqual(width);
+    expect(sizes.table).toBeLessThanOrEqual(width);
+  }
+  await page.locator('#coverage').evaluate(element=>element.scrollIntoView());
+  await page.screenshot({path:info.outputPath('coverage-desktop.png')});
+  await page.setViewportSize({width:390,height:900});
+  await page.locator('#coverage-table').evaluate(element=>element.scrollIntoView());
+  await page.screenshot({path:info.outputPath('coverage-mobile.png')});
+  await page.route('**/lagefaden/data/eonet-example.json',route=>route.fulfill({status:503,body:'unavailable'}));
+  await page.reload();
+  await expect(page.locator('#coverage-status')).toContainText('2 von 3');
+  await expect(page.locator('.coverage-cell[data-source="EONET"][data-state="UNAVAILABLE"]')).toHaveCount(22);
+  await expect(page.locator('#coverage-shared')).toContainText('wartet auf alle drei');
+  await page.route('**/lagefaden/data/usgs-example.json',route=>route.fulfill({status:503,body:'unavailable'}));
+  await page.route('**/lagefaden/data/cems-example.json',route=>route.fulfill({status:503,body:'unavailable'}));
+  await page.reload();
+  await expect(page.locator('#coverage-status')).toContainText('0 von 3');
+  await expect(page.locator('#coverage-export')).toBeDisabled();
+  await expect(page.locator('.coverage-cell[data-state="UNAVAILABLE"]')).toHaveCount(66);
+});
+
 test('security workbench executes counterexamples, rejects invalid input and exports actual local results',async({page})=>{
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('/sicherheitslabor/');await expect(page.locator('#run-count')).toHaveText('6');

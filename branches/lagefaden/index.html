@@ -18,6 +18,7 @@
         <h1 id="title">Drei Meldungen.<br><em>Wie viele Beobachtungen?</em></h1>
         <p class="lead">Eine Kamera meldet etwas. Ein zweiter Kanal leitet es weiter. Eine dritte Nachricht widerspricht – aber stammt von gestern. LAGEFADEN legt Quelle, Kopie und Zeit nebeneinander. Die Entscheidung bleibt bei Menschen.</p>
         <a class="primary" href="#probe">Fünf Fälle durchspielen <span aria-hidden="true">↘</span></a>
+        <a class="coverage-jump" href="#coverage">Was sehen die Quellen – und was fehlt? ↓</a>
       </div>
       <div class="hero-graphic" aria-label="Schema: A wird an B weitergegeben. C ist ein eigener, älterer Ursprung.">
         <div class="node original">A<small>Beobachtung</small></div><div class="connector">→ <small>Kopie</small></div>
@@ -70,7 +71,7 @@
         </article>
       </div>
       <p class="key-note"><strong>Weitere Quelle: NASA FIRMS.</strong> Aktuelle Branddetektionsdaten verlangen einen kostenlosen <a href="https://firms.modaps.eosdis.nasa.gov/api/map_key/">MAP_KEY</a>. Dafür liegt hier noch kein Abruf vor. Ein späterer Schlüssel gehört in eine lokale Umgebung, nie ins öffentliche Repository.</p>
-      <p class="w-key"><strong>Leseschlüssel für die W-Fragen:</strong> BELEGT = im gespeicherten Katalogdatensatz, ABGELEITET = daraus berechnet, UNKNOWN = offen. Das ist keine unabhängige Bestätigung der Außenwelt.</p>
+      <p class="w-key"><strong>Leseschlüssel für die W-Fragen:</strong> BELEGT = Datenfeld oder Abrufreceipt, TEILANTWORT = nur ein Ausschnitt gebunden, ABGELEITET = berechnet, ENTWURF = Festlegung der Anwendung, UNKNOWN = offen. Die <a href="#coverage">Coverage-Karte</a> zeigt die zugehörigen Teilfragen und Belegstellen.</p>
       <details class="w-space real-w-space" aria-labelledby="real-w-title">
         <summary id="real-w-title">W-Raum · USGS: Welche Antworten fehlen?</summary>
         <p>Publikationsquelle, Ereignis, Zeit, Ort und Abrufweg werden von Sensorherkunft, Ursache und Betroffenen getrennt.</p>
@@ -86,6 +87,46 @@
         <p>Eine Aktivierung hat zwei Metadatenansichten. Unterschiedliche Änderungszeiten werden nicht zu neuen Ereignissen.</p>
         <dl id="cems-w-grid" class="w-grid"></dl>
       </details>
+    </section>
+    <section id="coverage" class="coverage" aria-labelledby="coverage-title">
+      <div class="section-head"><p class="eyebrow">W-Coverage / Blind-Spot Map</p>
+        <h2 id="coverage-title">Drei Blickfelder.<br>Auch das Fehlende wird sichtbar.</h2>
+        <p>Was steht im jeweiligen Datensatz? Was steuert die Anwendung bei? Und welche Teilfrage bleibt offen? Wähle eine Zelle: Ihre Antwort, Teilfragen und Belegstellen erscheinen darunter.</p>
+      </div>
+      <p class="coverage-scope"><strong>Drei gespeicherte Fälle.</strong> Jede Spalte behält ihren Fall und Abrufstand. Die Karte zeigt deren Ausschnitt nach den jeweils benannten Teilfragen.</p>
+      <ul class="coverage-legend" aria-label="Leseschlüssel">
+        <li><span aria-hidden="true">●</span><strong>Im Datensatz</strong><small>Alle hier definierten Teilfragen tragen Datenfelder oder Abrufreceipts.</small></li>
+        <li><span aria-hidden="true">◐</span><strong>Teilantwort</strong><small>Ein Teil bleibt offen, ist berechnet oder stammt aus dem Anwendungsentwurf.</small></li>
+        <li><span aria-hidden="true">○</span><strong>Offen</strong><small>Für diese Teilfragen liegt im gültigen Snapshot keine Antwort vor.</small></li>
+      </ul>
+      <div class="coverage-toolbar">
+        <div role="group" aria-label="Coverage-Fragen filtern" class="coverage-filters">
+          <button type="button" data-coverage-filter="all" aria-pressed="true">Alle 22 Fragen</button>
+          <button type="button" data-coverage-filter="gaps" aria-pressed="false">Mit offenen Anteilen</button>
+          <button type="button" data-coverage-filter="contrast" aria-pressed="false">Unterschiedliche Ausschnitte</button>
+        </div>
+        <span id="coverage-filter-count"></span>
+      </div>
+      <p id="coverage-status" class="coverage-status" role="status">Die lokalen Snapshots werden geladen …</p>
+      <div class="coverage-table-wrap">
+        <table class="coverage-table" id="coverage-table">
+          <caption>Antwortabdeckung pro gespeichertem Fall · Zellen sind auswählbar</caption>
+          <thead><tr><th scope="col">W-Frage</th><th scope="col">USGS<small id="coverage-case-usgs">Lädt</small></th><th scope="col">NASA EONET<small id="coverage-case-eonet">Lädt</small></th><th scope="col">Copernicus EMS<small id="coverage-case-cems">Lädt</small></th></tr></thead>
+          <tbody id="coverage-body"></tbody>
+        </table>
+      </div>
+      <article id="coverage-detail" class="coverage-detail" aria-labelledby="coverage-detail-title">
+        <p class="eyebrow">Die Zelle aufklappen</p><h3 id="coverage-detail-title">Eine Frage auswählen</h3>
+        <p id="coverage-detail-case" class="coverage-case"></p><p id="coverage-detail-scope"></p>
+        <p id="coverage-detail-answer" class="coverage-answer"></p>
+        <ul id="coverage-facets" class="coverage-facets"></ul><div id="coverage-receipt" class="coverage-receipt"></div>
+      </article>
+      <div class="coverage-gap-grid">
+        <article><p class="eyebrow">Gemeinsame offene Teilfragen</p><h3>Hier bleibt es bei allen drei offen.</h3><p>Der Schnitt der offenen Teilfragen innerhalb dieses Vergleichs:</p><ul id="coverage-shared"></ul></article>
+        <article><p class="eyebrow">Unterschiedliche Ausschnitte</p><h3>Eine Spalte beleuchtet andere Felder.</h3><p>Diese Teilantwort existiert in mindestens einem Fall und fehlt in einem anderen. Sie bleibt bei ihrem jeweiligen Ereignis.</p><ul id="coverage-contrast"></ul></article>
+      </div>
+      <div class="coverage-export"><div><strong id="coverage-answer-count">Teilantworten werden gebunden …</strong><p>Das Antwortinventar erhält Quelle, Fall, Belegstelle und Snapshot-Hash. Die Vereinigung offener Fragen und ihr gemeinsamer Schnitt stehen getrennt im Export.</p></div><button type="button" id="coverage-export" disabled>Coverage als JSON herunterladen ↓</button></div>
+      <p class="coverage-footnote">Ein heller Punkt belegt den definierten Datenausschnitt. Welche Außenlage zutrifft, wie vollständig die Welt erfasst wurde und ob Kataloge dasselbe Ereignis beschreiben, sind jeweils eigene Prüfungen.</p>
     </section>
     <section class="fit" aria-labelledby="fit-title"><p class="eyebrow">Der konkrete Produktgedanke</p><h2 id="fit-title">Ein Prüf-Layer vor der menschlichen Lageentscheidung.</h2>
       <div class="fit-grid"><article><span>01 / HEUTE</span><h3>Was läuft schon?</h3><p>Lokaler Code prüft Kopien, Zeitachsen und Widersprüche. Fünf Modellfälle und datierte Snapshots aus drei öffentlichen Katalogen sind sichtbar; ungültige Fälle brechen ab.</p></article>
