@@ -35,6 +35,11 @@
         <p class="status" id="case-status" role="status"></p><p class="boundary">Status der Außenwelt: <strong>unbekannt</strong>. Herkunft ist hier angegeben, nicht technisch authentisiert.</p>
         <button id="download" type="button">Prüfprotokoll herunterladen ↓</button>
       </div><div class="timeline"><h3>Was steckt hinter der Zahl?</h3><ol id="report-list"></ol></div></div>
+      <div class="w-space" aria-labelledby="synthetic-w-title">
+        <div><p class="eyebrow">W-Raum · nichts still vergessen</p><h3 id="synthetic-w-title">Wer, wen, was, wann, wo, warum – und was fehlt?</h3>
+          <p>Jede Frage bleibt einzeln sichtbar. Eine fehlende Antwort wird als <strong>UNKNOWN</strong> markiert statt aus ähnlichen Angaben geraten.</p></div>
+        <dl id="w-grid" class="w-grid"></dl>
+      </div>
     </section>
     <section class="real" aria-labelledby="real-title">
       <div class="section-head"><p class="eyebrow">Echte Daten · datierter Abruf</p>
@@ -51,6 +56,11 @@
           <p id="real-meaning">Die Auswertung wird geladen …</p>
           <p class="boundary">Die öffentlich abrufbaren Katalogdaten sind echt. Quelle, Ereignis und Abrufzeit sind bezeichnet; Sensorzahl und Außenlage werden daraus nicht geraten.</p>
         </article>
+      </div>
+      <div class="w-space real-w-space" aria-labelledby="real-w-title">
+        <div><p class="eyebrow">W-Raum · echter Datenfall</p><h3 id="real-w-title">Welche Fragen beantwortet USGS – und welche ausdrücklich nicht?</h3>
+          <p>Publikationsquelle, Ereignis, Zeit, Ort und Abrufweg werden getrennt von Sensorherkunft, Ursache, Betroffenen und Nutzungszweck geführt.</p></div>
+        <dl id="real-w-grid" class="w-grid"></dl>
       </div>
     </section>
     <section class="fit" aria-labelledby="fit-title"><p class="eyebrow">Der konkrete Produktgedanke</p><h2 id="fit-title">Ein Prüf-Layer vor der menschlichen Lageentscheidung.</h2>
