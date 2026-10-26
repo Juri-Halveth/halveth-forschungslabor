@@ -539,7 +539,7 @@ import { Core } from "./model.mjs";
   ])
     $(id).addEventListener("click", () => {
       world.command(kind);
-      if (motion.matches) {world.advanceTo(world.time+60);playing=false;}
+      if (motion.matches) {world.advanceTo(Math.min(90,world.time+60));playing=false;}
       else playing = true;
       ui();
       draw();
