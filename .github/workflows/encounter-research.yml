@@ -1,9 +1,9 @@
 name: Encounter systems research
 on:
   push:
-    paths: ['branches/encounter-systems/**', 'branches/endeck-observer/**', 'catalog/**', 'scripts/build-learning-hub*', 'scripts/build-encounter-site*', '.github/workflows/encounter-research.yml']
+    paths: ['branches/encounter-systems/**', 'branches/endeck-observer/**', 'branches/security-workbench/**', 'branches/security-research-hub/**', 'branches/code-observation-lab/**', 'catalog/**', 'scripts/build-learning-hub*', 'scripts/build-encounter-site*', 'scripts/serve-public-preview*', '.github/workflows/encounter-research.yml']
   pull_request:
-    paths: ['branches/encounter-systems/**', 'branches/endeck-observer/**', 'catalog/**', 'scripts/build-learning-hub*', 'scripts/build-encounter-site*', '.github/workflows/encounter-research.yml']
+    paths: ['branches/encounter-systems/**', 'branches/endeck-observer/**', 'branches/security-workbench/**', 'branches/security-research-hub/**', 'branches/code-observation-lab/**', 'catalog/**', 'scripts/build-learning-hub*', 'scripts/build-encounter-site*', 'scripts/serve-public-preview*', '.github/workflows/encounter-research.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -27,6 +27,7 @@ jobs:
           node --test branches/encounter-systems/signal-model.test.mjs
           node branches/encounter-systems/signal-research.mjs --check
           node --test branches/endeck-observer/model.test.mjs branches/endeck-observer/learning.test.mjs
+          node --test branches/code-observation-lab/model.test.mjs
           node scripts/build-learning-hub.mjs --check
       - name: Install locked browser test tooling
         run: npm ci --prefix branches/encounter-systems --ignore-scripts --no-audit --no-fund

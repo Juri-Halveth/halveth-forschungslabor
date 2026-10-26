@@ -23,6 +23,10 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [Code & Messung – Dateien, Signale und Sequenzen](branches/code-observation-lab/)
+
+Vier lokale Arbeitsplätze zum Einordnen von `.eth`/`.mav`/`.maw`, Vergleichen von Interferenz und Phasenrauschen, reversiblen Codieren von Unicode und Nachschlagen von RNA-Codons. Mit 25 gebundenen Quellen, Gegenbeispielen und zusätzlichen Modellen für Kameraaufträge, Optik und Zustandsbrücken. [Lokal starten und Modelle verstehen](branches/code-observation-lab/README.md). Die Veröffentlichungspipeline bereitet die Ansicht unter `/code/` vor.
+
 ### [Security Research – Methoden, Quellen und nächste Gegenprobe](branches/security-research-hub/)
 
 **[Den Forschungsraum öffnen](https://juri-halveth.github.io/halveth-forschungslabor/security/)**.

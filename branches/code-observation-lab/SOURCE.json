@@ -1,0 +1,28 @@
+{
+  "schema": "halveth.code-observation-lab.provenance.v1",
+  "version": "1.0.0",
+  "recordedAt": "2026-10-26T00:34:07.077Z",
+  "dataClass": "EXTERNAL_MINIMIZED",
+  "project": "HALVETH",
+  "projectLead": "Juri",
+  "assistance": "AI-assisted research, implementation and correlated review; author responsibility remains with the project",
+  "acceptedBase": "83ea5f07481df77bf3b3e259d6246abb7e9ce085",
+  "implementationKind": "NEW_NATIVE_ESM_IMPLEMENTATION_WITH_REVIEWED_ADAPTATIONS",
+  "scope": "Three bound local research packages from 25/26 October 2026; not a whole-disk, whole-account or universal technology audit",
+  "precursors": [
+    { "id": "OBSERVER_MODEL", "bytes": 5367, "sha256": "c6bde18a727d15aeebcef2caf88343a8419af4f60ce801fec21ea52403b1df80", "use": "Reviewed formula precursor; adapted into strict native ESM with numerical regression fixes" },
+    { "id": "FINITE_STATE_COMPARISON", "bytes": 4108, "sha256": "d48778023ad3afae2d9d8f653f5a8efdc64fc261b1d2347b7d7df46f993af153", "use": "Reviewed finite example; new implementation adds the alternative conjugating bridge" },
+    { "id": "FORMAT_ASSOCIATION_REGISTER", "bytes": 3661, "sha256": "bd547785c2ac2cf9a90b720d56733eb8c8c4092aeae15caeb6ff97a32d5d35d4", "use": "Reviewed association precursor; historical Ethnograph entry upgraded using a primary usage report" },
+    { "id": "CAMERA_ARCHITECTURE_NOTE", "bytes": 11094, "sha256": "8109be2b7d862511638215536acd989b07e48076c0f90bf5dc3f11fb7db28100", "use": "Architecture input; the virtual command/observation adapter is newly implemented" }
+  ],
+  "publicSources": "sources.json",
+  "researchExplanation": "RESEARCH.md",
+  "modelEntry": "model.mjs",
+  "referenceRun": "cli.mjs demo",
+  "frontiers": "data.mjs: RESEARCH_BRANCHES",
+  "excludedMaterial": ["Private media and transcripts", "Private identities and local source paths", "Original third-party definition archive", "Raw local entity responses"],
+  "effects": { "fileUpload": false, "externalAPI": false, "deviceControl": false, "modelWeightTraining": false },
+  "claimCeiling": "LOCAL_CALCULATIONS_SOURCE_BOUND_CATALOG_AND_SYNTHETIC_MODELS",
+  "integrityMeaning": "Precursor digests bind the reviewed bytes; they do not prove authorship, source truth, physical effects or publication acceptance",
+  "historicalManifest": "The existing repository SOURCE_PROVENANCE.json is preserved unchanged"
+}

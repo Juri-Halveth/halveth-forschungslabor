@@ -3,6 +3,107 @@ import { test, expect } from "@playwright/test";
 import path from "node:path";
 import fs from "node:fs/promises";
 
+async function codeExport(page, workplace) {
+  const pending = page.waitForEvent('download');
+  await page.locator(`#${workplace}-export`).click();
+  const download = await pending;
+  return JSON.parse(await fs.readFile(await download.path(), 'utf8'));
+}
+
+test('code formats distinguish header candidates and invalidate stale exports', async ({page}) => {
+  const errors=[]; page.on('pageerror', error=>errors.push(error.message));
+  await page.goto('/code/');
+  await expect(page.locator('#format-export')).toBeEnabled();
+  await page.locator('#format-name').fill('<img src=x onerror=alert(1)>.eth');
+  await page.locator('#format-hex').fill('FF');
+  await expect(page.locator('#quick-result')).toHaveAttribute('data-state','dirty');
+  await page.getByRole('button',{name:'Format einordnen',exact:true}).click();
+  await expect(page.locator('#format-content')).toContainText('<img src=x onerror=alert(1)>.eth');
+  await expect(page.locator('#format-content img')).toHaveCount(0);
+  const partial=await codeExport(page,'format');
+  expect(partial.result.candidates.find(c=>c.id==='ETH_WINPHAROAH').match).toBe('HEADER_MISMATCH');
+  expect(partial.result.formatValidated).toBe(false);
+  await page.locator('[data-format-example="archive"]').click();
+  const archive=await codeExport(page,'format');
+  expect(archive.result.candidates.find(c=>c.id==='MAV_BAAM').match).toBe('EXTENSION_AND_HEADER');
+  await page.locator('#format-name').fill('renamed.bin');
+  await expect(page.locator('#format-export')).toBeDisabled();
+  await page.getByRole('button',{name:'Format einordnen',exact:true}).click();
+  expect((await codeExport(page,'format')).result.candidates.find(c=>c.id==='MAV_BAAM').match).toBe('HEADER_ONLY');
+  await page.locator('#format-hex').fill('F');
+  await page.getByRole('button',{name:'Format einordnen',exact:true}).click();
+  await expect(page.locator('#format-error')).toBeVisible();
+  await expect(page.locator('#format-export')).toBeDisabled();
+  await expect(page.locator('#format-content .candidate')).toHaveCount(0);
+  await expect(page.locator('#quick-result')).toHaveAttribute('data-state','error');
+  expect(errors).toEqual([]);
+});
+
+test('code phase averaging and human metadata remain distinct in actual downloads', async ({page}) => {
+  await page.goto('/code/'); await page.locator('#tab-signals').click();
+  await page.locator('[data-signal-example="noise"]').click();
+  await expect(page.locator('#signal-visibility')).toHaveText('0,375');
+  await expect(page.locator('#signal-distinguishability')).toHaveText('0,000');
+  const before=await codeExport(page,'signal');
+  await page.locator('#signal-human').check();
+  const after=await codeExport(page,'signal');
+  const {humanRead:leftRead,...left}=before.result, {humanRead:rightRead,...right}=after.result;
+  expect(leftRead).toBe(false); expect(rightRead).toBe(true); expect(left).toEqual(right);
+  expect(after.timeBasis).toBe('CLIENT_WALL_CLOCK_NOT_CALIBRATED');
+  await expect(page.locator('#signal-chart')).toHaveAttribute('role','img');
+  await expect(page.locator('#signal-chart-description')).toContainText('0,375');
+});
+
+test('code Unicode and RNA downloads bind the selected decoder, frame and unfinished remainder', async ({page}) => {
+  await page.goto('/code/'); await page.locator('#tab-symbols').click();
+  await page.locator('[data-symbol-example="unicode"]').click();
+  await page.locator('#symbol-mapping').selectOption('23');
+  const encoded=await codeExport(page,'symbol');
+  expect(encoded.result.roundTripText).toBe('Licht ☀ – 光'); expect(encoded.result.equalBytes).toBe(true);
+  expect(encoded.result.mappingIndex).toBe(23);
+  await page.locator('[name="symbol-direction"][value="decode"]').check();
+  expect((await codeExport(page,'symbol')).result.text).toBe(encoded.result.text);
+  await page.locator('#symbol-input').fill('AAAAA'); await page.locator('#symbol-submit').click();
+  await expect(page.locator('#symbol-error')).toBeVisible(); await expect(page.locator('#symbol-export')).toBeDisabled();
+  await page.locator('#tab-rna').click();
+  await page.locator('#rna-sequence').fill('AAUGGCUUAAU'); await page.locator('#rna-frame').selectOption('1');
+  const rna=await codeExport(page,'rna');
+  expect(rna.result.aminoAcidSymbols).toBe('MA*'); expect(rna.result.trailingBases).toBe('U'); expect(rna.result.frame).toBe(1);
+  expect(rna.result.sequence).toBe('AAUGGCUUAAU'); expect(rna.result.geneticCode).toBe(1);
+  await page.locator('#rna-sequence').fill('aug'); await page.locator('#rna-form [type="submit"]').click();
+  await expect(page.locator('#rna-error')).toBeVisible(); await expect(page.locator('#rna-export')).toBeDisabled();
+});
+
+test('code tabs fit mobile and desktop, retain control position and support keyboard navigation', async ({page},info) => {
+  const errors=[]; page.on('pageerror', error=>errors.push(error.message));
+  for (const width of [320,390,768,1280]) {
+    await page.setViewportSize({width,height:844}); await page.goto('/code/?width='+width);
+    for (const tab of ['formats','signals','symbols','rna']) {
+      await page.locator('#tab-'+tab).click();
+      expect(await page.evaluate(()=>document.documentElement.scrollWidth<=document.documentElement.clientWidth)).toBe(true);
+      if(width<=660) await expect(page.locator('#quick-result')).toBeVisible();
+      else await expect(page.locator('#quick-result')).toBeHidden();
+    }
+  }
+  await page.setViewportSize({width:390,height:844}); await page.goto('/code/?fresh=1#trace-title');
+  await expect.poll(()=>page.evaluate(()=>scrollY)).toBe(0);
+  await page.locator('#tab-formats').focus(); await page.keyboard.press('ArrowRight');
+  await expect(page.locator('#tab-signals')).toHaveAttribute('aria-selected','true');
+  await page.keyboard.press('End'); await expect(page.locator('#tab-rna')).toHaveAttribute('aria-selected','true');
+  await page.keyboard.press('Home'); await expect(page.locator('#tab-formats')).toHaveAttribute('aria-selected','true');
+  await page.locator('#tab-signals').click(); await page.locator('[data-signal-example="noise"]').click();
+  await expect(page.locator('#quick-result-text')).toContainText('V 0,375');
+  const y=await page.evaluate(()=>scrollY);
+  await page.locator('[data-signal-example="coherent"]').click();
+  expect(Math.abs((await page.evaluate(()=>scrollY))-y)).toBeLessThan(2);
+  await page.locator('#quick-result-button').click();
+  expect(await page.evaluate(()=>scrollY)).toBeGreaterThan(y);
+  await page.screenshot({path:info.outputPath('code-mobile-390.png'),fullPage:false});
+  await page.setViewportSize({width:1440,height:1000}); await page.goto('/code/');
+  await page.screenshot({path:info.outputPath('code-desktop.png'),fullPage:false});
+  expect(errors).toEqual([]);
+});
+
 test('security research creates a declared plan, preserves literal input and downloads its real state',async({page})=>{
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('/security/');await expect(page.locator('.method-card')).toHaveCount(18);
@@ -144,10 +245,11 @@ test("unavailable browser storage keeps the experiment and temporary learning us
   expect(errors).toEqual([]);
 });
 
-test("the repository tunnel has twenty usable source and test routes and mobile navigation fits",async({page},info)=>{
-  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(20);
-  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(20);
-  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(20);
+test("the repository tunnel has twenty-one usable source and test routes and mobile navigation fits",async({page},info)=>{
+  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(21);
+  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(21);
+  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(21);
+  await expect(page.locator('.route').filter({hasText:'Code & Messung'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../code/');
   await expect(page.locator('.route').filter({hasText:'Sicherheitsprüfungen'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../sicherheitslabor/');
   await expect(page.locator('.route').filter({hasText:'Security Research'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../security/');
   for(const url of ["/wissen/","/signals.html","/"]){

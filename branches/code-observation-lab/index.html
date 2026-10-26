@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Vier lokale Arbeitsplätze zum Einordnen von Dateiformaten, Vergleichen von Signalen und Übersetzen von Symbol- und Zellcodes. Mit Quellen und nachvollziehbaren Modellgrenzen.">
+  <title>Code &amp; Messung · HALVETH Forschungslabor</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%230b111b'/%3E%3Cpath d='M12 10v20m16-20v20M12 20h16' fill='none' stroke='%2375e4dc' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <a class="skip-link" href="#arbeitsplatz">Zum Arbeitsplatz</a>
+  <header class="masthead shell">
+    <a class="brand" href="../wissen/" aria-label="HALVETH Forschungslabor, Übersicht">
+      <span class="brand-mark" aria-hidden="true">H<span></span></span>
+      <span><strong>HALVETH</strong><span class="brand-subline">Forschungslabor</span></span>
+    </a>
+    <nav class="header-links" aria-label="Projekt">
+      <a href="./RESEARCH.md">Forschung <span aria-hidden="true">↗</span></a>
+      <a href="./README.md">Code &amp; Modelle <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Verstehen durch Ausprobieren</p>
+        <h1 id="page-title">Code <span>&amp;</span> Messung</h1>
+        <p class="intro-copy">Dateien einordnen. Signale vergleichen.<br class="desktop-break"> Codes übersetzen.</p>
+      </div>
+      <div class="local-note"><span class="status-dot" aria-hidden="true"></span><div><strong>Direkt in deinem Browser</strong><p>Texte eingeben · Beispiele verändern · Ergebnisse mitnehmen</p><span>Alle Berechnungen bleiben lokal. Kein Upload.</span></div></div>
+    </section>
+
+    <div class="tab-shell" id="arbeitsplatz">
+      <div class="tab-list" role="tablist" aria-label="Arbeitsplatz wählen">
+        <button class="tab-button" type="button" role="tab" id="tab-formats" aria-controls="panel-formats" aria-selected="true" tabindex="0" data-tab="formats">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h4"/></svg><span>Formate<small>Name &amp; Bytes</small></span><span class="tab-number" aria-hidden="true">01</span>
+        </button>
+        <button class="tab-button" type="button" role="tab" id="tab-signals" aria-controls="panel-signals" aria-selected="false" tabindex="-1" data-tab="signals">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12c3-11 5-11 8 0s5 11 8 0 4-10 4-10M2 12h20"/></svg><span>Signale<small>Überlappung &amp; Kontrast</small></span><span class="tab-number" aria-hidden="true">02</span>
+        </button>
+        <button class="tab-button" type="button" role="tab" id="tab-symbols" aria-controls="panel-symbols" aria-selected="false" tabindex="-1" data-tab="symbols">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5-6 7 6 7M16 5l6 7-6 7M14 3l-4 18"/></svg><span>Symbolcode<small>Text &amp; vier Zeichen</small></span><span class="tab-number" aria-hidden="true">03</span>
+        </button>
+        <button class="tab-button" type="button" role="tab" id="tab-rna" aria-controls="panel-rna" aria-selected="false" tabindex="-1" data-tab="rna">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2c0 7 10 13 10 20M17 2C17 9 7 15 7 22M8 5h8M10 9h4M10 15h4M8 19h8"/></svg><span>Zellcode<small>mRNA &amp; Codons</small></span><span class="tab-number" aria-hidden="true">04</span>
+        </button>
+      </div>
+      <div class="mobile-result" id="quick-result" data-state="ready" aria-live="off">
+        <div class="mobile-result-copy"><span class="mobile-result-label" id="quick-result-label">Ergebnis · Formate</span><p id="quick-result-text">Das Beispiel wird ausgewertet.</p></div>
+        <button type="button" class="mobile-result-button" id="quick-result-button" aria-controls="format-result" disabled>Ergebnis ansehen</button>
+      </div>
+    </div>
+
+    <noscript><p class="notice">Für die lokalen Berechnungen wird JavaScript benötigt. Quellen und Modellbeschreibungen findest du in der <a href="./README.md">Dokumentation</a>.</p></noscript>
+
+    <section class="lab-panel" id="panel-formats" role="tabpanel" aria-labelledby="tab-formats" tabindex="0">
+      <div class="workspace-grid">
+        <form class="controls-panel" id="format-form" novalidate>
+          <div class="section-heading"><p class="eyebrow"><span class="step-dot">01</span> Formate</p><h2>Was verraten<br> Name und Bytes?</h2><p>Vergleiche eine Dateiendung mit den ersten Bytes. Die beiden Hinweise können auf verschiedene Formate zeigen.</p></div>
+          <fieldset class="examples-fieldset"><legend>Mit einem Beispiel starten</legend><div class="example-list">
+            <button type="button" class="example-button is-current" data-format-example="eth"><span>MAV.ETH</span><small>Netzwerk-Kennung</small><span aria-hidden="true">↗</span></button>
+            <button type="button" class="example-button" data-format-example="archive"><span>archiv.mav</span><small>Archiv-Kennung</small><span aria-hidden="true">↗</span></button>
+            <button type="button" class="example-button" data-format-example="mav"><span>fremd.bin</span><small>Kennung ohne passende Endung</small><span aria-hidden="true">↗</span></button>
+          </div></fieldset>
+          <div class="field"><label for="format-name">Dateiname</label><input id="format-name" name="filename" type="text" value="MAV.ETH" maxlength="240" spellcheck="false" autocomplete="off" aria-describedby="format-name-hint"><p class="field-hint" id="format-name-hint">Ein Name genügt. Es wird keine Datei geöffnet.</p></div>
+          <div class="field"><label for="format-hex">Erste Bytes <span class="optional">optional</span></label><textarea class="code-input" id="format-hex" name="hex" rows="3" maxlength="512" spellcheck="false" autocomplete="off" aria-describedby="format-hex-hint">1A 35 01 00</textarea><p class="field-hint" id="format-hex-hint">Hexadezimal, immer zwei Zeichen pro Byte. Leerzeichen sind erlaubt. Beispiel: <code>1A 35 01 00</code>.</p></div>
+          <button class="primary-button" type="submit">Format einordnen <span aria-hidden="true">→</span></button>
+          <p class="error-message" id="format-error" role="alert" hidden></p>
+          <details class="method-note"><summary>Wie entsteht die Einordnung?</summary><p>Die Endung liefert eine Namenszuordnung. Eine bekannte Bytekennung liefert einen weiteren Kandidaten. Ein vollständiger Dateiparser wird hier nicht ausgeführt.</p><a href="./sources.json">Quellen der Kennungen ansehen <span aria-hidden="true">↗</span></a></details>
+        </form>
+        <section class="result-panel" id="format-result" aria-labelledby="format-result-title" tabindex="-1">
+          <div class="result-toolbar"><p class="eyebrow">Dein Ergebnis</p><button type="button" class="export-button" id="format-export" disabled><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v10m-4-4 4 4 4-4M3 13v4h14v-4"/></svg>JSON</button></div>
+          <div class="result-heading"><h3 id="format-result-title">Name trifft Kennung</h3><span class="badge" id="format-status">Bereit</span></div>
+          <div class="result-content" id="format-content"><p>Das Beispiel wird lokal ausgewertet.</p></div>
+          <p class="sr-only" id="format-live" role="status" aria-live="polite" aria-atomic="true"></p>
+        </section>
+      </div>
+    </section>
+
+    <section class="lab-panel" id="panel-signals" role="tabpanel" aria-labelledby="tab-signals" tabindex="0" hidden>
+      <div class="workspace-grid">
+        <form class="controls-panel" id="signal-form" novalidate>
+          <div class="section-heading"><p class="eyebrow"><span class="step-dot">02</span> Signale</p><h2>Wie entsteht<br> sichtbarer Kontrast?</h2><p>Verändere die Überlappung zweier Wege und ihr Phasenrauschen. Die Kurve reagiert direkt.</p></div>
+          <fieldset class="examples-fieldset"><legend>Drei Situationen vergleichen</legend><div class="example-chips"><button type="button" class="chip is-current" data-signal-example="coherent">Volle Überlappung</button><button type="button" class="chip" data-signal-example="distinct">Getrennte Wege</button><button type="button" class="chip" data-signal-example="noise">Nur Rauschen</button></div></fieldset>
+          <div class="slider-field"><div class="label-row"><label for="signal-overlap">Überlappung</label><output for="signal-overlap" id="signal-overlap-value">1,00</output></div><input id="signal-overlap" type="range" min="0" max="1" step="0.01" value="1" aria-describedby="signal-overlap-hint"><div class="range-labels" aria-hidden="true"><span>0 · unterscheidbar</span><span>1 · gleich</span></div><p class="field-hint" id="signal-overlap-hint">Wie ähnlich die Wegmarkierungen im Modell sind.</p></div>
+          <div class="slider-field"><div class="label-row"><label for="signal-noise">Phasenrauschen σ</label><output for="signal-noise" id="signal-noise-value">0,00 rad</output></div><input id="signal-noise" type="range" min="0" max="3" step="0.01" value="0" aria-describedby="signal-noise-hint"><div class="range-labels" aria-hidden="true"><span>0 rad · stabil</span><span>3 rad · stark</span></div><p class="field-hint" id="signal-noise-hint">Zufällige Phasenstreuung kann den Kontrast auch bei gleichen Wegen senken.</p></div>
+          <div class="slider-field"><div class="label-row"><label for="signal-phase">Phase φ</label><output for="signal-phase" id="signal-phase-value">0,00 rad</output></div><input id="signal-phase" type="range" min="0" max="6.283185307179586" step="0.01" value="0" aria-describedby="signal-phase-hint"><div class="range-labels" aria-hidden="true"><span>0</span><span>2π</span></div><p class="field-hint" id="signal-phase-hint">Verschiebt den markierten Messpunkt auf der Kurve.</p></div>
+          <label class="switch-field" for="signal-human"><span><strong>Mensch liest Metadaten</strong><small>Ein Lesezustand im Modell</small></span><input id="signal-human" type="checkbox"><span class="switch-track" aria-hidden="true"></span></label>
+          <p class="error-message" id="signal-error" role="alert" hidden></p>
+          <details class="method-note"><summary>Was zeigt dieses Modell?</summary><p>Zwei Wege mit gleichen Intensitäten: Die Überlappung bestimmt den idealen Kontrast. Gaußförmiges Phasenrauschen verringert ihn zusätzlich. Das Lesen der Metadaten verändert diese Rechnung nicht.</p><a href="./README.md#modelle">Weitere Berechnungen im Quellcode <span aria-hidden="true">↗</span></a></details>
+        </form>
+        <section class="result-panel signal-result" id="signal-result" aria-labelledby="signal-result-title" tabindex="-1">
+          <div class="result-toolbar"><p class="eyebrow">Dein Ergebnis</p><button type="button" class="export-button" id="signal-export" disabled><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v10m-4-4 4 4 4-4M3 13v4h14v-4"/></svg>JSON</button></div>
+          <div class="result-heading"><h3 id="signal-result-title">Die berechnete Intensität</h3><span class="badge badge-amber" id="signal-status">Rechenmodell</span></div>
+          <div class="result-content" id="signal-content">
+            <div class="chart-key"><span><i class="legend-line" aria-hidden="true"></i>Mit Phasenrauschen</span><span><i class="legend-line ideal" aria-hidden="true"></i>Ohne Phasenrauschen</span></div>
+            <div class="chart-wrap"><canvas id="signal-chart" role="img" aria-labelledby="signal-chart-title signal-chart-description"><span>Die berechnete Intensitätskurve wird zusätzlich als Text beschrieben.</span></canvas></div>
+            <p class="sr-only" id="signal-chart-title">Relative Intensität über einer vollständigen Phase von 0 bis 2π</p><p class="chart-description" id="signal-chart-description">Die Kurve wird berechnet.</p>
+            <div class="metric-grid"><div class="metric"><span>Sichtbarkeit V</span><strong id="signal-visibility">1,000</strong><small>Kontrast der Kurve</small></div><div class="metric"><span>Unterscheidbarkeit D</span><strong id="signal-distinguishability">0,000</strong><small>aus der Wegmarkierung</small></div><div class="metric metric-accent"><span>Intensität I(φ)</span><strong id="signal-intensity">2,000</strong><small>am markierten Punkt</small></div></div>
+            <div class="formula-strip"><code>I(φ) = 1 + V · cos(φ)</code><span>V² + D² = <strong id="signal-duality">1,000</strong></span></div>
+            <div class="reading-note"><span class="reading-icon" aria-hidden="true">i</span><p id="signal-reading">Metadaten werden nicht gelesen. Der Lesezustand ändert die Modellkurve nicht.</p></div>
+            <p class="result-limit">Dies sind berechnete Werte für das angegebene Modell. Eine reale Messung oder ein menschlicher Beobachtungseffekt wird damit nicht nachgewiesen. <a href="./RESEARCH.md">Modell &amp; Grenzen ↗</a></p>
+          </div>
+          <p class="sr-only" id="signal-live" role="status" aria-live="polite" aria-atomic="true"></p>
+        </section>
+      </div>
+    </section>
+
+    <section class="lab-panel" id="panel-symbols" role="tabpanel" aria-labelledby="tab-symbols" tabindex="0" hidden>
+      <div class="workspace-grid">
+        <form class="controls-panel" id="symbol-form" novalidate>
+          <div class="section-heading"><p class="eyebrow"><span class="step-dot">03</span> Symbolcode</p><h2>Vier Zeichen.<br> Dein eigener Code.</h2><p>Übersetze UTF-8-Text in A, C, G und T. Je zwei Bits erhalten ein Zeichen; die Zuordnung kannst du vertauschen.</p></div>
+          <fieldset class="mode-fieldset"><legend class="sr-only">Übersetzungsrichtung</legend><div class="segmented-control"><label><input type="radio" name="symbol-direction" value="encode" checked><span>Text → Symbole</span></label><label><input type="radio" name="symbol-direction" value="decode"><span>Symbole → Text</span></label></div></fieldset>
+          <fieldset class="examples-fieldset"><legend>Beispiele einsetzen</legend><div class="example-chips"><button type="button" class="chip is-current" data-symbol-example="light">Licht</button><button type="button" class="chip" data-symbol-example="unicode">Unicode</button><button type="button" class="chip" data-symbol-example="hello">Hallo Welt</button></div></fieldset>
+          <div class="field"><label for="symbol-input" id="symbol-input-label">Dein Text</label><textarea id="symbol-input" name="text" rows="4" maxlength="512" spellcheck="false" autocomplete="off" aria-describedby="symbol-input-hint">Licht</textarea><p class="field-hint" id="symbol-input-hint">Bis zu 512 Eingabezeichen. Auch Umlaute und Emoji werden als UTF-8 codiert.</p></div>
+          <div class="field"><label for="symbol-mapping">Zeichenzuordnung</label><select id="symbol-mapping" name="mapping" aria-describedby="symbol-mapping-hint"><option value="0">Zuordnung 1 · wird geladen</option></select><p class="field-hint" id="symbol-mapping-hint">24 mögliche Anordnungen. Zum Zurücklesen muss dieselbe Zuordnung gewählt sein.</p></div>
+          <button class="primary-button" id="symbol-submit" type="submit">In Symbole übersetzen <span aria-hidden="true">→</span></button>
+          <p class="error-message" id="symbol-error" role="alert" hidden></p>
+          <details class="method-note"><summary>Was bedeutet A, C, G, T hier?</summary><p>Die vier Buchstaben sind frei gewählte Softwarezeichen. Dieser Code ist selbst definiert und reversibel für gültige UTF-8-Eingaben. Er beschreibt keinen genetischen Mechanismus.</p><a href="./README.md#modelle">Codierung und Tests ansehen <span aria-hidden="true">↗</span></a></details>
+        </form>
+        <section class="result-panel" id="symbol-result" aria-labelledby="symbol-result-title" tabindex="-1">
+          <div class="result-toolbar"><p class="eyebrow">Dein Ergebnis</p><button type="button" class="export-button" id="symbol-export" disabled><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v10m-4-4 4 4 4-4M3 13v4h14v-4"/></svg>JSON</button></div>
+          <div class="result-heading"><h3 id="symbol-result-title">Text in vier Zeichen</h3><span class="badge" id="symbol-status">Bereit</span></div>
+          <div class="result-content" id="symbol-content"><p>Das Beispiel wird lokal ausgewertet.</p></div>
+          <p class="sr-only" id="symbol-live" role="status" aria-live="polite" aria-atomic="true"></p>
+        </section>
+      </div>
+    </section>
+
+    <section class="lab-panel" id="panel-rna" role="tabpanel" aria-labelledby="tab-rna" tabindex="0" hidden>
+      <div class="workspace-grid">
+        <form class="controls-panel" id="rna-form" novalidate>
+          <div class="section-heading"><p class="eyebrow"><span class="step-dot">04</span> Zellcode</p><h2>Drei Basen.<br> Eine Zuordnung.</h2><p>Lies eine mRNA-Sequenz in Dreiergruppen und ordne vollständigen Codons ihre Aminosäuren zu.</p></div>
+          <fieldset class="examples-fieldset"><legend>Mit einer Sequenz starten</legend><div class="example-chips"><button type="button" class="chip is-current" data-rna-example="simple">AUG · GCU · UAA</button><button type="button" class="chip" data-rna-example="frame">Rahmen vergleichen</button><button type="button" class="chip" data-rna-example="remainder">Endrest sehen</button></div></fieldset>
+          <div class="field"><label for="rna-sequence">mRNA-Sequenz (5′ → 3′)</label><textarea class="code-input" id="rna-sequence" name="sequence" rows="4" maxlength="600" spellcheck="false" autocomplete="off" autocapitalize="characters" aria-describedby="rna-sequence-hint">AUGGCUUAA</textarea><p class="field-hint" id="rna-sequence-hint">Nur A, C, G und U in Großbuchstaben, ohne Leerzeichen. Maximal 600 Basen.</p></div>
+          <div class="field"><label for="rna-frame">Leserahmen</label><select id="rna-frame" name="frame" aria-describedby="rna-frame-hint"><option value="0">0 · ab der ersten Base</option><option value="1">1 · ab der zweiten Base</option><option value="2">2 · ab der dritten Base</option></select><p class="field-hint" id="rna-frame-hint">Der Rahmen verschiebt die Dreiergruppen. Vor dem Start liegende Basen bleiben sichtbar.</p></div>
+          <button class="primary-button" type="submit">Codons übersetzen <span aria-hidden="true">→</span></button>
+          <p class="error-message" id="rna-error" role="alert" hidden></p>
+          <div class="table-note"><span class="tiny-label">Verwendete Referenz</span><strong>Standardtabelle 1</strong><span>NCBI · The Genetic Codes</span></div>
+          <details class="method-note"><summary>Wie weit reicht die Übersetzung?</summary><p>Jedes vollständige Triplet wird nach Standardtabelle 1 zugeordnet. Stop-Codons werden markiert. Der Arbeitsplatz simuliert weder eine Zelle noch Proteinherstellung oder Faltung.</p><a href="./sources.json">Biologische Quelle ansehen <span aria-hidden="true">↗</span></a></details>
+        </form>
+        <section class="result-panel" id="rna-result" aria-labelledby="rna-result-title" tabindex="-1">
+          <div class="result-toolbar"><p class="eyebrow">Dein Ergebnis</p><button type="button" class="export-button" id="rna-export" disabled><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v10m-4-4 4 4 4-4M3 13v4h14v-4"/></svg>JSON</button></div>
+          <div class="result-heading"><h3 id="rna-result-title">Die Sequenz lesen</h3><span class="badge badge-amber" id="rna-status">Standardtabelle 1</span></div>
+          <div class="result-content" id="rna-content"><p>Das Beispiel wird lokal ausgewertet.</p></div>
+          <p class="sr-only" id="rna-live" role="status" aria-live="polite" aria-atomic="true"></p>
+        </section>
+      </div>
+    </section>
+
+    <section class="trace-section" aria-labelledby="trace-title"><div class="trace-intro"><p class="eyebrow">Offen nachvollziehbar</p><h2 id="trace-title">Vom Beispiel zur Quelle.</h2><p>Referenzen, eigene Modellannahmen und lokale Tests sind getrennt dokumentiert.</p></div><div class="trace-links"><a href="./sources.json"><span class="trace-number">01</span><span><strong>Quellenregister</strong><small>Originalquellen und ihr jeweiliger Scope</small></span><span aria-hidden="true">↗</span></a><a href="./RESEARCH.md"><span class="trace-number">02</span><span><strong>Forschung &amp; Grenzen</strong><small>Modelle, offene Fragen und Gegenproben</small></span><span aria-hidden="true">↗</span></a><a href="./README.md"><span class="trace-number">03</span><span><strong>Code &amp; lokale Tests</strong><small>Nachlesen, ausführen und verändern</small></span><span aria-hidden="true">↗</span></a></div></section>
+  </main>
+  <footer class="site-footer shell"><p><strong>HALVETH</strong> <span>·</span> Code &amp; Messung</p><p>Juri / HALVETH · Entwicklung mit KI-Unterstützung</p><a href="https://github.com/Juri-Halveth/halveth-forschungslabor">Repository ansehen <span aria-hidden="true">↗</span></a><span class="version" id="lab-version">Lokales Browserlabor</span></footer>
+  <script type="module" src="./view.mjs"></script>
+</body>
+</html>

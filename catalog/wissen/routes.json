@@ -5,6 +5,40 @@
   "modelWeightTraining": false,
   "entries": [
     {
+      "id": "code-observation-lab",
+      "title": "Code & Messung – Dateien, Signale und Sequenzen",
+      "description": "Vier lokale Arbeitsplätze verbinden belegte Formatzuordnungen, Interferenz mit Phasenrauschen, reversible Unicode-Codierung und RNA-Codontabellen mit konkreten Gegenproben.",
+      "source": "branches/code-observation-lab/model.mjs",
+      "tests": [
+        "branches/code-observation-lab/model.test.mjs",
+        "branches/encounter-systems/browser.spec.mjs"
+      ],
+      "docs": "branches/code-observation-lab/README.md",
+      "demo": "code/",
+      "files": [
+        {
+          "path": "branches/code-observation-lab/model.mjs",
+          "bytes": 14219,
+          "sha256": "1aff9a9f2d5f3a8f5451756c8d4a43379fe13a89810c5e92ba4fad0c40f17bb7"
+        },
+        {
+          "path": "branches/code-observation-lab/README.md",
+          "bytes": 7948,
+          "sha256": "87baa51e0ab334aa764ab77375c3f885d632b613319626c0b5e0b95415d3a3df"
+        },
+        {
+          "path": "branches/code-observation-lab/model.test.mjs",
+          "bytes": 12389,
+          "sha256": "81e09c771c77f547d2d85f1555617a00786c0181dad8e2b8b8a88c9b6dc3c73a"
+        },
+        {
+          "path": "branches/encounter-systems/browser.spec.mjs",
+          "bytes": 27404,
+          "sha256": "730413686e7cde8dd8fed85f1198967fbbf9f5ac201ce9f564be9d3508772a90"
+        }
+      ]
+    },
+    {
       "id": "security-research-hub",
       "title": "Security Research – Methoden, Quellen und nächste Gegenprobe",
       "description": "18 Prüfmethoden, vier lokale Gegenproben, öffentliche Fallanalysen und ein exportierbarer Forschungsplan mit getrenntem Arbeits- und Belegstand.",
@@ -67,8 +101,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 20497,
-          "sha256": "27c9f74a16d1be33988d83c56e6bf07564ddcb39a830dc3083e7e7a0231cae07"
+          "bytes": 27404,
+          "sha256": "730413686e7cde8dd8fed85f1198967fbbf9f5ac201ce9f564be9d3508772a90"
         }
       ]
     },
@@ -141,8 +175,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 20497,
-          "sha256": "27c9f74a16d1be33988d83c56e6bf07564ddcb39a830dc3083e7e7a0231cae07"
+          "bytes": 27404,
+          "sha256": "730413686e7cde8dd8fed85f1198967fbbf9f5ac201ce9f564be9d3508772a90"
         }
       ]
     },
