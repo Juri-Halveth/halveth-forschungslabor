@@ -1,0 +1,141 @@
+{
+  "contract": "halveth.lagefaden.eonet-snapshot.v1",
+  "selection": "first_open_event_with_two_https_references_and_point_geometry_in_first_20",
+  "list": {
+    "url": "https://eonet.gsfc.nasa.gov/api/v3/events?status=open&limit=20",
+    "retrievedAt": "2026-10-26T22:16:25.069Z",
+    "bytes": 30203,
+    "sha256": "f4a821f2baf3e34f57671146e7ff3ff66654b7121d5a0e598331782f65e38015",
+    "declaredContentType": "application/rss+xml; charset=utf-8"
+  },
+  "detail": {
+    "url": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_25730",
+    "retrievedAt": "2026-10-26T22:16:25.494Z",
+    "bytes": 1151,
+    "sha256": "1467a02a14554555d4600e7d5e31cbbb932e61d95824f7dfa77a60dcd9b77050",
+    "declaredContentType": "application/rss+xml; charset=utf-8"
+  },
+  "records": {
+    "summary": {
+      "id": "EONET_25730",
+      "title": "Tropical Storm Olana",
+      "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_25730",
+      "sources": [
+        {
+          "id": "JTWC",
+          "url": "https://www.metoc.navy.mil/jtwc/products/cp0326.tcw"
+        },
+        {
+          "id": "NOAA_NHC",
+          "url": "https://www.nhc.noaa.gov/archive/2026/OLANA.shtml"
+        }
+      ],
+      "geometry": [
+        {
+          "date": "2026-10-25T18:00:00Z",
+          "type": "Point",
+          "coordinates": [
+            -178.5,
+            14.7
+          ]
+        },
+        {
+          "date": "2026-10-26T00:00:00Z",
+          "type": "Point",
+          "coordinates": [
+            -177.2,
+            15.1
+          ]
+        },
+        {
+          "date": "2026-10-26T06:00:00Z",
+          "type": "Point",
+          "coordinates": [
+            -176.9,
+            14.8
+          ]
+        },
+        {
+          "date": "2026-10-26T12:00:00Z",
+          "type": "Point",
+          "coordinates": [
+            -176.8,
+            14.1
+          ]
+        }
+      ]
+    },
+    "detail": {
+      "id": "EONET_25730",
+      "title": "Tropical Storm Olana",
+      "link": "https://eonet.gsfc.nasa.gov/api/v3/events/EONET_25730",
+      "sources": [
+        {
+          "id": "JTWC",
+          "url": "https://www.metoc.navy.mil/jtwc/products/cp0326.tcw"
+        },
+        {
+          "id": "NOAA_NHC",
+          "url": "https://www.nhc.noaa.gov/archive/2026/OLANA.shtml"
+        }
+      ],
+      "geometry": [
+        {
+          "date": "2026-10-25T18:00:00Z",
+          "type": "Point",
+          "coordinates": [
+            -178.5,
+            14.7
+          ]
+        },
+        {
+          "date": "2026-10-26T00:00:00Z",
+          "type": "Point",
+          "coordinates": [
+            -177.2,
+            15.1
+          ]
+        },
+        {
+          "date": "2026-10-26T06:00:00Z",
+          "type": "Point",
+          "coordinates": [
+            -176.9,
+            14.8
+          ]
+        },
+        {
+          "date": "2026-10-26T12:00:00Z",
+          "type": "Point",
+          "coordinates": [
+            -176.8,
+            14.1
+          ]
+        }
+      ]
+    }
+  },
+  "evaluation": {
+    "contract": "halveth.lagefaden.eonet-pair.v1",
+    "eventId": "EONET_25730",
+    "title": "Tropical Storm Olana",
+    "representationCount": 2,
+    "curatedEventCount": 1,
+    "referenceCount": 2,
+    "sourceReferenceIds": [
+      "JTWC",
+      "NOAA_NHC"
+    ],
+    "referencesMatch": true,
+    "firstGeometryTime": "2026-10-25T18:00:00.000Z",
+    "lastGeometryTime": "2026-10-26T12:00:00.000Z",
+    "lastLocation": {
+      "latitude": 14.1,
+      "longitude": -176.8
+    },
+    "independentPhysicalObservations": "UNKNOWN",
+    "state": "SAME_CURATED_EVENT",
+    "action": "HUMAN_REVIEW_ONLY"
+  },
+  "evidenceLimit": "Two EONET API representations and external source references are not authenticated independent sensors. Raw API responses are hashed, not archived."
+}

@@ -234,6 +234,29 @@ test('LAGEFADEN shows a dated real USGS record as one catalog event and fails vi
   await expect(page.locator('#real-meaning')).toContainText('nicht ausgewertet');
 });
 
+test('LAGEFADEN shows separate EONET and CEMS receipts, revision difference, and visible source failures',async({page})=>{
+  const eonet=JSON.parse(await fs.readFile(new URL('../lagefaden/data/eonet-example.json',import.meta.url),'utf8'));
+  const cems=JSON.parse(await fs.readFile(new URL('../lagefaden/data/cems-example.json',import.meta.url),'utf8'));
+  const errors=[];page.on('pageerror',error=>errors.push(error.message));
+  await page.goto('/lagefaden/');
+  await expect(page.locator('#eonet-title')).toHaveText(eonet.evaluation.title);
+  await expect(page.locator('#eonet-stat')).toContainText('1 kuratiertes Ereignis');
+  await expect(page.locator('#eonet-refs')).toContainText('Mess-Unabhängigkeit bleibt offen');
+  await expect(page.locator('#eonet-link')).toHaveAttribute('href',eonet.detail.url);
+  await expect(page.locator('#cems-title')).toHaveText(cems.evaluation.title);
+  await expect(page.locator('#cems-stat')).toContainText('1 Aktivierung');
+  await expect(page.locator('#cems-updates')).toContainText('Änderungszeiten verschieden');
+  await expect(page.locator('#cems-credit-code')).toHaveText(cems.evaluation.activationCode);
+  await expect(page.locator('#cems-link')).toHaveAttribute('href',cems.detail.url);
+  await page.route('**/lagefaden/data/eonet-example.json',route=>route.fulfill({status:503,body:'unavailable'}));
+  await page.route('**/lagefaden/data/cems-example.json',route=>route.fulfill({status:503,body:'unavailable'}));
+  await page.reload();
+  await expect(page.locator('#eonet-title')).toHaveText('Datierter EONET-Snapshot nicht verfügbar');
+  await expect(page.locator('#cems-title')).toHaveText('Datierter CEMS-Snapshot nicht verfügbar');
+  await expect(page.locator('#real-event')).toHaveText(/.+/);
+  expect(errors).toEqual([]);
+});
+
 test('security workbench executes counterexamples, rejects invalid input and exports actual local results',async({page})=>{
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('/sicherheitslabor/');await expect(page.locator('#run-count')).toHaveText('6');

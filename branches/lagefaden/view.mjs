@@ -2,7 +2,9 @@
 import {evaluatePacket} from './model.mjs';
 import {cases} from './cases.mjs';
 import {evaluateUsgsPair} from './usgs-source.mjs';
+import {evaluateEonetPair,evaluateCemsPair} from './public-sources.mjs';
 const byId = id => document.getElementById(id);
+const date = stamp => new Intl.DateTimeFormat('de-DE',{dateStyle:'medium',timeStyle:'short',timeZone:'Europe/Berlin'}).format(new Date(stamp)) + ' Uhr (Berlin)';
 const picker = byId('case-picker');
 const findingText = {possible_object:'möglicher Gegenstand', alternative_explanation:'andere Erklärung', unresolved:'offen'};
 let selected = 0;
@@ -50,7 +52,6 @@ async function showRealSnapshot() {
       || snapshot.detail.url !== snapshot.records.summary.properties.detail) throw Error('INVALID_SOURCE_RECEIPT');
     const result = evaluateUsgsPair(snapshot.records.summary, snapshot.records.detail);
     if (JSON.stringify(result) !== JSON.stringify(snapshot.evaluation)) throw Error('EVALUATION_MISMATCH');
-    const date = stamp => new Intl.DateTimeFormat('de-DE',{dateStyle:'medium',timeStyle:'short',timeZone:'Europe/Berlin'}).format(new Date(stamp));
     byId('real-event').textContent = result.title;
     byId('real-times').textContent = 'Ereignis: ' + date(result.eventTimeSummary) + ' · Letzte Katalogänderung: ' + date(result.updateTimeDetail);
     byId('real-captured').textContent = 'USGS-Feed abgerufen: ' + date(snapshot.feed.retrievedAt) + ' · ID: ' + result.eventId;
@@ -66,3 +67,61 @@ async function showRealSnapshot() {
   }
 }
 showRealSnapshot();
+
+async function showEonetSnapshot() {
+  try {
+    const response = await fetch('./data/eonet-example.json');
+    if (!response.ok) throw Error('SNAPSHOT_NOT_AVAILABLE');
+    const snapshot = await response.json();
+    const eventId = snapshot.records?.summary?.id;
+    if (snapshot.contract !== 'halveth.lagefaden.eonet-snapshot.v1'
+      || !/^EONET_[0-9]{1,12}$/.test(eventId)
+      || snapshot.list?.url !== 'https://eonet.gsfc.nasa.gov/api/v3/events?status=open&limit=20'
+      || snapshot.detail?.url !== 'https://eonet.gsfc.nasa.gov/api/v3/events/' + eventId) throw Error('INVALID_SOURCE_RECEIPT');
+    const result = evaluateEonetPair(snapshot.records.summary,snapshot.records.detail);
+    if (JSON.stringify(result) !== JSON.stringify(snapshot.evaluation)) throw Error('EVALUATION_MISMATCH');
+    byId('eonet-title').textContent = result.title;
+    byId('eonet-stat').textContent = '2 API-Ansichten → 1 kuratiertes Ereignis';
+    byId('eonet-times').textContent = 'Erste / letzte Geometriezeit: ' + date(result.firstGeometryTime) + ' / ' + date(result.lastGeometryTime);
+    byId('eonet-refs').textContent = result.referencesMatch
+      ? result.referenceCount + ' verlinkte Quellen: ' + result.sourceReferenceIds.join(', ') + '. Ihre Mess-Unabhängigkeit bleibt offen.'
+      : 'Die Quellverweise unterscheiden sich zwischen Übersicht und Detail. Menschlich prüfen.';
+    byId('eonet-captured').textContent = 'Listenabruf: ' + date(snapshot.list.retrievedAt) + ' · Detailabruf: ' + date(snapshot.detail.retrievedAt) + ' · ID: ' + result.eventId;
+    byId('eonet-link').href = snapshot.detail.url;
+  } catch {
+    byId('eonet-title').textContent = 'Datierter EONET-Snapshot nicht verfügbar';
+    byId('eonet-stat').textContent = 'Keine Auswertung';
+    byId('eonet-refs').textContent = 'Ohne gültigen lokalen Snapshot bleibt dieser Datenfall offen.';
+  }
+}
+
+async function showCemsSnapshot() {
+  try {
+    const response = await fetch('./data/cems-example.json');
+    if (!response.ok) throw Error('SNAPSHOT_NOT_AVAILABLE');
+    const snapshot = await response.json();
+    const code = snapshot.records?.mapping?.code;
+    if (snapshot.contract !== 'halveth.lagefaden.cems-snapshot.v1'
+      || !/^EMSR[0-9]{3,6}$/.test(code)
+      || snapshot.mappingList?.url !== 'https://mapping.emergency.copernicus.eu/activations/api/activations/?limit=10'
+      || snapshot.rapidList?.url !== 'https://rapidmapping.emergency.copernicus.eu/backend/dashboard-api/public-activations-info/?limit=10'
+      || snapshot.detail?.url !== 'https://rapidmapping.emergency.copernicus.eu/backend/dashboard-api/public-activations/?code=' + code) throw Error('INVALID_SOURCE_RECEIPT');
+    const result = evaluateCemsPair(snapshot.records.mapping,snapshot.records.rapid,snapshot.records.detail);
+    if (JSON.stringify(result) !== JSON.stringify(snapshot.evaluation)) throw Error('EVALUATION_MISMATCH');
+    byId('cems-title').textContent = result.title;
+    byId('cems-stat').textContent = '2 API-Ansichten → 1 Aktivierung';
+    byId('cems-times').textContent = 'Ereignis: ' + date(result.eventTime) + ' · Aktiviert: ' + date(result.activationTime);
+    byId('cems-updates').textContent = result.updatesMatch
+      ? 'Beide Ansichten zuletzt geändert: ' + date(result.mappingUpdateTime)
+      : 'Änderungszeiten verschieden: Mapping ' + date(result.mappingUpdateTime) + ' · Rapid ' + date(result.rapidUpdateTime) + '. Das ist ein Prüfpunkt, kein zweites Ereignis.';
+    byId('cems-captured').textContent = 'Listen abgerufen: ' + date(snapshot.mappingList.retrievedAt) + ' / ' + date(snapshot.rapidList.retrievedAt);
+    byId('cems-credit-code').textContent = code;
+    byId('cems-link').href = snapshot.detail.url;
+  } catch {
+    byId('cems-title').textContent = 'Datierter CEMS-Snapshot nicht verfügbar';
+    byId('cems-stat').textContent = 'Keine Auswertung';
+    byId('cems-updates').textContent = 'Ohne gültigen öffentlichen Snapshot bleibt dieser Datenfall offen.';
+  }
+}
+showEonetSnapshot();
+showCemsSnapshot();

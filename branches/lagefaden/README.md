@@ -1,6 +1,6 @@
 # LAGEFADEN · Herkunft und Zeit vor der Lageentscheidung
 
-**Ein lesender, dual nutzbarer Softwarebaustein von Juri / HALVETH.** Die [bedienbare Probe](index.html) zeigt an fünf erfundenen Fällen, warum drei Meldungen nicht automatisch drei unabhängige Beobachtungen sind. Ein zweiter Abschnitt prüft zwei **echte, datiert abgerufene USGS-Katalogdarstellungen** desselben Erdbebens. Die Seite enthält weder eine Drohnensteuerung noch eine Lagefreigabe.
+**Ein lesender, dual nutzbarer Softwarebaustein von Juri / HALVETH.** Die [bedienbare Probe](index.html) zeigt an fünf erfundenen Fällen, warum drei Meldungen nicht automatisch drei unabhängige Beobachtungen sind. Ein zweiter Abschnitt prüft datierte, öffentliche Katalogansichten von USGS, NASA EONET und Copernicus EMS. Die drei Ereignisse werden nicht miteinander gleichgesetzt. Die Seite enthält weder eine Drohnensteuerung noch eine Lagefreigabe.
 
 [Portfoliowahl mit drei Kandidaten und acht Bauachsen](PORTFOLIO_DECISION.md)
 [Quellen- und Adapterplan für echte öffentliche Daten](REAL_DATA_PLAN.md)
@@ -28,12 +28,20 @@ Die [USGS-GeoJSON-Feeds](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojs
 
 Der echte Fall zeigt ein katalogisiertes Erdbeben nahe Fidschi: Übersicht und Detail nennen dieselbe Event-ID und dieselbe Ereigniszeit. Das beweist **zwei Repräsentationen eines Katalogereignisses**, nicht zwei unabhängige Messgeräte, eine bestätigte Außenlage oder operative Nützlichkeit. Eine abweichende Detailzeit bliebe als Prüfpunkt offen. Der Snapshot ist datiert; die Website holt beim Öffnen keine neuen Drittanbieter-Daten. Aktualisierung ist bewusst ein separater, lokaler Leseschritt:
 
+[NASA EONET](https://eonet.gsfc.nasa.gov/docs/v3) ist ein kuratierter Katalog von Naturereignissen. Der [EONET-Snapshot](data/eonet-example.json) vom 26. Oktober 2026 bindet Liste und Detail an `EONET_25730`, zeigt Geometriezeiten und zwei externe Quellverweise. Die Verweise sind keine authentisierten unabhängigen Messungen. [EONET erläutert](https://eonet.gsfc.nasa.gov/what-is-eonet), dass Angaben näherungsweise sein können und der Katalog der allgemeinen Information dient.
+
+[Copernicus EMS](https://mapping.emergency.copernicus.eu/about/how-to-harvest-cems-mapping-data/) bietet öffentliche Aktivierungsdaten. Der [CEMS-Snapshot](data/cems-example.json) vom 26. Oktober 2026 bindet zwei API-Ansichten an die öffentliche Aktivierung `EMSR935`: gleiche Aktivierungskennung, unterschiedliche Metadaten-Änderungszeiten. Das verlangt Prüfung, erzeugt aber kein zweites Ereignis. Die Zeitfelder besitzen in den JSON-Antworten kein Zonenkennzeichen; der Adapter interpretiert sie gemäß [Anbieterbeschreibung](https://mapping.emergency.copernicus.eu/about/how-to-harvest-cems-mapping-data/emergency-response-data/) als UTC und bewahrt die Originalwerte im Snapshot. Die [Nutzungsbedingungen](https://mapping.emergency.copernicus.eu/terms-and-conditions/) und [Zitierregeln](https://mapping.emergency.copernicus.eu/about/citation-guidelines/) werden durch die Quellenangabe beachtet: **Copernicus Emergency Management Service (© 2026 European Union), EMSR935**. Es werden keine Produktbilder und keine als sensibel markierten Details veröffentlicht.
+
+Die Abrufskripte speichern nur benötigte Metadaten sowie URL, Abrufzeit, Bytezahl und SHA-256 der Rohantwort; die Rohantworten selbst werden nicht archiviert. Zwei Ansichten desselben Anbieters bleiben ein korrelierter Datenweg. Ein späterer Abruf kann andere Inhalte liefern. Die Browserseite liest nur die drei lokalen Snapshots.
+
 ```sh
 node branches/lagefaden/capture-usgs.mjs --write
 node --test branches/lagefaden/usgs-source.test.mjs
+node branches/lagefaden/capture-open-feeds.mjs --write
+node --test branches/lagefaden/public-sources.test.mjs
 ```
 
-Damit braucht Juri weder Drohne noch Radar noch eigenen Satelliten. Für eine **relevante CIHBw-Demonstration** wären trotzdem ein konkret benannter Arbeitsablauf, passende freigegebene Daten, ein Quellenvertrag und ein Vergleich mit der bisherigen Bearbeitung nötig. Ein globaler öffentlicher Erdbebenkatalog ist eine technische Datenweg-Gegenprobe, kein bereits bestätigter militärischer Use Case.
+Damit braucht Juri weder Drohne noch Radar noch eigenen Satelliten. Die vierte untersuchte Quelle, [NASA FIRMS](https://firms.modaps.eosdis.nasa.gov/api/map_key/), verlangt für aktuelle Detektionsdaten einen MAP_KEY; sie ist mangels Schlüssel noch nicht als Snapshot angebunden. Für eine **relevante CIHBw-Demonstration** wären ein konkret benannter Arbeitsablauf, passende freigegebene Daten, ein Quellenvertrag und ein Vergleich mit der bisherigen Bearbeitung nötig. Die globalen öffentlichen Naturereigniskataloge sind technische Datenweg-Gegenproben, keine bereits bestätigten militärischen Use Cases.
 
 ## Passung zum CIHBw
 

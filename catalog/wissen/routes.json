@@ -7,11 +7,12 @@
     {
       "id": "lagefaden",
       "title": "LAGEFADEN – drei Meldungen, wie viele Beobachtungen?",
-      "description": "Fünf Modellfälle und ein datierter USGS-Abruf trennen Kopien, Ereigniszeit, Widersprüche und die Grenze behaupteter Herkunft.",
+      "description": "Fünf Modellfälle und datierte öffentliche USGS-, EONET- und CEMS-Abrufe trennen Kopien, Ereigniszeit, Metadatenänderungen und behauptete Herkunft.",
       "source": "branches/lagefaden/model.mjs",
       "tests": [
         "branches/lagefaden/model.test.mjs",
-        "branches/lagefaden/usgs-source.test.mjs"
+        "branches/lagefaden/usgs-source.test.mjs",
+        "branches/lagefaden/public-sources.test.mjs"
       ],
       "docs": "branches/lagefaden/README.md",
       "demo": "lagefaden/",
@@ -23,8 +24,8 @@
         },
         {
           "path": "branches/lagefaden/README.md",
-          "bytes": 9612,
-          "sha256": "038c10eb4c649b3d31059399ef86c794a74fb30b2f7090008dde13e48d317be3"
+          "bytes": 11886,
+          "sha256": "3cdae164bcc595736aa7fe94e2654c922cd955ad868153bd3165c34c80f1d7e0"
         },
         {
           "path": "branches/lagefaden/model.test.mjs",
@@ -35,6 +36,11 @@
           "path": "branches/lagefaden/usgs-source.test.mjs",
           "bytes": 1632,
           "sha256": "e35c69d253b6ddd4abbdc03479fac21dbe91637acd12b034c7f315e64abd9877"
+        },
+        {
+          "path": "branches/lagefaden/public-sources.test.mjs",
+          "bytes": 2571,
+          "sha256": "d0105ea4188bb0a6d725b6f9bc046ebc301486d3959500d6b5b2f9fdd4574cd7"
         }
       ]
     },
@@ -101,8 +107,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 28047,
-          "sha256": "4b52c005ce48a07349221deba272e4cae23184722d88ab2a032b5b22b569c8cf"
+          "bytes": 29832,
+          "sha256": "a1eb7c580687a6a7216cd0a28dec8451638f3504ed022216b0f5a040f9f493cb"
         }
       ]
     },
@@ -175,8 +181,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 28047,
-          "sha256": "4b52c005ce48a07349221deba272e4cae23184722d88ab2a032b5b22b569c8cf"
+          "bytes": 29832,
+          "sha256": "a1eb7c580687a6a7216cd0a28dec8451638f3504ed022216b0f5a040f9f493cb"
         }
       ]
     },
