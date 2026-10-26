@@ -3,8 +3,11 @@
 Diese Auswahl übernimmt ihre jeweiligen ursprünglichen Dateilizenzen. Sie
 verleiht keine Rechte an verlinkten Quellen oder an fremden Projekten.
 
+Spezifische Dateizuordnungen haben Vorrang vor den allgemeinen Gruppen.
+
 | Dateien | Bedingungen |
 | --- | --- |
+| Neues Modul `branches/open-organism-engine/**` | [Lizenzentscheidung offen, lokaler Kandidat](branches/open-organism-engine/LICENSE-STATUS.md); noch keine Veröffentlichung oder neue allgemeine Freigabe |
 | Quellcode, Tests, HTML und CSS unter `branches/` und `scripts/` | [MIT](LICENSE) |
 | JSON-Daten, Modelle, Fixtures und Katalogmetadaten | [CC0 1.0](LICENSE-DATA.md) |
 | Neu geschriebene Datenwerte der öffentlichen Arrays in `branches/security-research-hub/catalog.mjs` | [CC0 1.0](LICENSE-DATA.md); Modulcode MIT; verlinkte Werke behalten ihre Rechte |

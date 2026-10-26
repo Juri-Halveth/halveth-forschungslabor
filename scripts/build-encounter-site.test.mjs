@@ -30,6 +30,8 @@ test("publication copies only approved files, binds bytes and rejects reused out
     await fs.mkdir(path.dirname(target), { recursive: true });
     await fs.writeFile(target, "approved " + entry.path);
   }
+  const metadataPath=path.join(source,"branches/open-organism-engine/SOURCE.json");
+  await fs.writeFile(metadataPath,JSON.stringify({license:{publicationReady:true,id:"MIT"},fixture:"SELF_CREATED_TEST_DATA"}));
   await fs.writeFile(
     path.join(module, "private-unlisted.txt"),
     "synthetic exclusion challenge",
@@ -38,6 +40,7 @@ test("publication copies only approved files, binds bytes and rejects reused out
   await fs.writeFile(path.join(source, "branches/security-workbench/private-lab-token.json"), "synthetic private exclusion challenge");
   await fs.writeFile(path.join(source, "branches/security-research-hub/private-case-index.json"), "synthetic confidential-report metadata");
   await fs.writeFile(path.join(source, "branches/code-observation-lab/private-entity-response.json"), "synthetic private consultation");
+  await fs.writeFile(path.join(source, "branches/open-organism-engine/private-live-checkpoint.json"), "synthetic local run state");
   const output = path.join(temporary, "site");
   const args = { repoRoot: source, outputRoot: output, commit: "a".repeat(40) };
   const receipt = await buildSite(args);
@@ -63,11 +66,20 @@ test("publication copies only approved files, binds bytes and rejects reused out
   assert.ok(!receipt.files.some(entry=>entry.path.includes('private-case-index')));
   assert.equal(receipt.files.find(entry=>entry.path==='code/model.mjs').sourcePath,'branches/code-observation-lab/model.mjs');
   assert.ok(!receipt.files.some(entry=>entry.path.includes('private-entity-response')||entry.path==='code/serve.mjs'||entry.path==='code/model.test.mjs'));
+  assert.equal(receipt.files.find(entry=>entry.path==='systeme/src/open-world.mjs').sourcePath,'branches/open-organism-engine/src/open-world.mjs');
+  assert.ok(!receipt.files.some(entry=>entry.path.includes('private-live-checkpoint')||entry.path==='systeme/src/node-checkpoint-store.mjs'||entry.path==='systeme/src/registry-bridge.mjs'||entry.path.includes('systeme/examples/')));
   await assert.rejects(buildSite(args), { code: "EEXIST" });
   await assert.rejects(
     buildSite({ ...args, commit: "main" }),
     /full source commit/,
   );
+  await fs.writeFile(metadataPath,JSON.stringify({license:{publicationReady:false,state:"PENDING_USER_DECISION"}}));
+  const held=path.join(temporary,"license-held");
+  await assert.rejects(buildSite({...args,outputRoot:held}),/license decision is pending/);
+  await assert.rejects(fs.access(held),{code:"ENOENT"});
+  const draft=await buildSite({...args,outputRoot:path.join(temporary,"local-draft"),publicationMode:"LOCAL_DRAFT_ONLY"});
+  assert.equal(draft.publicationMode,"LOCAL_DRAFT_ONLY");
+  await fs.writeFile(metadataPath,JSON.stringify({license:{publicationReady:true,id:"MIT"},fixture:"SELF_CREATED_TEST_DATA"}));
   await fs.mkdir(path.join(module, "unexpected-directory"));
   await fs.rename(
     path.join(module, "model.mjs"),

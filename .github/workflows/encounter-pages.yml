@@ -9,6 +9,7 @@ on:
         "branches/security-workbench/**",
         "branches/security-research-hub/**",
         "branches/code-observation-lab/**",
+        "branches/open-organism-engine/**",
         "research/lifecycle-echo/**",
         "catalog/**",
         "scripts/build-learning-hub*",
@@ -25,6 +26,7 @@ on:
         "branches/security-workbench/**",
         "branches/security-research-hub/**",
         "branches/code-observation-lab/**",
+        "branches/open-organism-engine/**",
         "research/lifecycle-echo/**",
         "catalog/**",
         "scripts/build-learning-hub*",
@@ -57,6 +59,7 @@ jobs:
           node --test branches/security-workbench/core.test.mjs branches/security-workbench/http-fixture.test.mjs
           node --test branches/security-research-hub/model.test.mjs
           node --test branches/code-observation-lab/model.test.mjs
+          node --test branches/open-organism-engine/tests/*.test.mjs
           node --test scripts/build-encounter-site.test.mjs
           node --test branches/endeck-observer/model.test.mjs
           node --test branches/endeck-observer/learning.test.mjs

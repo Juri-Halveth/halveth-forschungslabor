@@ -2,7 +2,7 @@
 import { defineConfig } from "@playwright/test";
 export default defineConfig({
   testDir: import.meta.dirname,
-  testMatch: "browser.spec.mjs",
+  testMatch: ["browser.spec.mjs", "organism.browser.spec.mjs"],
   workers: 1,
   timeout: 30000,
   reporter: "list",

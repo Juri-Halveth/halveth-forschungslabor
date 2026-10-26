@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Ein lokales Modelllabor für verschachtelte Bereiche, Ressourcenflüsse, Signale und nachvollziehbare Zustandswechsel.">
+  <title>Lebende Systeme · Modelllabor · HALVETH</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%230b111b'/%3E%3Cpath d='M12 10v20m16-20v20M12 20h16' stroke='%2375e4dc' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <a class="skip-link" href="#workspaces">Zum Modelllabor</a>
+  <header class="masthead shell"><a class="brand" href="../wissen/"><span class="brand-mark" aria-hidden="true">H</span><span><strong>HALVETH</strong><small>Forschungslabor</small></span></a><nav aria-label="Dokumentation"><a href="./README.md">So funktioniert’s ↗</a><a href="./SOURCES.md">Quellen ↗</a></nav></header>
+  <main class="shell">
+    <section class="intro" aria-labelledby="page-title"><div><p class="eyebrow">Zustände verstehen</p><div class="title-row"><h1 id="page-title">Lebende Systeme</h1><span class="model-badge">Modelllabor</span></div><p class="lead">Bestände verändern. Flüsse verfolgen. Zustandswechsel erklären.</p></div><div class="intro-note"><span class="status-dot" aria-hidden="true"></span><p>Ausführung in deinem Browser.<small>Abstrakte Modellmengen · lokale Daten</small></p></div></section>
+
+    <section class="run-toolbar" aria-label="Modell steuern">
+      <div class="run-buttons"><button type="button" class="button primary" id="step-button" data-action="STEP" data-ticks="1" disabled>Ein Tick <span aria-hidden="true">→</span></button><button type="button" class="button" id="batch-button" data-action="STEP" data-ticks="20" disabled>20 Ticks</button><button type="button" class="button" id="start-button" data-action="START" disabled><span aria-hidden="true">▶</span> Starten</button><button type="button" class="button" id="pause-button" data-action="PAUSE" disabled><span aria-hidden="true">Ⅱ</span> Anhalten</button></div>
+      <div class="run-state"><span class="badge muted" id="engine-state">Engine startet</span><span id="model-clock">Noch kein bestätigter Zustand</span></div>
+      <button type="button" class="button freeze-button" id="freeze-button" aria-pressed="false" disabled>Bild einfrieren</button>
+    </section>
+    <div class="operation-message" id="operation-message" hidden><span id="operation-text"></span><button type="button" id="dismiss-message" aria-label="Meldung schließen">×</button></div>
+    <p class="freeze-notice" id="freeze-notice" hidden></p>
+
+    <div class="tab-shell" id="workspaces"><div class="tab-list" role="tablist" aria-label="Ansicht wählen">
+      <button type="button" class="tab-button" id="tab-system" role="tab" aria-selected="true" aria-controls="panel-system" tabindex="0" data-tab="system"><span class="tab-icon" aria-hidden="true">▣</span><span>System<small>Bereiche &amp; Bestände</small></span><span class="tab-number" aria-hidden="true">01</span></button>
+      <button type="button" class="tab-button" id="tab-flows" role="tab" aria-selected="false" aria-controls="panel-flows" tabindex="-1" data-tab="flows"><span class="tab-icon" aria-hidden="true">⇄</span><span>Flüsse<small>Gerichtete Buchungen</small></span><span class="tab-number" aria-hidden="true">02</span></button>
+      <button type="button" class="tab-button" id="tab-signals" role="tab" aria-selected="false" aria-controls="panel-signals" tabindex="-1" data-tab="signals"><span class="tab-icon" aria-hidden="true">⌁</span><span>Signale<small>Senden &amp; Ankommen</small></span><span class="tab-number" aria-hidden="true">03</span></button>
+      <button type="button" class="tab-button" id="tab-history" role="tab" aria-selected="false" aria-controls="panel-history" tabindex="-1" data-tab="history"><span class="tab-icon" aria-hidden="true">≡</span><span>Verlauf<small>Ticks, Lücken &amp; Prüfung</small></span><span class="tab-number" aria-hidden="true">04</span></button>
+    </div><div class="quick-result" id="quick-result" data-state="pending" aria-live="off"><div><span id="quick-result-label">Bestätigter Zustand · System</span><p id="quick-result-text">Warte auf die Engine</p></div><button type="button" id="quick-result-button" aria-controls="panel-system" disabled>Details ansehen</button></div><button type="button" class="button controls-toggle" id="controls-toggle" aria-controls="controls-panel" aria-expanded="false"><span>Modell einstellen</span><span aria-hidden="true">⌄</span></button></div>
+
+    <noscript><p class="notice">Für die lokale Engine wird JavaScript benötigt. Die <a href="./README.md">Dokumentation</a> erklärt Modell und Startweg.</p></noscript>
+    <div class="workspace-grid">
+      <aside class="panel controls-panel" id="controls-panel" aria-labelledby="selection-title">
+        <div class="panel-heading"><p class="eyebrow">Dein Ausschnitt</p><h2 id="selection-title">Bereich &amp; Ressource</h2></div>
+        <div class="field"><label for="entity-search">Bereich suchen</label><input id="entity-search" type="search" placeholder="Name oder ID" autocomplete="off" spellcheck="false" disabled><p class="hint" id="entity-count">Noch keine Bereiche geladen.</p></div>
+        <div class="field"><label for="entity-choice">Bereich auswählen</label><select id="entity-choice" disabled><option value="">Warte auf das Modell</option></select></div>
+        <div class="field"><label for="resource-choice">Ressource</label><select id="resource-choice" disabled><option value="">Warte auf das Modell</option></select><p class="unit-note" id="resource-unit">Die Einheit gehört zum gewählten Modell.</p></div>
+        <button type="button" class="button local-step" data-action="STEP" data-ticks="1" disabled>Modell einen Tick weiterführen <span aria-hidden="true">→</span></button>
+        <details class="control-details" open><summary>Szenario wechseln</summary><div class="details-content"><div class="field"><label for="scenario-choice">Modell</label><select id="scenario-choice"><option value="compartments">Verschachtelte Bereiche</option><option value="competition">Konkurrenz um einen Bestand</option><option value="profiles">Softwareprofile &amp; Nachrichten</option></select></div><div class="field" id="profile-count-field" hidden><label for="profile-count">Anzahl der Profile</label><select id="profile-count"><option value="69">69 Profile</option><option value="1000">1.000 Profile</option></select></div><button type="button" class="button" id="reset-button">Szenario neu laden</button><p class="hint">Öffnet einen neuen Modelllauf. Ein Checkpoint erhält den bisherigen Stand.</p></div></details>
+        <details class="control-details"><summary>Eigener Bereich</summary><form class="details-content" id="add-entity-form" novalidate><div class="field"><label for="new-entity-id">Eindeutige ID</label><input id="new-entity-id" type="text" maxlength="120" aria-describedby="entity-add-state" placeholder="mein_bereich" spellcheck="false" autocomplete="off"></div><div class="field"><label for="new-entity-label">Anzeigename</label><input id="new-entity-label" type="text" maxlength="160" placeholder="Eigener Bereich" autocomplete="off"></div><label class="check-label"><input type="checkbox" id="new-entity-child" checked> Unter dem ausgewählten Bereich</label><button type="submit" class="button" id="add-entity-button" disabled>Bereich hinzufügen</button><p class="hint" id="entity-add-state">Neue Bereiche erhalten keine zusätzlichen Ressourcen.</p></form></details>
+        <details class="control-details"><summary>Checkpoint &amp; Wiederaufnahme</summary><div class="details-content"><button type="button" class="button" id="export-button" disabled>Checkpoint herunterladen <span aria-hidden="true">↓</span></button><div class="field"><label for="snapshot-file">Checkpoint öffnen</label><input id="snapshot-file" type="file" accept="application/json,.json" aria-describedby="file-hint"><p class="hint" id="file-hint">JSON bis 16 MiB. Die Datei bleibt im Browser. Erst ein gültiger Restore ersetzt die Welt.</p></div><p class="import-state" id="import-state">Noch keine Datei ausgewählt.</p></div></details>
+        <div class="gap-control"><button type="button" class="button" id="gap-button" data-action="GAP" disabled>Lücke +1 s dokumentieren</button><p class="hint">Ergänzt die Beobachtungsspur bei unverändertem Modell-Tick.</p></div>
+      </aside>
+
+      <div class="main-column">
+        <section class="panel view-panel" id="panel-system" role="tabpanel" aria-labelledby="tab-system" tabindex="-1">
+          <div class="panel-heading"><div><p class="eyebrow">Systemansicht</p><h2>Verschachtelung &amp; Austausch</h2></div><span class="badge muted" id="scene-state">Noch kein Modell</span></div>
+          <p class="context-line" id="entity-path">Die Hierarchie stammt aus dem bestätigten Modellzustand.</p>
+          <div class="flow-strip" id="flow-strip"><div class="empty-state"><span aria-hidden="true">⇄</span><p>Mit dem ersten bestätigten Zustand werden die registrierten Wege sichtbar.</p></div></div>
+          <div class="diagram-toolbar"><h3>Zugehörigkeit</h3><span id="scene-coverage">—</span></div>
+          <div class="compartment-scene" id="compartment-scene"><div class="empty-state"><span aria-hidden="true">▣</span><p>Das Modell wird geladen.</p></div></div>
+          <p class="diagram-note">Verschachtelung zeigt Zugehörigkeit. Pfeile zeigen gerichtete Modellrouten; Beträge stammen aus verbuchten Transfers. <button type="button" class="text-button" data-open-tab="flows">Als Tabelle lesen →</button></p>
+          <div class="world-metrics"><div><span>Bereiche</span><strong id="world-entities">—</strong></div><div><span>Routen</span><strong id="world-routes">—</strong></div><div><span>Prozesse</span><strong id="world-processes">—</strong></div><div><span>Erhaltene Events</span><strong id="world-events">—</strong></div></div>
+          <p class="diagram-note" id="event-budget">Das Ereignisbudget wird aus dem bestätigten Modellzustand gelesen.</p>
+        </section>
+
+        <section class="panel view-panel" id="panel-flows" role="tabpanel" aria-labelledby="tab-flows" tabindex="-1" hidden>
+          <div class="panel-heading"><div><p class="eyebrow">Gerichtete Ressourcen</p><h2>Was wurde übertragen?</h2></div><span class="badge" id="flow-count">—</span></div>
+          <p class="context-line" id="flow-window">Noch kein bestätigtes Transferfenster.</p>
+          <label class="check-label view-filter"><input id="flow-focus" type="checkbox"> Nur Wege des ausgewählten Bereichs</label>
+          <div class="table-wrap"><table><caption class="sr-only">Registrierte Routen der gewählten Ressource und verbuchte Mengen im angezeigten Tickfenster</caption><thead><tr><th scope="col">Von → nach</th><th scope="col">Verbucht</th><th scope="col">Vmax</th></tr></thead><tbody id="flow-table"><tr><td colspan="3">Warte auf das Modell.</td></tr></tbody></table></div>
+          <p class="diagram-note">Vmax ist die deklarierte maximale Modellrate pro Modellsekunde. Sie ist ein Parameter und unterscheidet sich von der tatsächlich gebuchten Menge.</p>
+          <div class="resource-totals" id="resource-totals"></div>
+        </section>
+
+        <section class="panel view-panel" id="panel-signals" role="tabpanel" aria-labelledby="tab-signals" tabindex="-1" hidden>
+          <div class="panel-heading"><div><p class="eyebrow">Nachrichten im Modell</p><h2>Senden, warten, ankommen.</h2></div><span class="badge muted" id="signal-state">—</span></div>
+          <div class="signal-metrics"><div><span>Sendungen im Eventpaket</span><strong id="signal-sent">—</strong></div><div><span>Aktuell unterwegs</span><strong id="signal-pending">—</strong></div><div><span>Ankünfte im Eventpaket</span><strong id="signal-arrived">—</strong></div></div>
+          <h3 class="section-label">Registrierte Kanäle</h3><div class="channel-list" id="channel-list"><p class="hint">Noch keine Kanäle geladen.</p></div>
+          <h3 class="section-label">Erhaltene Signalereignisse</h3><p class="context-line" id="signal-coverage">Die Sendungs- und Ankunftszahlen beziehen sich auf das bereitgestellte Eventpaket.</p><div class="signal-events" id="signal-events"></div>
+          <p class="diagram-note">Signale sind Nachrichten. Ressourcentransporte und Empfangsreaktionen benötigen eigene deklarierte Regeln. Profile sind Softwareobjekte; ihre Namen erzeugen keine realen Agenten.</p>
+        </section>
+
+        <section class="panel view-panel" id="panel-history" role="tabpanel" aria-labelledby="tab-history" tabindex="-1" hidden>
+          <div class="panel-heading"><div><p class="eyebrow">Erhaltene Schritte</p><h2>Ticks, Lücken &amp; Prüfung</h2></div><button type="button" class="button small" id="audit-button" disabled>Audit ausführen</button></div>
+          <div class="time-cards"><div><span>Modell-Tick</span><strong id="history-tick">—</strong><small id="history-model-time">—</small></div><div class="gap-card"><span>Dokumentierte Lücken</span><strong id="history-gap">—</strong><small>Eigener Record, eigener Zeitbezug</small></div><div><span>Beobachtete Laufzeit</span><strong id="history-wall">—</strong><small>Browser-Worker, kein Dauerbetrieb</small></div></div>
+          <div class="audit-box" id="audit-box"><strong id="audit-title">Noch keine Prüfung für diesen Stand</strong><p id="audit-summary">Das Audit wird ausdrücklich angefordert.</p><ul id="audit-violations" hidden></ul></div>
+          <div class="field event-search-field"><label for="event-search">Ereignisse filtern</label><input id="event-search" type="search" placeholder="Typ, Bereich oder Route" autocomplete="off" spellcheck="false"></div>
+          <p class="coverage-line" id="event-coverage">Noch kein Eventpaket.</p><div class="event-list" id="event-list"></div>
+          <details class="event-detail" id="event-detail"><summary>Ausgewähltes Ereignis</summary><pre id="event-json">Wähle ein Ereignis aus.</pre></details>
+          <p class="diagram-note">Eine lokale Hashkette bindet erhaltene Ereignisbytes. Die Abnahme einzelner Modellverträge und eine biologische Messung haben eigene Belege. <a href="./SOURCE.json">Herkunft ansehen ↗</a></p>
+        </section>
+      </div>
+
+      <aside class="panel inspector-panel" aria-labelledby="inspector-title"><p class="eyebrow">Ausgewählter Bereich</p><h2 id="inspector-title">Noch kein Bereich</h2><p class="context-line" id="inspector-path">—</p><div class="inspector-resource"><span id="inspector-resource-name">Modellbestand</span><strong id="current-stock">—</strong><small id="inspector-unit">Einheit noch nicht geladen</small></div><h3>Was hat sich geändert?</h3><p class="hint" id="balance-window">Noch kein bestätigter Schritt.</p><dl class="balance-list"><div><dt>Vorher</dt><dd id="balance-before">—</dd></div><div><dt>Eingang</dt><dd id="balance-in">—</dd></div><div><dt>Ausgang</dt><dd id="balance-out">—</dd></div><div class="balance-result"><dt>Nachher</dt><dd id="balance-after">—</dd></div></dl><div class="delta-line"><span>Bestandsdelta</span><strong id="balance-delta">—</strong></div><p class="hint" id="balance-note">Vorwerte und Buchungen werden aus demselben bestätigten Fenster gelesen.</p><button type="button" class="text-button" data-open-tab="flows">Buchungen als Tabelle ansehen →</button><details class="identity-detail"><summary>Identität &amp; Modellherkunft</summary><pre id="entity-json">Noch kein Bereich geladen.</pre></details><p class="model-note">Mengen und Parameter gehören zu diesem Softwaremodell. Eine medizinische Kalibrierung ist nicht enthalten.</p></aside>
+    </div>
+    <section class="trace-section" aria-label="Modell nachvollziehen"><div><p class="eyebrow">Offen nachvollziehbar</p><h2>Vom Zustand zur Erklärung.</h2><p>Regeln, Quellen und Grenzen sind erreichbar, während das Modell lokal läuft.</p></div><nav><a href="./README.md"><strong>Code &amp; Startweg</strong><span>Bedienung, Modellregeln und Tests ↗</span></a><a href="./SOURCES.md"><strong>Quellen &amp; Modellgrenzen</strong><span>Vorarbeiten und ihr jeweiliger Scope ↗</span></a><a href="./SOURCE.json"><strong>Herkunft dieser Fassung</strong><span>Übernahme, Anpassungen und Belegstand ↗</span></a></nav></section>
+    <p id="action-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+  </main>
+  <footer class="shell site-footer"><p><strong>HALVETH</strong> · Lebende Systeme · Modelllabor</p><p>Juri / HALVETH · Entwicklung mit KI-Unterstützung</p><a href="https://github.com/Juri-Halveth/halveth-forschungslabor">Repository ↗</a><span id="engine-version">Engineversion noch nicht empfangen</span><span>Lizenz siehe Repository</span></footer>
+  <script type="module" src="./view.mjs"></script>
+</body>
+</html>

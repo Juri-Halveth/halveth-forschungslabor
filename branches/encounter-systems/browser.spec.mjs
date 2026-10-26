@@ -245,10 +245,10 @@ test("unavailable browser storage keeps the experiment and temporary learning us
   expect(errors).toEqual([]);
 });
 
-test("the repository tunnel has twenty-one usable source and test routes and mobile navigation fits",async({page},info)=>{
-  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(21);
-  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(21);
-  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(21);
+test("the repository tunnel has twenty-two usable source and test routes and mobile navigation fits",async({page},info)=>{
+  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(22);
+  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(22);
+  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(22);
   await expect(page.locator('.route').filter({hasText:'Code & Messung'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../code/');
   await expect(page.locator('.route').filter({hasText:'Sicherheitsprüfungen'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../sicherheitslabor/');
   await expect(page.locator('.route').filter({hasText:'Security Research'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../security/');

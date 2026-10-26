@@ -10,7 +10,8 @@ const root=path.resolve(import.meta.dirname,"..");
 test("every current module has real source and test bindings; generated knowledge stays current",async()=>{
   assert.equal(await checkLearningArtifacts(),3);
   const routes=JSON.parse(await fs.readFile(path.join(root,"catalog/wissen/routes.json"),"utf8"));
-  assert.equal(routes.entries.length,21);
+  assert.equal(routes.entries.length,22);
+  assert.equal(routes.entries.find(entry=>entry.id==='open-organism-engine').demo,'systeme/');
   assert.equal(routes.entries.find(entry=>entry.id==='code-observation-lab').demo,'code/');
   assert.equal(routes.entries.find(entry=>entry.id==='security-workbench').demo,'sicherheitslabor/');
   assert.equal(routes.entries.find(entry=>entry.id==='security-research-hub').demo,'security/');

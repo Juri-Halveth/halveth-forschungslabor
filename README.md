@@ -23,6 +23,10 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [Lebende Systeme – Modelllabor mit Wiederaufnahme](branches/open-organism-engine/)
+
+Lokaler Entwicklungskandidat aus der bereitgestellten Engine: gerichtete Ressourcenflüsse, verzögerte Signale, ein eigener Browser-Worker und prüfbare Checkpoints. Drei Szenarien mit synthetischen Profilen sowie Desktop-/Mobilansicht. Die Lizenzentscheidung für dieses neue Modul ist noch offen. [Code, Startweg und Grenzen](branches/open-organism-engine/README.md).
+
 ### [Code & Messung – Dateien, Signale und Sequenzen](branches/code-observation-lab/)
 
 Vier lokale Arbeitsplätze zum Einordnen von `.eth`/`.mav`/`.maw`, Vergleichen von Interferenz und Phasenrauschen, reversiblen Codieren von Unicode und Nachschlagen von RNA-Codons. Mit 25 gebundenen Quellen, Gegenbeispielen und zusätzlichen Modellen für Kameraaufträge, Optik und Zustandsbrücken. [Lokal starten und Modelle verstehen](branches/code-observation-lab/README.md). Die Veröffentlichungspipeline bereitet die Ansicht unter `/code/` vor.
