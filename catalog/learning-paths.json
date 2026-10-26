@@ -7,9 +7,9 @@
     {
       "id": "lagefaden",
       "title": "LAGEFADEN – drei Meldungen, wie viele Beobachtungen?",
-      "description": "Fünf Modellfälle, drei datierte Katalogfälle und eine W-Coverage-Karte zeigen Kopien, Zeitstände, gebundene Teilantworten und offene Fragen mit Belegstellen.",
+      "description": "Modellfälle, drei datierte Katalogfälle und eine W-Coverage-Karte zeigen Herkunft und offene Teilfragen. Drei wählbare Prüfprofile markieren die dafür benötigten Eingaben mit Belegstellen.",
       "source": "branches/lagefaden/model.mjs",
-      "tests": ["branches/lagefaden/model.test.mjs", "branches/lagefaden/usgs-source.test.mjs", "branches/lagefaden/public-sources.test.mjs", "branches/lagefaden/coverage.test.mjs"],
+      "tests": ["branches/lagefaden/model.test.mjs", "branches/lagefaden/usgs-source.test.mjs", "branches/lagefaden/public-sources.test.mjs", "branches/lagefaden/coverage.test.mjs", "branches/lagefaden/decision-relevance.test.mjs"],
       "docs": "branches/lagefaden/README.md",
       "demo": "lagefaden/"
     },

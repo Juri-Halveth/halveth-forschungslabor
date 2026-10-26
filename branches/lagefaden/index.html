@@ -99,11 +99,20 @@
         <li><span aria-hidden="true">◐</span><strong>Teilantwort</strong><small>Ein Teil bleibt offen, ist berechnet oder stammt aus dem Anwendungsentwurf.</small></li>
         <li><span aria-hidden="true">○</span><strong>Offen</strong><small>Für diese Teilfragen liegt im gültigen Snapshot keine Antwort vor.</small></li>
       </ul>
+      <div id="decision-review" class="decision-panel" aria-labelledby="decision-title">
+        <p class="eyebrow">Entscheidungsrelevante Lücken</p><h3 id="decision-title">Wofür wird gerade geprüft?</h3>
+        <label for="decision-profile">Eine Beispiel-Prüffrage wählen</label><select id="decision-profile" aria-describedby="decision-description"></select>
+        <p id="decision-description"></p>
+        <details class="decision-rules"><summary>Welche Teilantworten braucht dieses Profil – und weshalb?</summary><ul id="decision-rules"></ul></details>
+        <div id="decision-cards" class="decision-cards" aria-live="polite"></div>
+        <div class="decision-footer"><p>Die drei Profile sind offengelegte Anwendungsentwürfe. Sie prüfen benötigte Eingaben und deren Belegbasis. Eine betriebliche Entscheidung und ihr tatsächlicher Nutzen werden gesondert geprüft.</p><button type="button" id="decision-export" disabled>Prüffrage + Lücken als JSON ↓</button></div>
+      </div>
       <div class="coverage-toolbar">
         <div role="group" aria-label="Coverage-Fragen filtern" class="coverage-filters">
           <button type="button" data-coverage-filter="all" aria-pressed="true">Alle 22 Fragen</button>
           <button type="button" data-coverage-filter="gaps" aria-pressed="false">Mit offenen Anteilen</button>
           <button type="button" data-coverage-filter="contrast" aria-pressed="false">Unterschiedliche Ausschnitte</button>
+          <button type="button" data-coverage-filter="decision" aria-pressed="false">Für diese Prüffrage</button>
         </div>
         <span id="coverage-filter-count"></span>
       </div>
@@ -118,6 +127,7 @@
       <article id="coverage-detail" class="coverage-detail" aria-labelledby="coverage-detail-title">
         <p class="eyebrow">Die Zelle aufklappen</p><h3 id="coverage-detail-title">Eine Frage auswählen</h3>
         <p id="coverage-detail-case" class="coverage-case"></p><p id="coverage-detail-scope"></p>
+        <p id="coverage-decision-note" class="decision-detail-note"></p>
         <p id="coverage-detail-answer" class="coverage-answer"></p>
         <ul id="coverage-facets" class="coverage-facets"></ul><div id="coverage-receipt" class="coverage-receipt"></div>
       </article>

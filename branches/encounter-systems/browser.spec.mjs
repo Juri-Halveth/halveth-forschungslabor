@@ -322,6 +322,66 @@ test('LAGEFADEN coverage survives outages and fits narrow viewports without hidi
   await expect(page.locator('.coverage-cell[data-state="UNAVAILABLE"]')).toHaveCount(66);
 });
 
+test('LAGEFADEN review profiles change required inputs, preserve other gaps, and export the selected rule',async({page})=>{
+  const errors=[];page.on('pageerror',error=>errors.push(error.message));
+  await page.goto('/lagefaden/#decision-review');
+  await expect(page.locator('#coverage-status')).toContainText('3 von 3');
+  const card=id=>page.locator('.decision-card[data-source="'+id+'"]');
+  await expect(card('EONET')).toHaveAttribute('data-state','INPUT_REQUIREMENTS_BOUND');
+  await expect(card('USGS')).toHaveAttribute('data-state','REVIEW_OPEN_REQUIREMENTS');
+  await expect(card('CEMS')).toHaveAttribute('data-state','REVIEW_OPEN_REQUIREMENTS');
+  await page.locator('[data-coverage-filter="decision"]').click();
+  await expect(page.locator('.coverage-cell[data-question="WO?"]')).toHaveCount(3);
+  await expect(page.locator('.coverage-cell[data-question="WARUM?"]')).toHaveCount(0);
+  const picker=page.locator('#decision-profile');
+  await picker.focus();await page.keyboard.press('End');await page.keyboard.press('Enter');
+  await expect(picker).toHaveValue('PHYSICAL_INDEPENDENCE');
+  for(const id of ['USGS','EONET','CEMS']) {
+    await expect(card(id)).toHaveAttribute('data-state','REVIEW_OPEN_REQUIREMENTS');
+    await expect(card(id).locator('[data-state="REQUIRED_UNKNOWN"]')).toHaveCount(3);
+    await expect(card(id)).toContainText('lässt 2 weitere offen');
+  }
+  await picker.selectOption('CATALOG_REVISIONS');
+  await expect(card('USGS')).toHaveAttribute('data-state','INPUT_REQUIREMENTS_BOUND');
+  await expect(card('EONET')).toContainText('Änderungszeit');
+  await expect(card('CEMS')).toHaveAttribute('data-state','REVIEW_DERIVED_INPUTS');
+  await card('CEMS').locator('button[data-facet="catalogUpdate"]').click();
+  await expect(page.locator('#coverage-detail-title')).toHaveText('WANN? · Copernicus EMS');
+  await expect(page.locator('#coverage-decision-note')).toContainText('Änderungszeit');
+  await expect(page.locator('#coverage-shared')).toContainText('Ereignisursache');
+  const downloadPromise=page.waitForEvent('download');await page.locator('#decision-export').click();
+  const downloaded=await downloadPromise;
+  const exported=JSON.parse(await fs.readFile(await downloaded.path(),'utf8'));
+  expect(exported.contract).toBe('halveth.lagefaden.review-export.v1');
+  expect(exported.coverage.rows).toHaveLength(22);
+  expect(exported.decisionReview.profile.id).toBe('CATALOG_REVISIONS');
+  expect(exported.decisionReview.operationalActionAuthorized).toBe(false);
+  await page.locator('[data-coverage-filter="all"]').click();
+  await expect(page.locator('.coverage-cell')).toHaveCount(66);
+  expect(errors).toEqual([]);
+});
+
+test('LAGEFADEN review profiles remain readable on mobile and keep unavailable sources unassessed',async({page},info)=>{
+  await page.goto('/lagefaden/#decision-review');
+  await expect(page.locator('#coverage-status')).toContainText('3 von 3');
+  for(const profile of ['CATALOG_COORDINATES','CATALOG_REVISIONS','PHYSICAL_INDEPENDENCE'])for(const width of [320,390,768,1440]) {
+    await page.setViewportSize({width,height:1000});await page.locator('#decision-profile').selectOption(profile);
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth),profile+' at '+width).toBeLessThanOrEqual(width);
+  }
+  await page.locator('#decision-profile').selectOption('CATALOG_COORDINATES');
+  await page.locator('#decision-review').evaluate(element=>element.scrollIntoView());
+  await page.screenshot({path:info.outputPath('decision-desktop.png')});
+  await page.setViewportSize({width:390,height:1000});
+  await page.locator('#decision-review').evaluate(element=>element.scrollIntoView());
+  await page.screenshot({path:info.outputPath('decision-mobile.png')});
+  await page.route('**/lagefaden/data/eonet-example.json',route=>route.fulfill({status:503,body:'unavailable'}));
+  await page.reload();
+  await expect(page.locator('.decision-card[data-source="EONET"]')).toHaveAttribute('data-state','UNAVAILABLE');
+  await page.locator('#decision-profile').selectOption('PHYSICAL_INDEPENDENCE');
+  await expect(page.locator('.decision-card[data-source="EONET"]')).toHaveAttribute('data-state','UNAVAILABLE');
+  await expect(page.locator('.decision-card[data-source="EONET"] .decision-requirements li')).toHaveCount(0);
+});
+
 test('security workbench executes counterexamples, rejects invalid input and exports actual local results',async({page})=>{
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('/sicherheitslabor/');await expect(page.locator('#run-count')).toHaveText('6');

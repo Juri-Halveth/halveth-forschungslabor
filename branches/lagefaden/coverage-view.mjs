@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MIT
 import {buildCoverageMatrix,unavailableSource} from './coverage.mjs';
+import {evaluateDecisionRelevance} from './decision-relevance.mjs';
+import {mountDecisionReview} from './decision-view.mjs';
 
 const labels={DOCUMENTED:'Im Datensatz',PARTIAL:'Teilantwort',UNKNOWN:'Offen',PENDING:'Lädt',UNAVAILABLE:'Nicht verfügbar'};
 const marks={DOCUMENTED:'●',PARTIAL:'◐',UNKNOWN:'○',PENDING:'…',UNAVAILABLE:'—'};
@@ -9,8 +11,14 @@ const byId=id=>document.getElementById(id);
 
 export function mountCoverage() {
   const sources=new Map(['USGS','EONET','CEMS'].map(id=>[id,unavailableSource(id,'PENDING')]));
-  let matrix,filter='all',selection={rowId:'W09',sourceId:'USGS'};
+  let matrix,review,filter='all',selection={rowId:'W09',sourceId:'USGS'};
+  const decisionView=mountDecisionReview(()=>render(),(sourceId,facetId)=>{
+    const row=matrix.rows.find(r=>r.facets.includes(facetId));
+    selection={rowId:row.id,sourceId};render();
+    byId('coverage-detail').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  });
   function visible(row) {
+    if(filter==='decision')return review.rowRelevance.find(r=>r.rowId===row.id).requiredFacetIds.length>0;
     if(filter==='gaps') return row.cells.some(c=>c.state==='UNKNOWN'||c.state==='UNAVAILABLE'||c.state==='PENDING'||c.facets.some(f=>f.state==='UNKNOWN'));
     if(filter==='contrast') {
       const present=row.cells.filter(c=>c.answer);
@@ -26,11 +34,16 @@ export function mountCoverage() {
     byId('coverage-detail-scope').textContent='Geprüfter Ausschnitt: '+row.scope+'.';
     byId('coverage-detail-answer').textContent=cell.answer?.value??(cell.state==='PENDING'?'Der lokale Snapshot wird geladen.':'Der lokale Snapshot fehlt oder ist ungültig. Seine Antworten werden nicht als Ereignislücken gezählt.');
     byId('coverage-detail-case').textContent=source.caseId ? 'Gebundener Fall: '+source.caseId+' · '+source.title : 'Für diese Spalte liegt noch kein gültiger Fall vor.';
+    const needed=review.rowRelevance.find(r=>r.rowId===row.id).requiredFacetIds;
+    byId('coverage-decision-note').textContent=needed.length
+      ? 'Für die gewählte Prüffrage benötigt: '+review.profile.required.filter(r=>needed.includes(r.facetId)).map(r=>r.label).join(' · ')
+      : 'Diese Zeile liegt außerhalb der benötigten Eingaben des gewählten Beispielprofils. Ihre Antworten und Lücken bleiben erhalten.';
     const parts=byId('coverage-facets');parts.replaceChildren();
     for(const f of cell.facets) {
       const li=el('li',undefined,'coverage-facet');
       li.dataset.basis=f.state;
       li.append(el('strong',f.label),el('span',basis[f.state],'coverage-basis'),el('p',f.value));
+      if(needed.includes(f.id))li.append(el('span','Für diese Prüffrage benötigt','decision-facet-needed'));
       if(f.evidence.length) {
         const refs=el('details');refs.append(el('summary','Belegstelle ansehen'));
         for(const ref of f.evidence) {
@@ -51,6 +64,8 @@ export function mountCoverage() {
   }
   function render() {
     matrix=buildCoverageMatrix([...sources.values()]);
+    review=evaluateDecisionRelevance(matrix,decisionView.getProfileId());
+    decisionView.render(matrix,review);
     const available=matrix.sources.filter(c=>c.availability==='PRESENT').length;
     byId('coverage-status').textContent=available+' von 3 gespeicherten Fällen verfügbar · 22 festgelegte Fragen · jede Spalte behält ihre Ereigniskennung';
     for(const source of matrix.sources) byId('coverage-case-'+source.id.toLowerCase()).textContent=source.caseId??labels[source.availability];
@@ -58,10 +73,21 @@ export function mountCoverage() {
     const shown=matrix.rows.filter(visible);
     for(const row of shown) {
       const tr=el('tr');const th=el('th',row.question);th.scope='row';tr.append(th);
+      const needed=review.rowRelevance.find(r=>r.rowId===row.id).requiredFacetIds;
+      tr.dataset.decisionRequired=String(needed.length>0);
+      if(needed.length)th.append(el('small','im Profil benötigt','decision-row-note'));
       for(const cell of row.cells) {
         const td=el('td');const button=el('button',undefined,'coverage-cell');button.type='button';button.dataset.state=cell.state;
         button.dataset.question=row.question;button.dataset.source=cell.sourceId;
         button.setAttribute('aria-label',row.question+' · '+matrix.sources.find(s=>s.id===cell.sourceId).label+' · '+labels[cell.state]);
+        if(needed.length) {
+          const sourceReview=review.sourceReviews.find(s=>s.sourceId===cell.sourceId);
+          const requirements=sourceReview.requirements.filter(r=>needed.includes(r.facetId));
+          const relevance=sourceReview.state==='PENDING'||sourceReview.state==='UNAVAILABLE'?'SOURCE_NOT_ASSESSED'
+            :requirements.some(r=>r.state==='REQUIRED_UNKNOWN'||r.state==='BASIS_NOT_ACCEPTED')?'REQUIRED_GAP'
+              :requirements.some(r=>r.state==='REQUIRES_DERIVATION_REVIEW')?'DERIVATION_REVIEW':'BOUND_REQUIREMENT';
+          button.dataset.relevance=relevance;
+        }
         button.setAttribute('aria-controls','coverage-detail');
         button.setAttribute('aria-pressed',String(selection.rowId===row.id&&selection.sourceId===cell.sourceId));
         const symbol=el('span',marks[cell.state],'coverage-mark');symbol.setAttribute('aria-hidden','true');

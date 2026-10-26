@@ -7,13 +7,14 @@
     {
       "id": "lagefaden",
       "title": "LAGEFADEN – drei Meldungen, wie viele Beobachtungen?",
-      "description": "Fünf Modellfälle, drei datierte Katalogfälle und eine W-Coverage-Karte zeigen Kopien, Zeitstände, gebundene Teilantworten und offene Fragen mit Belegstellen.",
+      "description": "Modellfälle, drei datierte Katalogfälle und eine W-Coverage-Karte zeigen Herkunft und offene Teilfragen. Drei wählbare Prüfprofile markieren die dafür benötigten Eingaben mit Belegstellen.",
       "source": "branches/lagefaden/model.mjs",
       "tests": [
         "branches/lagefaden/model.test.mjs",
         "branches/lagefaden/usgs-source.test.mjs",
         "branches/lagefaden/public-sources.test.mjs",
-        "branches/lagefaden/coverage.test.mjs"
+        "branches/lagefaden/coverage.test.mjs",
+        "branches/lagefaden/decision-relevance.test.mjs"
       ],
       "docs": "branches/lagefaden/README.md",
       "demo": "lagefaden/",
@@ -25,8 +26,8 @@
         },
         {
           "path": "branches/lagefaden/README.md",
-          "bytes": 14200,
-          "sha256": "aa037d6aab16cca03acbb30c621b5ee52c4d5e0477523e9e3985d0e5a90765d5"
+          "bytes": 15215,
+          "sha256": "e7c3d4f93d650196be172e262cf221c9c11fc49315b29eee3ca5916d8f3ce1d9"
         },
         {
           "path": "branches/lagefaden/model.test.mjs",
@@ -47,6 +48,11 @@
           "path": "branches/lagefaden/coverage.test.mjs",
           "bytes": 6681,
           "sha256": "6e899b270c1da4d136b914e5f61e7740e07c38f1b400b477a3145b96ce123090"
+        },
+        {
+          "path": "branches/lagefaden/decision-relevance.test.mjs",
+          "bytes": 6104,
+          "sha256": "febc4869d815f75debedfac96ef7a8ecf0d205ed665cd5dbbb07132d46c1c1d2"
         }
       ]
     },
@@ -113,8 +119,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 34572,
-          "sha256": "f31121a222ed000c8af3a7333fa5c1d7ec80a5489021d720cb51cf77b67cc0b9"
+          "bytes": 38868,
+          "sha256": "f77863a68c9281cdca3ddc9712cc448b25b1eda264ec06c3411b5467870faebf"
         }
       ]
     },
@@ -187,8 +193,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 34572,
-          "sha256": "f31121a222ed000c8af3a7333fa5c1d7ec80a5489021d720cb51cf77b67cc0b9"
+          "bytes": 38868,
+          "sha256": "f77863a68c9281cdca3ddc9712cc448b25b1eda264ec06c3411b5467870faebf"
         }
       ]
     },

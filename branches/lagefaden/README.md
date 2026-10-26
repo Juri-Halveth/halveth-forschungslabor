@@ -17,6 +17,12 @@ Die [Coverage-Karte](index.html#coverage) vergleicht 22 Fragen in drei getrennte
 
 `●` bezeichnet vollständige Daten-/Receiptabdeckung der **jeweils definierten** Facetten, `◐` eine Teilantwort, Ableitung oder Anwendungsfestlegung und `○` offene Facetten. Ein fehlender Snapshot erhält einen eigenen Verfügbarkeitszustand. Er zählt nicht als untersuchte Ereignislücke. Filter zeigen offene Anteile und unterschiedliche Antwortausschnitte. Das JSON enthält die Vereinigung bekannter Teilantworten mit ihrer Quellen-/Fallbindung, die Vereinigung offener Facetten sowie deren gemeinsamen Schnitt. Bei einem Quellenausfall bleibt der gemeinsame Schnitt ungeprüft. Die Karte ist ein Vergleich der gespeicherten Beispiele, keine Anbieter-Gesamtnote oder Ereignisfusion. [Definitionen, Zustände und Prüfgrenzen](COVERAGE_DESIGN.md).
 
+### Welche Lücke betrifft die gewählte Prüffrage?
+
+Der [Prüffragen-Layer](index.html#decision-review) ergänzt drei offengelegte Beispiele: Koordinaten aus dem Katalog übernehmen, Zeitstände innerhalb eines Katalogfalls vergleichen und unabhängige physische Beobachtungen zählen. Je nach Auswahl markiert er die benötigten Facetten, ihre Belegbasis und offene Pflichteingaben pro Quelle. Eine vorhandene Teilantwort in einem anderen Ereignis schließt die eigene Lücke nicht. Klickbare Anforderungen führen direkt zu ihrer W-Zelle und Belegstelle. Andere offene Facetten bleiben im vollständigen Inventar erhalten.
+
+Eine bedingte Sensitivitätsausgabe zeigt, ob eine Facette die letzte offene Pflichteingabe dieses Profils ist oder welche weiteren Eingaben offen bleiben. Sie ergänzt keine Quelle. Der zusätzliche JSON-Export enthält das konkrete Profil zusammen mit der unveränderten Coverage; der bisherige Coverage-Export bleibt erhalten. [Regeln und Beispielergebnisse](DECISION_RELEVANCE.md).
+
 ## Portfolio-Übernahme: was tatsächlich vorliegt
 
 | Öffentliche Spur | Vorhandener technischer Stand | Beitrag zu LAGEFADEN | Nicht mitübernommen |
