@@ -248,11 +248,16 @@ test('LAGEFADEN shows separate EONET and CEMS receipts, revision difference, and
   await expect(page.locator('#cems-updates')).toContainText('Änderungszeiten verschieden');
   await expect(page.locator('#cems-credit-code')).toHaveText(cems.evaluation.activationCode);
   await expect(page.locator('#cems-link')).toHaveAttribute('href',cems.detail.url);
+  for(const grid of ['#w-grid','#real-w-grid','#eonet-w-grid','#cems-w-grid'])await expect(page.locator(grid+' .w-item')).toHaveCount(22);
+  await expect(page.locator('#eonet-w-grid .w-item').nth(8)).toContainText('176.8° W');
+  await expect(page.locator('#cems-w-grid .w-item').filter({hasText:'WESHALB?'})).toContainText('verschiedene Änderungszeiten');
   await page.route('**/lagefaden/data/eonet-example.json',route=>route.fulfill({status:503,body:'unavailable'}));
   await page.route('**/lagefaden/data/cems-example.json',route=>route.fulfill({status:503,body:'unavailable'}));
   await page.reload();
   await expect(page.locator('#eonet-title')).toHaveText('Datierter EONET-Snapshot nicht verfügbar');
   await expect(page.locator('#cems-title')).toHaveText('Datierter CEMS-Snapshot nicht verfügbar');
+  await expect(page.locator('#eonet-w-grid .w-item')).toHaveCount(22);
+  await expect(page.locator('#eonet-w-grid .w-item').first()).toContainText('gültiger Snapshot fehlt');
   await expect(page.locator('#real-event')).toHaveText(/.+/);
   expect(errors).toEqual([]);
 });

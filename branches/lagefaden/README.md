@@ -9,6 +9,8 @@
 
 Eine Einsatzmeldung wurde zweimal weitergeleitet; daneben liegt ein älterer Gegenhinweis. LAGEFADEN zeigt pro Nachricht den angegebenen Ursprung, ihre Kopierkette, die Zeit der Beobachtung und den Eingang. Ein alter Ursprung wird durch eine neue Weiterleitung nicht frisch. Bei einem aktuellen Widerspruch bleibt die Prüfung offen. Ein zusätzliches Gegenbeispiel trägt zwei verschiedene Ursprungskennungen, obwohl sie in der erfundenen Außenwelt denselben Absender verdecken: Der lokale Code kann das ohne authentisierte Herkunft nicht erkennen. Die sichtbare Ausgabe lautet daher **deklarierte** Ursprünge und **Außenlage unbekannt**.
 
+Unter den Fällen liegt der aufklappbare **W-Raum** mit 22 Fragen von „WER?“ bis „WAS FEHLT?“. Er läuft für alle fünf synthetischen Fälle und für jeden der drei öffentlichen Snapshots getrennt. `BELEGT` bezeichnet dort nur eine Angabe im gebundenen Modell oder Anbieter-Datensatz, keine unabhängige Bestätigung der Außenwelt; `ABGELEITET` bezeichnet eine sichtbare Rechnung, `DEKLARIERT` eine unbeglaubigte Angabe, `UNKNOWN` eine offene Frage. Der W-Raum unterscheidet etwa „WARUM entstand das Ereignis?“ von „WESHALB fasst das Programm zwei Katalogansichten zusammen?“. Um die Hauptansicht lesbar zu halten, sind diese Detailmatrizen zunächst eingeklappt.
+
 ## Portfolio-Übernahme: was tatsächlich vorliegt
 
 | Öffentliche Spur | Vorhandener technischer Stand | Beitrag zu LAGEFADEN | Nicht mitübernommen |

@@ -35,6 +35,11 @@
         <p class="status" id="case-status" role="status"></p><p class="boundary">Status der Außenwelt: <strong>unbekannt</strong>. Herkunft ist hier angegeben, nicht technisch authentisiert.</p>
         <button id="download" type="button">Prüfprotokoll herunterladen ↓</button>
       </div><div class="timeline"><h3>Was steckt hinter der Zahl?</h3><ol id="report-list"></ol></div></div>
+      <details class="w-space" aria-labelledby="synthetic-w-title">
+        <summary id="synthetic-w-title">W-Raum · Wer, wen, was, wann, wo, warum – und was fehlt?</summary>
+        <p>Jede Frage bleibt einzeln sichtbar. Eine fehlende Antwort wird als <strong>UNKNOWN</strong> markiert statt aus ähnlichen Angaben geraten.</p>
+        <dl id="w-grid" class="w-grid"></dl>
+      </details>
     </section>
     <section class="real" aria-labelledby="real-title">
       <div class="section-head"><p class="eyebrow">Echte Daten · datierter Abruf</p>
@@ -65,6 +70,21 @@
         </article>
       </div>
       <p class="key-note"><strong>Weitere Quelle: NASA FIRMS.</strong> Aktuelle Branddetektionsdaten verlangen einen kostenlosen <a href="https://firms.modaps.eosdis.nasa.gov/api/map_key/">MAP_KEY</a>. Dafür liegt hier noch kein Abruf vor. Ein späterer Schlüssel gehört in eine lokale Umgebung, nie ins öffentliche Repository.</p>
+      <details class="w-space real-w-space" aria-labelledby="real-w-title">
+        <summary id="real-w-title">W-Raum · USGS: Welche Antworten fehlen?</summary>
+        <p>Publikationsquelle, Ereignis, Zeit, Ort und Abrufweg werden von Sensorherkunft, Ursache und Betroffenen getrennt.</p>
+        <dl id="real-w-grid" class="w-grid"></dl>
+      </details>
+      <details class="w-space real-w-space" aria-labelledby="eonet-w-title">
+        <summary id="eonet-w-title">W-Raum · NASA EONET: Was sagen die Quellverweise?</summary>
+        <p>Ereigniskennung und verlinkte Katalogquellen sind sichtbar. Sensorherkunft und Betroffene bleiben offen.</p>
+        <dl id="eonet-w-grid" class="w-grid"></dl>
+      </details>
+      <details class="w-space real-w-space" aria-labelledby="cems-w-title">
+        <summary id="cems-w-title">W-Raum · Copernicus EMS: Welche Zeit gilt?</summary>
+        <p>Eine Aktivierung hat zwei Metadatenansichten. Unterschiedliche Änderungszeiten werden nicht zu neuen Ereignissen.</p>
+        <dl id="cems-w-grid" class="w-grid"></dl>
+      </details>
     </section>
     <section class="fit" aria-labelledby="fit-title"><p class="eyebrow">Der konkrete Produktgedanke</p><h2 id="fit-title">Ein Prüf-Layer vor der menschlichen Lageentscheidung.</h2>
       <div class="fit-grid"><article><span>01 / HEUTE</span><h3>Was läuft schon?</h3><p>Lokaler Code prüft Kopien, Zeitachsen und Widersprüche. Fünf Modellfälle und datierte Snapshots aus drei öffentlichen Katalogen sind sichtbar; ungültige Fälle brechen ab.</p></article>
