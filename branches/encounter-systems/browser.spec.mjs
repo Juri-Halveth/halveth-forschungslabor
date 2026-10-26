@@ -329,6 +329,25 @@ test("the guided example computes a full result with one click and keeps manual 
   expect(errors).toEqual([]);
 });
 
+test("reduced-motion manual actions remain usable after the solo result", async ({page}) => {
+  const errors=[];
+  page.on("pageerror",error=>errors.push(error.message));
+  await page.goto("/");
+  await page.locator("#ew-manual-controls summary").click();
+  await page.locator("#ew-visit").click();
+  await expect(page.locator("#ew-copies")).toHaveText("3 / 3");
+  const before=await page.evaluate(()=>document.getElementById("halveth-encounter-work").__encounter.inspect());
+  expect(before.time).toBeGreaterThan(30);
+  await page.locator("#ew-write").click();
+  await expect.poll(()=>page.evaluate(()=>document.getElementById("halveth-encounter-work").__encounter.inspect().denied)).toBeGreaterThan(before.denied);
+  const after=await page.evaluate(()=>document.getElementById("halveth-encounter-work").__encounter.inspect());
+  expect(after.denied).toBeGreaterThan(before.denied);
+  expect(after.time).toBeGreaterThan(before.time);
+  expect(after.time).toBeLessThanOrEqual(90);
+  await page.locator("#ew-partner").click();
+  expect(errors).toEqual([]);
+});
+
 test("commands, timeline, workloads, corruption and repair are connected to model state", async ({
   page,
 }, info) => {
