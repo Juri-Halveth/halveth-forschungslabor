@@ -13,5 +13,6 @@
     "profiles": "node examples/halveth-registry.mjs",
     "live": "node examples/persisted-runner.mjs",
     "profiles:ids": "node examples/profile-index.mjs 69"
-  }
+  },
+  "license": "SEE LICENSE IN LICENSE-HALVETH-PIRL-2.0.md"
 }

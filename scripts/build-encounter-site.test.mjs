@@ -73,6 +73,11 @@ test("publication copies only approved files, binds bytes and rejects reused out
     buildSite({ ...args, commit: "main" }),
     /full source commit/,
   );
+  await fs.writeFile(metadataPath,JSON.stringify({license:{publicationReady:true,id:"HALVETH-PIRL-2.0"},fixture:"SELF_CREATED_TEST_DATA"}));
+  const pirl=await buildSite({...args,outputRoot:path.join(temporary,"pirl-assigned")});
+  assert.equal(pirl.publicationMode,"PUBLIC");
+  assert.equal(pirl.files.find(entry=>entry.path==='systeme/LICENSE-HALVETH-PIRL-2.0.md').sourcePath,'branches/open-organism-engine/LICENSE-HALVETH-PIRL-2.0.md');
+  assert.equal(pirl.files.find(entry=>entry.path==='HALVETH-RIGHTS.json').sourcePath,'HALVETH-RIGHTS.json');
   await fs.writeFile(metadataPath,JSON.stringify({license:{publicationReady:false,state:"PENDING_USER_DECISION"}}));
   const held=path.join(temporary,"license-held");
   await assert.rejects(buildSite({...args,outputRoot:held}),/license decision is pending/);

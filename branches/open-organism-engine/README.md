@@ -164,5 +164,10 @@ skalierte Beobachtungsprojektionen über 1000 Profilen, echte gelernte Regeln un
 domänenspezifische Kalibrierung. Das sind getrennte Ausbauaufträge mit eigenen
 Testoracles. Ein grüner lokaler Test ist kein Nachweis dieser Eigenschaften.
 
-Die Lizenzentscheidung für dieses neue Modul ist noch offen; siehe
-[LICENSE-STATUS.md](LICENSE-STATUS.md). Frühere Dateifreigaben anderer Module bleiben erhalten.
+Dieses Modul ist seit der ausdrücklichen Nutzerwahl vom 26.10.2026
+[HALVETH PIRL 2.0](LICENSE-HALVETH-PIRL-2.0.md) zugeordnet; siehe
+[LICENSE-STATUS.md](LICENSE-STATUS.md). Nichtkommerzielle Public-Interest-Nutzung
+ist unter den Lizenzbedingungen erlaubt. Kommerzielle Nutzung wird durch diese
+Lizenz nicht erteilt und benötigt, soweit rechtlich erforderlich, eine gesonderte
+schriftliche Lizenz- und Beteiligungsvereinbarung. Frühere wirksame Freigaben
+anderer Dateien und Rechte fremder Quellen bleiben erhalten.

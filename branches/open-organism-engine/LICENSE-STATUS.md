@@ -1,16 +1,25 @@
-# Lizenzstatus dieses neuen Moduls
+# Lizenzzuordnung · HALVETH PIRL 2.0
 
-**UNASSIGNED_LOCAL_DRAFT · Veröffentlichung wartet auf die Lizenzentscheidung.**
+**ASSIGNED_BY_EXPLICIT_USER_CHOICE · 26.10.2026 · Engine 0.2.0**
 
-Das bereitgestellte ZIP enthält keinen ausdrücklichen Lizenztext oder Grant.
-Die allgemeinen MIT-/CC0-/CC-BY-Zuordnungen anderer Laborbestandteile erzeugen
-keine stillschweigende Freigabe dieser neuen Quellübernahme.
+Der Nutzer hat ausdrücklich HALVETH PIRL 2.0 für die neue Engine gewählt.
+Die Lizenzkarte des Repositorys ordnet `branches/open-organism-engine/**`
+einschließlich Code, Tests, Gestaltung, Dokumentation und eigener Fixtures
+dieser Lizenz zu. Maßgeblich ist der [Lizenztext dieses Moduls](LICENSE-HALVETH-PIRL-2.0.md).
 
-Für `branches/open-organism-engine/**` ist deshalb vor einer Veröffentlichung eine
-ausdrückliche Zuordnung erforderlich. Die mögliche Wahl zwischen HALVETH PIRL 2.0,
-MIT oder einem vorerst privaten Kandidaten ist beim Nutzer angefragt. Bis dahin
-ist diese Fassung ein lokaler Arbeitsstand.
+Der Text wurde unverändert aus `Juri-Halveth/halveth-scarlet` am Commit
+`a590ed6c35a9dd5fc89c259ef057bb143850bae5` übernommen. SHA-256:
+`4e222f3dbcfe32682b6fc59329ad61d5fba83966ec545aa7a975b971ef0a6e6a`.
+`SOURCE.json` bindet Zuordnung, Version und Herkunft; `HALVETH-RIGHTS.json`
+im Repository bindet den begrenzten maschinenlesbaren Rechtehinweis.
 
-Vorherige wirksame Freigaben und Rechte fremder Quellen bleiben bestehen.
-Dieser Status ist weder eine Rechtsberatung noch eine nachträgliche Einschränkung
-bereits wirksam freigegebener anderer Dateien.
+Die Lizenz erlaubt nichtkommerzielle Public-Interest-Nutzung unter ihren
+Attributions- und weiteren Bedingungen. Kommerzielle Nutzung wird durch sie
+nicht erteilt; soweit rechtlich erforderlich, braucht sie eine gesonderte
+vorherige schriftliche Lizenz- und Beteiligungsvereinbarung. Die Fassung ist
+source-available und wird nicht als OSI-genehmigte Open-Source-Lizenz bezeichnet.
+
+Das eingegangene Original-ZIP enthielt keinen ausdrücklichen Lizenzgrant.
+Seine Bytes und die früheren lokalen Prüfstände bleiben erhalten. Frühere
+wirksame Freigaben anderer Dateien, Rechte fremder Quellen und gesetzliche
+Ausnahmen werden durch diese neue Zuordnung nicht geändert.

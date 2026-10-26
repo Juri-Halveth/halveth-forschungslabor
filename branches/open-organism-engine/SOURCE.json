@@ -2,7 +2,7 @@
   "schema": "halveth.modified-source-module.v1",
   "module": "open-organism-engine",
   "engineVersion": "0.2.0",
-  "classification": "LOCAL_RELEASE_CANDIDATE",
+  "classification": "LICENSE_ASSIGNED_RELEASE_CANDIDATE",
   "original": {
     "name": "HALVETH_OPEN_ORGANISM_ENGINE.zip",
     "version": "0.1.0",
@@ -28,8 +28,18 @@
   "sourceArchiveIncluded": false,
   "privateDialogueIncluded": false,
   "license": {
-    "state": "PENDING_USER_DECISION",
-    "publicationReady": false
+    "id": "HALVETH-PIRL-2.0",
+    "spdxIdentifier": "LicenseRef-HALVETH-PIRL-2.0",
+    "state": "ASSIGNED_BY_EXPLICIT_USER_CHOICE",
+    "publicationReady": true,
+    "assignedDate": "2026-10-26",
+    "scope": "branches/open-organism-engine/** from engine 0.2.0; prior effective grants and third-party rights retained",
+    "file": "branches/open-organism-engine/LICENSE-HALVETH-PIRL-2.0.md",
+    "sha256": "4e222f3dbcfe32682b6fc59329ad61d5fba83966ec545aa7a975b971ef0a6e6a",
+    "sourceRepository": "Juri-Halveth/halveth-scarlet",
+    "sourceCommit": "a590ed6c35a9dd5fc89c259ef057bb143850bae5",
+    "sourceGitBlob": "83f2ba6f4e3db98b16b26b0db75e5ee605ff5f10",
+    "transfer": "UNMODIFIED_LICENSE_TEXT"
   },
   "proofCeiling": "TESTED_LOCAL_MODEL_CONTRACTS; NO_BIOLOGICAL_OR_EXTERNALLY_AUTONOMOUS_SYSTEM_CLAIM",
   "originalPreserved": true,

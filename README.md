@@ -25,7 +25,7 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ### [Lebende Systeme – Modelllabor mit Wiederaufnahme](branches/open-organism-engine/)
 
-Lokaler Entwicklungskandidat aus der bereitgestellten Engine: gerichtete Ressourcenflüsse, verzögerte Signale, ein eigener Browser-Worker und prüfbare Checkpoints. Drei Szenarien mit synthetischen Profilen sowie Desktop-/Mobilansicht. Die Lizenzentscheidung für dieses neue Modul ist noch offen. [Code, Startweg und Grenzen](branches/open-organism-engine/README.md).
+Lokaler Entwicklungskandidat aus der bereitgestellten Engine: gerichtete Ressourcenflüsse, verzögerte Signale, ein eigener Browser-Worker und prüfbare Checkpoints. Drei Szenarien mit synthetischen Profilen sowie Desktop-/Mobilansicht. Dieses neue Modul ist ausdrücklich [HALVETH PIRL 2.0](branches/open-organism-engine/LICENSE-HALVETH-PIRL-2.0.md) zugeordnet; die bisherigen Freigaben anderer Module gelten weiter. [Code, Startweg und Grenzen](branches/open-organism-engine/README.md).
 
 ### [Code & Messung – Dateien, Signale und Sequenzen](branches/code-observation-lab/)
 

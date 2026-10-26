@@ -7,7 +7,7 @@ Spezifische Dateizuordnungen haben Vorrang vor den allgemeinen Gruppen.
 
 | Dateien | Bedingungen |
 | --- | --- |
-| Neues Modul `branches/open-organism-engine/**` | [Lizenzentscheidung offen, lokaler Kandidat](branches/open-organism-engine/LICENSE-STATUS.md); noch keine Veröffentlichung oder neue allgemeine Freigabe |
+| Neues Modul `branches/open-organism-engine/**` ab Engine 0.2.0, einschließlich Quellcode, Tests, HTML/CSS, Dokumentation und eigener Fixtures | [HALVETH PIRL 2.0](branches/open-organism-engine/LICENSE-HALVETH-PIRL-2.0.md); [ausdrückliche Zuordnung](branches/open-organism-engine/LICENSE-STATUS.md); source-available, kommerzielle Nutzung benötigt eine gesonderte schriftliche Vereinbarung gemäß Lizenz |
 | Quellcode, Tests, HTML und CSS unter `branches/` und `scripts/` | [MIT](LICENSE) |
 | JSON-Daten, Modelle, Fixtures und Katalogmetadaten | [CC0 1.0](LICENSE-DATA.md) |
 | Neu geschriebene Datenwerte der öffentlichen Arrays in `branches/security-research-hub/catalog.mjs` | [CC0 1.0](LICENSE-DATA.md); Modulcode MIT; verlinkte Werke behalten ihre Rechte |

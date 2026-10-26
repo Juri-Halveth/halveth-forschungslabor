@@ -115,7 +115,10 @@ Endcheckpointreceipts behalten ihre genauen Digests und Quellenstände.
 
 ## Veröffentlichungsstatus
 
-Die Veröffentlichungsprüfung stoppt bei der offenen Lizenzzuordnung. Ein
-explizites `LOCAL_DRAFT_ONLY`-Artefakt dient der lokalen Abnahme und ist kein
-öffentlicher Release. Historische Originalreceipts, fehlgeschlagene Gegenproben
-und spätere erfolgreiche Rechecks bleiben getrennt erhalten.
+Der Nutzer hat am 26.10.2026 ausdrücklich HALVETH PIRL 2.0 für dieses neue
+Modul gewählt. Lizenztext, Dateizuordnung und maschinenlesbarer Rechtehinweis
+sind im Veröffentlichungsstand enthalten. Der öffentliche Build prüft weiterhin
+die deklarierte Zuordnung; er ersetzt keine juristische Rechteprüfung. Die
+früheren `LOCAL_DRAFT_ONLY`-Artefakte behalten ihren historischen Prüfstand.
+Commit, Push, Draft-PR und Deployment bleiben getrennte Zustände. Historische
+Originalreceipts und spätere erfolgreiche Rechecks bleiben erhalten.

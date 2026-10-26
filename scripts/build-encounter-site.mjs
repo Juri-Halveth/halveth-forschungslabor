@@ -35,6 +35,7 @@ export const licenseFiles = Object.freeze([
   "LICENSE-DATA.md",
   "LICENSE-CONTENT.md",
   "RIGHTS-RESERVATION.md",
+  "HALVETH-RIGHTS.json",
 ]);
 
 // Source and public addresses are explicit; adjacent files never enter Pages.
@@ -59,7 +60,7 @@ export const publicFiles = Object.freeze([
   ...["index.html", "style.css", "view.mjs", "model.mjs", "data.mjs", "sources.json", "README.md", "RESEARCH.md", "SOURCE.json", "preview.png"].map((name) => ({
     path: "code/" + name, sourcePath: "branches/code-observation-lab/" + name,
   })),
-  ...["index.html", "style.css", "view.mjs", "world-worker.mjs", "README.md", "SOURCES.md", "SOURCE.json", "AUDIT.md", "ARCHITECTURE.md", "LICENSE-STATUS.md",
+  ...["index.html", "style.css", "view.mjs", "world-worker.mjs", "README.md", "SOURCES.md", "SOURCE.json", "AUDIT.md", "ARCHITECTURE.md", "LICENSE-STATUS.md", "LICENSE-HALVETH-PIRL-2.0.md",
     "src/open-world.mjs", "src/sha256.mjs", "src/json-data.mjs", "src/operators.mjs", "src/genetic-code.mjs", "src/biology-world.mjs",
     "src/registry-data.mjs", "src/scenarios.mjs", "src/checkpoint.mjs", "src/controller.mjs"].map((name) => ({
     path: "systeme/" + name, sourcePath: "branches/open-organism-engine/" + name,
