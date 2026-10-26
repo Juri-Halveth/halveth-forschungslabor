@@ -11,6 +11,16 @@ passen zu derselben Beobachtung?
 
 ## Vier Vergleiche
 
+**Bedienung:** „Ablauf zeigen“ bewegt die Punkte automatisch in acht Sekunden.
+„Anhalten“ pausiert am sichtbaren Zustand, „Zum Anfang“ setzt die Modellzeit
+auf null. Ein anderer Vergleich beginnt ebenfalls am Anfang. Die Statuszeile
+zeigt bereit, laufend, pausiert oder fertig. „Blick kippen“ bewegt nur die Kamera.
+
+Version 1.2 bindet den Start an den ersten tatsächlichen Animation-Frame.
+Ein früher erzeugter Frame kann dadurch keine negative Modellzeit auslösen.
+Die Browser-Gegenprobe versetzt die separate `performance.now()`-Uhr gezielt
+um eine Sekunde und prüft weiterhin alle vier Abläufe und beide Kamerarichtungen.
+
 | Vergleich | Festgelegter Vorgang | Was die Gegenprobe unterscheidet |
 | --- | --- | --- |
 | Nur die Ansicht fällt zusammen | x/y gehen gegen null; vier z-Werte bleiben verschieden | Ein Bildort kann zu vier Raumorten gehören. |

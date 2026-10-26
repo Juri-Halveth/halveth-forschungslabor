@@ -1,9 +1,9 @@
 {
   "schema": "halveth.endeck-source.v2",
-  "preparedAt": "2026-10-24T12:14:00.055641+00:00",
+  "preparedAt": "2026-10-26T15:30:46.135Z",
   "person": "Juri",
   "project": "HALVETH",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "origin": "ENDECK conversation demonstration, 2026-10-24; source preserved byte-for-byte",
   "fragment": {
     "path": "fragment.html",
@@ -25,20 +25,20 @@
     "metadata": "CC0-1.0"
   },
   "supersedes": {
-    "commit": "713d511e51ccb622f1331b7847dec6fd47cfb2d5",
-    "sourceRecordSha256": "a96bdd772544904c72722c7c5fe0524a1b442849acc8dd04e12114314dc18314"
+    "commit": "83ea5f07481df77bf3b3e259d6246abb7e9ce085",
+    "sourceRecordSha256": "07a5ee9b434489d5d3eb9f353276c32fa7bd4ee0cdc1c25e946228f49ec37667"
   },
   "learning": "Four explicit tasks with local-only progress; versioned counterexamples and CI regression checks, no model-weight training",
   "activeRuntime": [
     {
       "path": "index.html",
-      "bytes": 7625,
-      "sha256": "4600a208edf4cca64cbb6b566870c2fd9352e9c16f6a69a5adaa23244d4aaba4"
+      "bytes": 7810,
+      "sha256": "722c5b294ab941fb7191dde7bd617ebc3349824b35b9dd514851ba90646931b2"
     },
     {
       "path": "style.css",
-      "bytes": 8915,
-      "sha256": "e573720c8c4297653ab5db3ef2bef354ef9c220f355c56d31d33f2e5bf738464"
+      "bytes": 9003,
+      "sha256": "887a755d7f166239850c4e06a48d4620545be51d207842a7a3652a4b1b893207"
     },
     {
       "path": "model.mjs",
@@ -57,8 +57,8 @@
     },
     {
       "path": "view.mjs",
-      "bytes": 10581,
-      "sha256": "6e09a07f57d29baa6260fbc4d38bcce0c01dd31eadbf6a162350cd9e0a1cf224"
+      "bytes": 11136,
+      "sha256": "cefd77396a0339117eaa6dc1855beb6430034700ec617ad09095ae3e2aafbc93"
     }
   ]
 }

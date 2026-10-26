@@ -114,6 +114,7 @@ test("a corrupt saved score is visible and cannot award progress",async({page})=
 });
 
 test("animation pauses correctly and reduced motion stops the active run",async({page})=>{
+  const errors=[];page.on("pageerror",e=>errors.push(e.message));
   await page.emulateMedia({reducedMotion:"no-preference"});
   await page.goto("/endeck/");
   await page.getByLabel("Modellzeit",{exact:true}).fill("0");
@@ -129,6 +130,54 @@ test("animation pauses correctly and reduced motion stops the active run",async(
   await expect(page.locator("#endeck-play")).toHaveText("Endzustand zeigen");
   await page.getByRole("button",{name:"Endzustand zeigen",exact:true}).click();
   await expect(page.locator("#experiment")).toHaveAttribute("data-progress","1");
+  expect(errors).toEqual([]);
+});
+
+test("frame-clock skew cannot freeze playback, camera, mode changes or recovery",async({page})=>{
+  await page.emulateMedia({reducedMotion:"no-preference"});
+  const errors=[];page.on("pageerror",error=>errors.push(error.message));
+  // A queued frame may be older than a click-time reading. Amplify that
+  // real boundary deterministically; the model must never receive t < 0.
+  await page.addInitScript(()=>{
+    const original=performance.now.bind(performance);
+    Object.defineProperty(performance,"now",{value:()=>original()+1000});
+  });
+  await page.goto("/endeck/");
+  for(const mode of ["projection","shrink","merge","history"]){
+    await page.getByLabel("Was möchtest du vergleichen?",{exact:true}).selectOption(mode);
+    const reset=page.getByRole("button",{name:"Zum Anfang",exact:true});
+    if(await reset.isEnabled())await reset.click();
+    const before=await page.locator("#endeck-space").innerHTML();
+    await page.getByRole("button",{name:"Ablauf zeigen",exact:true}).click();
+    await expect.poll(async()=>Number(await page.locator("#experiment").getAttribute("data-progress"))).toBeGreaterThan(.025);
+    await expect(page.locator("#endeck-playback")).toContainText("Läuft");
+    expect(await page.locator("#endeck-space").innerHTML()).not.toBe(before);
+    await page.getByRole("button",{name:"Anhalten",exact:true}).click();
+    const paused=await page.locator("#experiment").getAttribute("data-progress");
+    await page.getByRole("button",{name:"Blick kippen",exact:true}).click();
+    await expect(page.locator("#camera-label")).toHaveText("0° · x / y / z");
+    expect(await page.locator("#experiment").getAttribute("data-progress")).toBe(paused);
+    await page.getByRole("button",{name:"Blick kippen",exact:true}).click();
+    await expect(page.locator("#camera-label")).toHaveText("64° · x / y / z");
+    await page.getByLabel("Modellzeit",{exact:true}).fill("2950");
+    await page.getByRole("button",{name:"Ablauf zeigen",exact:true}).click();
+    await expect(page.locator("#experiment")).toHaveAttribute("data-progress","1");
+    await expect(page.locator("#endeck-playback")).toContainText("Am Ende");
+  }
+  expect(errors).toEqual([]);
+});
+
+test("one click completes the full visible eight-second trajectory",async({page})=>{
+  await page.emulateMedia({reducedMotion:"no-preference"});
+  const errors=[];page.on("pageerror",error=>errors.push(error.message));
+  await page.goto("/endeck/");
+  await page.getByRole("button",{name:"Ablauf zeigen",exact:true}).click();
+  await expect.poll(async()=>Number(await page.locator("#experiment").getAttribute("data-progress"))).toBeGreaterThan(.05);
+  await expect(page.locator("#experiment")).toHaveAttribute("data-progress","1",{timeout:12000});
+  await expect(page.locator("#endeck-flat-count")).toHaveText("1 Bildort");
+  await expect(page.locator("#endeck-space-count")).toHaveText("4 Raumorte · 4 IDs");
+  await expect(page.locator("#endeck-play")).toHaveText("Ablauf zeigen");
+  expect(errors).toEqual([]);
 });
 
 test("unavailable browser storage keeps the experiment and temporary learning usable",async({page})=>{
@@ -150,6 +199,13 @@ test("the repository tunnel has twenty usable source and test routes and mobile 
   await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(20);
   await expect(page.locator('.route').filter({hasText:'Sicherheitsprüfungen'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../sicherheitslabor/');
   await expect(page.locator('.route').filter({hasText:'Security Research'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../security/');
+  await page.getByRole('button',{name:'Direkt ausprobieren',exact:true}).click();
+  await expect(page.locator('.route[data-kind=code]:visible')).toHaveCount(0);
+  expect(await page.locator('.route:visible').count()).toBeGreaterThan(0);
+  await page.getByLabel('Was möchtest du machen?',{exact:true}).fill('no-such-tool');
+  await expect(page.locator('.route:visible')).toHaveCount(0);
+  await page.getByRole('button',{name:'Alle Werkzeuge zeigen',exact:true}).click();
+  await expect(page.locator('.route:visible')).toHaveCount(20);
   for(const url of ["/wissen/","/signals.html","/"]){
     await page.goto(url);
     for(const width of [320,390,768,1024]){
@@ -256,12 +312,31 @@ test("signal controls change received samples and decoded image", async ({
   });
   expect(errors).toEqual([]);
 });
+test("the guided example computes a full result with one click and keeps manual controls optional",async({page},info)=>{
+  const errors=[];page.on("pageerror",error=>errors.push(error.message));
+  await page.goto("/");
+  await expect(page.locator("#ew-manual-controls")).not.toHaveAttribute("open","");
+  await page.getByRole("button",{name:"Beispiel starten",exact:true}).click();
+  await expect(page.locator("#ew-done")).toHaveText("48 / 48");
+  await expect(page.locator("#ew-copies")).toHaveText("3 / 3");
+  await expect(page.locator("#ew-demo-status")).toContainText("Fertig");
+  expect(Number(await page.locator("#ew-contribution").innerText())).toBeGreaterThan(0);
+  await page.getByRole("button",{name:"Beispiel neu starten",exact:true}).click();
+  await expect(page.locator("#ew-copies")).toHaveText("3 / 3");
+  await page.setViewportSize({width:390,height:844});
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  await page.screenshot({path:info.outputPath("guided-example-mobile.png"),fullPage:true});
+  expect(errors).toEqual([]);
+});
+
 test("commands, timeline, workloads, corruption and repair are connected to model state", async ({
   page,
 }, info) => {
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
+  await page.emulateMedia({reducedMotion:"no-preference"});
   await page.goto("/");
+  await page.locator("#ew-manual-controls summary").click();
   await page.waitForFunction(
     () => !!document.getElementById("halveth-encounter-work")?.__encounter,
   );
@@ -329,7 +404,6 @@ test("commands, timeline, workloads, corruption and repair are connected to mode
     ),
   ).toBe("wave");
   await page.locator("#ew-reset").click();
-  await page.locator("#ew-play").click();
   await page.waitForFunction(
     () =>
       document.getElementById("halveth-encounter-work").__encounter.inspect()

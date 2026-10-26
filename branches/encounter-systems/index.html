@@ -31,26 +31,18 @@
     <main>
       <section class="hero">
         <div class="eyebrow">ENCOUNTER SYSTEMS · VERSION 1.0</div>
-        <h1>Eigenständig arbeiten.<br /><em>Gemeinsam etwas schaffen.</em></h1>
+        <h1>Ein Bild bauen.<br /><em>Zusammenarbeit sichtbar machen.</em></h1>
         <p>
-          Ein System baut ein Bild. Andere dürfen mitarbeiten, vereinbarte Teile
-          übernehmen oder an einer Grenze scheitern. Jede sichtbare Veränderung
-          folgt berechneten Zuständen und tatsächlichen Bildbytes.
+          Starte ein fertiges Beispiel: Zwei Systeme berechnen gemeinsam ein
+          Bild, ein Besucher erhält drei Kopien und ein unerlaubter Schreibversuch
+          wird gestoppt. Die Kacheln enthalten die tatsächlich berechneten Pixel.
         </p>
         <div class="hero-foot">
-          <a class="btn btn-primary" href="#experiment">Begegnung starten ↓</a
-          ><span>3D-Raum · Zeitspur · Zustandsvergleich</span>
+          <a class="btn btn-primary" href="#experiment">Zum Bildlabor ↓</a
+          ><span>Ein Beispiel starten · Ergebnis sehen · selbst verändern</span>
         </div>
       </section>
       <section id="experiment" class="experiment-section">
-        <div id="labore" class="doc-links" aria-label="Weitere Forschungsansichten">
-          <a href="security/">Security Research · Methoden, Gegenproben &amp; Prüfplan</a>
-          <a href="wissen/">Wissen &amp; Code · alle Arbeitsbereiche</a>
-          <a href="endeck/">Neu: ENDECK – Was sieht ein Quadrat?</a>
-          <a href="lifecycle/">Neu: Nachhall nach dem Prozessende</a>
-          <a href="signals.html#signal-experiment">Signalversuch</a>
-          <a href="https://github.com/Juri-Halveth/halveth-forschungslabor/tree/main/research/codec-001">CODEC-001 · Forschungsdossier ↗</a>
-        </div>
         <div class="section-head">
           <div>
             <div class="eyebrow">01 / AUSFÜHRBARES MODELL</div>
@@ -61,6 +53,12 @@
           >
         </div>
         <div id="halveth-encounter-work" class="lab">
+          <div class="demo-start">
+            <button class="btn btn-primary" id="ew-demo" type="button">Beispiel starten</button>
+            <p id="ew-demo-status" role="status">In etwa 20 Sekunden: gemeinsames Bild, drei Kopien, ein gestoppter Schreibversuch.</p>
+          </div>
+          <details id="ew-manual-controls" class="manual-controls">
+            <summary>Selbst einstellen und eingreifen</summary>
           <div class="lab-toolbar">
             <label
               >Arbeitsauftrag<select id="ew-task">
@@ -87,6 +85,7 @@
               Überschreiben sperren</label
             ><span id="grant-epoch" class="scope-tag">Freigabe 0</span>
           </div>
+          </details>
           <div class="ew-values">
             <span>Fertige Kacheln <output id="ew-done">0 / 48</output></span
             ><span>Partnerbeitrag <output id="ew-contribution">0</output></span
@@ -162,6 +161,18 @@
             </p>
           </div>
         </div>
+        <details id="labore" class="other-labs">
+          <summary>Weitere Labore und Quellcode öffnen</summary>
+          <div class="doc-links" aria-label="Weitere Forschungsansichten">
+            <a href="endeck/">Bild &amp; Raum · vier Punkte bewegen</a>
+            <a href="signals.html#signal-experiment">Signale · ein Bild senden und rekonstruieren</a>
+            <a href="security/">Security Research · Methoden und Prüfplan</a>
+            <a href="sicherheitslabor/">Sicherheitslabor · Gegenproben ausführen</a>
+            <a href="wissen/">Alle Werkzeuge · nach Aufgabe auswählen</a>
+            <a href="lifecycle/">Prozessende · erhaltene Ergebnisse vergleichen</a>
+            <a href="https://github.com/Juri-Halveth/halveth-forschungslabor/tree/main/research/codec-001">CODEC-001 · Forschungsdossier ↗</a>
+          </div>
+        </details>
       </section>
       <section id="results">
         <div class="section-head">

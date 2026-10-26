@@ -8,7 +8,18 @@ Ein eigenes System berechnet ein Bild. Ein Partner übernimmt abgegrenzte Rechen
 
 Projektleitung und Idee: **Juri / HALVETH**. Entwicklung mit KI-Unterstützung. Forschungsstand: **ausführbarer, synthetischer Prototyp**.
 
-## Was ist die Forschungsfrage?
+## Direkt ausprobieren
+
+„Beispiel starten“ setzt einen neuen lokalen Lauf auf und führt Partnerarbeit,
+Besucherkopien und einen gesperrten Schreibversuch gemeinsam aus. Ohne
+reduzierte Bewegung läuft die berechnete Szene in etwa 20 Sekunden ab.
+Mit reduzierter Bewegung berechnet derselbe Knopf das vollständige Ergebnis
+direkt. „Selbst einstellen und eingreifen“ öffnet die einzelnen Befehle.
+Die fertigen Kacheln, der Partnerbeitrag und die Kopien zählen tatsächliche
+Modellzustände. Alle anderen Werkzeuge sind über die aufklappbare Übersicht
+und die durchsuchbare Seite „Wissen & Code“ erreichbar.
+
+## Forschungsfrage
 
 Wie kann ein weiterarbeitendes System andere Teilnehmer sinnvoll einbeziehen, einen vereinbarten Datenaustausch zulassen und seine Zustandsgrenzen gleichzeitig nachvollziehbar erhalten?
 

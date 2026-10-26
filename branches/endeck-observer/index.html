@@ -24,7 +24,7 @@
       <section class="intro" aria-labelledby="page-title">
         <p class="eyebrow">GEOMETRIE · PERSPEKTIVE · ZEIT</p>
         <h1 id="page-title">Was sieht ein Quadrat?</h1>
-        <p class="lead">Vier Punkte. Zwei Blickwinkel. Bewege die Zeit und entdecke, was ein Bild zeigt – und was erst ein anderer Blick verrät.</p>
+        <p class="lead">Vier Punkte bewegen sich. Links siehst du ihr flaches Bild, rechts dieselben Punkte im Raum. Starte den Ablauf und vergleiche.</p>
       </section>
       <section id="experiment" class="experiment" aria-label="Interaktiver Modellvergleich">
         <div class="experiment-top">
@@ -39,9 +39,11 @@
           </div>
           <div class="actions">
             <button id="endeck-play" class="primary" type="button">Ablauf zeigen</button>
+            <button id="endeck-reset" type="button">Zum Anfang</button>
             <button id="endeck-tilt" type="button" aria-pressed="true">Blick kippen</button>
           </div>
         </div>
+        <p id="endeck-playback" class="playback-state" role="status">Am Ende · Starte den Ablauf erneut.</p>
         <div class="time-control">
           <div class="time-label"><label for="endeck-time">Modellzeit</label><output id="endeck-clock" for="endeck-time">1,000</output></div>
           <input id="endeck-time" type="range" min="0" max="3000" step="1" value="3000" aria-describedby="time-help">
