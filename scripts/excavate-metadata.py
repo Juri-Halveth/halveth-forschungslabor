@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+from contextlib import closing
 from datetime import datetime, timezone
 import json
 import os
@@ -53,48 +54,81 @@ def inventory(root: Path, output: Path, max_files: int, max_seconds: float) -> d
     files = 0
     bytes_seen = 0
 
-    with (output / "inventory_local.jsonl").open("w", encoding="utf-8") as stream:
-        with os.scandir(root) as iterator:
-            top_entries = sorted(list(iterator), key=lambda item: item.name.casefold())
+    def budget_reached() -> bool:
+        return files >= max_files or time.monotonic() - start >= max_seconds
+
+    def children(directory: Path):
+        """Stream entries without buffering a whole directory before visiting it."""
+        nonlocal errors
+        if budget_reached():
+            return
+        try:
+            with os.scandir(directory) as iterator:
+                while not budget_reached():
+                    try:
+                        entry = next(iterator)
+                    except StopIteration:
+                        return
+                    if budget_reached():
+                        return
+                    if is_reparse(entry):
+                        excluded["reparse"] += 1
+                        continue
+                    if budget_reached():
+                        return
+                    is_directory = entry.is_dir(follow_symlinks=False)
+                    if budget_reached():
+                        return
+                    if is_directory and entry.name.casefold() in GENERATED:
+                        excluded["generated"] += 1
+                        continue
+                    candidate = Path(entry.path)
+                    if candidate.resolve() == output:
+                        excluded["own_output"] += 1
+                        continue
+                    if budget_reached():
+                        return
+                    yield candidate
+        except (OSError, ValueError):
+            errors += 1
+
+    with (output / "inventory_local.jsonl").open("w", encoding="utf-8") as stream, \
+            closing(children(root)) as top_entries:
         for top in top_entries:
-            if files >= max_files or time.monotonic() - start >= max_seconds:
-                excluded["budget_remaining_roots"] += 1
-                break
-            if is_reparse(top):
-                excluded["reparse"] += 1
-                continue
-            if top.is_dir(follow_symlinks=False) and top.name.casefold() in GENERATED:
-                excluded["generated"] += 1
-                continue
-            if Path(top.path).resolve() == output:
-                excluded["own_output"] += 1
-                continue
             top_count = 0
             top_state = "COMPLETE_WITH_EXCLUSIONS"
-            stack = [Path(top.path)]
-            while stack:
-                if files >= max_files or time.monotonic() - start >= max_seconds:
-                    top_state = "BUDGET_LIMIT"
-                    break
-                current = stack.pop()
-                try:
-                    if current.is_dir():
-                        with os.scandir(current) as iterator:
-                            entries = sorted(list(iterator), key=lambda item: item.name.casefold(), reverse=True)
-                        for entry in entries:
-                            if is_reparse(entry):
-                                excluded["reparse"] += 1
-                            elif entry.is_dir(follow_symlinks=False):
-                                if entry.name.casefold() in GENERATED:
-                                    excluded["generated"] += 1
-                                elif Path(entry.path).resolve() == output:
-                                    excluded["own_output"] += 1
-                                else:
-                                    stack.append(Path(entry.path))
-                            elif entry.is_file(follow_symlinks=False):
-                                stack.append(Path(entry.path))
-                    elif current.is_file():
+            stack = [iter((top,))]
+            try:
+                while stack:
+                    if budget_reached():
+                        top_state = "BUDGET_LIMIT"
+                        break
+                    try:
+                        current = next(stack[-1])
+                    except StopIteration:
+                        stack.pop()
+                        continue
+                    if budget_reached():
+                        top_state = "BUDGET_LIMIT"
+                        break
+                    try:
+                        is_directory = current.is_dir()
+                        if budget_reached():
+                            top_state = "BUDGET_LIMIT"
+                            break
+                        if is_directory:
+                            stack.append(children(current))
+                            continue
+                        is_file = current.is_file()
+                        if budget_reached():
+                            top_state = "BUDGET_LIMIT"
+                            break
+                        if not is_file:
+                            continue
                         info = current.stat()
+                        if budget_reached():
+                            top_state = "BUDGET_LIMIT"
+                            break
                         relative = current.relative_to(root).as_posix()
                         ext = current.suffix.casefold() or "[none]"
                         stream.write(json.dumps({
@@ -108,14 +142,25 @@ def inventory(root: Path, output: Path, max_files: int, max_seconds: float) -> d
                         top_count += 1
                         bytes_seen += info.st_size
                         extensions[ext] += 1
-                except (OSError, ValueError):
-                    errors += 1
+                    except (OSError, ValueError):
+                        errors += 1
+            finally:
+                for iterator in reversed(stack):
+                    close = getattr(iterator, "close", None)
+                    if close is not None:
+                        close()
+            if budget_reached():
+                top_state = "BUDGET_LIMIT"
             roots.append({"name": top.name, "files": top_count, "state": top_state})
+        if budget_reached():
+            excluded["budget_remaining_roots"] += 1
 
     summary = {
         "schema": "local-metadata-inventory-v1",
         "capturedAt": datetime.now(timezone.utc).isoformat(),
         "readMode": "METADATA_ONLY_NO_REPARSE_NO_CONTENT",
+        "ordering": "FILESYSTEM_ENUMERATION",
+        "budgetMode": "COOPERATIVE_BETWEEN_FILESYSTEM_CALLS",
         "root": str(root),
         "files": files,
         "bytes": bytes_seen,
