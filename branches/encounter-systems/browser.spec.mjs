@@ -193,24 +193,27 @@ test("unavailable browser storage keeps the experiment and temporary learning us
   expect(errors).toEqual([]);
 });
 
-test("the repository tunnel has twenty usable source and test routes and mobile navigation fits",async({page},info)=>{
-  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(20);
-  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(20);
-  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(20);
+test("the repository tunnel has twenty-one usable source and test routes and mobile navigation fits",async({page},info)=>{
+  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(21);
+  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(21);
+  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(21);
   await expect(page.locator('.route').filter({hasText:'Sicherheitsprüfungen'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../sicherheitslabor/');
   await expect(page.locator('.route').filter({hasText:'Security Research'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../security/');
+  await expect(page.locator('.route').filter({hasText:'LAGEFADEN'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../lagefaden/');
   await page.getByRole('button',{name:'Direkt ausprobieren',exact:true}).click();
   await expect(page.locator('.route[data-kind=code]:visible')).toHaveCount(0);
   expect(await page.locator('.route:visible').count()).toBeGreaterThan(0);
   await page.getByLabel('Was möchtest du machen?',{exact:true}).fill('no-such-tool');
   await expect(page.locator('.route:visible')).toHaveCount(0);
   await page.getByRole('button',{name:'Alle Werkzeuge zeigen',exact:true}).click();
-  await expect(page.locator('.route:visible')).toHaveCount(20);
-  for(const url of ["/wissen/","/signals.html","/"]){
+  await expect(page.locator('.route:visible')).toHaveCount(21);
+  for(const url of ["/wissen/","/lagefaden/","/signals.html","/"]){
     await page.goto(url);
     for(const width of [320,390,768,1024]){
       await page.setViewportSize({width,height:900});
-      expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+      const geometry=await page.evaluate(()=>({content:document.documentElement.scrollWidth,viewport:innerWidth,
+        overflow:[...document.querySelectorAll('body *')].filter(el=>el.getBoundingClientRect().right>innerWidth+1||el.scrollWidth>el.clientWidth+1).slice(0,8).map(el=>`${el.tagName}.${el.className} ${el.scrollWidth}/${el.clientWidth} ${Math.round(el.getBoundingClientRect().right)}`)}));
+      expect(geometry.content<=geometry.viewport,`${url} at ${width}px: content ${geometry.content}px, viewport ${geometry.viewport}px; overflow ${geometry.overflow.join(', ')}`).toBe(true);
     }
   }
   await page.goto("/wissen/");await page.setViewportSize({width:390,height:900});
