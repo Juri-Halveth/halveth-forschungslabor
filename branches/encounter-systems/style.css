@@ -1,4 +1,9 @@
 /* SPDX-License-Identifier: MIT */
+.demo-start{display:flex;align-items:center;gap:20px;padding:20px 24px;border-bottom:1px solid var(--border)}
+.demo-start .btn{flex-shrink:0}.demo-start p{margin:0;color:var(--muted-foreground);font-size:14px;max-width:65ch}
+.manual-controls>summary,.other-labs>summary{cursor:pointer;min-height:48px;padding:12px 24px;font-weight:600;list-style-position:inside}
+.manual-controls{border-bottom:1px solid var(--border)}.other-labs{margin-top:24px;border:1px solid var(--border);border-radius:12px}.other-labs .doc-links{padding:0 24px 18px}
+@media(max-width:600px){.demo-start{align-items:stretch;flex-direction:column;gap:10px;padding:16px}.demo-start .btn{width:100%}.manual-controls>summary,.other-labs>summary{padding-inline:16px}}
 :root {
   color-scheme: dark;
   --background: #080d14;
@@ -128,6 +133,7 @@ main {
   color: var(--muted-foreground);
 }
 h1 {
+  overflow-wrap: anywhere;
   font-size: clamp(40px, 5.4vw, 72px);
   line-height: 1.09;
   letter-spacing: -0.055em;

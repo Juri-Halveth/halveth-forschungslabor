@@ -7,7 +7,7 @@ const el = (id) => document.getElementById(id);
 const media = matchMedia("(prefers-reduced-motion: reduce)");
 const STORAGE_KEY = "halveth.endeck.learning.v1";
 const state = { mode: "projection", t: 1, tilt: 64, path: "straight" };
-let completed = [], running = false, frame = 0, cameraFrame = 0, startAt = 0, startT = 0, lastStatus = "";
+let completed = [], running = false, frame = 0, cameraFrame = 0, startAt = null, startT = 0, lastStatus = "";
 
 function svgNode(name, attributes = {}, text) {
   const node = document.createElementNS("http://www.w3.org/2000/svg", name);
@@ -80,6 +80,8 @@ function render() {
   el("endeck-clock").textContent=state.t.toLocaleString("de-DE",{minimumFractionDigits:3,maximumFractionDigits:3});
   el("endeck-play").textContent=running?"Anhalten":media.matches?"Endzustand zeigen":"Ablauf zeigen";
   el("endeck-play").setAttribute("aria-pressed",String(running));
+  el("endeck-playback").textContent=running?"Läuft · Die Punkte bewegen sich automatisch.":state.t===0?"Bereit · Starte den Ablauf.":state.t===1?"Am Ende · Starte den Ablauf erneut.":"Pausiert · Du kannst hier fortsetzen.";
+  el("endeck-reset").disabled=state.t===0&&!running;
   el("endeck-tilt").setAttribute("aria-pressed",String(state.tilt>20));
   el("camera-label").textContent=`${Math.round(state.tilt)}° · x / y / z`;
   el("endeck-path-controls").hidden=state.mode!=="history";
@@ -109,7 +111,10 @@ function stop() { running=false; cancelAnimationFrame(frame); }
 function stopAll() { stop(); cancelAnimationFrame(cameraFrame); }
 function animate(now) {
   if (!running) return;
-  state.t=Math.min(1,startT+(now-startAt)/8000);
+  // Both timestamps belong to the frame clock. The first rAF timestamp can
+  // precede performance.now() at the click that requested this frame.
+  startAt ??= now;
+  state.t=Math.min(1,startT+Math.max(0,now-startAt)/8000);
   if (state.t===1) stop();
   render();
   if (running) frame=requestAnimationFrame(animate);
@@ -118,15 +123,17 @@ el("endeck-play").addEventListener("click",()=>{
   if (running) { stop(); render(); return; }
   if (media.matches) { state.t=1; render(); return; }
   if (state.t===1) state.t=0;
-  startT=state.t; startAt=performance.now(); running=true; render(); frame=requestAnimationFrame(animate);
+  startT=state.t; startAt=null; running=true; render(); frame=requestAnimationFrame(animate);
 });
+el("endeck-reset").addEventListener("click",()=>{stopAll();state.t=0;render();});
 el("endeck-time").addEventListener("input",()=>{stop();state.t=Number(el("endeck-time").value)/3000;render();});
-el("endeck-mode").addEventListener("change",()=>{stopAll();state.mode=el("endeck-mode").value;state.path="straight";render();renderLesson();});
+el("endeck-mode").addEventListener("change",()=>{stopAll();state.mode=el("endeck-mode").value;state.t=0;state.path="straight";render();renderLesson();});
 el("endeck-tilt").addEventListener("click",()=>{
   cancelAnimationFrame(cameraFrame);
-  const from=state.tilt, to=state.tilt>20?0:64, start=performance.now();
+  const from=state.tilt, to=state.tilt>20?0:64;
+  let start=null;
   if (media.matches) {state.tilt=to;render();return;}
-  const tick=(now)=>{const t=Math.min(1,(now-start)/600);state.tilt=from+(to-from)*t*t*(3-2*t);render();if(t<1)cameraFrame=requestAnimationFrame(tick);};
+  const tick=(now)=>{start??=now;const t=Math.min(1,Math.max(0,now-start)/600);state.tilt=from+(to-from)*t*t*(3-2*t);render();if(t<1)cameraFrame=requestAnimationFrame(tick);};
   cameraFrame=requestAnimationFrame(tick);
 });
 for (const path of ["straight","arc"])

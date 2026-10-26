@@ -25,7 +25,8 @@ import { Core } from "./model.mjs";
     lastText = "",
     cache = new Map(),
     lastMetric = -1,
-    themeRevision = 0;
+    themeRevision = 0,
+    example = false;
   const published = new Set(),
     saved = window.openai?.widgetState?.modelContent;
   if (
@@ -42,10 +43,12 @@ import { Core } from "./model.mjs";
       "ew-guard",
       "ew-play",
       "ew-repair",
+      "ew-demo",
     ])
       $(id).disabled = value;
   }
   function fresh() {
+    example = false;
     historyView = null;
     lockHistory(false);
     world = new Core.World({ task: $("ew-task").value });
@@ -453,6 +456,12 @@ import { Core } from "./model.mjs";
   }
   function uiScene() {
     if (!world) return;
+    $("ew-demo").textContent=example?"Beispiel neu starten":"Beispiel starten";
+    $("ew-demo-status").textContent=example
+      ? world.finished
+        ? `Fertig: ${world.done}/48 Kacheln · ${world.partner.contributed} vom Partner · ${world.visitor.copies.length}/3 Kopien · ${world.writer.status}.`
+        : `${playing?"Läuft":"Pausiert"}: ${world.done}/48 Kacheln · ${world.visitor.copies.length}/3 Kopien · ${world.writer.status}.`
+      : "In etwa 20 Sekunden: gemeinsames Bild, drei Kopien, ein gestoppter Schreibversuch.";
     const text = world.events.at(-1).text;
     if (lastText !== text) {
       $("ew-event").textContent = text;
@@ -530,7 +539,8 @@ import { Core } from "./model.mjs";
   ])
     $(id).addEventListener("click", () => {
       world.command(kind);
-      if (!motion.matches) playing = true;
+      if (motion.matches) {world.advanceTo(world.time+60);playing=false;}
+      else playing = true;
       ui();
       draw();
       schedule();
@@ -564,6 +574,13 @@ import { Core } from "./model.mjs";
   $("ew-reset").addEventListener("click", () => {
     fresh();
     store();
+  });
+  $("ew-demo").addEventListener("click",()=>{
+    fresh();example=true;
+    for(const command of ["partner","visit","write"])world.command(command);
+    if(motion.matches){world.advanceTo(60);playing=false;}
+    else playing=true;
+    last=null;ui();draw();schedule();store();
   });
   $("ew-view").addEventListener("click", () => {
     view = view === "3D" ? "2D" : "3D";

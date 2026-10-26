@@ -67,8 +67,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 20497,
-          "sha256": "27c9f74a16d1be33988d83c56e6bf07564ddcb39a830dc3083e7e7a0231cae07"
+          "bytes": 25310,
+          "sha256": "10d06b405d7bf3f5eff302f81d92775828072b7880122e6d48d5a180a1d33b19"
         }
       ]
     },
@@ -91,8 +91,8 @@
         },
         {
           "path": "branches/endeck-observer/README.md",
-          "bytes": 4561,
-          "sha256": "62d1e47650ba77398b39a44260923ae9e90bc76f3ef2a358f07cf82b23ef5e72"
+          "bytes": 5209,
+          "sha256": "3211c48169391e6994a19fb7f7bd263941ed88ceab7931f8ee02927a77fdf99d"
         },
         {
           "path": "branches/endeck-observer/model.test.mjs",
@@ -126,8 +126,8 @@
         },
         {
           "path": "branches/encounter-systems/README.md",
-          "bytes": 11057,
-          "sha256": "dd4a2f4075dd16a10a29b9cac4fe34779c1b61f510687139f05df9ac69d975bc"
+          "bytes": 11668,
+          "sha256": "8366d26a2385a60797690fede40ea4c921c8ea7572f189a3283c7de7cd18a0c5"
         },
         {
           "path": "branches/encounter-systems/model.test.mjs",
@@ -141,8 +141,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 20497,
-          "sha256": "27c9f74a16d1be33988d83c56e6bf07564ddcb39a830dc3083e7e7a0231cae07"
+          "bytes": 25310,
+          "sha256": "10d06b405d7bf3f5eff302f81d92775828072b7880122e6d48d5a180a1d33b19"
         }
       ]
     },
