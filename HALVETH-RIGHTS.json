@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "1.0",
+  "declaration": "HALVETH authorship, rights and participation claim",
+  "rightsHolder": {
+    "legalName": "Juri Janovski",
+    "publishingName": "Juri",
+    "github": "https://github.com/Juri-Halveth",
+    "projectName": "HALVETH"
+  },
+  "repository": "https://github.com/Juri-Halveth/halveth-forschungslabor",
+  "historicalParentCommit": "b7f959de626f0d0e02d17364340a2869598fbb32",
+  "scope": "Only new original contributions under branches/open-organism-engine/** as assigned by LICENSES.md; other modules retain their existing licenses",
+  "authorshipClaimedFor": [
+    "new engine code contributions",
+    "module documentation",
+    "tests",
+    "synthetic fixtures",
+    "selection and arrangement"
+  ],
+  "evidenceStatusIsRightsWaiver": false,
+  "license": {
+    "id": "LicenseRef-HALVETH-PIRL-2.0",
+    "file": "branches/open-organism-engine/LICENSE-HALVETH-PIRL-2.0.md",
+    "nonCommercialPublicInterestUse": "GRANTED_WITH_CONDITIONS",
+    "commercialUse": "NOT_GRANTED",
+    "commercialPermission": "PRIOR_WRITTEN_LICENSE_AND_PARTICIPATION_AGREEMENT_REQUIRED",
+    "classification": "SOURCE_AVAILABLE_NOT_OSI_OPEN_SOURCE",
+    "publishedFile": "systeme/LICENSE-HALVETH-PIRL-2.0.md"
+  },
+  "textAndDataMining": {
+    "reservation": true,
+    "legalReference": "German Copyright Act, Section 44b(3)",
+    "commercialAIUse": "NOT_GRANTED",
+    "limits": [
+      "statutory exceptions",
+      "prior effective licenses",
+      "hosting-provider terms"
+    ]
+  },
+  "thirdPartyMaterial": "EXCLUDED_AND_RETAINS_ITS_OWN_RIGHTS",
+  "peopleAndIndependentSystems": "NO_OWNERSHIP_OR_CONTROL_CLAIM",
+  "effectiveFrom": "first public commit containing this declaration",
+  "recordedDate": "2026-10-26",
+  "contact": {
+    "email": "security@halveth.de",
+    "purpose": "Rights, attribution and written commercial permission requests"
+  },
+  "clarifiedDate": "2026-10-26",
+  "attributionClarification": {
+    "person": "Juri",
+    "projectName": "HALVETH",
+    "githubHandle": "Juri-Halveth",
+    "recordedDate": "2026-10-24",
+    "scope": "Name correction only; existing rights and grants unchanged"
+  },
+  "schema": "halveth.scoped-rights-declaration.v1",
+  "sourcePathPatterns": [
+    "branches/open-organism-engine/**"
+  ],
+  "publishedPathPatterns": [
+    "systeme/**"
+  ],
+  "sourceDeclaration": "https://github.com/Juri-Halveth/halveth-scarlet/blob/a590ed6c35a9dd5fc89c259ef057bb143850bae5/HALVETH-RIGHTS.json",
+  "assignmentAuthority": "EXPLICIT_USER_LICENSE_SELECTION"
+}

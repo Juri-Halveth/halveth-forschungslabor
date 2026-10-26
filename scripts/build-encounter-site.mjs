@@ -35,6 +35,7 @@ export const licenseFiles = Object.freeze([
   "LICENSE-DATA.md",
   "LICENSE-CONTENT.md",
   "RIGHTS-RESERVATION.md",
+  "HALVETH-RIGHTS.json",
 ]);
 
 // Source and public addresses are explicit; adjacent files never enter Pages.
@@ -59,10 +60,17 @@ export const publicFiles = Object.freeze([
   ...["index.html", "style.css", "view.mjs", "model.mjs", "data.mjs", "sources.json", "README.md", "RESEARCH.md", "SOURCE.json", "preview.png"].map((name) => ({
     path: "code/" + name, sourcePath: "branches/code-observation-lab/" + name,
   })),
+  ...["index.html", "style.css", "view.mjs", "world-worker.mjs", "README.md", "SOURCES.md", "SOURCE.json", "AUDIT.md", "ARCHITECTURE.md", "LICENSE-STATUS.md", "LICENSE-HALVETH-PIRL-2.0.md",
+    "src/open-world.mjs", "src/sha256.mjs", "src/json-data.mjs", "src/operators.mjs", "src/genetic-code.mjs", "src/biology-world.mjs",
+    "src/registry-data.mjs", "src/scenarios.mjs", "src/checkpoint.mjs", "src/controller.mjs"].map((name) => ({
+    path: "systeme/" + name, sourcePath: "branches/open-organism-engine/" + name,
+  })),
   { path:"wissen/LEARNING_PIPELINE.md", sourcePath:"catalog/LEARNING_PIPELINE.md" },
 ].map(Object.freeze));
 
-export async function buildSite({ repoRoot, outputRoot, commit }) {
+export async function buildSite({ repoRoot, outputRoot, commit, publicationMode = "PUBLIC" }) {
+  if (!["PUBLIC", "LOCAL_DRAFT_ONLY"].includes(publicationMode))
+    throw Error("Invalid publication mode");
   if (!/^[a-f0-9]{40}$/.test(commit))
     throw Error("A full source commit is required");
   const source = await fs.realpath(repoRoot);
@@ -79,6 +87,11 @@ export async function buildSite({ repoRoot, outputRoot, commit }) {
     const bytes = await fs.readFile(real);
     files.push({ name, bytes, sourcePath });
   }
+  const organismMetadata=JSON.parse(files.find(file=>file.name==="systeme/SOURCE.json").bytes.toString("utf8"));
+  const licenseDeclaredReady=organismMetadata.license?.publicationReady===true&&
+    ["MIT","HALVETH-PIRL-2.0"].includes(organismMetadata.license?.id);
+  if(publicationMode==="PUBLIC"&&!licenseDeclaredReady)
+    throw Error("Publication boundary: open-organism-engine license decision is pending");
   // A fresh output is mandatory: stale files can never enter the published artifact.
   await fs.mkdir(destination);
   for (const file of files) {
@@ -89,6 +102,8 @@ export async function buildSite({ repoRoot, outputRoot, commit }) {
     schema: "halveth.encounter-publication.v1",
     sourceCommit: commit,
     repository: "Juri-Halveth/halveth-forschungslabor",
+    publicationMode,
+    licenseGate: "DECLARED_REPOSITORY_METADATA_ONLY_NOT_LEGAL_AUTHORITY_PROOF",
     files: files.map(({ name, bytes, sourcePath }) => ({
       path: name,
       sourcePath,

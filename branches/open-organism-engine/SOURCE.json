@@ -1,0 +1,181 @@
+{
+  "schema": "halveth.modified-source-module.v1",
+  "module": "open-organism-engine",
+  "engineVersion": "0.2.0",
+  "classification": "LICENSE_ASSIGNED_RELEASE_CANDIDATE",
+  "original": {
+    "name": "HALVETH_OPEN_ORGANISM_ENGINE.zip",
+    "version": "0.1.0",
+    "sha256": "0b463b7c4806247f4c9e88959ae03d718751d7e083da60e0a5f6b67de9e4a9f6",
+    "bytes": 1494894,
+    "members": 28,
+    "files": 22,
+    "materializedSourceFiles": 20,
+    "largeGeneratedSnapshotsRetainedOnlyInOriginal": 2
+  },
+  "changes": [
+    "atomic model mutation and finite numerical allocation",
+    "uniform tick reads, selective receive and expired process contexts",
+    "strict JSON and bounded data-only registry import",
+    "integer-microsecond clock and world/instance event binding",
+    "source-bound v2 restore and scenario process recipes",
+    "portable SHA-256 and dedicated browser worker",
+    "responsive four-view lab with actual ledger transfers",
+    "explicit local Node checkpoint persistence"
+  ],
+  "publicFixtures": "SELF_CREATED_SYNTHETIC_PROFILES_ONLY",
+  "historicalRegisterRoleProseIncluded": false,
+  "sourceArchiveIncluded": false,
+  "privateDialogueIncluded": false,
+  "license": {
+    "id": "HALVETH-PIRL-2.0",
+    "spdxIdentifier": "LicenseRef-HALVETH-PIRL-2.0",
+    "state": "ASSIGNED_BY_EXPLICIT_USER_CHOICE",
+    "publicationReady": true,
+    "assignedDate": "2026-10-26",
+    "scope": "branches/open-organism-engine/** from engine 0.2.0; prior effective grants and third-party rights retained",
+    "file": "branches/open-organism-engine/LICENSE-HALVETH-PIRL-2.0.md",
+    "sha256": "4e222f3dbcfe32682b6fc59329ad61d5fba83966ec545aa7a975b971ef0a6e6a",
+    "sourceRepository": "Juri-Halveth/halveth-scarlet",
+    "sourceCommit": "a590ed6c35a9dd5fc89c259ef057bb143850bae5",
+    "sourceGitBlob": "83f2ba6f4e3db98b16b26b0db75e5ee605ff5f10",
+    "transfer": "UNMODIFIED_LICENSE_TEXT"
+  },
+  "proofCeiling": "TESTED_LOCAL_MODEL_CONTRACTS; NO_BIOLOGICAL_OR_EXTERNALLY_AUTONOMOUS_SYSTEM_CLAIM",
+  "originalPreserved": true,
+  "originalFiles": [
+    {
+      "path": "tests/operators.test.mjs",
+      "bytes": 2342,
+      "sha256": "d39bbaa174380fac6767005a15590f9e3966e5e4f13ff360f1e566103199b97c",
+      "materializedSource": true
+    },
+    {
+      "path": "tests/open-world.test.mjs",
+      "bytes": 6232,
+      "sha256": "326c868734c109ca959c073641525dbe543d43f98159c0420d17858b925960ab",
+      "materializedSource": true
+    },
+    {
+      "path": "assets/live-checkpoint-short.json",
+      "bytes": 421331,
+      "sha256": "cb9778beddf11b9a12df1516d3e6bb4d6ec07f08e1ed6faacffe68d6a0c3e0d2",
+      "materializedSource": false
+    },
+    {
+      "path": "assets/model-snapshot.json",
+      "bytes": 13669668,
+      "sha256": "0ce48fdcffce9ad0debd62f9bb09f22c9ce45d73e7c3c2a16ffb6c44240c1401",
+      "materializedSource": false
+    },
+    {
+      "path": "assets/PROFILE-INDEX-RESULT.json",
+      "bytes": 466,
+      "sha256": "2918a08040d71bbdc50c325c0d5c21047b9f7a5777583a11760f3289cc2a338d",
+      "materializedSource": true
+    },
+    {
+      "path": "assets/halveth-public-index.json",
+      "bytes": 1058,
+      "sha256": "dfab9b6adeff0aaf4538fa976543fe56bdcaad0c0df940d9a9f37123046656c6",
+      "materializedSource": true
+    },
+    {
+      "path": "assets/TEST-RESULT.tap",
+      "bytes": 4324,
+      "sha256": "02e5ab855fa86912ccc4453faad3c423d6e7d80cf9df793a50e29df0b1fdfc89",
+      "materializedSource": true
+    },
+    {
+      "path": "assets/DEMO-RESULT.json",
+      "bytes": 575,
+      "sha256": "78ab33bc701cdc4095d8fa5217085c2ddcfa442f99e161c3402dfab836706f45",
+      "materializedSource": true
+    },
+    {
+      "path": "docs/AUDIT-ERGEBNIS.md",
+      "bytes": 3276,
+      "sha256": "5c08d9c749a04754006f3edad4084898213d8183c0dce6647b34015ce62adf2c",
+      "materializedSource": true
+    },
+    {
+      "path": "docs/ARCHITEKTUR.md",
+      "bytes": 10411,
+      "sha256": "ec99e468080d83c19fd8a682937c85808b68e3776e71df7c8454018d79fa5177",
+      "materializedSource": true
+    },
+    {
+      "path": "viewer.html",
+      "bytes": 9338,
+      "sha256": "8ea020f470ba6c682c78167b1940e2c2bce5817cd8779874bdef699ffaf5a008",
+      "materializedSource": true
+    },
+    {
+      "path": "README.md",
+      "bytes": 6795,
+      "sha256": "fbf124a6d93ee28f59d6eeaf5cbb666b640d95eef6268e2626f2157921d94063",
+      "materializedSource": true
+    },
+    {
+      "path": "package.json",
+      "bytes": 562,
+      "sha256": "73fa96b5344587a6cd29f565d754bc3ff46267426ceb1ac5862587dff6beb708",
+      "materializedSource": true
+    },
+    {
+      "path": "examples/live-service.mjs",
+      "bytes": 1348,
+      "sha256": "6b3082152548b9677b3a00fc7b7481e93a55e8baad0b37ddc4a8293f40ef4201",
+      "materializedSource": true
+    },
+    {
+      "path": "examples/halveth-registry.mjs",
+      "bytes": 613,
+      "sha256": "a23823d1377cad729075f037ae3c5850094979ba95e936551648daf83a30b0ba",
+      "materializedSource": true
+    },
+    {
+      "path": "examples/profile-index.mjs",
+      "bytes": 853,
+      "sha256": "501bf91cbe4ed9067e8236a916ab7faa9ff61555a7c4ac42834b50b557184e46",
+      "materializedSource": true
+    },
+    {
+      "path": "examples/demo.mjs",
+      "bytes": 709,
+      "sha256": "1b0ca2c7f6473827fcd306cb30f6fd7c3beb76953e6fbab6d53f369b767030e3",
+      "materializedSource": true
+    },
+    {
+      "path": "src/biology-world.mjs",
+      "bytes": 5216,
+      "sha256": "44216ebff618aa78fa06cbbf28489af70c4dd4bcd339ae1bd8a4b0b71c60a7da",
+      "materializedSource": true
+    },
+    {
+      "path": "src/open-world.mjs",
+      "bytes": 18017,
+      "sha256": "eedf6b8f6a90000986b69651fe126638ade21ae5fb66c016e43e4d5c2d9c4920",
+      "materializedSource": true
+    },
+    {
+      "path": "src/operators.mjs",
+      "bytes": 1855,
+      "sha256": "2e05c6c94d5e07646c0277cfd016c79b363399bb2f784ca118d11bfbe3a42a75",
+      "materializedSource": true
+    },
+    {
+      "path": "src/registry-bridge.mjs",
+      "bytes": 2453,
+      "sha256": "60c04ab4a69d3b72590b462a38b20796d74f76d60df29e9fd2ab4d7e86e3fe44",
+      "materializedSource": true
+    },
+    {
+      "path": "src/genetic-code.mjs",
+      "bytes": 3019,
+      "sha256": "855db22974f06077627a4e65e10f7142135ac7dd658ebf2891f25e21b4057e7f",
+      "materializedSource": true
+    }
+  ],
+  "integrationBaseCommit": "35b9825bbc0bf127fdbee43f55cf912ba37cb5a2"
+}

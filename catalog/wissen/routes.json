@@ -5,6 +5,46 @@
   "modelWeightTraining": false,
   "entries": [
     {
+      "id": "open-organism-engine",
+      "title": "Lebende Systeme – Ressourcen, Signale und Wiederaufnahme",
+      "description": "Ausführbares lokales Modelllabor mit gerichtetem Austausch, eigenem Worker, geprüften Checkpoints und synthetischen Profilen.",
+      "source": "branches/open-organism-engine/src/open-world.mjs",
+      "tests": [
+        "branches/open-organism-engine/tests/core-regressions.test.mjs",
+        "branches/open-organism-engine/tests/scenarios-checkpoint.test.mjs",
+        "branches/open-organism-engine/tests/controller.test.mjs"
+      ],
+      "docs": "branches/open-organism-engine/README.md",
+      "demo": "systeme/",
+      "files": [
+        {
+          "path": "branches/open-organism-engine/src/open-world.mjs",
+          "bytes": 46593,
+          "sha256": "320e032bbc2acfbcd0cddfb1b78de02f5f199aff5911689d708f6c3088cba1c9"
+        },
+        {
+          "path": "branches/open-organism-engine/README.md",
+          "bytes": 10929,
+          "sha256": "0f50bf992cd682b41c8ea386d6b555bc85527803c5edb48c7e6fa90336b51e35"
+        },
+        {
+          "path": "branches/open-organism-engine/tests/core-regressions.test.mjs",
+          "bytes": 17678,
+          "sha256": "234e352de597ea450617ec6622825a9486b98a09f00a1d82622d50ebc9671843"
+        },
+        {
+          "path": "branches/open-organism-engine/tests/scenarios-checkpoint.test.mjs",
+          "bytes": 2750,
+          "sha256": "4372faead40e46f89c6ec6cd107d76591e915fb0ab84a0b8a65fb43291f7582d"
+        },
+        {
+          "path": "branches/open-organism-engine/tests/controller.test.mjs",
+          "bytes": 5288,
+          "sha256": "612ab2e4d0a3d4a0774c184502e3aa91ac3447571670caf2decacd915fd960ca"
+        }
+      ]
+    },
+    {
       "id": "code-observation-lab",
       "title": "Code & Messung – Dateien, Signale und Sequenzen",
       "description": "Vier lokale Arbeitsplätze verbinden belegte Formatzuordnungen, Interferenz mit Phasenrauschen, reversible Unicode-Codierung und RNA-Codontabellen mit konkreten Gegenproben.",
@@ -34,7 +74,7 @@
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
           "bytes": 27404,
-          "sha256": "730413686e7cde8dd8fed85f1198967fbbf9f5ac201ce9f564be9d3508772a90"
+          "sha256": "041fc01b60e4cbadd78778a8b2993b4650aba6119788b654ffedb4f00d78548c"
         }
       ]
     },
@@ -102,7 +142,7 @@
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
           "bytes": 27404,
-          "sha256": "730413686e7cde8dd8fed85f1198967fbbf9f5ac201ce9f564be9d3508772a90"
+          "sha256": "041fc01b60e4cbadd78778a8b2993b4650aba6119788b654ffedb4f00d78548c"
         }
       ]
     },
@@ -176,7 +216,7 @@
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
           "bytes": 27404,
-          "sha256": "730413686e7cde8dd8fed85f1198967fbbf9f5ac201ce9f564be9d3508772a90"
+          "sha256": "041fc01b60e4cbadd78778a8b2993b4650aba6119788b654ffedb4f00d78548c"
         }
       ]
     },
