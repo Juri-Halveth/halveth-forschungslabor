@@ -37,6 +37,7 @@ test("publication copies only approved files, binds bytes and rejects reused out
   await fs.writeFile(path.join(source, "research/lifecycle-echo/private-receipt.json"), "synthetic private receipt");
   await fs.writeFile(path.join(source, "branches/security-workbench/private-lab-token.json"), "synthetic private exclusion challenge");
   await fs.writeFile(path.join(source, "branches/security-research-hub/private-case-index.json"), "synthetic confidential-report metadata");
+  await fs.writeFile(path.join(source, "branches/code-observation-lab/private-entity-response.json"), "synthetic private consultation");
   const output = path.join(temporary, "site");
   const args = { repoRoot: source, outputRoot: output, commit: "a".repeat(40) };
   const receipt = await buildSite(args);
@@ -60,6 +61,8 @@ test("publication copies only approved files, binds bytes and rejects reused out
   assert.ok(!receipt.files.some(entry=>entry.path.includes('private-lab-token')||entry.path==='sicherheitslabor/http-fixture.mjs'));
   assert.equal(receipt.files.find(entry=>entry.path==='security/model.mjs').sourcePath,'branches/security-research-hub/model.mjs');
   assert.ok(!receipt.files.some(entry=>entry.path.includes('private-case-index')));
+  assert.equal(receipt.files.find(entry=>entry.path==='code/model.mjs').sourcePath,'branches/code-observation-lab/model.mjs');
+  assert.ok(!receipt.files.some(entry=>entry.path.includes('private-entity-response')||entry.path==='code/serve.mjs'||entry.path==='code/model.test.mjs'));
   await assert.rejects(buildSite(args), { code: "EEXIST" });
   await assert.rejects(
     buildSite({ ...args, commit: "main" }),

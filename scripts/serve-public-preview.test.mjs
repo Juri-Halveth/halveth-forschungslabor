@@ -19,6 +19,9 @@ test('Windows-independent module MIME and a closed publication list keep local p
   const request=(route,headers={},method='GET')=>new Promise((resolve,reject)=>{const req=http.request({hostname:'127.0.0.1',port,path:route,headers:{host:`127.0.0.1:${port}`,...headers},method},res=>{let body='';res.setEncoding('utf8');res.on('data',s=>body+=s);res.on('end',()=>resolve({status:res.statusCode,headers:res.headers,body}));});req.on('error',reject);req.end();});
   const module=await request('/security/view.mjs');assert.equal(module.status,200);assert.equal(module.headers['content-type'],'text/javascript; charset=utf-8');assert.equal(module.headers['x-content-type-options'],'nosniff');
   assert.equal((await request('/security/')).status,200);
+  assert.equal((await request('/code/')).status,200);
+  assert.equal((await request('/code/view.mjs')).headers['content-type'],'text/javascript; charset=utf-8');
+  assert.equal((await request('/code/private-entity-response.json')).status,404);
   for(const route of ['/private-case-index.json','/.git/config','/security/../private-case-index.json','/security/%2e%2e/private-case-index.json'])assert.equal((await request(route)).status,404);
   assert.equal((await request('/security/',{host:'other.example'})).status,403);assert.equal((await request('/security/',{},'POST')).status,405);
   assert.equal((await request('/security/view.mjs',{},'HEAD')).body,'');

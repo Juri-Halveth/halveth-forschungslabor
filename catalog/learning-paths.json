@@ -5,6 +5,15 @@
   "scope": "Current repository module and research entry points, not an audit of other repositories",
   "entries": [
     {
+      "id": "code-observation-lab",
+      "title": "Code & Messung – Dateien, Signale und Sequenzen",
+      "description": "Vier lokale Arbeitsplätze verbinden belegte Formatzuordnungen, Interferenz mit Phasenrauschen, reversible Unicode-Codierung und RNA-Codontabellen mit konkreten Gegenproben.",
+      "source": "branches/code-observation-lab/model.mjs",
+      "tests": ["branches/code-observation-lab/model.test.mjs", "branches/encounter-systems/browser.spec.mjs"],
+      "docs": "branches/code-observation-lab/README.md",
+      "demo": "code/"
+    },
+    {
       "id": "security-research-hub",
       "title": "Security Research – Methoden, Quellen und nächste Gegenprobe",
       "description": "18 Prüfmethoden, vier lokale Gegenproben, öffentliche Fallanalysen und ein exportierbarer Forschungsplan mit getrenntem Arbeits- und Belegstand.",

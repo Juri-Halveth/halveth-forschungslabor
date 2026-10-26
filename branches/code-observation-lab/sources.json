@@ -1,0 +1,236 @@
+{
+  "schema": "halveth.code-observation-lab.sources.v1",
+  "version": "1.0.0",
+  "checkedAt": "2026-10-26T00:23:27Z",
+  "dataClass": "PUBLIC",
+  "scope": "Endlicher Quellenstand fuer Formatzuordnungen, mathematische Modelle und getrennte wissenschaftliche Befunde.",
+  "claimCeiling": "SOURCE_BOUND_LITERATURE_AND_LOCAL_MATHEMATICS",
+  "sourceContentIncluded": false,
+  "sources": [
+    {
+      "id": "MS-ACCESS-EXTENSIONS",
+      "title": "Microsoft: Attachment file types restricted by Outlook 2010",
+      "url": "https://learn.microsoft.com/en-us/previous-versions/office/office-2010/cc179163(v=office.14)",
+      "sourceType": "MANUFACTURER_DOCUMENTATION",
+      "supports": "Die historische Tabelle nennt .mav als Access view shortcut und .maw als Access data access page.",
+      "limits": "Ein Anhangsfilter ist keine vollständige Formatbeschreibung; daraus folgen keine Byte-Spezifikation oder heutige Unterstützung.",
+      "readingCoverage": "Relevante Einträge der Originalseite; direkter HTTP-Abruf mit Status 200."
+    },
+    {
+      "id": "MS-DATA-ACCESS-PAGES",
+      "title": "Microsoft: Deploying Data Access Pages on the Internet or Your Intranet",
+      "url": "https://learn.microsoft.com/en-us/previous-versions/office/developer/office-xp/aa139939(v=office.10)",
+      "sourceType": "MANUFACTURER_DOCUMENTATION",
+      "supports": "Die historische Bereitstellungsanleitung beschreibt Data Access Pages und Änderungen an ihrer .htm-Datei.",
+      "limits": "Die beschriebene HTML-Seite und ein Shortcut zu dieser Seite sind verschiedene Artefakte; keine .maw-Byte-Spezifikation.",
+      "readingCoverage": "Abschnitte zu Bereitstellung und ConnectionString in der .htm-Datei; direkter HTTP-Abruf mit Status 200."
+    },
+    {
+      "id": "MS-SHORTCUT-LIST",
+      "title": "Microsoft-Archiv: Blocked File Types in SharePoint",
+      "url": "https://learn.microsoft.com/en-us/archive/blogs/sharepointcomic/blocked-file-types-in-sharepoint",
+      "sourceType": "MANUFACTURER_ARCHIVE",
+      "supports": "Die archivierte Liste klassifiziert .mav und .maw jeweils als Shortcut.",
+      "limits": "Archivierter Blogeintrag und Filterliste; beschreibt keine vollständige Syntax und keine aktuellen Office-Funktionen.",
+      "readingCoverage": "Einträge .mav und .maw; direkter HTTP-Abruf mit Status 200."
+    },
+    {
+      "id": "TRID-OVERVIEW",
+      "title": "Marco Pontello: TrID File Identifier",
+      "url": "https://mark0.net/soft-trid-e.html",
+      "sourceType": "DETECTOR_AUTHOR_DOCUMENTATION",
+      "supports": "TrID vergleicht Dateien mit aus wiederkehrenden Byte-Mustern gewonnenen Definitionen und liefert geordnete Erkennungskandidaten.",
+      "limits": "Ein Mustervergleich ist keine vollständige Dateivalidierung; Ergebnisse hängen vom gebundenen Definitionsbestand ab.",
+      "readingCoverage": "Programmbeschreibung und Beschreibung der Ausgabe."
+    },
+    {
+      "id": "TRID-MAV",
+      "title": "Marco Pontello: TrID Definitionsliste M",
+      "url": "https://mark0.net/soft-trid-deflist-m.html",
+      "sourceType": "DETECTOR_REGISTRY",
+      "supports": "Die Liste nennt Vortex-Media-Arts-Archive BAAM und MAV8 mit .mav. Die gelesenen Originaldefinitionen enthalten 4241414D beziehungsweise 4D415638 an Offset 0.",
+      "limits": "Primärquelle für die Erkennungsdefinition, keine Hersteller-Formatspezifikation. Keine reale Spielarchivdatei wurde hier validiert; weitere BAAM-Muster sind nicht durch den Vierbyte-Präfix ersetzt.",
+      "readingCoverage": "Relevante Listeneinträge sowie originale XML-Definitionen mav-baam.trid.xml und mav-mav8.trid.xml."
+    },
+    {
+      "id": "TRID-ETH",
+      "title": "Marco Pontello: TrID Definitionsliste E",
+      "url": "https://mark0.net/soft-trid-deflist-e.html",
+      "sourceType": "DETECTOR_REGISTRY",
+      "supports": "Die Liste nennt WinPharoah Ethernet traffic capture mit .eth. Die gelesene Originaldefinition enthält 1A350100 an Offset 0.",
+      "limits": "Belegt die Definition des Erkennungswerkzeugs. Ein passender Präfix belegt weder eine vollständige Capture-Datei noch ihren Inhalt.",
+      "readingCoverage": "WinPharoah-Listeneintrag sowie originale XML-Definition eth-winpharoah.trid.xml."
+    },
+    {
+      "id": "TRID-XML-ORIGIN",
+      "title": "Marco Pontello: TrIDScan Patterns scanner",
+      "url": "https://mark0.net/soft-tridscan-e.html",
+      "sourceType": "DETECTOR_AUTHOR_DOCUMENTATION",
+      "supports": "Die Seite erklärt die Erzeugung von XML-Erkennungsdefinitionen und verlinkt das originale Definitionsarchiv.",
+      "limits": "Eine durch Mustertraining erzeugte Definition ist kein Beweis für jede Datei einer behaupteten Formatfamilie. Die Datenbank wird hier nicht weiterverteilt.",
+      "readingCoverage": "Beschreibung der Definitionserzeugung, XML-Beispiel und Downloadverweis."
+    },
+    {
+      "id": "ETHNOGRAPH3-ALJUNID",
+      "title": "Syed Aljunid: Computer analysis of qualitative data: the use of ethnograph (1996)",
+      "url": "https://academic.oup.com/heapol/article-pdf/11/1/107/1667240/11-1-107.pdf",
+      "sourceType": "PRIMARY_USAGE_REPORT",
+      "supports": "Ein Anwenderbericht zu Ethnograph 3.0 beschreibt auf gedruckter Seite 108 vorbereiteten ASCII-/DOS-Text und dessen Umbenennung in .ETH vor der weiteren Verarbeitung.",
+      "limits": "Versionsgebundene historische Verwendung; keine Hersteller-Spezifikation und kein Nachweis für Ethnograph 6 oder beliebige .eth-Dateien.",
+      "readingCoverage": "PDF-Seiten 1 und 2, besonders Abschnitt Preparation of data auf gedruckter Seite 108."
+    },
+    {
+      "id": "ETHER-CATALOG",
+      "title": "FileInfo: ETH / Ether Source Code File",
+      "url": "https://fileinfo.com/extension/eth",
+      "sourceType": "SECONDARY_CATALOG_ASSERTION",
+      "supports": "Der gelesene Katalog ordnet .eth einer Sprache namens Ether mit Entwicklerangabe Zoerf zu.",
+      "limits": "Das ursprüngliche Sprachprojekt, seine Grammatik und eine passende Musterdatei wurden hier nicht gebunden. Die Zuordnung bleibt eine Katalogaussage.",
+      "readingCoverage": "Eintrag, Entwicklerangabe und Änderungsdatum 2020-05-05."
+    },
+    {
+      "id": "ENS-PROTOCOL",
+      "title": "ENS: What is the Ethereum Name Service?",
+      "url": "https://docs.ens.domains/learn/protocol/",
+      "sourceType": "PROTOCOL_DOCUMENTATION",
+      "supports": "ENS ordnet Namen wie alice.eth maschinenlesbaren Identifikatoren und Inhaltsreferenzen zu; .eth ist dort ein Namensraum.",
+      "limits": "Ein Name belegt weder eine Datei noch einen Zahlungsvorgang. Es wurde kein konkreter Name auf Registrierung, Eigentum oder Ziel abgefragt.",
+      "readingCoverage": "Protokollüberblick und Abschnitt ETH Registrar."
+    },
+    {
+      "id": "MAVLINK-COMMAND",
+      "title": "MAVLink: Command Protocol",
+      "url": "https://mavlink.io/en/services/command.html",
+      "sourceType": "PROTOCOL_DOCUMENTATION",
+      "supports": "COMMAND_ACK unterscheidet Ergebnisse. Bei gewöhnlichen Commands zeigt ACCEPTED einen gültigen, anzuwendenden Auftrag; lang laufende Commands besitzen eigene Fortschritts- und Abschlussregeln.",
+      "limits": "Eine gewöhnliche Annahmequittung belegt keine erreichte Lage. Die Demo bindet keine Geräte an und ist kein MAVLink-Kompatibilitätsnachweis.",
+      "readingCoverage": "Abschnitte COMMAND_INT sequence, Long Running Commands und Location Commands and Frame Types."
+    },
+    {
+      "id": "Q-DURR",
+      "title": "Dürr, Nonn und Rempe: Origin of quantum-mechanical complementarity probed by a which-way experiment (1998)",
+      "url": "https://www.nature.com/articles/25653",
+      "sourceType": "PRIMARY_EXPERIMENT",
+      "supports": "Im beschriebenen Atominterferometer genügte die mechanische Impulsrückwirkung nicht als Erklärung der beobachteten Interferenzunterdrückung durch Wegmarkierung.",
+      "limits": "Das Experiment ist kein kontrollierter Test menschlichen Bewusstseins; es legt keine Bewusstseinsvariable für diese Demo fest.",
+      "readingCoverage": "Abstract und bibliografische Angaben der Originalarbeit."
+    },
+    {
+      "id": "Q-ENGLERT",
+      "title": "Berthold-Georg Englert: Fringe Visibility and Which-Way Information: An Inequality (1996)",
+      "url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.77.2154",
+      "sourceType": "PRIMARY_THEORY",
+      "supports": "Die Arbeit begrenzt Interferenzsichtbarkeit und potenziell verfügbare Weginformation in einem Zweiwegeinterferometer.",
+      "limits": "Die Gleichheit V²+D²=1 in der Demo gilt für ihre idealisierten reinen Marker und balancierten Wege. Phasenmittelung wird hier als eigene mathematische Gegenprobe abgeleitet.",
+      "readingCoverage": "Abstract der Originalarbeit; Modellannahmen und Phasenmittelung werden vom Labor ausdrücklich selbst deklariert."
+    },
+    {
+      "id": "Q-BONG",
+      "title": "Bong et al.: A strong no-go theorem on the Wigner's friend paradox",
+      "url": "https://arxiv.org/html/1907.05607v4",
+      "sourceType": "PRIMARY_THEORY_AND_PROOF_OF_PRINCIPLE",
+      "supports": "Unter ausdrücklich gemeinsam gesetzten Annahmen entsteht ein quantentheoretischer Widerspruch. Der optische Modellversuch verwendet einen Photonenpfad in der Beobachterrolle.",
+      "limits": "Kein Experiment an menschlichem Bewusstsein. Das Theorem entscheidet keine einzelne Annahme isoliert; die gelesene Autorenfassung ist v4 vom 2023-03-15 zur Zeitschriftenarbeit von 2020.",
+      "readingCoverage": "Abstract und Einleitung einschließlich Messproblem, Voraussetzungen und optischer Beobachterrolle."
+    },
+    {
+      "id": "NCBI-CODE1",
+      "title": "NCBI: The Genetic Codes / Standard Code, transl_table=1",
+      "url": "https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi?chapter=tgencodes",
+      "sourceType": "CURATED_SEQUENCE_STANDARD",
+      "supports": "Im Standardcode codiert internes ATC eines passend orientierten codierenden DNA-Strangs als AUC der mRNA für Isoleucin. Weitere Tabellen besitzen abweichende Codonbedeutungen.",
+      "limits": "Alphabet, Strang, Richtung, Leserahmen und Initiationskontext müssen feststehen. Die Demo eines Triplets beweist keine natürliche Sequenz oder Proteinbildung.",
+      "readingCoverage": "Einführung, Standardcode und Vergleich mit dem vertebraten mitochondrialen Code."
+    },
+    {
+      "id": "RIBOSOME-NISSEN",
+      "title": "Nissen et al.: The structural basis of ribosome activity in peptide bond synthesis (2000)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10937990/",
+      "sourceType": "PRIMARY_STRUCTURE_EXPERIMENT",
+      "supports": "Die untersuchte große ribosomale Untereinheit besitzt ein katalytisches Zentrum aus rRNA; Substratanaloga kontaktieren dort konservierte rRNA-Reste.",
+      "limits": "Ribose ist der Zuckerbestandteil, ein Ribosom ein RNA-Protein-Komplex. Das Modell enthält weder vollständige Translation noch eine neue biologische Herkunftsanalyse.",
+      "readingCoverage": "Abstract der Originalarbeit und zugeordnete Strukturangaben."
+    },
+    {
+      "id": "FEEDBACK-CHANGEUX",
+      "title": "Jean-Pierre Changeux: 50th anniversary of the word Allosteric (2011)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3149185/",
+      "sourceType": "AUTHOR_RESEARCH_RETROSPECTIVE",
+      "supports": "Der Autor beschreibt eigene Versuche zur Hemmung von L-Threonin-Deaminase durch L-Isoleucin und zur veränderten Empfindlichkeit des Enzyms.",
+      "limits": "Historischer Bericht eines Beteiligten, keine hier erneut ausgeführte Messreihe. Eine abstrakte Software-Rückkopplung benötigt eigene Parameter und ist keine kalibrierte Enzymkinetik.",
+      "readingCoverage": "Abstract sowie Abschnitte zur Feedback-Hemmung und zur eigenen experimentellen Untersuchung."
+    },
+    {
+      "id": "ASTRO-MATERESE",
+      "title": "Materese, Nuevo und Sandford: The Formation of Nucleobases from the Ultraviolet Photo-Irradiation of Purine in Simple Astrophysical Ice Analogs (2017)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5808537/",
+      "sourceType": "PRIMARY_CHEMISTRY_EXPERIMENT",
+      "supports": "UV-Bestrahlung geeigneter Purin-Eisgemische lieferte unter anderem Adenin und Guanin; der Artikel verweist auf frühere Pyrimidinversuche.",
+      "limits": "Bedingungsgebundene Produkterzeugung. Keine vollständige DNA, Organismen oder Zuordnung bestimmter Pulsarklassen zu Basen.",
+      "readingCoverage": "Abstract und Einleitungsabschnitte zu Vorläufern, Eiszusammensetzung und Reaktionsbedingungen."
+    },
+    {
+      "id": "ASTRO-OBA",
+      "title": "Oba et al.: Identifying the wide diversity of extraterrestrial purine and pyrimidine nucleobases in carbonaceous meteorites (2022)",
+      "url": "https://www.nature.com/articles/s41467-022-29612-x",
+      "sourceType": "PRIMARY_CHEMICAL_ANALYSIS",
+      "supports": "Die Studie identifiziert Purin- und Pyrimidinbasen in Meteoritenextrakten mit analytischen Vergleichsverfahren.",
+      "limits": "Molekülidentifikation bestimmt nicht allein den historischen Syntheseweg; diese Arbeit ist kein eigener UV-Bestrahlungsversuch und bindet keine Pulsarquelle.",
+      "readingCoverage": "Abstract, Einleitung und Beginn der Ergebnisse einschließlich analytischer Identifikationskriterien."
+    },
+    {
+      "id": "ASTRO-RYUGU-2026",
+      "title": "Koga et al.: A complete set of canonical nucleobases in the carbonaceous asteroid (162173) Ryugu (2026)",
+      "url": "https://www.nature.com/articles/s41550-026-02791-z",
+      "sourceType": "PRIMARY_SAMPLE_RETURN_ANALYSIS",
+      "supports": "Die am 2026-03-16 veröffentlichte Arbeit berichtet A, G, C, T und U in zurückgebrachten Ryugu-Proben sowie Unterschiede der Purin-/Pyrimidin-Verhältnisse zwischen Materialien.",
+      "limits": "Nachweis von Nukleobasen; keine erzeugte RNA/DNA, Lebensdetektion oder belegte Pulsar- bzw. Eingriffshypothese. Die vorgeschlagenen Bildungswege bleiben Interpretation.",
+      "readingCoverage": "Abstract, ausgewählte Diskussions- und Methodenabschnitte, Kontrollproben und Data availability."
+    },
+    {
+      "id": "ASTRO-BENNU-SUGARS",
+      "title": "Furukawa et al.: Bio-essential sugars in samples from asteroid Bennu (2025)",
+      "url": "https://ntrs.nasa.gov/api/citations/20250010936/downloads/GlavinBioessentialSTI.pdf",
+      "sourceType": "PRIMARY_SAMPLE_RETURN_ANALYSIS",
+      "supports": "Der bei NASA archivierte Artikel berichtet unter anderem Ribose und Glucose in einer Bennu-Probe. 2-Desoxyribose lag in der untersuchten Probe unter der Nachweisgrenze.",
+      "limits": "Nichtnachweis bedeutet keine bewiesene globale Abwesenheit. Zutaten sind kein Nachweis eines fertigen RNA-Polymers oder von Leben; isotopische und enantiomere Zuckeranalysen waren nicht möglich.",
+      "readingCoverage": "Abstract und Abschnitte Detection of Bennu sugars, Kontrollen sowie analytische Grenzen auf PDF-Seiten 1 bis 3."
+    },
+    {
+      "id": "GENOME-1000G",
+      "title": "1000 Genomes Project Consortium: A map of human genome variation from population-scale sequencing (2010)",
+      "url": "https://www.nature.com/articles/nature09534",
+      "sourceType": "PRIMARY_GENOME_ANALYSIS",
+      "supports": "Die Arbeit validiert neue Varianten in Eltern-Kind-Trios und unterscheidet Keimbahnveränderungen von somatischen oder Zelllinienmutationen.",
+      "limits": "Belegt mögliche Klassen von Alternativerklärungen; bestimmt keine konkrete Fehlerursache in einem anderen Datensatz und reproduziert dessen Analyse nicht.",
+      "readingCoverage": "Abstract und Abschnitt zu validierten Keimbahn-, somatischen und Zelllinienvarianten."
+    },
+    {
+      "id": "PREPRINT-REMP-2025",
+      "title": "Max Myakishev-Rempel: Preliminary evidence of traces of alien genetic manipulation in humans, v1 (2025)",
+      "url": "https://rxiv.org/pdf/2505.0194v1.pdf",
+      "sourceType": "SELF_PUBLISHED_PREPRINT_CLAIM_SOURCE",
+      "supports": "Die v1 vom 2025-05-30 berichtet elf auffällige Familien unter 581 untersuchten Trios und interpretiert Genotypmuster als außerirdischen Eingriff.",
+      "limits": "Die Publikation belegt die Autorenbehauptung. Variantencluster, Nullmodell-p-Werte und eine ausgewählte Stichprobe bestimmen weder Herkunft noch Populationsprävalenz. Rohdaten und Analyse wurden hier nicht reproduziert.",
+      "readingCoverage": "Abstract, Methoden zu VCF/Genotypen, Ergebnistabelle und Diskussion der 348 gegenüber 206 Varianten."
+    },
+    {
+      "id": "PREPRINT-PROJECT-STATUS",
+      "title": "Starseed Genetics: Publications",
+      "url": "https://www.starseedgenetics.com/publications",
+      "sourceType": "AUTHOR_PROJECT_SELF_DESCRIPTION",
+      "supports": "Die Projektseite beschreibt die Arbeit beim Abruf als selbstveröffentlicht und noch nicht bereit für eine begutachtete Veröffentlichung.",
+      "limits": "Eine Selbstbeschreibung ist keine unabhängige Validierung. Die fachliche Kritik stützt sich zusätzlich auf Mess-, Auswertungs- und Schlussfolgerungsgrenzen.",
+      "readingCoverage": "Abschnitt Our publications."
+    },
+    {
+      "id": "LENS-MILLER",
+      "title": "M. C. Miller: Special Topic - Gravitational Lensing",
+      "url": "https://pages.astro.umd.edu/~mcmiller/teaching/astr680/lecture13.pdf",
+      "sourceType": "AUTHOR_UNIVERSITY_LECTURE",
+      "supports": "Für schwache Ablenkung mit weit entfernter Quelle und Beobachter wird der Winkel 4GM/(bc²) in Radiant beschrieben; der Sonnenrand dient als Referenz.",
+      "limits": "Lehrquelle für die Näherung. Der eigene Grenzwert b>=100r_s und numerische API-Prüfungen gehören zum Laborvertrag; keine horizontnahe Geodätenrechnung.",
+      "readingCoverage": "PDF-Seite 1 mit Gleichung 1 und ihren Voraussetzungen."
+    }
+  ]
+}
