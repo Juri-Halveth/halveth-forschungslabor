@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 import {evaluatePacket} from './model.mjs';
 import {cases} from './cases.mjs';
+import {evaluateUsgsPair} from './usgs-source.mjs';
 const byId = id => document.getElementById(id);
 const picker = byId('case-picker');
 const findingText = {possible_object:'möglicher Gegenstand', alternative_explanation:'andere Erklärung', unresolved:'offen'};
@@ -38,3 +39,30 @@ byId('download').addEventListener('click', () => {
   a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
 show(0);
+
+async function showRealSnapshot() {
+  try {
+    const response = await fetch('./data/usgs-example.json');
+    if (!response.ok) throw Error('SNAPSHOT_NOT_AVAILABLE');
+    const snapshot = await response.json();
+    if (snapshot.contract !== 'halveth.lagefaden.usgs-snapshot.v1'
+      || snapshot.feed.url !== 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson'
+      || snapshot.detail.url !== snapshot.records.summary.properties.detail) throw Error('INVALID_SOURCE_RECEIPT');
+    const result = evaluateUsgsPair(snapshot.records.summary, snapshot.records.detail);
+    if (JSON.stringify(result) !== JSON.stringify(snapshot.evaluation)) throw Error('EVALUATION_MISMATCH');
+    const date = stamp => new Intl.DateTimeFormat('de-DE',{dateStyle:'medium',timeStyle:'short',timeZone:'Europe/Berlin'}).format(new Date(stamp));
+    byId('real-event').textContent = result.title;
+    byId('real-times').textContent = 'Ereignis: ' + date(result.eventTimeSummary) + ' · Letzte Katalogänderung: ' + date(result.updateTimeDetail);
+    byId('real-captured').textContent = 'USGS-Feed abgerufen: ' + date(snapshot.feed.retrievedAt) + ' · ID: ' + result.eventId;
+    byId('real-detail-link').href = snapshot.detail.url;
+    byId('real-representations').textContent = String(result.representationCount);
+    byId('real-events').textContent = '1';
+    byId('real-meaning').textContent = result.eventTimeMatches
+      ? 'Beide USGS-Darstellungen nennen dieselbe Kennung und Ereigniszeit. Eine zweite URL ist kein zweiter Herkunftsnachweis.'
+      : 'Die Ereigniskennung stimmt überein, aber die Ereigniszeiten weichen ab. Diese Änderung braucht eine menschliche Prüfung.';
+  } catch (error) {
+    byId('real-event').textContent = 'Datierter USGS-Snapshot nicht verfügbar';
+    byId('real-meaning').textContent = 'Der echte Datenfall wird ohne gültigen lokalen Snapshot nicht ausgewertet.';
+  }
+}
+showRealSnapshot();

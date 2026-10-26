@@ -7,9 +7,9 @@
     {
       "id": "lagefaden",
       "title": "LAGEFADEN – drei Meldungen, wie viele Beobachtungen?",
-      "description": "Fünf synthetische Fälle zeigen Kopien, Beobachtungszeit, Widersprüche und die Grenze nur behaupteter Herkunft.",
+      "description": "Fünf Modellfälle und ein datierter USGS-Abruf trennen Kopien, Ereigniszeit, Widersprüche und die Grenze behaupteter Herkunft.",
       "source": "branches/lagefaden/model.mjs",
-      "tests": ["branches/lagefaden/model.test.mjs"],
+      "tests": ["branches/lagefaden/model.test.mjs", "branches/lagefaden/usgs-source.test.mjs"],
       "docs": "branches/lagefaden/README.md",
       "demo": "lagefaden/"
     },

@@ -36,6 +36,23 @@
         <button id="download" type="button">Prüfprotokoll herunterladen ↓</button>
       </div><div class="timeline"><h3>Was steckt hinter der Zahl?</h3><ol id="report-list"></ol></div></div>
     </section>
+    <section class="real" aria-labelledby="real-title">
+      <div class="section-head"><p class="eyebrow">Echte Daten · datierter Abruf</p>
+        <h2 id="real-title">Zwei API-Seiten. Ein Katalogereignis.</h2>
+        <p>Hier stammen die Angaben aus einem öffentlichen USGS-Abruf. Das Beispiel prüft den Datenweg: Die Übersicht und die Detailseite führen dieselbe Ereigniskennung. Über unabhängige physische Messungen sagt diese Gleichheit allein nichts.</p>
+      </div>
+      <div class="real-grid">
+        <article class="real-card"><p class="eyebrow">Die Quelle</p><h3 id="real-event">Datensatz wird geladen …</h3>
+          <p id="real-times"></p><p id="real-captured"></p>
+          <p class="real-links"><a id="real-feed-link" href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson">USGS-Übersicht ↗</a> <a id="real-detail-link" href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/">USGS-Detail ↗</a></p>
+        </article>
+        <article class="real-card real-answer"><p class="eyebrow">Was LAGEFADEN daraus liest</p>
+          <p class="real-number"><span id="real-representations">–</span> Darstellungen <span aria-hidden="true">→</span> <span id="real-events">–</span> Ereigniskennung</p>
+          <p id="real-meaning">Die Auswertung wird geladen …</p>
+          <p class="boundary">Die öffentlich abrufbaren Katalogdaten sind echt. Quelle, Ereignis und Abrufzeit sind bezeichnet; Sensorzahl und Außenlage werden daraus nicht geraten.</p>
+        </article>
+      </div>
+    </section>
     <section class="fit" aria-labelledby="fit-title"><p class="eyebrow">Der konkrete Produktgedanke</p><h2 id="fit-title">Ein Prüf-Layer vor der menschlichen Lageentscheidung.</h2>
       <div class="fit-grid"><article><span>01 / HEUTE</span><h3>Was läuft schon?</h3><p>Lokaler Code prüft Kopien, Zeitachsen und Widersprüche. Fünf Fälle sind anklickbar; Tests brechen bei veränderten Kopien und fehlerhaften Zeiten ab.</p></article>
       <article><span>02 / NÄCHSTE BRÜCKE</span><h3>Was müsste anschließen?</h3><p>Ein lesender Adapter zu einer freigegebenen Testumgebung, echte Herkunftsbelege und ein Vergleich mit einer einfachen Prüfliste. Ohne diese Brücke bleibt es ein Modell.</p></article>

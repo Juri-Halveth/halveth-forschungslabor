@@ -7,10 +7,11 @@
     {
       "id": "lagefaden",
       "title": "LAGEFADEN – drei Meldungen, wie viele Beobachtungen?",
-      "description": "Fünf synthetische Fälle zeigen Kopien, Beobachtungszeit, Widersprüche und die Grenze nur behaupteter Herkunft.",
+      "description": "Fünf Modellfälle und ein datierter USGS-Abruf trennen Kopien, Ereigniszeit, Widersprüche und die Grenze behaupteter Herkunft.",
       "source": "branches/lagefaden/model.mjs",
       "tests": [
-        "branches/lagefaden/model.test.mjs"
+        "branches/lagefaden/model.test.mjs",
+        "branches/lagefaden/usgs-source.test.mjs"
       ],
       "docs": "branches/lagefaden/README.md",
       "demo": "lagefaden/",
@@ -22,13 +23,18 @@
         },
         {
           "path": "branches/lagefaden/README.md",
-          "bytes": 7041,
-          "sha256": "d93270c29a62bd6d347a4adc9cd6ff4fbe71ec6d0ebb228796b011e5e7e0963e"
+          "bytes": 9612,
+          "sha256": "038c10eb4c649b3d31059399ef86c794a74fb30b2f7090008dde13e48d317be3"
         },
         {
           "path": "branches/lagefaden/model.test.mjs",
           "bytes": 2845,
           "sha256": "dd5e29bc59e9adb62163b01524c4bbdfd9b295b6ebaa20c03203783c7342c758"
+        },
+        {
+          "path": "branches/lagefaden/usgs-source.test.mjs",
+          "bytes": 1632,
+          "sha256": "e35c69d253b6ddd4abbdc03479fac21dbe91637acd12b034c7f315e64abd9877"
         }
       ]
     },
@@ -95,8 +101,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 27050,
-          "sha256": "11559dd716dee7be2cab1ef687af716e6cf19b27a286ee616b597097115585ba"
+          "bytes": 28047,
+          "sha256": "4b52c005ce48a07349221deba272e4cae23184722d88ab2a032b5b22b569c8cf"
         }
       ]
     },
@@ -169,8 +175,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 27050,
-          "sha256": "11559dd716dee7be2cab1ef687af716e6cf19b27a286ee616b597097115585ba"
+          "bytes": 28047,
+          "sha256": "4b52c005ce48a07349221deba272e4cae23184722d88ab2a032b5b22b569c8cf"
         }
       ]
     },

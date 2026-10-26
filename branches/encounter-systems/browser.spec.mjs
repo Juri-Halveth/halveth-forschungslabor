@@ -220,6 +220,20 @@ test("the repository tunnel has twenty-one usable source and test routes and mob
   await page.screenshot({path:info.outputPath("learning-tunnel-mobile.png"),fullPage:true});
 });
 
+test('LAGEFADEN shows a dated real USGS record as one catalog event and fails visibly without it',async({page})=>{
+  const snapshot=JSON.parse(await fs.readFile(new URL('../lagefaden/data/usgs-example.json',import.meta.url),'utf8'));
+  await page.goto('/lagefaden/');
+  await expect(page.locator('#real-event')).toHaveText(snapshot.evaluation.title);
+  await expect(page.locator('#real-representations')).toHaveText('2');
+  await expect(page.locator('#real-events')).toHaveText('1');
+  await expect(page.locator('#real-meaning')).toContainText('kein zweiter Herkunftsnachweis');
+  await expect(page.locator('#real-detail-link')).toHaveAttribute('href',snapshot.detail.url);
+  await page.route('**/lagefaden/data/usgs-example.json',route=>route.fulfill({status:503,body:'unavailable'}));
+  await page.reload();
+  await expect(page.locator('#real-event')).toHaveText('Datierter USGS-Snapshot nicht verfügbar');
+  await expect(page.locator('#real-meaning')).toContainText('nicht ausgewertet');
+});
+
 test('security workbench executes counterexamples, rejects invalid input and exports actual local results',async({page})=>{
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('/sicherheitslabor/');await expect(page.locator('#run-count')).toHaveText('6');

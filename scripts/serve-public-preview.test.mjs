@@ -22,4 +22,8 @@ test('Windows-independent module MIME and a closed publication list keep local p
   for(const route of ['/private-case-index.json','/.git/config','/security/../private-case-index.json','/security/%2e%2e/private-case-index.json'])assert.equal((await request(route)).status,404);
   assert.equal((await request('/security/',{host:'other.example'})).status,403);assert.equal((await request('/security/',{},'POST')).status,405);
   assert.equal((await request('/security/view.mjs',{},'HEAD')).body,'');
+  const snapshot=await request('/lagefaden/data/usgs-example.json');
+  assert.equal(snapshot.status,200);
+  assert.match(snapshot.headers['content-security-policy'],/connect-src 'self'/);
+  assert.equal(snapshot.headers['content-type'],'application/json; charset=utf-8');
 });
