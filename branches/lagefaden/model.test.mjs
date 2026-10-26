@@ -56,3 +56,11 @@ test('cycles and missing parents fail', () => {
   p.reports[0].parentId = 'Z';
   assert.throws(() => evaluatePacket(p), /MISSING_PARENT/);
 });
+test('one declared origin or an unresolved finding never yields a consistent label', () => {
+  const p = structuredClone(cases[0].packet);
+  p.reports = p.reports.slice(0,2);
+  assert.equal(evaluatePacket(p).status, 'REVIEW_SINGLE_SOURCE');
+  p.reports[0].finding = 'unresolved';
+  p.reports[1].finding = 'unresolved';
+  assert.equal(evaluatePacket(p).status, 'REVIEW_UNRESOLVED');
+});

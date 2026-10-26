@@ -14,7 +14,7 @@ function show(index) {
   byId('case-explanation').textContent = item.explanation;
   byId('report-count').textContent = String(result.reportCount);
   byId('origin-count').textContent = String(result.freshDeclaredOrigins);
-  byId('case-status').textContent = ({REVIEW_CONFLICT:'Widerspruch: menschlich prüfen', REVIEW_GAP:'Zeitlücke: menschlich prüfen', PROVISIONAL_CONSISTENT:'Meldungen passen zusammen – Ursprung weiterhin nur deklariert'})[result.status];
+  byId('case-status').textContent = ({REVIEW_CONFLICT:'Widerspruch: menschlich prüfen', REVIEW_GAP:'Zeitlücke: menschlich prüfen', REVIEW_UNRESOLVED:'Offener Befund: menschlich prüfen', REVIEW_SINGLE_SOURCE:'Nur eine frische Quelle angegeben: menschlich prüfen', PROVISIONAL_CONSISTENT:'Meldungen passen zusammen – Ursprung weiterhin nur deklariert'})[result.status];
   const list = byId('report-list');
   list.replaceChildren();
   for (const row of result.rows) {

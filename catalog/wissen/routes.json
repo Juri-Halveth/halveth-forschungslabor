@@ -17,18 +17,18 @@
       "files": [
         {
           "path": "branches/lagefaden/model.mjs",
-          "bytes": 4699,
-          "sha256": "2661f00b0e27706d106cf5bfc252e68c92388a7747a3baa9a419cb8d3d056a0e"
+          "bytes": 4859,
+          "sha256": "c3d0b055b93645d16818570d8b3b9d5ff681978feb699071ff275f3949632037"
         },
         {
           "path": "branches/lagefaden/README.md",
           "bytes": 7041,
-          "sha256": "4cb8ca577c426705f68bb7d78b1efbf0361d1119eaa92911bdfecfcbde1a5e20"
+          "sha256": "d93270c29a62bd6d347a4adc9cd6ff4fbe71ec6d0ebb228796b011e5e7e0963e"
         },
         {
           "path": "branches/lagefaden/model.test.mjs",
-          "bytes": 2459,
-          "sha256": "04d0487a85e69fd7fea5eccfcf1148cf8d84c13a3dbd2c01a97b7224b5bf2769"
+          "bytes": 2845,
+          "sha256": "dd5e29bc59e9adb62163b01524c4bbdfd9b295b6ebaa20c03203783c7342c758"
         }
       ]
     },

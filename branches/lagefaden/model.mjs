@@ -72,11 +72,13 @@ export function evaluatePacket(packet) {
   const freshFindings = new Set(fresh.map(row => row.finding).filter(value => value !== 'unresolved'));
   const conflict = freshFindings.size > 1;
   const gap = originalRows.some(row => row.timeState !== 'FRESH_DECLARED') || fresh.length === 0;
+  const unresolved = fresh.some(row => row.finding === 'unresolved');
   return {
     contract: 'halveth.lagefaden.synthetic.v1', caseId: packet.caseId,
     reportCount: rows.length, originalReportCount: originalRows.length,
     freshDeclaredOrigins: freshOrigins.size, conflict,
-    status: conflict ? 'REVIEW_CONFLICT' : gap ? 'REVIEW_GAP' : 'PROVISIONAL_CONSISTENT',
+    status: conflict ? 'REVIEW_CONFLICT' : gap ? 'REVIEW_GAP' : unresolved ? 'REVIEW_UNRESOLVED'
+      : freshOrigins.size < 2 ? 'REVIEW_SINGLE_SOURCE' : 'PROVISIONAL_CONSISTENT',
     rows, worldState: 'UNKNOWN',
     sourceAuthentication: 'NOT_PERFORMED',
     action: 'HUMAN_REVIEW_ONLY'
