@@ -133,6 +133,7 @@ main {
   color: var(--muted-foreground);
 }
 h1 {
+  overflow-wrap: anywhere;
   font-size: clamp(40px, 5.4vw, 72px);
   line-height: 1.09;
   letter-spacing: -0.055em;
