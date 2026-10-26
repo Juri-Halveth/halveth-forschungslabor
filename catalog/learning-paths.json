@@ -5,6 +5,15 @@
   "scope": "Current repository module and research entry points, not an audit of other repositories",
   "entries": [
     {
+      "id": "lagefaden",
+      "title": "LAGEFADEN – drei Meldungen, wie viele Beobachtungen?",
+      "description": "Fünf synthetische Fälle zeigen Kopien, Beobachtungszeit, Widersprüche und die Grenze nur behaupteter Herkunft.",
+      "source": "branches/lagefaden/model.mjs",
+      "tests": ["branches/lagefaden/model.test.mjs"],
+      "docs": "branches/lagefaden/README.md",
+      "demo": "lagefaden/"
+    },
+    {
       "id": "security-research-hub",
       "title": "Security Research – Methoden, Quellen und nächste Gegenprobe",
       "description": "18 Prüfmethoden, vier lokale Gegenproben, öffentliche Fallanalysen und ein exportierbarer Forschungsplan mit getrenntem Arbeits- und Belegstand.",

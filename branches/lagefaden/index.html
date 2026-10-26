@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>LAGEFADEN · HALVETH</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="view.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#probe">Zur Probe springen</a>
+  <header class="masthead"><span class="mark">◈ HALVETH / LUCINET</span><span>Forschungslabor · Synthetische Probe 01</span></header>
+  <noscript><p class="nojs">Die Fälle benötigen JavaScript. Die Erklärung und der Prüfstand stehen auch im <a href="README.md">Lesetext</a>.</p></noscript>
+  <main>
+    <section class="hero" aria-labelledby="title">
+      <div class="hero-copy"><p class="eyebrow">Eine Frage, bevor aus Meldungen Gewissheit wird</p>
+        <h1 id="title">Drei Meldungen.<br><em>Wie viele Beobachtungen?</em></h1>
+        <p class="lead">Eine Kamera meldet etwas. Ein zweiter Kanal leitet es weiter. Eine dritte Nachricht widerspricht – aber stammt von gestern. LAGEFADEN legt Quelle, Kopie und Zeit nebeneinander. Die Entscheidung bleibt bei Menschen.</p>
+        <a class="primary" href="#probe">Fünf Fälle durchspielen <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="hero-graphic" aria-label="Schema: A wird an B weitergegeben. C ist ein eigener, älterer Ursprung.">
+        <div class="node original">A<small>Beobachtung</small></div><div class="connector">→ <small>Kopie</small></div>
+        <div class="node copy">B<small>Weitergabe</small></div><div class="not-equal">≠</div>
+        <div class="node third">C<small>anderer Ursprung</small></div>
+        <p class="graphic-note">A + B + C = drei Nachrichten, <strong>zwei deklarierte Ursprünge</strong>.</p>
+      </div>
+    </section>
+    <section id="probe" class="lab" aria-labelledby="lab-title">
+      <div class="section-head"><p class="eyebrow">Das ausführbare Modell</p><h2 id="lab-title">Ändere einen Umstand. Sieh, was kippt.</h2>
+        <p>Feste erfundene Nachrichten, dieselbe Prüflogik. Keine Kamera, kein Funk, kein Live-System.</p></div>
+      <div class="case-picker" role="group" aria-label="Synthetischen Fall wählen" id="case-picker"></div>
+      <div class="case-content"><div class="result-card"><p class="eyebrow">Prüfausgabe</p><h3 id="case-title"></h3><p id="case-explanation"></p>
+        <div class="stats"><div><strong id="report-count">–</strong><span>Meldungen</span></div><div><strong id="origin-count">–</strong><span>frische, deklarierte Ursprünge</span></div></div>
+        <p class="status" id="case-status" role="status"></p><p class="boundary">Status der Außenwelt: <strong>unbekannt</strong>. Herkunft ist hier angegeben, nicht technisch authentisiert.</p>
+        <button id="download" type="button">Prüfprotokoll herunterladen ↓</button>
+      </div><div class="timeline"><h3>Was steckt hinter der Zahl?</h3><ol id="report-list"></ol></div></div>
+    </section>
+    <section class="fit" aria-labelledby="fit-title"><p class="eyebrow">Der konkrete Produktgedanke</p><h2 id="fit-title">Ein Prüf-Layer vor der menschlichen Lageentscheidung.</h2>
+      <div class="fit-grid"><article><span>01 / HEUTE</span><h3>Was läuft schon?</h3><p>Lokaler Code prüft Kopien, Zeitachsen und Widersprüche. Fünf Fälle sind anklickbar; Tests brechen bei veränderten Kopien und fehlerhaften Zeiten ab.</p></article>
+      <article><span>02 / NÄCHSTE BRÜCKE</span><h3>Was müsste anschließen?</h3><p>Ein lesender Adapter zu einer freigegebenen Testumgebung, echte Herkunftsbelege und ein Vergleich mit einer einfachen Prüfliste. Ohne diese Brücke bleibt es ein Modell.</p></article>
+      <article><span>03 / RELEVANTE UMGEBUNG</span><h3>Was würde TRL 6 zeigen?</h3><p>Ein installierbarer Prototyp im passenden Arbeitsablauf, mit Nutzerinnen und Nutzern getestet: Erkennen sie abhängige Meldungen besser, ohne neue Fehlgewissheit oder Mehrarbeit?</p></article></div>
+    </section>
+  </main>
+  <footer><strong>Juri / HALVETH</strong><span>Quellcode, Testvertrag und Herkunft: <a href="README.md">README</a> · <a href="https://github.com/Juri-Halveth/halveth-forschungslabor/blob/main/LICENSES.md">Lizenzen</a></span></footer>
+</body></html>

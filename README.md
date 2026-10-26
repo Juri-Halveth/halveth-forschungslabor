@@ -23,6 +23,10 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [LAGEFADEN – drei Meldungen, wie viele Beobachtungen?](branches/lagefaden/)
+
+Eine [bedienbare Offline-Probe](https://juri-halveth.github.io/halveth-forschungslabor/lagefaden/) zeigt Kopien, Beobachtungszeit und offene Widersprüche in fünf erfundenen Fällen. Sie prüft deklarierte Nachrichtendaten und trifft keine Lageentscheidung. [Produktfrage, Portfoliobezug und Reifegradpfad](branches/lagefaden/README.md).
+
 ### [Security Research – Methoden, Quellen und nächste Gegenprobe](branches/security-research-hub/)
 
 **[Den Forschungsraum öffnen](https://juri-halveth.github.io/halveth-forschungslabor/security/)**.

@@ -56,6 +56,9 @@ export const publicFiles = Object.freeze([
   ...["index.html", "style.css", "view.mjs", "model.mjs", "catalog.mjs", "README.md", "SOURCES.md", "example-input.json"].map((name) => ({
     path: "security/" + name, sourcePath: "branches/security-research-hub/" + name,
   })),
+  ...["index.html", "style.css", "view.mjs", "model.mjs", "cases.mjs", "README.md", "PORTFOLIO_DECISION.md"].map((name) => ({
+    path: "lagefaden/" + name, sourcePath: "branches/lagefaden/" + name,
+  })),
   { path:"wissen/LEARNING_PIPELINE.md", sourcePath:"catalog/LEARNING_PIPELINE.md" },
 ].map(Object.freeze));
 
