@@ -3,6 +3,69 @@ import { test, expect } from "@playwright/test";
 import path from "node:path";
 import fs from "node:fs/promises";
 
+test('LAGEFADEN witness replay distinguishes route observations, copies, peer actions and recovery',async({page})=>{
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto('/lagefaden/#witness');
+  await expect(page.locator('#witness-event-count')).toHaveText('5');
+  await expect(page.locator('#witness-own-count')).toHaveText('2');
+  await expect(page.locator('#witness-copy-count')).toHaveText('1');
+  await expect(page.locator('#witness-peer-count')).toHaveText('2');
+  await expect(page.locator('#witness-gaps')).toContainText('eigene Sicht ist zu alt');
+  await page.locator('#witness-reset').click();
+  await expect(page.locator('#witness-prev')).toBeDisabled();
+  await expect(page.locator('#witness-event-count')).toHaveText('0');
+  for(let i=0;i<4;i++)await page.locator('#witness-next').click();
+  await expect(page.locator('#witness-event-count')).toHaveText('4');
+  await expect(page.locator('#witness-own-count')).toHaveText('1');
+  await expect(page.locator('#witness-events')).not.toContainText('C2');
+  await page.locator('#witness-case').selectOption('1');
+  await expect(page.locator('#witness-state')).toHaveAttribute('data-state','CONFLICT_REVIEW');
+  await page.locator('#witness-case').selectOption('2');
+  await expect(page.locator('#witness-state')).toHaveAttribute('data-state','PROVENANCE_REVIEW');
+  await expect(page.locator('#witness-gaps')).toContainText('B1: referenzierter Ursprung fehlt');
+  await page.locator('#witness-case').selectOption('3');
+  await page.locator('#witness-prev').click(); // last observation checkpoint
+  await page.locator('#witness-prev').click(); // restore checkpoint, before new sighting
+  await expect(page.locator('#witness-own-count')).toHaveText('1');
+  await expect(page.locator('#witness-gaps')).toContainText('neue Sichtung steht aus');
+  await page.locator('#witness-next').click();
+  await expect(page.locator('#witness-own-count')).toHaveText('2');
+  await expect(page.locator('#witness-gaps')).not.toContainText('neue Sichtung steht aus');
+  await page.locator('#witness-case').selectOption('4');
+  await expect(page.locator('#witness-state')).toHaveAttribute('data-state','REVIEWER_UNAVAILABLE');
+  await page.locator('#witness-case').focus();await page.keyboard.press('ArrowDown');await page.keyboard.press('Enter');
+  await expect(page.locator('#witness-fresh')).toContainText('3 frische Ursprungskennungen');
+  await expect(page.locator('#witness-fresh')).toContainText('Unabhängigkeit bleibt offen');
+  const downloadPromise=page.waitForEvent('download');await page.locator('#witness-export').click();
+  const download=await downloadPromise;
+  const result=JSON.parse(await fs.readFile(await download.path(),'utf8'));
+  expect(result.sample.caseId).toBe('HIDDEN_DEPENDENCE');
+  expect(result.evaluation.sourceAuthentication).toBe('NOT_PERFORMED');
+  expect(result.evaluation.routeState).toBe('UNKNOWN');
+  expect(result.comparison.state).toBe('PROTOCOL_PREPARED_NOT_RUN');
+  const {evaluateReplay}=await import('../lagefaden/witness-replay.mjs');
+  expect(result.evaluation).toEqual(evaluateReplay(result.sample,result.evaluation.step));
+  expect(errors).toEqual([]);
+});
+
+test('LAGEFADEN witness controls and cards remain usable at phone and desktop widths',async({page},info)=>{
+  await page.goto('/lagefaden/#witness');
+  for(const width of [320,390,768,1440]){
+    await page.setViewportSize({width,height:1000});
+    for(let i=0;i<6;i++){
+      await page.locator('#witness-case').selectOption(String(i));
+      expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+      await expect(page.locator('#witness-nodes article')).toHaveCount(3);
+    }
+    await page.locator('#witness-case').selectOption('0');
+    await page.locator('#witness-title').scrollIntoViewIfNeeded();
+    if(width===390||width===1440)await page.screenshot({path:info.outputPath(`witness-${width}.png`)});
+  }
+  await page.setViewportSize({width:390,height:1000});
+  await page.getByRole('group',{name:'Nachrichten schrittweise abspielen'}).scrollIntoViewIfNeeded();
+  await page.screenshot({path:info.outputPath('witness-controls-mobile.png')});
+});
+
 test('security research creates a declared plan, preserves literal input and downloads its real state',async({page})=>{
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('/security/');await expect(page.locator('.method-card')).toHaveCount(18);

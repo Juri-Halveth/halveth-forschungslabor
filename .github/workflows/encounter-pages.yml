@@ -6,6 +6,7 @@ on:
       [
         "branches/encounter-systems/**",
         "branches/endeck-observer/**",
+        "branches/lagefaden/**",
         "branches/security-workbench/**",
         "branches/security-research-hub/**",
         "research/lifecycle-echo/**",
@@ -21,6 +22,7 @@ on:
       [
         "branches/encounter-systems/**",
         "branches/endeck-observer/**",
+        "branches/lagefaden/**",
         "branches/security-workbench/**",
         "branches/security-research-hub/**",
         "research/lifecycle-echo/**",
@@ -57,6 +59,7 @@ jobs:
           node --test scripts/build-encounter-site.test.mjs
           node --test branches/endeck-observer/model.test.mjs
           node --test branches/endeck-observer/learning.test.mjs
+          node --test branches/lagefaden/*.test.mjs
           node scripts/build-learning-hub.mjs --check
           node branches/encounter-systems/research.mjs --check
           node --test branches/encounter-systems/signal-model.test.mjs

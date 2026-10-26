@@ -4,12 +4,14 @@ import {cases} from './cases.mjs';
 import {syntheticWRows,unavailableWRows} from './w-space.mjs';
 import {buildSourceCoverage,unavailableSource} from './coverage.mjs';
 import {mountCoverage} from './coverage-view.mjs';
+import {mountWitnessReplay} from './witness-view.mjs';
 const byId = id => document.getElementById(id);
 const date = stamp => new Intl.DateTimeFormat('de-DE',{dateStyle:'medium',timeStyle:'short',timeZone:'Europe/Berlin'}).format(new Date(stamp)) + ' Uhr (Berlin)';
 const picker = byId('case-picker');
 const findingText = {possible_object:'möglicher Gegenstand', alternative_explanation:'andere Erklärung', unresolved:'offen'};
 let selected = 0;
 const updateCoverage = mountCoverage();
+mountWitnessReplay();
 
 function renderWGrid(targetId, rows) {
   const grid = byId(targetId);

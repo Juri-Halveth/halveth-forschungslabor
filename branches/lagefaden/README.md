@@ -36,6 +36,12 @@ Eine bedingte Sensitivitätsausgabe zeigt, ob eine Facette die letzte offene Pfl
 
 Die vorliegende Implementierung ist **neu geschrieben**; die Tabelle benennt konzeptionelle Vorarbeiten, keine unsichtbare Laufzeitintegration. Fremde Projektbegriffe werden nicht als zertifizierte Eigenschaften importiert.
 
+## C-DROHNE / GUARDIAN wieder anschließen
+
+Das [Drei-Beobachter-Replay](index.html#witness) bindet die Hilfsweg-Frage der C-DROHNE-Vorarbeit wieder an den heutigen Prüfkern. Sechs feste synthetische Fälle zeigen eigene Wegsichtung, Weitergabe, Reaktion, Beobachtung einer Peer-Handlung, Sichtverlust und Wiederaufnahme. Jeder Schritt besitzt eine eigene Modellzeit. Ein fehlender Ursprung bleibt eine Lücke; drei verschiedene Kennungen bestätigen keine unabhängigen Sensoren.
+
+Der Adapter übergibt ausschließlich gebundene Wegmeldungen an den bestehenden Nachrichtenprüfer. Andere Ereignistypen bleiben getrennt sichtbar. Der JSON-Download erhält Eingabe und Auswertung. [Quellstand, Nachrichtenvertrag und vorbereiteter Checklistenvergleich](WITNESS_REPLAY.md) dokumentieren die Reintegration; Anwendernutzen und relevanter Feldablauf bleiben zu messen.
+
 ## Echte Daten ohne eigene Hardware
 
 Die [USGS-GeoJSON-Feeds](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) sind ein öffentlicher programmatischer Datenzugang. `capture-usgs.mjs` liest ausschließlich die feste Übersicht für Ereignisse mit Magnitude 2,5+ der letzten 24 Stunden und anschließend die zu genau einer daraus ausgewählten ID gehörige Detailadresse. Die Auswahl ist die höchste Magnitude, bei Gleichstand die jüngere Ereigniszeit. Der [datierte Snapshot](data/usgs-example.json) vom **26. Oktober 2026** hält die beiden Abrufzeiten, URLs, Bytezahlen, SHA-256-Werte der Antworten und die für die Probe benötigten Felder fest. Die rohen API-Antworten sind nicht im Repository enthalten. USGS-Daten können nachträglich revidiert werden; ein späterer Abruf muss nicht denselben Hash liefern. Die [USGS-Datenlizenzseite](https://www.usgs.gov/data-management/data-licensing) erläutert die Freigabe staatlicher Daten; verlinkte Inhalte anderer Urheber sind dadurch nicht pauschal mitlizenziert.

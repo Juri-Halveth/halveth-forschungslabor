@@ -19,6 +19,7 @@
         <p class="lead">Eine Kamera meldet etwas. Ein zweiter Kanal leitet es weiter. Eine dritte Nachricht widerspricht – aber stammt von gestern. LAGEFADEN legt Quelle, Kopie und Zeit nebeneinander. Die Entscheidung bleibt bei Menschen.</p>
         <a class="primary" href="#probe">Fünf Fälle durchspielen <span aria-hidden="true">↘</span></a>
         <a class="coverage-jump" href="#coverage">Was sehen die Quellen – und was fehlt? ↓</a>
+        <a class="coverage-jump" href="#witness">Zurück zur Drohnenidee: drei virtuelle Beobachter ↓</a>
       </div>
       <div class="hero-graphic" aria-label="Schema: A wird an B weitergegeben. C ist ein eigener, älterer Ursprung.">
         <div class="node original">A<small>Beobachtung</small></div><div class="connector">→ <small>Kopie</small></div>
@@ -41,6 +42,24 @@
         <p>Jede Frage bleibt einzeln sichtbar. Eine fehlende Antwort wird als <strong>UNKNOWN</strong> markiert statt aus ähnlichen Angaben geraten.</p>
         <dl id="w-grid" class="w-grid"></dl>
       </details>
+    </section>
+    <section id="witness" class="witness" aria-labelledby="witness-title">
+      <div class="section-head"><p class="eyebrow">C-DROHNE / GUARDIAN · Software-Reintegration</p>
+        <h2 id="witness-title">A sieht etwas.<br>B reagiert.<br>Was hat C wirklich gesehen?</h2>
+        <p>Ein Hilfsweg nach einem erfundenen Unwetter. Drei virtuelle Beobachter. Spiele die Nachrichten einzeln ab: Eine Reaktion auf A und die Beobachtung dieser Reaktion liefern jeweils andere Informationen als eine eigene Sicht auf den Weg.</p>
+      </div>
+      <label class="witness-label" for="witness-case">Welcher Umstand ändert sich?</label><select id="witness-case"></select>
+      <p id="witness-story" class="witness-story"></p>
+      <div class="witness-route" aria-label="Illustration: Ein fiktiver Hilfsweg; die Beobachterkarten zeigen Informationsstände, keine Flugpositionen."><span>Hilfe</span><span class="witness-route-line" aria-hidden="true">············· ? ·············</span><span>Ziel</span></div>
+      <p class="witness-caption">Die Karten zeigen Informationsstände. Flugpositionen und Sensorbilder werden hier nicht simuliert.</p>
+      <div id="witness-nodes" class="witness-nodes"></div>
+      <div class="witness-controls" role="group" aria-label="Nachrichten schrittweise abspielen"><button id="witness-reset" type="button">Von vorn</button><button id="witness-prev" type="button">← Zurück</button><button id="witness-next" type="button">Nächster Schritt →</button><button id="witness-end" type="button">Endstand</button></div>
+      <p id="witness-position" class="witness-position" role="status"></p><progress id="witness-progress" aria-label="Fortschritt im Nachrichten-Replay" max="1" value="0"></progress>
+      <div class="witness-stats"><div><strong id="witness-event-count">–</strong><span>eingegangene Nachrichten</span></div><div><strong id="witness-own-count">–</strong><span>eigene Wegsichtungen angegeben</span></div><div><strong id="witness-copy-count">–</strong><span>Weitergaben</span></div><div><strong id="witness-peer-count">–</strong><span>Reaktionen / beobachtete Handlungen</span></div></div>
+      <p id="witness-state" class="witness-result"></p><p id="witness-fresh"></p>
+      <div class="witness-detail-grid"><article><h3>Was ist wann eingetroffen?</h3><ol id="witness-events" class="witness-events"></ol></article><article class="witness-review"><p class="eyebrow">Was braucht die Prüfung?</p><h3>Diese Fragen bleiben sichtbar.</h3><ul id="witness-gaps"></ul><p><strong>Reale Weglage: unbekannt.</strong> Das Replay bereitet eine menschliche Prüfung vor. Es ist vollständig synthetisch und steuert keine Geräte.</p><details><summary>Was legt der Fallautor fest?</summary><p id="witness-author-note"></p></details></article></div>
+      <div class="witness-footer"><button id="witness-export" type="button">Diesen Replay-Stand als JSON ↓</button><a href="WITNESS_REPLAY.md">Herkunft, Modellregeln und Vergleichsprotokoll ↗</a></div>
+      <p class="witness-caption">Nächste messbare Frage: Werden Weitergaben und Reaktionen seltener als eigene Sichtungen fehlgezählt? Der Vergleich mit einer menschlichen Checkliste ist vorbereitet; Ergebnisse mit Anwendern stehen aus.</p>
     </section>
     <section class="real" aria-labelledby="real-title">
       <div class="section-head"><p class="eyebrow">Echte Daten · datierter Abruf</p>
@@ -139,7 +158,7 @@
       <p class="coverage-footnote">Ein heller Punkt belegt den definierten Datenausschnitt. Welche Außenlage zutrifft, wie vollständig die Welt erfasst wurde und ob Kataloge dasselbe Ereignis beschreiben, sind jeweils eigene Prüfungen.</p>
     </section>
     <section class="fit" aria-labelledby="fit-title"><p class="eyebrow">Der konkrete Produktgedanke</p><h2 id="fit-title">Ein Prüf-Layer vor der menschlichen Lageentscheidung.</h2>
-      <div class="fit-grid"><article><span>01 / HEUTE</span><h3>Was läuft schon?</h3><p>Lokaler Code prüft Kopien, Zeitachsen und Widersprüche. Fünf Modellfälle und datierte Snapshots aus drei öffentlichen Katalogen sind sichtbar; ungültige Fälle brechen ab.</p></article>
+      <div class="fit-grid"><article><span>01 / HEUTE</span><h3>Was läuft schon?</h3><p>Lokaler Code prüft Kopien, Zeitachsen und Widersprüche. Sechs Drei-Beobachter-Replays, fünf Modellfälle und datierte Snapshots aus drei öffentlichen Katalogen sind sichtbar; ungültige Fälle brechen ab.</p></article>
       <article><span>02 / NÄCHSTE BRÜCKE</span><h3>Was müsste anschließen?</h3><p>Ein lesender Adapter zu einem konkret freigegebenen Arbeitsablauf, echte Herkunftsbelege und ein Vergleich mit einer einfachen Prüfliste. Die öffentlichen Kataloge allein ersetzen diese Prüfung nicht.</p></article>
       <article><span>03 / RELEVANTE UMGEBUNG</span><h3>Was würde TRL 6 zeigen?</h3><p>Ein installierbarer Prototyp im passenden Arbeitsablauf, mit Nutzerinnen und Nutzern getestet: Erkennen sie abhängige Meldungen besser, ohne neue Fehlgewissheit oder Mehrarbeit?</p></article></div>
     </section>
