@@ -70,6 +70,11 @@ Ein Prozessdeskriptor führt `behaviorId`, Parameter, Takt, Entität und den Dig
 des tatsächlich gebundenen Callback-Quelltexts. Funktionen werden aus lokalen,
 bekannten Rezepten beigesteuert. Ein JSON-String wird niemals zur Funktion kompiliert.
 
+Dieser Callback-Digest umfasst nicht automatisch die Definition importierter
+Hilfsfunktionen und deren gesamte Abhängigkeitsmenge. Die geprüfte Wiederaufnahme
+verwendet die gebundene passende Codefassung. Das Runner-Dateiinventar ist ein
+separater Laufreceipt, kein automatischer Migrationsvertrag eines Checkpoints.
+
 Ein Compiler oder Minifier kann `Function.prototype.toString()` verändern. Ein
 solcher Build benötigt ein eigenes versionsgebundenes Rezept oder einen ausdrücklich
 geprüften Migrationspfad. Whitespace wird nicht still entfernt, um einen Digest passend
@@ -98,6 +103,7 @@ sein Digest sind weiterhin keine Authentisierung einer externen Geschichte.
 | --- | --- | --- |
 | Segmentiertes Journal | Archivsegment schließen, Kette fortsetzen und einen absichtlich beschädigten Übergang erkennen | Vollständiges In-Session-Journal mit kontrolliertem Budgetstopp |
 | Weitere Verhaltensrezepte | Zustands-/Kontextbindung und Fortsetzung für genau den neuen Rezepttyp | Drei bekannte Rezepte und synchrone Callback-Verträge |
+| Migration zwischen Rezeptabhängigkeiten | Absichtlich geänderte Hilfsfunktion erkennen; alten Stand abweisen oder über einen explizit geprüften Migrationspfad fortsetzen | Wiederaufnahme mit der passenden eingefrorenen Codefassung; Callback- und separate Runnerdateidigests |
 | Adaptive oder gelernte Regeln | Vorher gebundene Zielmetrik, getrennte Trainings-/Prüffälle und eine messbare Verhaltensänderung | Deterministische lokale Regeln; kein versteckter Lernclaim |
 | Domänenkalibrierung | Benannte Messdaten, Einheiten, Parameteridentifikation und unterscheidende Vorhersage | Abstrakte Modelleinheiten |
 | Unbeaufsichtigter Dauerbetrieb | Supervisor, Wiederstart, Segmentretention, Ausfall- und Stromverlustversuche | Explizit gestarteter, begrenzter Node-Lauf mit geprüften Checkpoints |

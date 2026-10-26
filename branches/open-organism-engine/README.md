@@ -103,6 +103,12 @@ und das Journalreplay prüfen definierte lokale Invarianten; sie beweisen keine
 vollständige Außenhistorie. Callbacktext und Parameter erfassen keinen unbekannten
 Closurezustand. Die mitgelieferten Rezepte verwenden explizite unveränderliche Parameter.
 
+Der Callback-Digest umfasst nicht automatisch importierte Hilfsfunktionen oder
+deren Abhängigkeiten. Ein gespeichertes Rezept ist deshalb mit der passenden
+eingefrorenen Codefassung zu verwenden. Das zwölfteilige Dateiinventar des Runners
+dokumentiert seinen Lauf separat; eine automatische Migration beliebiger älterer
+Checkpoints wird daraus nicht abgeleitet.
+
 ## Lokaler Node-Start
 
 Voraussetzung: Node **24.22.1** beziehungsweise der im Repository erlaubte gepatchte

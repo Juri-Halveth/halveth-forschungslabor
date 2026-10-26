@@ -50,6 +50,14 @@ Versuch über Playwrights transformierte Direktimporte änderte Callback-Quelldi
 und wurde als Testaufbauartefakt erkannt. Die Lösung ist der Vergleich mit einem
 normalen Node-Prozess, kein Aufweichen der Quelltextbindung.
 
+Ein späterer gezielter Recheck der neuen Importgrenzen hat fünf passende
+bestehende Tests erneut bestanden: Registerframing, DNA-/RNA-Längenbudget,
+lokale Pfade vor Datei-I/O und Runnerargumente. Diese Wiederholung wird nicht
+zur Repository-Testanzahl addiert. 17 relevante Quell-/Testdateien stimmten mit
+dem dabei gebundenen Commit überein. Das zwölfteilige Runnerinventar entsprach
+der statischen lokalen Importmenge mit 24 Kanten. Dynamische Loader- oder
+Außenweltvollständigkeit wird daraus nicht abgeleitet.
+
 ## Vollständig gelesener Originalcontainer
 
 Alle **22 Dateimitglieder / 14.170.461 unkomprimierten Bytes** des bereitgestellten
@@ -70,25 +78,44 @@ oder Callbackvertrag; die statische Konsistenz ist kein Wiederaufnahmenachweis.
 
 ## Laufzeit- und Persistenzbeobachtung
 
-Ein tatsächlich gestarteter erster Prozess lief **15 Minuten**, von Tick 0 auf
-900. Sein Endcheckpoint wurde gespeichert, nachgelesen und erfolgreich wieder
-aufgebaut. Er bindet den damaligen, etwas früheren Kandidatenstand über fünf
-deklarierte Dateidigests.
+Drei tatsächlich gestartete lokale Prozesse endeten regulär mit
+`DURATION_REACHED`. Jeder Endcheckpoint wurde gespeichert, nachgelesen und
+vom Runner erfolgreich wieder aufgebaut. Alle drei Abschlussaudits bestanden.
+Die folgende Tabelle hält die unterschiedlichen Quellbindungen getrennt.
 
-Ein zweiter Prozess hat denselben gespeicherten Modellstand auf Tick 900
-übernommen und führt einen geplanten 45-Minuten-Lauf aus. Ein Endergebnis wird
-erst nach dessen Abschluss eingetragen. Die fünf Startdigests dieses Laufs sind
-keine vollständige Dependency-Provenienz. Die spätere Runnerfassung bindet zwölf
-eigene Dateien und benennt auch dafür die Grenze eines nach dem Import gelesenen
-Quellinventars gegenüber einer atomaren Loader-Attestierung.
+| Lauf | UTC-Zeitfenster | Tatsächliche Laufdauer | Modell-Ticks | Startinventar |
+| --- | --- | --- | --- | --- |
+| phase1 | `2026-10-26T03:01:13.168Z` bis `2026-10-26T03:16:13.550Z` | 900.379 s; Ziel 15 min | 0 → 900 | 5 Dateidigests |
+| phase2 | `2026-10-26T03:16:51.517Z` bis `2026-10-26T04:01:52.799Z` | 2701.302 s; Ziel 45 min | 900 → 3600 | 5 Dateidigests |
+| phase3 | `2026-10-26T04:02:24.487Z` bis `2026-10-26T04:12:25.551Z` | 601.062 s; Ziel 10 min | 3600 → 4200 | 12 Dateidigests |
 
-Dateisync, Nachlesen und Wiederaufnahme werden getrennt quittiert. Der beobachtete
-Windows-Verzeichnissync wird als nicht abgeschlossen gemeldet. Daraus wird weder
-Stromausfallfestigkeit noch ein falsches Rollback abgeleitet. Zwischen zwei
-Prozessen liegt ein eigenes Beobachtungsfenster; externe Uhrdrift und nicht
-beobachtete Zwischenzustände bleiben offen.
+Phase 1 verwendet einen früheren Kandidatenstand. Phase 2 übernimmt dessen
+Endcheckpoint und bindet fünf ausgewählte Dateien; das ist keine vollständige
+Dependency-Provenienz. Phase 3 setzt den Endcheckpoint von Phase 2 fort und
+bindet zwölf deklarierte eigene Laufzeitdateien. Deren Digests stimmen beim
+Abschluss mit den eingefrorenen aktuellen Dateien überein. Auch dieses nach dem
+Import gelesene Inventar ist keine atomare Loader-Attestierung. Die drei Läufe
+werden deshalb nicht als ein durchgehender Lauf einer einzigen vollständigen
+Quellfassung ausgegeben.
 
-Die Veröffentlichungsprüfung stoppt bei der offenen Lizenzzuordnung. Ein explizites
-`LOCAL_DRAFT_ONLY`-Artefakt dient der lokalen Abnahme und ist kein öffentlicher Release.
-Historische Originalreceipts, fehlgeschlagene Gegenproben und spätere erfolgreiche
-Rechecks bleiben getrennt erhalten.
+- phase1 → phase2: gespeicherter Head und Tick stimmen überein; zwischen Prozessende und neuem Start liegen 37.967 s.
+- phase2 → phase3: gespeicherter Head und Tick stimmen überein; zwischen Prozessende und neuem Start liegen 31.688 s.
+
+Diese Zwischenintervalle sind eigene Beobachtungslücken und keine ausgeführte
+Modellzeit. UTC-Angaben stammen aus der lokalen Systemuhr; Laufzeitintervalle
+aus der monotonen Prozessuhr. Eine externe Uhrkalibrierung wurde nicht geprüft.
+Ein vom Controller gemeldeter Lückenwert belegt nur dessen deklarierte
+Beobachtungsfähigkeit und keinen universellen Nullverlust.
+
+Dateisync, Nachlesen und Wiederaufnahme wurden getrennt quittiert. Der
+beobachtete Windows-Verzeichnissync wurde als nicht abgeschlossen gemeldet.
+Stromausfallfestigkeit, dauerhaftes Supervising und vollständige reale
+Ereignisabdeckung bleiben offen. Die privaten Run-Start-, Abschluss-, Log- und
+Endcheckpointreceipts behalten ihre genauen Digests und Quellenstände.
+
+## Veröffentlichungsstatus
+
+Die Veröffentlichungsprüfung stoppt bei der offenen Lizenzzuordnung. Ein
+explizites `LOCAL_DRAFT_ONLY`-Artefakt dient der lokalen Abnahme und ist kein
+öffentlicher Release. Historische Originalreceipts, fehlgeschlagene Gegenproben
+und spätere erfolgreiche Rechecks bleiben getrennt erhalten.
