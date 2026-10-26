@@ -24,8 +24,8 @@
         },
         {
           "path": "branches/lagefaden/README.md",
-          "bytes": 12570,
-          "sha256": "b34f1cab2db2a4b95fbf0f3dda1cec579cae4b2e26524ad4978f8a2cc0a42d08"
+          "bytes": 12562,
+          "sha256": "262668cf65f1710ce2a452aba2de4eb21c7968db1e9bca3949334fad1818ba1c"
         },
         {
           "path": "branches/lagefaden/model.test.mjs",
