@@ -193,19 +193,24 @@ test("unavailable browser storage keeps the experiment and temporary learning us
   expect(errors).toEqual([]);
 });
 
-test("the repository tunnel has twenty usable source and test routes and mobile navigation fits",async({page},info)=>{
-  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(20);
-  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(20);
-  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(20);
+test("the repository tunnel has source-bound usable routes and mobile navigation fits",async({page},info)=>{
+  const registry=JSON.parse(await fs.readFile(new URL("../../catalog/learning-paths.json",import.meta.url),"utf8"));
+  const routeCount=registry.entries.length;expect(routeCount).toBeGreaterThan(0);
+  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(routeCount);
+  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(routeCount);
+  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(routeCount);
   await expect(page.locator('.route').filter({hasText:'Sicherheitsprüfungen'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../sicherheitslabor/');
   await expect(page.locator('.route').filter({hasText:'Security Research'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../security/');
+  const lightTime=page.locator(".route").filter({hasText:"Licht und Zeit – Zwei-Port-Bilanz und Koordinaten"});
+  await expect(lightTime.getByRole("link",{name:"Code",exact:true})).toHaveAttribute("href",/\/branches\/light-time-model\/core\.cjs$/);
+  await expect(lightTime.getByRole("link",{name:"Tests",exact:true})).toHaveAttribute("href",/\/branches\/light-time-model\/tests\/core\.test\.mjs$/);
   await page.getByRole('button',{name:'Direkt ausprobieren',exact:true}).click();
   await expect(page.locator('.route[data-kind=code]:visible')).toHaveCount(0);
   expect(await page.locator('.route:visible').count()).toBeGreaterThan(0);
   await page.getByLabel('Was möchtest du machen?',{exact:true}).fill('no-such-tool');
   await expect(page.locator('.route:visible')).toHaveCount(0);
   await page.getByRole('button',{name:'Alle Werkzeuge zeigen',exact:true}).click();
-  await expect(page.locator('.route:visible')).toHaveCount(20);
+  await expect(page.locator('.route:visible')).toHaveCount(routeCount);
   for(const url of ["/wissen/","/signals.html","/"]){
     await page.goto(url);
     for(const width of [320,390,768,1024]){
