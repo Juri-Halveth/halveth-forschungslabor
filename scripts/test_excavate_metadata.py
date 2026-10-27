@@ -73,6 +73,7 @@ class InventoryTests(unittest.TestCase):
             clock = Clock()
             counts = {"next": 0, "entry_stat": 0, "path_stat": 0, "closed": 0}
             real_scandir, real_stat = MODULE.os.scandir, Path.stat
+            real_is_dir, real_is_file = Path.is_dir, Path.is_file
             advance = advance or clock.advance
 
             def scandir(path):
@@ -88,7 +89,20 @@ class InventoryTests(unittest.TestCase):
                     advance(.01)
                 return real_stat(path, *args, **kwargs)
 
-            with patch.object(MODULE.os, "scandir", side_effect=scandir), patch.object(Path, "stat", stat):
+            # Path predicates call Path.stat in Python 3.12 but can use a
+            # different implementation in newer Python. These fixtures are
+            # known regular files; isolate delay to metadata acquisition.
+            def is_fixture_file(path):
+                return phase == "path_metadata" and path.parent == target and path.suffix == ".bin"
+
+            def is_dir(path, *args, **kwargs):
+                return False if is_fixture_file(path) else real_is_dir(path, *args, **kwargs)
+
+            def is_file(path, *args, **kwargs):
+                return True if is_fixture_file(path) else real_is_file(path, *args, **kwargs)
+
+            with patch.object(MODULE.os, "scandir", side_effect=scandir), patch.object(Path, "stat", stat), \
+                    patch.object(Path, "is_dir", is_dir), patch.object(Path, "is_file", is_file):
                 if advance == clock.advance:
                     with patch.object(MODULE.time, "monotonic", side_effect=lambda: clock.now):
                         summary = MODULE.inventory(source, output, 100, .02)
