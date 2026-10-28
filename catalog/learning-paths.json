@@ -137,7 +137,15 @@
         "branches/network-candidate/model.test.mjs"
       ],
       "docs": "branches/network-candidate/README.md",
-      "demo": null
+      "assets": [
+        "branches/network-candidate/model-core.mjs",
+        "branches/network-candidate/fixtures.mjs",
+        "branches/network-candidate/adapter.mjs",
+        "branches/network-candidate/demo.html",
+        "branches/network-candidate/demo.css",
+        "branches/network-candidate/demo.mjs"
+      ],
+      "demo": "netzbild/"
     },
     {
       "id": "binary-inquiry-loop",

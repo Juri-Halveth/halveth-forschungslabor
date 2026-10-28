@@ -1,9 +1,9 @@
 name: Encounter systems research
 on:
   push:
-    paths: ['branches/encounter-systems/**', 'branches/endeck-observer/**', 'catalog/**', 'scripts/build-learning-hub*', 'scripts/build-encounter-site*', '.github/workflows/encounter-research.yml']
+    paths: ['branches/encounter-systems/**', 'branches/endeck-observer/**', 'branches/network-candidate/**', 'catalog/**', 'scripts/build-learning-hub*', 'scripts/build-encounter-site*', '.github/workflows/encounter-research.yml']
   pull_request:
-    paths: ['branches/encounter-systems/**', 'branches/endeck-observer/**', 'catalog/**', 'scripts/build-learning-hub*', 'scripts/build-encounter-site*', '.github/workflows/encounter-research.yml']
+    paths: ['branches/encounter-systems/**', 'branches/endeck-observer/**', 'branches/network-candidate/**', 'catalog/**', 'scripts/build-learning-hub*', 'scripts/build-encounter-site*', '.github/workflows/encounter-research.yml']
   workflow_dispatch:
 permissions:
   contents: read

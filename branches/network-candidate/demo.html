@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Drei synthetische Netzbilder: Pixelmuster messen und räumliche Erklärungen vergleichen.">
+  <title>Netzbild-Kandidaten · HALVETH</title>
+  <link rel="stylesheet" href="./demo.css">
+  <script type="module" src="./demo.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#experiment">Zum Experiment</a>
+  <header><a class="brand" href="../wissen/">HALVETH <span>/ FORSCHUNGSLABOR</span></a><a href="../wissen/">Alle Werkzeuge ↗</a></header>
+  <main id="experiment">
+    <p class="eyebrow">NETZBILD-KANDIDATEN · SYNTHETISCHES EXPERIMENT</p>
+    <h1>Eine Kreuzung. Zwei mögliche Räume.</h1>
+    <p class="lead">Die Pixel lassen sich messen. Ob sich die Linien in der Tiefe wirklich berühren, braucht eine zweite Perspektive. Vergleiche drei vollständig künstliche Beispiele.</p>
+    <section class="workspace" aria-label="Netzbild-Experiment">
+      <div class="controls">
+        <h2>1 · Quellbild wählen</h2>
+        <div class="fixture-buttons" role="group" aria-label="Synthetisches Quellbild">
+          <button type="button" data-fixture="A" aria-pressed="true">A · Knoten</button>
+          <button type="button" data-fixture="B" aria-pressed="false">B · Überlagerung</button>
+          <button type="button" data-fixture="C" aria-pressed="false">C · Filamente</button>
+        </div>
+        <p id="fixture-description"></p>
+        <label for="threshold">Helligkeitsschwelle <output id="threshold-value" for="threshold">80</output></label>
+        <input id="threshold" type="range" min="0" max="255" step="1" value="80">
+        <p class="hint">Helle Pixel zählen ab dieser Schwelle. Der Kreuzungsmelder sucht ein enges Muster aus vier geraden Nachbarn und vier dunklen Diagonalen.</p>
+      </div>
+      <div class="frame-card">
+        <div class="card-head"><h2>2 · Gemessene Draufsicht</h2><span>9 × 9 Pixel</span></div>
+        <div id="pixel-grid" role="img" aria-label="Synthetisches Graustufenbild nach Helligkeitsschwelle"></div>
+        <p id="measurement" class="measurement" role="status"></p>
+      </div>
+    </section>
+    <section class="interpretation" aria-label="Räumliche Illustrationen">
+      <div class="section-head"><div><p class="eyebrow">3 · OFFENE ERKLÄRUNGEN</p><h2>Gleiche Draufsicht. Anderer Blick.</h2></div><p id="motif-status"></p></div>
+      <div id="candidate-cards" class="candidate-cards">
+        <article class="candidate"><h3>Modell A · Verbindung</h3><p>Beide Fäden treffen sich auf derselben Tiefenebene.</p><div class="views"><figure><svg id="junction-top" viewBox="0 0 260 150" role="img" aria-label="Verbindung von oben"></svg><figcaption>Von oben</figcaption></figure><figure><svg id="junction-tilted" viewBox="0 0 260 150" role="img" aria-label="Verbindung schräg betrachtet"></svg><figcaption>Schräg betrachtet</figcaption></figure></div></article>
+        <article class="candidate"><h3>Modell B · Überführung</h3><p>Ein Faden läuft in der Tiefe am anderen vorbei.</p><div class="views"><figure><svg id="overpass-top" viewBox="0 0 260 150" role="img" aria-label="Überführung von oben"></svg><figcaption>Von oben</figcaption></figure><figure><svg id="overpass-tilted" viewBox="0 0 260 150" role="img" aria-label="Überführung schräg betrachtet"></svg><figcaption>Schräg betrachtet</figcaption></figure></div></article>
+      </div>
+      <p class="boundary"><strong>Messung und Illustration:</strong> Die Zählwerte stammen aus den angezeigten Pixeln. Die räumlichen Linien sind künstliche Gegenmodelle. Bei A und B ist das Quellbild identisch; erst eine zusätzliche kalibrierte Ansicht könnte eine reale Tiefenfrage entscheiden.</p>
+    </section>
+    <p class="source-links"><a href="https://github.com/Juri-Halveth/halveth-forschungslabor/blob/main/branches/network-candidate/model.mjs">Quellcode ↗</a><a href="https://github.com/Juri-Halveth/halveth-forschungslabor/blob/main/branches/network-candidate/model.test.mjs">Gegenproben ↗</a><a href="https://github.com/Juri-Halveth/halveth-forschungslabor/blob/main/branches/network-candidate/README.md">Methode ↗</a></p>
+  </main>
+  <footer>Juri · Projekt HALVETH · Entwicklung mit KI-Unterstützung · Code MIT · Text CC BY 4.0</footer>
+</body>
+</html>
