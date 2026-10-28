@@ -126,8 +126,8 @@
     {
       "path": "branches/eye-optics-and-prediction/index.html",
       "sourceSha256": "7ee8140531d95d476022810070872e06c951d8e1b306473ec1bb05316fd1317c",
-      "transfer": "EXACT_SOURCE_BYTES",
-      "outputSha256": "7ee8140531d95d476022810070872e06c951d8e1b306473ec1bb05316fd1317c"
+      "transfer": "PUBLIC_LINK_TARGET_REPAIRED; source hash identifies predecessor",
+      "outputSha256": "a64d0656720da3f80e022eaa0be49f7cda42ffc80a1463b71a54ee51e647e790"
     },
     {
       "path": "branches/eye-optics-and-prediction/model.mjs",
