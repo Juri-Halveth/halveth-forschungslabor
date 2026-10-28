@@ -94,6 +94,11 @@ Offline-Prüfung deklarierter Metadaten. Ein positives Ergebnis ist ein Kandidat
 
 Offline-Vergleich synthetischer Framearrays mit Region, Schwelle und ausgewiesener Beobachtungslücke.
 
+### [Netzbild-Kandidaten – Pixelbrücken und räumliche Kreuzungen](branches/network-candidate/)
+
+Offline-Modell für Helligkeitsschwellen und zwei räumliche Kandidaten mit
+derselben Draufsicht. Es macht die nächste unterscheidende Ansicht explizit.
+
 ### [Dialogprotokoll – Zustimmung und offene Antworten modellieren](branches/binary-inquiry-loop/)
 
 Deterministisches Protokollmodell für eine gebundene Frage und zwei deklarierte Seiten.

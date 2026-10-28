@@ -343,6 +343,34 @@
       ]
     },
     {
+      "id": "network-candidate",
+      "title": "Netzbild-Kandidaten – Pixelbrücken und räumliche Kreuzungen",
+      "description": "Pixelregionen unter Helligkeitsschwellen prüfen und zwei räumliche Quellen derselben Draufsicht offen halten.",
+      "source": "branches/network-candidate/model.mjs",
+      "tests": [
+        "branches/network-candidate/model.test.mjs"
+      ],
+      "docs": "branches/network-candidate/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/network-candidate/model.mjs",
+          "bytes": 4458,
+          "sha256": "09931e7ad6e6f5de6d28b0908d84a7a61b2acf4692fb6dc2ddbcf01eee7a4683"
+        },
+        {
+          "path": "branches/network-candidate/README.md",
+          "bytes": 2353,
+          "sha256": "25207cc8e13f3c738d61a42e8028ba01e04dd09c49f24a981559757243b0fb83"
+        },
+        {
+          "path": "branches/network-candidate/model.test.mjs",
+          "bytes": 2870,
+          "sha256": "d33a91238bf7e918833cdba252618aa1a70bb7e745cc4afdd6e30fd93d0f2505"
+        }
+      ]
+    },
+    {
       "id": "binary-inquiry-loop",
       "title": "Dialogprotokoll – Zustimmung und offene Antworten modellieren",
       "description": "Deterministisches Protokollmodell für eine gebundene Frage und zwei deklarierte Seiten.",

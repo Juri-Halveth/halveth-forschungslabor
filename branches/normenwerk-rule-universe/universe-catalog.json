@@ -1,5 +1,5 @@
 {
-  "branchCount": 12,
+  "branchCount": 13,
   "branches": [
     {
       "id": "encounter-systems",
@@ -52,6 +52,15 @@
       ],
       "testFiles": [
         "branches/pixel-region-change-observer/test/observer.test.js"
+      ]
+    },
+    {
+      "id": "network-candidate",
+      "sourceFiles": [
+        "branches/network-candidate/model.mjs"
+      ],
+      "testFiles": [
+        "branches/network-candidate/model.test.mjs"
       ]
     },
     {
