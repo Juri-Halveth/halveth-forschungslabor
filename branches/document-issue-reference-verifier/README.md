@@ -4,7 +4,7 @@ Synthetischer Referenzprüfer mit Digest-, Schema-, Principal- und Lebenszyklusp
 
 ## Umsetzung
 
-[Kerncode](reference-verifier.mjs) · [Projektübersicht](../../README.md)
+[Kerncode](src/reference-verifier.mjs) · [Projektübersicht](../../README.md)
 
 Der genaue Umfang ergibt sich aus Implementierung und den mitgelieferten Gegenproben. Das ist ein lokaler Softwareprototyp bzw. ein deklariertes Modell, keine umfassende Produkt-, Berufs- oder Sicherheitszertifizierung.
 

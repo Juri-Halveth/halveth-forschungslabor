@@ -67,6 +67,5 @@ Fassung und der dortigen Zuschreibung. Eine Korrektur kann weitere Quellen
 ergänzen. Historische Fassungen bleiben nachvollziehbar; ein neuer Hinweis
 erzeugt keinen früheren Entstehungszeitpunkt.
 
-[Lizenzkarte](LICENSES.md) · [Nutzung und Credit](wiki/Rechte-und-Nutzung.md) ·
-[Belege und Zeitlinien](wiki/Belege-und-Zeitlinien.md) ·
-[Provenienz-Dokumentation](PROVENANCE.md)
+[Lizenzkarte](LICENSES.md) · [Quellregister](SOURCE_PROVENANCE.json) ·
+[Person und Projektname](IDENTITY.md)
