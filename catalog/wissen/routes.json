@@ -276,8 +276,8 @@
         },
         {
           "path": "branches/document-issue-reference-verifier/README.md",
-          "bytes": 874,
-          "sha256": "329c98bb5df44b42473f57d5ee318fc6a6eef91a2c56f5e575e15e5beba429ed"
+          "bytes": 878,
+          "sha256": "47bccc0749f32c3c807c3554e8280da5ce9a2b5f680578939708abfa222c4a53"
         },
         {
           "path": "branches/document-issue-reference-verifier/test/reference-verifier.test.mjs",
