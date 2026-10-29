@@ -41,6 +41,8 @@ Laufzeitstände mit dem datierten Patchkatalog vergleichen, Parser-Identitäten 
 verknüpft alle aktuellen Modul- und Forschungsordner mit konkreten Quellen,
 Tests, Erklärungen und den veröffentlichten Ansichten. Dateibindungen und
 Gegenbeispiele werden in CI erneut geprüft. [Methode für Mitwirkende](catalog/LEARNING_PIPELINE.md).
+Für begrenztes, lesendes Wiederfinden über öffentliche Repositories hinweg gibt
+es dort auch eine [NOVA-Anleitung](catalog/LEARNING_PIPELINE.md#weiterarbeiten-mit-nova).
 
 ### [ENDECK – Was sieht ein Quadrat?](branches/endeck-observer/)
 
