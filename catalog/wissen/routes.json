@@ -5,6 +5,64 @@
   "modelWeightTraining": false,
   "entries": [
     {
+      "id": "lagefaden",
+      "title": "LAGEFADEN – drei Meldungen, wie viele Beobachtungen?",
+      "description": "Drei virtuelle Beobachter trennen eigene Sichtung, Weitergabe und Peer-Reaktion. Sechs Replay-Fälle ergänzen Modellfälle, datierte Katalogdaten, W-Coverage und wählbare Prüfprofile.",
+      "source": "branches/lagefaden/model.mjs",
+      "tests": [
+        "branches/lagefaden/model.test.mjs",
+        "branches/lagefaden/usgs-source.test.mjs",
+        "branches/lagefaden/public-sources.test.mjs",
+        "branches/lagefaden/coverage.test.mjs",
+        "branches/lagefaden/decision-relevance.test.mjs",
+        "branches/lagefaden/witness-replay.test.mjs"
+      ],
+      "docs": "branches/lagefaden/README.md",
+      "demo": "lagefaden/",
+      "files": [
+        {
+          "path": "branches/lagefaden/model.mjs",
+          "bytes": 4859,
+          "sha256": "c3d0b055b93645d16818570d8b3b9d5ff681978feb699071ff275f3949632037"
+        },
+        {
+          "path": "branches/lagefaden/README.md",
+          "bytes": 16081,
+          "sha256": "c0fbb35ce76ecb29c21164b0b53151232a9bad3a2c21640d34bb8902684d4c17"
+        },
+        {
+          "path": "branches/lagefaden/model.test.mjs",
+          "bytes": 2845,
+          "sha256": "dd5e29bc59e9adb62163b01524c4bbdfd9b295b6ebaa20c03203783c7342c758"
+        },
+        {
+          "path": "branches/lagefaden/usgs-source.test.mjs",
+          "bytes": 1632,
+          "sha256": "e35c69d253b6ddd4abbdc03479fac21dbe91637acd12b034c7f315e64abd9877"
+        },
+        {
+          "path": "branches/lagefaden/public-sources.test.mjs",
+          "bytes": 2571,
+          "sha256": "d0105ea4188bb0a6d725b6f9bc046ebc301486d3959500d6b5b2f9fdd4574cd7"
+        },
+        {
+          "path": "branches/lagefaden/coverage.test.mjs",
+          "bytes": 6681,
+          "sha256": "6e899b270c1da4d136b914e5f61e7740e07c38f1b400b477a3145b96ce123090"
+        },
+        {
+          "path": "branches/lagefaden/decision-relevance.test.mjs",
+          "bytes": 6104,
+          "sha256": "febc4869d815f75debedfac96ef7a8ecf0d205ed665cd5dbbb07132d46c1c1d2"
+        },
+        {
+          "path": "branches/lagefaden/witness-replay.test.mjs",
+          "bytes": 5089,
+          "sha256": "c6b36bee8aaaa8bfdda75db0c5d640b1707f68a2bdafcf77f7bd0b9b482829df"
+        }
+      ]
+    },
+    {
       "id": "security-research-hub",
       "title": "Security Research – Methoden, Quellen und nächste Gegenprobe",
       "description": "18 Prüfmethoden, vier lokale Gegenproben, öffentliche Fallanalysen und ein exportierbarer Forschungsplan mit getrenntem Arbeits- und Belegstand.",
@@ -67,8 +125,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 26371,
-          "sha256": "f89409ea7b356c813e747582cb773ca44240431ca7fac3398bbfccb7f8681f05"
+          "bytes": 43043,
+          "sha256": "4f446e903acf59fc978ee94686b430137afe3df20083ef3f6e5e83d32c363591"
         }
       ]
     },
@@ -141,8 +199,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 26371,
-          "sha256": "f89409ea7b356c813e747582cb773ca44240431ca7fac3398bbfccb7f8681f05"
+          "bytes": 43043,
+          "sha256": "4f446e903acf59fc978ee94686b430137afe3df20083ef3f6e5e83d32c363591"
         }
       ]
     },

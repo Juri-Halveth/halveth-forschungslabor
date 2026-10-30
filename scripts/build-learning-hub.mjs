@@ -20,7 +20,7 @@ export async function learningArtifacts(repoRoot=root){
   const bindings=[];
   for(const entry of registry.entries){
     if(!/^[a-z0-9-]+$/.test(entry.id)||typeof entry.title!=="string"||typeof entry.description!=="string"||!Array.isArray(entry.tests)||!entry.tests.length)throw Error("Invalid learning entry");
-    if(entry.demo!==null&&!/^(?:endeck\/|lifecycle\/|sicherheitslabor\/|security\/|index.html#experiment|signals.html#signal-experiment)$/.test(entry.demo))throw Error("Unapproved demonstration route");
+    if(entry.demo!==null&&!/^(?:endeck\/|lifecycle\/|sicherheitslabor\/|security\/|lagefaden\/|index.html#experiment|signals.html#signal-experiment)$/.test(entry.demo))throw Error("Unapproved demonstration route");
     const files=[];
     for(const sourcePath of [...new Set([entry.source,entry.docs,...entry.tests])]){
       safeSourcePath(sourcePath);

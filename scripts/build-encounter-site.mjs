@@ -56,6 +56,12 @@ export const publicFiles = Object.freeze([
   ...["index.html", "style.css", "view.mjs", "model.mjs", "catalog.mjs", "README.md", "SOURCES.md", "example-input.json"].map((name) => ({
     path: "security/" + name, sourcePath: "branches/security-research-hub/" + name,
   })),
+  ...["index.html", "style.css", "view.mjs", "model.mjs", "cases.mjs", "usgs-source.mjs", "public-sources.mjs", "w-space.mjs", "coverage.mjs", "coverage-view.mjs", "decision-relevance.mjs", "decision-view.mjs", "witness-replay.mjs", "witness-cases.mjs", "witness-view.mjs", "WITNESS_REPLAY.md", "README.md", "COVERAGE_DESIGN.md", "DECISION_RELEVANCE.md", "PORTFOLIO_DECISION.md", "REAL_DATA_PLAN.md"].map((name) => ({
+    path: "lagefaden/" + name, sourcePath: "branches/lagefaden/" + name,
+  })),
+  { path:"lagefaden/data/usgs-example.json", sourcePath:"branches/lagefaden/data/usgs-example.json" },
+  { path:"lagefaden/data/eonet-example.json", sourcePath:"branches/lagefaden/data/eonet-example.json" },
+  { path:"lagefaden/data/cems-example.json", sourcePath:"branches/lagefaden/data/cems-example.json" },
   { path:"wissen/LEARNING_PIPELINE.md", sourcePath:"catalog/LEARNING_PIPELINE.md" },
 ].map(Object.freeze));
 

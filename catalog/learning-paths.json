@@ -5,6 +5,15 @@
   "scope": "Current repository module and research entry points, not an audit of other repositories",
   "entries": [
     {
+      "id": "lagefaden",
+      "title": "LAGEFADEN – drei Meldungen, wie viele Beobachtungen?",
+      "description": "Drei virtuelle Beobachter trennen eigene Sichtung, Weitergabe und Peer-Reaktion. Sechs Replay-Fälle ergänzen Modellfälle, datierte Katalogdaten, W-Coverage und wählbare Prüfprofile.",
+      "source": "branches/lagefaden/model.mjs",
+      "tests": ["branches/lagefaden/model.test.mjs", "branches/lagefaden/usgs-source.test.mjs", "branches/lagefaden/public-sources.test.mjs", "branches/lagefaden/coverage.test.mjs", "branches/lagefaden/decision-relevance.test.mjs", "branches/lagefaden/witness-replay.test.mjs"],
+      "docs": "branches/lagefaden/README.md",
+      "demo": "lagefaden/"
+    },
+    {
       "id": "security-research-hub",
       "title": "Security Research – Methoden, Quellen und nächste Gegenprobe",
       "description": "18 Prüfmethoden, vier lokale Gegenproben, öffentliche Fallanalysen und ein exportierbarer Forschungsplan mit getrenntem Arbeits- und Belegstand.",

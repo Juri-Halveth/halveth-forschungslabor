@@ -3,6 +3,69 @@ import { test, expect } from "@playwright/test";
 import path from "node:path";
 import fs from "node:fs/promises";
 
+test('LAGEFADEN witness replay distinguishes route observations, copies, peer actions and recovery',async({page})=>{
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto('/lagefaden/#witness');
+  await expect(page.locator('#witness-event-count')).toHaveText('5');
+  await expect(page.locator('#witness-own-count')).toHaveText('2');
+  await expect(page.locator('#witness-copy-count')).toHaveText('1');
+  await expect(page.locator('#witness-peer-count')).toHaveText('2');
+  await expect(page.locator('#witness-gaps')).toContainText('eigene Sicht ist zu alt');
+  await page.locator('#witness-reset').click();
+  await expect(page.locator('#witness-prev')).toBeDisabled();
+  await expect(page.locator('#witness-event-count')).toHaveText('0');
+  for(let i=0;i<4;i++)await page.locator('#witness-next').click();
+  await expect(page.locator('#witness-event-count')).toHaveText('4');
+  await expect(page.locator('#witness-own-count')).toHaveText('1');
+  await expect(page.locator('#witness-events')).not.toContainText('C2');
+  await page.locator('#witness-case').selectOption('1');
+  await expect(page.locator('#witness-state')).toHaveAttribute('data-state','CONFLICT_REVIEW');
+  await page.locator('#witness-case').selectOption('2');
+  await expect(page.locator('#witness-state')).toHaveAttribute('data-state','PROVENANCE_REVIEW');
+  await expect(page.locator('#witness-gaps')).toContainText('B1: referenzierter Ursprung fehlt');
+  await page.locator('#witness-case').selectOption('3');
+  await page.locator('#witness-prev').click(); // last observation checkpoint
+  await page.locator('#witness-prev').click(); // restore checkpoint, before new sighting
+  await expect(page.locator('#witness-own-count')).toHaveText('1');
+  await expect(page.locator('#witness-gaps')).toContainText('neue Sichtung steht aus');
+  await page.locator('#witness-next').click();
+  await expect(page.locator('#witness-own-count')).toHaveText('2');
+  await expect(page.locator('#witness-gaps')).not.toContainText('neue Sichtung steht aus');
+  await page.locator('#witness-case').selectOption('4');
+  await expect(page.locator('#witness-state')).toHaveAttribute('data-state','REVIEWER_UNAVAILABLE');
+  await page.locator('#witness-case').focus();await page.keyboard.press('ArrowDown');await page.keyboard.press('Enter');
+  await expect(page.locator('#witness-fresh')).toContainText('3 frische Ursprungskennungen');
+  await expect(page.locator('#witness-fresh')).toContainText('Unabhängigkeit bleibt offen');
+  const downloadPromise=page.waitForEvent('download');await page.locator('#witness-export').click();
+  const download=await downloadPromise;
+  const result=JSON.parse(await fs.readFile(await download.path(),'utf8'));
+  expect(result.sample.caseId).toBe('HIDDEN_DEPENDENCE');
+  expect(result.evaluation.sourceAuthentication).toBe('NOT_PERFORMED');
+  expect(result.evaluation.routeState).toBe('UNKNOWN');
+  expect(result.comparison.state).toBe('PROTOCOL_PREPARED_NOT_RUN');
+  const {evaluateReplay}=await import('../lagefaden/witness-replay.mjs');
+  expect(result.evaluation).toEqual(evaluateReplay(result.sample,result.evaluation.step));
+  expect(errors).toEqual([]);
+});
+
+test('LAGEFADEN witness controls and cards remain usable at phone and desktop widths',async({page},info)=>{
+  await page.goto('/lagefaden/#witness');
+  for(const width of [320,390,768,1440]){
+    await page.setViewportSize({width,height:1000});
+    for(let i=0;i<6;i++){
+      await page.locator('#witness-case').selectOption(String(i));
+      expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+      await expect(page.locator('#witness-nodes article')).toHaveCount(3);
+    }
+    await page.locator('#witness-case').selectOption('0');
+    await page.locator('#witness-title').scrollIntoViewIfNeeded();
+    if(width===390||width===1440)await page.screenshot({path:info.outputPath(`witness-${width}.png`)});
+  }
+  await page.setViewportSize({width:390,height:1000});
+  await page.getByRole('group',{name:'Nachrichten schrittweise abspielen'}).scrollIntoViewIfNeeded();
+  await page.screenshot({path:info.outputPath('witness-controls-mobile.png')});
+});
+
 test('security research creates a declared plan, preserves literal input and downloads its real state',async({page})=>{
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('/security/');await expect(page.locator('.method-card')).toHaveCount(18);
@@ -193,28 +256,193 @@ test("unavailable browser storage keeps the experiment and temporary learning us
   expect(errors).toEqual([]);
 });
 
-test("the repository tunnel has twenty usable source and test routes and mobile navigation fits",async({page},info)=>{
-  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(20);
-  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(20);
-  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(20);
+test("the repository tunnel has twenty-one usable source and test routes and mobile navigation fits",async({page},info)=>{
+  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(21);
+  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(21);
+  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(21);
   await expect(page.locator('.route').filter({hasText:'Sicherheitsprüfungen'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../sicherheitslabor/');
   await expect(page.locator('.route').filter({hasText:'Security Research'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../security/');
+  await expect(page.locator('.route').filter({hasText:'LAGEFADEN'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../lagefaden/');
   await page.getByRole('button',{name:'Direkt ausprobieren',exact:true}).click();
   await expect(page.locator('.route[data-kind=code]:visible')).toHaveCount(0);
   expect(await page.locator('.route:visible').count()).toBeGreaterThan(0);
   await page.getByLabel('Was möchtest du machen?',{exact:true}).fill('no-such-tool');
   await expect(page.locator('.route:visible')).toHaveCount(0);
   await page.getByRole('button',{name:'Alle Werkzeuge zeigen',exact:true}).click();
-  await expect(page.locator('.route:visible')).toHaveCount(20);
-  for(const url of ["/wissen/","/signals.html","/"]){
+  await expect(page.locator('.route:visible')).toHaveCount(21);
+  for(const url of ["/wissen/","/lagefaden/","/signals.html","/"]){
     await page.goto(url);
     for(const width of [320,390,768,1024]){
       await page.setViewportSize({width,height:900});
-      expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+      const geometry=await page.evaluate(()=>({content:document.documentElement.scrollWidth,viewport:innerWidth,
+        overflow:[...document.querySelectorAll('body *')].filter(el=>el.getBoundingClientRect().right>innerWidth+1||el.scrollWidth>el.clientWidth+1).slice(0,8).map(el=>`${el.tagName}.${el.className} ${el.scrollWidth}/${el.clientWidth} ${Math.round(el.getBoundingClientRect().right)}`)}));
+      expect(geometry.content<=geometry.viewport,`${url} at ${width}px: content ${geometry.content}px, viewport ${geometry.viewport}px; overflow ${geometry.overflow.join(', ')}`).toBe(true);
     }
   }
   await page.goto("/wissen/");await page.setViewportSize({width:390,height:900});
   await page.screenshot({path:info.outputPath("learning-tunnel-mobile.png"),fullPage:true});
+});
+
+test('LAGEFADEN shows a dated real USGS record as one catalog event and fails visibly without it',async({page})=>{
+  const snapshot=JSON.parse(await fs.readFile(new URL('../lagefaden/data/usgs-example.json',import.meta.url),'utf8'));
+  await page.goto('/lagefaden/');
+  await expect(page.locator('#real-event')).toHaveText(snapshot.evaluation.title);
+  await expect(page.locator('#real-representations')).toHaveText('2');
+  await expect(page.locator('#real-events')).toHaveText('1');
+  await expect(page.locator('#real-meaning')).toContainText('kein zweiter Herkunftsnachweis');
+  await expect(page.locator('#real-detail-link')).toHaveAttribute('href',snapshot.detail.url);
+  await page.route('**/lagefaden/data/usgs-example.json',route=>route.fulfill({status:503,body:'unavailable'}));
+  await page.reload();
+  await expect(page.locator('#real-event')).toHaveText('Datierter USGS-Snapshot nicht verfügbar');
+  await expect(page.locator('#real-meaning')).toContainText('nicht ausgewertet');
+});
+
+test('LAGEFADEN shows separate EONET and CEMS receipts, revision difference, and visible source failures',async({page})=>{
+  const eonet=JSON.parse(await fs.readFile(new URL('../lagefaden/data/eonet-example.json',import.meta.url),'utf8'));
+  const cems=JSON.parse(await fs.readFile(new URL('../lagefaden/data/cems-example.json',import.meta.url),'utf8'));
+  const errors=[];page.on('pageerror',error=>errors.push(error.message));
+  await page.goto('/lagefaden/');
+  await expect(page.locator('#eonet-title')).toHaveText(eonet.evaluation.title);
+  await expect(page.locator('#eonet-stat')).toContainText('1 kuratiertes Ereignis');
+  await expect(page.locator('#eonet-refs')).toContainText('Mess-Unabhängigkeit bleibt offen');
+  await expect(page.locator('#eonet-link')).toHaveAttribute('href',eonet.detail.url);
+  await expect(page.locator('#cems-title')).toHaveText(cems.evaluation.title);
+  await expect(page.locator('#cems-stat')).toContainText('1 Aktivierung');
+  await expect(page.locator('#cems-updates')).toContainText('Änderungszeiten verschieden');
+  await expect(page.locator('#cems-credit-code')).toHaveText(cems.evaluation.activationCode);
+  await expect(page.locator('#cems-link')).toHaveAttribute('href',cems.detail.url);
+  for(const grid of ['#w-grid','#real-w-grid','#eonet-w-grid','#cems-w-grid'])await expect(page.locator(grid+' .w-item')).toHaveCount(22);
+  await expect(page.locator('#eonet-w-grid .w-item').nth(8)).toContainText('176.8° W');
+  await expect(page.locator('#cems-w-grid .w-item').filter({hasText:'WESHALB?'})).toContainText('verschiedene Änderungszeiten');
+  await page.route('**/lagefaden/data/eonet-example.json',route=>route.fulfill({status:503,body:'unavailable'}));
+  await page.route('**/lagefaden/data/cems-example.json',route=>route.fulfill({status:503,body:'unavailable'}));
+  await page.reload();
+  await expect(page.locator('#eonet-title')).toHaveText('Datierter EONET-Snapshot nicht verfügbar');
+  await expect(page.locator('#cems-title')).toHaveText('Datierter CEMS-Snapshot nicht verfügbar');
+  await expect(page.locator('#eonet-w-grid .w-item')).toHaveCount(22);
+  await expect(page.locator('#eonet-w-grid .w-item').first()).toContainText('gültiger Snapshot fehlt');
+  await expect(page.locator('#real-event')).toHaveText(/.+/);
+  expect(errors).toEqual([]);
+});
+
+test('LAGEFADEN coverage keeps facets, evidence, case identity and export connected',async({page})=>{
+  const errors=[];page.on('pageerror',error=>errors.push(error.message));
+  await page.goto('/lagefaden/#coverage');
+  await expect(page.locator('#coverage-status')).toContainText('3 von 3');
+  await expect(page.locator('#coverage-body tr')).toHaveCount(22);
+  await expect(page.locator('.coverage-cell')).toHaveCount(66);
+  const usgsLocation=page.locator('.coverage-cell[data-question="WO?"][data-source="USGS"]');
+  await usgsLocation.click();
+  await expect(page.locator('#coverage-detail-title')).toHaveText('WO? · USGS');
+  await expect(page.locator('#coverage-detail-answer')).toContainText('Ortsbezug nur im Titel');
+  await expect(page.locator('#coverage-facets')).toContainText('Dieses Feld ist im gespeicherten Snapshot');
+  await expect(page.locator('#coverage-receipt')).toContainText('SHA-256:');
+  await page.locator('.coverage-cell[data-question="WO?"][data-source="EONET"]').click();
+  await expect(page.locator('#coverage-detail-case')).toContainText('EONET_25730');
+  await expect(page.locator('#coverage-facets')).toContainText('176.8');
+  await page.locator('[data-coverage-filter="contrast"]').click();
+  await expect(page.locator('.coverage-cell[data-question="WO?"]')).toHaveCount(3);
+  await expect(page.locator('.coverage-cell[data-question="WARUM?"]')).toHaveCount(0);
+  await expect(page.locator('#coverage-contrast')).toContainText('Koordinaten');
+  await page.locator('[data-coverage-filter="all"]').click();
+  await usgsLocation.focus();await page.keyboard.press('Enter');
+  await expect(usgsLocation).toHaveAttribute('aria-pressed','true');
+  const downloadPromise=page.waitForEvent('download');await page.locator('#coverage-export').click();
+  const download=await downloadPromise;
+  const exported=JSON.parse(await fs.readFile(await download.path(),'utf8'));
+  expect(exported.rows).toHaveLength(22);
+  expect(exported.crossCatalogEventIdentity).toBe('NOT_EVALUATED');
+  expect(new Set(exported.sources.map(source=>source.caseId)).size).toBe(3);
+  expect(exported.sharedUnknown.some(f=>f.id==='cause')).toBe(true);
+  expect(exported.answerInventory.every(f=>f.sourceId&&f.caseId&&f.snapshotReceipt.sha256)).toBe(true);
+  expect(errors).toEqual([]);
+});
+
+test('LAGEFADEN coverage survives outages and fits narrow viewports without hiding source columns',async({page},info)=>{
+  await page.goto('/lagefaden/#coverage');
+  await expect(page.locator('#coverage-status')).toContainText('3 von 3');
+  for(const width of [320,390,768,1440]) {
+    await page.setViewportSize({width,height:900});
+    const sizes=await page.evaluate(()=>({viewport:innerWidth,page:document.documentElement.scrollWidth,table:document.getElementById('coverage-table').getBoundingClientRect().width}));
+    expect(sizes.page,`page overflow at ${width}px`).toBeLessThanOrEqual(width);
+    expect(sizes.table).toBeLessThanOrEqual(width);
+  }
+  await page.locator('#coverage').evaluate(element=>element.scrollIntoView());
+  await page.screenshot({path:info.outputPath('coverage-desktop.png')});
+  await page.setViewportSize({width:390,height:900});
+  await page.locator('#coverage-table').evaluate(element=>element.scrollIntoView());
+  await page.screenshot({path:info.outputPath('coverage-mobile.png')});
+  await page.route('**/lagefaden/data/eonet-example.json',route=>route.fulfill({status:503,body:'unavailable'}));
+  await page.reload();
+  await expect(page.locator('#coverage-status')).toContainText('2 von 3');
+  await expect(page.locator('.coverage-cell[data-source="EONET"][data-state="UNAVAILABLE"]')).toHaveCount(22);
+  await expect(page.locator('#coverage-shared')).toContainText('wartet auf alle drei');
+  await page.route('**/lagefaden/data/usgs-example.json',route=>route.fulfill({status:503,body:'unavailable'}));
+  await page.route('**/lagefaden/data/cems-example.json',route=>route.fulfill({status:503,body:'unavailable'}));
+  await page.reload();
+  await expect(page.locator('#coverage-status')).toContainText('0 von 3');
+  await expect(page.locator('#coverage-export')).toBeDisabled();
+  await expect(page.locator('.coverage-cell[data-state="UNAVAILABLE"]')).toHaveCount(66);
+});
+
+test('LAGEFADEN review profiles change required inputs, preserve other gaps, and export the selected rule',async({page})=>{
+  const errors=[];page.on('pageerror',error=>errors.push(error.message));
+  await page.goto('/lagefaden/#decision-review');
+  await expect(page.locator('#coverage-status')).toContainText('3 von 3');
+  const card=id=>page.locator('.decision-card[data-source="'+id+'"]');
+  await expect(card('EONET')).toHaveAttribute('data-state','INPUT_REQUIREMENTS_BOUND');
+  await expect(card('USGS')).toHaveAttribute('data-state','REVIEW_OPEN_REQUIREMENTS');
+  await expect(card('CEMS')).toHaveAttribute('data-state','REVIEW_OPEN_REQUIREMENTS');
+  await page.locator('[data-coverage-filter="decision"]').click();
+  await expect(page.locator('.coverage-cell[data-question="WO?"]')).toHaveCount(3);
+  await expect(page.locator('.coverage-cell[data-question="WARUM?"]')).toHaveCount(0);
+  const picker=page.locator('#decision-profile');
+  await picker.focus();await page.keyboard.press('End');await page.keyboard.press('Enter');
+  await expect(picker).toHaveValue('PHYSICAL_INDEPENDENCE');
+  for(const id of ['USGS','EONET','CEMS']) {
+    await expect(card(id)).toHaveAttribute('data-state','REVIEW_OPEN_REQUIREMENTS');
+    await expect(card(id).locator('[data-state="REQUIRED_UNKNOWN"]')).toHaveCount(3);
+    await expect(card(id)).toContainText('lässt 2 weitere offen');
+  }
+  await picker.selectOption('CATALOG_REVISIONS');
+  await expect(card('USGS')).toHaveAttribute('data-state','INPUT_REQUIREMENTS_BOUND');
+  await expect(card('EONET')).toContainText('Änderungszeit');
+  await expect(card('CEMS')).toHaveAttribute('data-state','REVIEW_DERIVED_INPUTS');
+  await card('CEMS').locator('button[data-facet="catalogUpdate"]').click();
+  await expect(page.locator('#coverage-detail-title')).toHaveText('WANN? · Copernicus EMS');
+  await expect(page.locator('#coverage-decision-note')).toContainText('Änderungszeit');
+  await expect(page.locator('#coverage-shared')).toContainText('Ereignisursache');
+  const downloadPromise=page.waitForEvent('download');await page.locator('#decision-export').click();
+  const downloaded=await downloadPromise;
+  const exported=JSON.parse(await fs.readFile(await downloaded.path(),'utf8'));
+  expect(exported.contract).toBe('halveth.lagefaden.review-export.v1');
+  expect(exported.coverage.rows).toHaveLength(22);
+  expect(exported.decisionReview.profile.id).toBe('CATALOG_REVISIONS');
+  expect(exported.decisionReview.operationalActionAuthorized).toBe(false);
+  await page.locator('[data-coverage-filter="all"]').click();
+  await expect(page.locator('.coverage-cell')).toHaveCount(66);
+  expect(errors).toEqual([]);
+});
+
+test('LAGEFADEN review profiles remain readable on mobile and keep unavailable sources unassessed',async({page},info)=>{
+  await page.goto('/lagefaden/#decision-review');
+  await expect(page.locator('#coverage-status')).toContainText('3 von 3');
+  for(const profile of ['CATALOG_COORDINATES','CATALOG_REVISIONS','PHYSICAL_INDEPENDENCE'])for(const width of [320,390,768,1440]) {
+    await page.setViewportSize({width,height:1000});await page.locator('#decision-profile').selectOption(profile);
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth),profile+' at '+width).toBeLessThanOrEqual(width);
+  }
+  await page.locator('#decision-profile').selectOption('CATALOG_COORDINATES');
+  await page.locator('#decision-review').evaluate(element=>element.scrollIntoView());
+  await page.screenshot({path:info.outputPath('decision-desktop.png')});
+  await page.setViewportSize({width:390,height:1000});
+  await page.locator('#decision-review').evaluate(element=>element.scrollIntoView());
+  await page.screenshot({path:info.outputPath('decision-mobile.png')});
+  await page.route('**/lagefaden/data/eonet-example.json',route=>route.fulfill({status:503,body:'unavailable'}));
+  await page.reload();
+  await expect(page.locator('.decision-card[data-source="EONET"]')).toHaveAttribute('data-state','UNAVAILABLE');
+  await page.locator('#decision-profile').selectOption('PHYSICAL_INDEPENDENCE');
+  await expect(page.locator('.decision-card[data-source="EONET"]')).toHaveAttribute('data-state','UNAVAILABLE');
+  await expect(page.locator('.decision-card[data-source="EONET"] .decision-requirements li')).toHaveCount(0);
 });
 
 test('security workbench executes counterexamples, rejects invalid input and exports actual local results',async({page})=>{

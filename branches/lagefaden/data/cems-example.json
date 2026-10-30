@@ -1,0 +1,80 @@
+{
+  "contract": "halveth.lagefaden.cems-snapshot.v1",
+  "selection": "first_shared_public_rapid_mapping_code_in_first_10_of_each_official_list",
+  "mappingList": {
+    "url": "https://mapping.emergency.copernicus.eu/activations/api/activations/?limit=10",
+    "retrievedAt": "2026-10-26T22:16:24.689Z",
+    "bytes": 7005,
+    "sha256": "f66d63a8dea180d964152999d8dacc96ce24e6d3f3b3f8f1d6598564f99907d5",
+    "declaredContentType": "application/json"
+  },
+  "rapidList": {
+    "url": "https://rapidmapping.emergency.copernicus.eu/backend/dashboard-api/public-activations-info/?limit=10",
+    "retrievedAt": "2026-10-26T22:16:24.718Z",
+    "bytes": 3461,
+    "sha256": "b1421a925ac5768ea461d759866c932ffe355afcdc13f8c762f8c36f46b740fe",
+    "declaredContentType": "application/json"
+  },
+  "detail": {
+    "url": "https://rapidmapping.emergency.copernicus.eu/backend/dashboard-api/public-activations/?code=EMSR935",
+    "retrievedAt": "2026-10-26T22:16:24.826Z",
+    "bytes": 14496,
+    "sha256": "b06de69ecc5493f520ce54ff0a9765457a85a7a4cd791d257047636f6deaffe6",
+    "declaredContentType": "application/json"
+  },
+  "records": {
+    "mapping": {
+      "code": "EMSR935",
+      "name": "Flood in Alicante-Valencia Regions, Spain",
+      "activationTime": "2026-10-19T16:03:00",
+      "lastUpdate": "2026-10-21T03:55:11.352969",
+      "category": "Flood",
+      "countries": [
+        "Spain"
+      ],
+      "closed": true,
+      "n_products": 2
+    },
+    "rapid": {
+      "code": "EMSR935",
+      "name": "Flood in Alicante-Valencia Regions, Spain",
+      "eventTime": "2026-10-19T03:10:00",
+      "activationTime": "2026-10-19T16:03:00",
+      "lastUpdate": "2026-10-26T16:26:37.686300",
+      "category": "Flood",
+      "countries": [
+        "Spain"
+      ],
+      "closed": true,
+      "n_products": 2
+    },
+    "detail": {
+      "code": "EMSR935",
+      "name": "Flood in Alicante-Valencia Regions, Spain",
+      "eventTime": "2026-10-19T03:10:00",
+      "activationTime": "2026-10-19T16:03:00",
+      "sensitive": false,
+      "closed": true
+    }
+  },
+  "evaluation": {
+    "contract": "halveth.lagefaden.cems-pair.v1",
+    "activationCode": "EMSR935",
+    "title": "Flood in Alicante-Valencia Regions, Spain",
+    "representationCount": 2,
+    "activationCount": 1,
+    "eventTime": "2026-10-19T03:10:00.000Z",
+    "activationTime": "2026-10-19T16:03:00.000Z",
+    "mappingUpdateTime": "2026-10-21T03:55:11.352Z",
+    "rapidUpdateTime": "2026-10-26T16:26:37.686Z",
+    "updatesMatch": false,
+    "productCountMapping": 2,
+    "productCountRapid": 2,
+    "sourceTimeInterpretation": "CEMS_UNZONED_FIELDS_INTERPRETED_AS_UTC_PER_PROVIDER_DOC",
+    "normalizedTimePrecision": "MILLISECONDS; ORIGINAL_MICROSECONDS_RETAINED_IN_SOURCE_RECORDS",
+    "independentPhysicalObservations": "UNKNOWN",
+    "state": "REVIEW_DIFFERENT_METADATA_UPDATES",
+    "action": "HUMAN_REVIEW_ONLY"
+  },
+  "evidenceLimit": "Two Copernicus EMS API views are not independent institutions or physical observations. Provider documents UTC although these fields omit a zone marker. Raw responses are hashed, not archived."
+}

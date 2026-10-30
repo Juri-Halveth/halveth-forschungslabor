@@ -1,0 +1,56 @@
+{
+  "contract": "halveth.lagefaden.usgs-snapshot.v1",
+  "selection": "highest_magnitude_in_2_5_day_feed_then_latest_event_time",
+  "feed": {
+    "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson",
+    "generatedAt": "2026-10-26T21:54:39.000Z",
+    "retrievedAt": "2026-10-26T21:54:41.932Z",
+    "bytes": 21957,
+    "sha256": "1449240281dee8861dae1f253d4bbfaf67ba1bdd74e19ef43f23fdd94b2f573e"
+  },
+  "detail": {
+    "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/us6000u4yr.geojson",
+    "retrievedAt": "2026-10-26T21:54:41.953Z",
+    "bytes": 38378,
+    "sha256": "7489024cd425b59d1588cb555c9ec8430728cd3706c11a3cc4fdfa44d4e8c51c"
+  },
+  "records": {
+    "summary": {
+      "type": "Feature",
+      "id": "us6000u4yr",
+      "properties": {
+        "title": "M 5.5 - 283 km E of Levuka, Fiji",
+        "time": 1793009581234,
+        "updated": 1793017150404,
+        "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/us6000u4yr.geojson"
+      }
+    },
+    "detail": {
+      "type": "Feature",
+      "id": "us6000u4yr",
+      "properties": {
+        "title": "M 5.5 - 283 km E of Levuka, Fiji",
+        "time": 1793009581234,
+        "updated": 1793017150404
+      }
+    }
+  },
+  "evaluation": {
+    "contract": "halveth.lagefaden.usgs-pair.v1",
+    "eventId": "us6000u4yr",
+    "title": "M 5.5 - 283 km E of Levuka, Fiji",
+    "eventTimeSummary": "2026-10-26T10:13:01.234Z",
+    "eventTimeDetail": "2026-10-26T10:13:01.234Z",
+    "updateTimeSummary": "2026-10-26T12:19:10.404Z",
+    "updateTimeDetail": "2026-10-26T12:19:10.404Z",
+    "representationCount": 2,
+    "publisherEndpointCount": 1,
+    "sameEventId": true,
+    "eventTimeMatches": true,
+    "updateTimeMatches": true,
+    "independentPhysicalObservations": "UNKNOWN",
+    "state": "SAME_CATALOG_EVENT",
+    "action": "HUMAN_REVIEW_ONLY"
+  },
+  "evidenceLimit": "Raw responses were hashed but are not included; source records can be revised. One publisher endpoint does not prove one physical sensor."
+}
