@@ -1,0 +1,8 @@
+{
+  "name": "halveth-light-time-model",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "license": "MIT",
+  "scripts": {"test": "node --test tests/core.test.mjs"}
+}

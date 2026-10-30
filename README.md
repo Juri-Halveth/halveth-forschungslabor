@@ -23,6 +23,12 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [Licht und Zeit – Zwei-Port-Bilanz und Koordinaten](branches/light-time-model/)
+
+Ein numerischer Kern für einen idealen 50:50-Kombinierer, eine explizite
+Ausgangsbilanz und Lorentz-Koordinaten in 1+1 Dimensionen. Mit Gegenproben
+für Phasenwechsel, getrennte Pulse und erhaltene Raumzeitintervalle.
+
 ### [Security Research – Methoden, Quellen und nächste Gegenprobe](branches/security-research-hub/)
 
 **[Den Forschungsraum öffnen](https://juri-halveth.github.io/halveth-forschungslabor/security/)**.
