@@ -67,8 +67,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 26371,
-          "sha256": "f89409ea7b356c813e747582cb773ca44240431ca7fac3398bbfccb7f8681f05"
+          "bytes": 28154,
+          "sha256": "fd765d17d6102dd4b52e28485ffaf30e0616315a9ef235c5bd59b35a4ec1305d"
         }
       ]
     },
@@ -141,8 +141,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 26371,
-          "sha256": "f89409ea7b356c813e747582cb773ca44240431ca7fac3398bbfccb7f8681f05"
+          "bytes": 28154,
+          "sha256": "fd765d17d6102dd4b52e28485ffaf30e0616315a9ef235c5bd59b35a4ec1305d"
         }
       ]
     },
@@ -339,6 +339,72 @@
           "path": "branches/pixel-region-change-observer/test/observer.test.js",
           "bytes": 4666,
           "sha256": "75033240ddb2b0a61c5af6ea9442beba08253e0c05dce28e086a188a4163dd55"
+        }
+      ]
+    },
+    {
+      "id": "network-candidate",
+      "title": "Netzbild-Kandidaten – Pixelbrücken und räumliche Kreuzungen",
+      "description": "Pixelregionen unter Helligkeitsschwellen prüfen und zwei räumliche Quellen derselben Draufsicht offen halten.",
+      "source": "branches/network-candidate/model.mjs",
+      "tests": [
+        "branches/network-candidate/model.test.mjs"
+      ],
+      "docs": "branches/network-candidate/README.md",
+      "assets": [
+        "branches/network-candidate/model-core.mjs",
+        "branches/network-candidate/fixtures.mjs",
+        "branches/network-candidate/adapter.mjs",
+        "branches/network-candidate/demo.html",
+        "branches/network-candidate/demo.css",
+        "branches/network-candidate/demo.mjs"
+      ],
+      "demo": "netzbild/",
+      "files": [
+        {
+          "path": "branches/network-candidate/model.mjs",
+          "bytes": 2257,
+          "sha256": "94b1e8f72c3ed05b66a8d0aa7c8965465f19e100eea77733c148caf04ebc94a2"
+        },
+        {
+          "path": "branches/network-candidate/README.md",
+          "bytes": 4002,
+          "sha256": "3853f7957ee789d67b59580c3f524ac12ef5b6cc3639523632d735b386d72d1e"
+        },
+        {
+          "path": "branches/network-candidate/model.test.mjs",
+          "bytes": 5387,
+          "sha256": "8af3b8ab749529492230c2983cf452976968af064f8a674b9171e1cd4b24eab7"
+        },
+        {
+          "path": "branches/network-candidate/model-core.mjs",
+          "bytes": 3903,
+          "sha256": "d1b947b74a4428c502de34b73b81756a64fef406ca81ed4cd78384310507ab51"
+        },
+        {
+          "path": "branches/network-candidate/fixtures.mjs",
+          "bytes": 1155,
+          "sha256": "2b28cbedf6ea9ac4b2749033c3cf62d188bc45a14f640d0f92324a20057a3e5e"
+        },
+        {
+          "path": "branches/network-candidate/adapter.mjs",
+          "bytes": 1685,
+          "sha256": "9b29eb27015b724caa0d4e5d3e74364e2ff9ea2f1641d4ff6a572a88c37606bf"
+        },
+        {
+          "path": "branches/network-candidate/demo.html",
+          "bytes": 4383,
+          "sha256": "cf3b677356c015d61028d01229225840e2c5fba695b7630015fd4e49267331a1"
+        },
+        {
+          "path": "branches/network-candidate/demo.css",
+          "bytes": 3569,
+          "sha256": "ccb7843986e72de1f03d47927af6cf033860f7e59682f51f7db393d8f139cf8d"
+        },
+        {
+          "path": "branches/network-candidate/demo.mjs",
+          "bytes": 3114,
+          "sha256": "c45646b1f1e1de95ad436dabab3cc9c1b4e031a45ce9e1e92b151d28d2e5b0b0"
         }
       ]
     },

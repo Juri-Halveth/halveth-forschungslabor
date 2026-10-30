@@ -42,6 +42,14 @@
       "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
     },
     {
+      "id": "network-candidate",
+      "title": "Netzbild-Kandidaten – Pixelbrücken und räumliche Kreuzungen",
+      "description": "Offline-Modell für Helligkeitsschwellen und zwei räumliche Kandidaten mit derselben Draufsicht.",
+      "path": "branches/network-candidate",
+      "entry": "model.mjs",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
       "id": "binary-inquiry-loop",
       "title": "Dialogprotokoll – Zustimmung und offene Antworten modellieren",
       "description": "Deterministisches Protokollmodell für eine gebundene Frage und zwei deklarierte Seiten.",

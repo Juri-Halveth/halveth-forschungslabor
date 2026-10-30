@@ -193,10 +193,12 @@ test("unavailable browser storage keeps the experiment and temporary learning us
   expect(errors).toEqual([]);
 });
 
-test("the repository tunnel has twenty usable source and test routes and mobile navigation fits",async({page},info)=>{
-  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(20);
-  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(20);
-  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(20);
+test("the repository tunnel has twenty-one usable source and test routes and mobile navigation fits",async({page},info)=>{
+  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(21);
+  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(21);
+  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(21);
+  await expect(page.locator('.route').filter({hasText:'Netzbild-Kandidaten'}).getByRole('link',{name:'Code',exact:true})).toHaveAttribute('href',/branches\/network-candidate\/model\.mjs$/);
+  await expect(page.locator('.route').filter({hasText:'Netzbild-Kandidaten'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../netzbild/');
   await expect(page.locator('.route').filter({hasText:'Sicherheitsprüfungen'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../sicherheitslabor/');
   await expect(page.locator('.route').filter({hasText:'Security Research'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../security/');
   await page.getByRole('button',{name:'Direkt ausprobieren',exact:true}).click();
@@ -205,7 +207,7 @@ test("the repository tunnel has twenty usable source and test routes and mobile 
   await page.getByLabel('Was möchtest du machen?',{exact:true}).fill('no-such-tool');
   await expect(page.locator('.route:visible')).toHaveCount(0);
   await page.getByRole('button',{name:'Alle Werkzeuge zeigen',exact:true}).click();
-  await expect(page.locator('.route:visible')).toHaveCount(20);
+  await expect(page.locator('.route:visible')).toHaveCount(21);
   for(const url of ["/wissen/","/signals.html","/"]){
     await page.goto(url);
     for(const width of [320,390,768,1024]){
@@ -215,6 +217,29 @@ test("the repository tunnel has twenty usable source and test routes and mobile 
   }
   await page.goto("/wissen/");await page.setViewportSize({width:390,height:900});
   await page.screenshot({path:info.outputPath("learning-tunnel-mobile.png"),fullPage:true});
+});
+
+test("network image demo changes pixel evidence without turning 3D illustrations into observations",async({page})=>{
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto('/netzbild/');
+  await expect(page.locator('#measurement')).toContainText('1 vierarmige Muster');
+  await expect(page.locator('#candidate-cards')).toBeVisible();
+  const a=await page.locator('#pixel-grid').evaluate(element=>[...element.children].map(pixel=>pixel.style.getPropertyValue('--pixel')));
+  await page.getByRole('button',{name:'B · Überlagerung'}).click();
+  const b=await page.locator('#pixel-grid').evaluate(element=>[...element.children].map(pixel=>pixel.style.getPropertyValue('--pixel')));
+  expect(b).toEqual(a);
+  await page.locator('#threshold').fill('120');
+  await expect(page.locator('#measurement')).toContainText('0 vierarmige Muster');
+  await expect(page.locator('#candidate-cards')).toBeHidden();
+  await page.getByRole('button',{name:'C · Filamente'}).click();
+  await page.locator('#threshold').fill('80');
+  await expect(page.locator('#measurement')).toContainText('3 Pixelgruppen');
+  await expect(page.locator('#candidate-cards')).toBeHidden();
+  for(const width of [320,390,768,1024]){
+    await page.setViewportSize({width,height:900});
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  }
+  expect(errors).toEqual([]);
 });
 
 test('security workbench executes counterexamples, rejects invalid input and exports actual local results',async({page})=>{

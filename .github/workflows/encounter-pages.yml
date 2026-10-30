@@ -6,6 +6,7 @@ on:
       [
         "branches/encounter-systems/**",
         "branches/endeck-observer/**",
+        "branches/network-candidate/**",
         "branches/security-workbench/**",
         "branches/security-research-hub/**",
         "research/lifecycle-echo/**",
@@ -21,6 +22,7 @@ on:
       [
         "branches/encounter-systems/**",
         "branches/endeck-observer/**",
+        "branches/network-candidate/**",
         "branches/security-workbench/**",
         "branches/security-research-hub/**",
         "research/lifecycle-echo/**",
