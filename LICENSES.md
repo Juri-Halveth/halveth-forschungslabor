@@ -14,8 +14,16 @@ verleiht keine Rechte an verlinkten Quellen oder an fremden Projekten.
 | Repository-Konfiguration und CI | [MIT](LICENSE) |
 | Lizenztexte | Ihre jeweils genannten Kopierbedingungen |
 
-Quellfassung der übernommenen Implementierungen:
+Der LUCINET-Core-Slice unter `branches/lucinet-core-rust/` enthält zusätzlich
+die [MIT-Lizenz des lokalen Quellprojekts](branches/lucinet-core-rust/LICENSE)
+mit dessen ursprünglichem Copyright-Hinweis. Die neue Standalone-Cargo-Datei
+und die Quellhinweise stehen unter derselben MIT-Lizenz beziehungsweise für
+neu geschriebene Markdown-Erläuterungen unter CC BY 4.0.
+
+Quellfassung der bisherigen Open-Research-Branch-Implementierungen:
 `open-research-branches@251fd2e72e7c521d939314d401bed03037fd6695`.
+Für den neuen LUCINET-Core-Slice gilt dessen separates
+[`SOURCE_RECEIPT.json`](branches/lucinet-core-rust/SOURCE_RECEIPT.json).
 Die früheren speziellen Lizenzregeln für andere Berichte betreffen keine der
 hier ausgewählten Dateien. Das Originalregister bleibt im privaten Quellarchiv.
 `SOURCE_PROVENANCE.json` bezeichnet exakte Übernahmen und Bearbeitungen einzeln.
