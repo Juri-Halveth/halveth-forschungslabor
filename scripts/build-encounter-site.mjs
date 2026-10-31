@@ -50,7 +50,7 @@ export const publicFiles = Object.freeze([
   ...["index.html", "style.css", "view.mjs", "routes.json"].map((name) => ({
     path: "wissen/" + name, sourcePath: "catalog/wissen/" + name,
   })),
-  ...["index.html", "style.css", "view.js", "model.js", "fold-motion.js", "fold-render.js", "README.md"].map((name) => ({
+  ...["index.html", "style.css", "view.js", "model.js", "fold-motion.js", "fold-render.js", "sheet-motion.js", "sheet-render.js", "README.md"].map((name) => ({
     path: "faltgrenze/" + name, sourcePath: "branches/fold-resolution-lab/" + name,
   })),
   ...["index.html", "style.css", "view.mjs", "core.mjs", "catalog.mjs", "README.md", "SOURCES.md"].map((name) => ({

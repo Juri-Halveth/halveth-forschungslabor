@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Ein maßgebundenes Faltmodell mit sichtbarer Umlegebewegung, Materialgrenze und getrenntem Kompressionsvergleich.">
+  <meta name="description" content="Ein A4-Blatt mit erhaltenen Materialkoordinaten, gekrümmter Faltzone, vier Ansichten und klarer Grenze der formalen Extrapolation.">
   <title>Faltgrenze · HALVETH</title>
   <link rel="stylesheet" href="style.css">
   <script type="module" src="view.js"></script>
@@ -14,18 +14,18 @@
     <section class="intro">
       <p class="eyebrow">Zwei Operatoren · dieselbe Faltnummer</p>
       <h1>Was wird hier eigentlich kleiner?</h1>
-      <p>Sieh zu, wie ein Blatt an der jeweils längeren Kante umgelegt wird. Die Szene zeigt die berechnete Form und Stärke nach jedem Schritt. Danach kannst du die Rechnung über die Freiraumschwelle des Modells hinaus fortsetzen und sehen, wo die physische Aussage endet.</p>
+      <p>Ein einziges A4-Blatt behält seine Materialkoordinaten, während eine Biegezone die Faltung trägt. Der leuchtende Punkt M17 bleibt derselbe Ort auf dem Blatt. Wechsle die Ansicht und verfolge jede Bewegung; jenseits der Modellgrenze bleibt nur die offen gekennzeichnete Rechnung.</p>
     </section>
     <section class="fold-stage" aria-labelledby="stage-title">
       <div class="stage-head"><div><p class="eyebrow">A4 · 297 × 210 mm · 0,1 mm dick</p><h2 id="stage-title">Faltung als Bewegung</h2></div><p id="fold-status" class="stage-status" role="status">Ausgangsblatt</p></div>
-      <div class="stage-view"><canvas id="fold-canvas" aria-label="Maßgebundene Projektion des Papierstapels und der laufenden Faltung"></canvas><span class="scene-caption">Orthografische Projektion · Maßstab passt sich an</span></div>
-      <div class="stage-controls"><div class="transport"><button id="prev-fold" type="button" aria-label="Eine Faltung zurück">← Zurück</button><button id="play-fold" type="button">▶ Schritt abspielen</button><button id="next-fold" type="button">Weiter →</button></div><p id="scene-readout" class="scene-readout">–</p></div>
-      <p class="stage-note">Die gezeichnete Bahn ist ein starres Gelenkmodell mit erhaltener Blattfläche und Masse. Reale Biegung, Risse, Druckkraft und Fasern sind nicht gemessen; nach der angezeigten Freiraumschwelle läuft nur noch die Rechnung weiter.</p>
+      <div class="stage-view"><canvas id="fold-canvas" aria-label="Eine zusammenhängende Materialfläche während der Faltung, mit eigener Biegezone"></canvas><span class="scene-caption">Orthografische Projektion · Kantenprofil mit eigenem Maßstab</span></div>
+      <div class="stage-controls"><div class="transport"><button id="prev-fold" type="button" aria-label="Eine Faltung zurück">← Zurück</button><button id="play-fold" type="button">▶ Schritt abspielen</button><button id="next-fold" type="button">Weiter →</button><label class="projection-label" for="projection">Ansicht <select id="projection"><option value="spatial">Raum</option><option value="top">Oben</option><option value="front">Vorn</option><option value="side">Seite</option></select></label></div><p id="scene-readout" class="scene-readout">–</p></div>
+      <p class="stage-note">Das Blatt ist eine fortlaufende Materialfläche mit gespeicherter Herkunft jedes Punkts. Die Krümmung und die vier Projektionen sind ein maßgebundenes kinematisches Modell. Kraft, Faserspannung, bleibende Falte, Kontakt und Schichtordnung sind noch nicht gemessen oder gelöst. Das Profil rechts oben vergrößert nur die lokale Kante und trägt deshalb einen eigenen Maßstab.</p>
     </section>
     <section class="control" aria-label="Faltnummer">
       <div class="control-top"><label for="folds">Schritt wählen · ab der Freiraumschwelle formal</label><output id="fold-count" for="folds">0</output></div>
       <input id="folds" type="range" min="0" max="240" value="0" step="1">
-      <div class="marks"><span>0</span><button type="button" data-fold="7">7 · Freiraum</button><button type="button" data-fold="96">96 · rₛ</button><button type="button" data-fold="111">111 · Gedankenversuch</button><button type="button" data-fold="114">114 · ℓₚ</button><span>240</span></div>
+      <div class="marks"><span>0</span><button type="button" data-fold="6">6 · Blattgrenze</button><button type="button" data-fold="96">96 · rₛ</button><button type="button" data-fold="111">111 · Gedankenversuch</button><button type="button" data-fold="114">114 · ℓₚ</button><span>240</span></div>
     </section>
     <section class="models" aria-label="Zwei getrennte Rechenmodelle">
       <article class="model stack">
@@ -55,7 +55,7 @@
     <section class="interpretation">
       <p class="eyebrow">LUCINET · Quelle / Operator / Projektion</p><h2>Der Knick im alten Dialog</h2>
       <p>Die ursprüngliche Rechnung setzte an manchen Stellen <code>Fläche/2ⁿ</code> und zugleich <code>jede Länge/2ⁿ</code>. Beides beschreibt nicht denselben Faltoperator: zwei halbierte Seiten ergäben ein Viertel der Fläche. Die Planck-Zahl 114 und die Schwarzschild-Nähe bei ungefähr 95,03 Halbierungen gehören zum <em>Kompressionsmodell</em> mit einem angenommenen Ausgangsradius von 0,30 m.</p>
-      <p>Die Planck-Länge ist eine aus Konstanten gebildete Skala. Dieses Labor behandelt sie als Vergleichsmarke, weder als bewiesenes Pixel des Raums noch als reale Grenze des Papierfaltens. Bei 111 formalen Faltungen wäre der ideale Stapel bereits rund 2,6 × 10²⁹ m dick. Die Ansicht zoomt deshalb mit; Striche unter einem Bildschirmpixel sind Darstellungsgrenzen, keine neue Materialeigenschaft.</p>
+      <p>Die Planck-Länge ist eine aus Konstanten gebildete Skala. Dieses Labor behandelt sie als Vergleichsmarke, weder als bewiesenes Pixel des Raums noch als reale Grenze des Papierfaltens. Bei 111 formalen Faltungen wäre der ideale Stapel bereits rund 2,6 × 10²⁹ m dick. Die Bühne zeigt dort bewusst keinen Papierkörper mehr; die Zahl ist eine Extrapolation.</p>
     </section>
     <section class="code-zoom">
       <div><p class="eyebrow">CODE-PLANCK · Analogie für Prüftiefe</p><h2>Wie tief muss eine Codefrage gehen?</h2><p>Wähle die Frage. Die kleinste nützliche Auflösung hängt von ihr ab und wird bei einem konkreten Widerspruch wieder geöffnet.</p></div>
