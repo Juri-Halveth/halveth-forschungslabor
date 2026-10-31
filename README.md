@@ -23,6 +23,12 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [Chronosphere – vier sichtbare Zeitkanäle](branches/temporal-clock/)
+
+Eine lokal laufende Windows-Terminal-Uhr mit bewegtem Zifferblatt, vier
+Zeigern, UTC/T0 und einer Shell im zweiten Feld. Die Darstellung passt sich an
+die Pane-Größe an. [Quellcode, Build und Grenzen](branches/temporal-clock/README.md).
+
 ### [Security Research – Methoden, Quellen und nächste Gegenprobe](branches/security-research-hub/)
 
 **[Den Forschungsraum öffnen](https://juri-halveth.github.io/halveth-forschungslabor/security/)**.

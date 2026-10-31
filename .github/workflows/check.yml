@@ -19,3 +19,16 @@ jobs:
           python-version: '3.12'
       - run: node branches/security-workbench/cli.mjs runtime --require-patch
       - run: npm test
+  temporal-clock:
+    runs-on: windows-2022
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9
+        with:
+          dotnet-version: '10.0.x'
+      - run: dotnet run --project branches/temporal-clock/HALVETH.Clock.csproj -- --self-test
+      - run: dotnet publish branches/temporal-clock/HALVETH.Clock.csproj -c Release -o branches/temporal-clock/publish
+      - run: branches/temporal-clock/publish/HALVETH.Clock.exe --self-test
