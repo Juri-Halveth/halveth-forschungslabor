@@ -59,6 +59,7 @@ test("publication copies only approved files, binds bytes and rejects reused out
   assert.equal(receipt.files.find(entry=>entry.path==='sicherheitslabor/core.mjs').sourcePath,'branches/security-workbench/core.mjs');
   assert.ok(!receipt.files.some(entry=>entry.path.includes('private-lab-token')||entry.path==='sicherheitslabor/http-fixture.mjs'));
   assert.equal(receipt.files.find(entry=>entry.path==='security/model.mjs').sourcePath,'branches/security-research-hub/model.mjs');
+  assert.equal(receipt.files.find(entry=>entry.path==='faltgrenze/model.js').sourcePath,'branches/fold-resolution-lab/model.js');
   assert.ok(!receipt.files.some(entry=>entry.path.includes('private-case-index')));
   await assert.rejects(buildSite(args), { code: "EEXIST" });
   await assert.rejects(

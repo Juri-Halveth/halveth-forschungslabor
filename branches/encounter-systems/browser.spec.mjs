@@ -193,10 +193,10 @@ test("unavailable browser storage keeps the experiment and temporary learning us
   expect(errors).toEqual([]);
 });
 
-test("the repository tunnel has twenty-one usable source and test routes and mobile navigation fits",async({page},info)=>{
-  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(21);
-  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(21);
-  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(21);
+test("the repository tunnel has twenty-two usable source and test routes and mobile navigation fits",async({page},info)=>{
+  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(22);
+  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(22);
+  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(22);
   await expect(page.locator('.route').filter({hasText:'Sicherheitsprüfungen'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../sicherheitslabor/');
   await expect(page.locator('.route').filter({hasText:'Security Research'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../security/');
   await page.getByRole('button',{name:'Direkt ausprobieren',exact:true}).click();
@@ -205,7 +205,7 @@ test("the repository tunnel has twenty-one usable source and test routes and mob
   await page.getByLabel('Was möchtest du machen?',{exact:true}).fill('no-such-tool');
   await expect(page.locator('.route:visible')).toHaveCount(0);
   await page.getByRole('button',{name:'Alle Werkzeuge zeigen',exact:true}).click();
-  await expect(page.locator('.route:visible')).toHaveCount(21);
+  await expect(page.locator('.route:visible')).toHaveCount(22);
   for(const url of ["/wissen/","/signals.html","/"]){
     await page.goto(url);
     for(const width of [320,390,768,1024]){
@@ -215,6 +215,19 @@ test("the repository tunnel has twenty-one usable source and test routes and mob
   }
   await page.goto("/wissen/");await page.setViewportSize({width:390,height:900});
   await page.screenshot({path:info.outputPath("learning-tunnel-mobile.png"),fullPage:true});
+});
+
+test('fold lab keeps stacking and compression separate when the formal threshold changes',async({page})=>{
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto('/faltgrenze/');
+  await expect(page.locator('#fold-count')).toHaveText('0');
+  await page.getByRole('button',{name:/96 · rₛ/}).click();
+  await expect(page.locator('#fold-count')).toHaveText('96');
+  await expect(page.locator('#comparison')).toContainText('Radius ≤ rₛ im Rechenmodell');
+  await expect(page.locator('#stack-extent')).not.toContainText('7,43');
+  await page.getByLabel('Prüffrage').selectOption('regression');
+  await expect(page.locator('#reentry')).toContainText('UNKNOWN');
+  expect(errors).toEqual([]);
 });
 
 test('security workbench executes counterexamples, rejects invalid input and exports actual local results',async({page})=>{

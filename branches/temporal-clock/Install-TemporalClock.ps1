@@ -5,14 +5,19 @@ $ErrorActionPreference = 'Stop'
 $source = Split-Path -Parent $MyInvocation.MyCommand.Path
 $publish = Join-Path $source 'publish'
 $exe = Join-Path $publish 'HALVETH.Clock.exe'
+$vectorPublish = Join-Path $source 'vector\publish'
+$vectorExe = Join-Path $vectorPublish 'HALVETH.Chronosphere.exe'
 $launcher = Join-Path $source 'Launch-HALVETH.ps1'
 $shell = Join-Path $source 'Shell.ps1'
 $target = Join-Path $env:LOCALAPPDATA 'HALVETH\TemporalShell'
 $backupRoot = Join-Path $env:LOCALAPPDATA 'HALVETH\backup'
 $runtimeFiles = @('HALVETH.Clock.exe', 'HALVETH.Clock.dll',
     'HALVETH.Clock.deps.json', 'HALVETH.Clock.runtimeconfig.json')
+$vectorFiles = @('HALVETH.Chronosphere.exe', 'HALVETH.Chronosphere.dll',
+    'HALVETH.Chronosphere.deps.json', 'HALVETH.Chronosphere.runtimeconfig.json')
 
 foreach ($required in @($runtimeFiles | ForEach-Object { Join-Path $publish $_ }) +
+    @($vectorFiles | ForEach-Object { Join-Path $vectorPublish $_ }) +
     @($launcher, $shell)) {
     if (-not (Test-Path -LiteralPath $required -PathType Leaf)) {
         throw "Built file missing: $required"
@@ -20,6 +25,8 @@ foreach ($required in @($runtimeFiles | ForEach-Object { Join-Path $publish $_ }
 }
 & $exe --self-test
 if ($LASTEXITCODE -ne 0) { throw 'Published clock self-test failed.' }
+$vectorCheck = Start-Process -FilePath $vectorExe -ArgumentList '--self-test' -WindowStyle Hidden -PassThru -Wait
+if ($vectorCheck.ExitCode -ne 0) { throw 'Published vector clock self-test failed.' }
 foreach ($script in @($launcher, $shell)) {
     $tokens = $null
     $errors = $null
@@ -31,7 +38,7 @@ New-Item -ItemType Directory -Path $target, $backupRoot -Force | Out-Null
 $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
 $backup = Join-Path $backupRoot "temporal-clock-$stamp"
 New-Item -ItemType Directory -Path $backup -Force | Out-Null
-foreach ($name in $runtimeFiles + @('Launch-HALVETH.ps1', 'Shell.ps1')) {
+foreach ($name in $runtimeFiles + $vectorFiles + @('Launch-HALVETH.ps1', 'Shell.ps1')) {
     $prior = Join-Path $target $name
     if (Test-Path -LiteralPath $prior -PathType Leaf) {
         Copy-Item -LiteralPath $prior -Destination (Join-Path $backup $name) -Force
@@ -39,12 +46,20 @@ foreach ($name in $runtimeFiles + @('Launch-HALVETH.ps1', 'Shell.ps1')) {
 }
 
 foreach ($name in $runtimeFiles) {
-    Copy-Item -LiteralPath (Join-Path $publish $name) -Destination (Join-Path $target $name) -Force
+    $installed = Join-Path $target $name
+    if (-not (Test-Path -LiteralPath $installed -PathType Leaf)) {
+        Copy-Item -LiteralPath (Join-Path $publish $name) -Destination $installed
+    }
+}
+foreach ($name in $vectorFiles) {
+    Copy-Item -LiteralPath (Join-Path $vectorPublish $name) -Destination (Join-Path $target $name) -Force
 }
 Copy-Item -LiteralPath $launcher -Destination (Join-Path $target 'Launch-HALVETH.ps1') -Force
 Copy-Item -LiteralPath $shell -Destination (Join-Path $target 'Shell.ps1') -Force
 & (Join-Path $target 'HALVETH.Clock.exe') --self-test
 if ($LASTEXITCODE -ne 0) { throw 'Installed clock self-test failed.' }
+$installedVector = Start-Process -FilePath (Join-Path $target 'HALVETH.Chronosphere.exe') -ArgumentList '--self-test' -WindowStyle Hidden -PassThru -Wait
+if ($installedVector.ExitCode -ne 0) { throw 'Installed vector clock self-test failed.' }
 
 Write-Output "Installed: $target"
 Write-Output "Backup: $backup"

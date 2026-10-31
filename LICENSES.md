@@ -9,6 +9,7 @@ verleiht keine Rechte an verlinkten Quellen oder an fremden Projekten.
 | JSON-Daten, Modelle, Fixtures und Katalogmetadaten | [CC0 1.0](LICENSE-DATA.md) |
 | Neu geschriebene Datenwerte der öffentlichen Arrays in `branches/security-research-hub/catalog.mjs` | [CC0 1.0](LICENSE-DATA.md); Modulcode MIT; verlinkte Werke behalten ihre Rechte |
 | Neu geschriebene Erläuterungen und Markdown-Dateien | [CC BY 4.0](LICENSE-CONTENT.md) |
+| Eigene Vektoruhr-Vorschau `branches/temporal-clock/preview.png` | [CC BY 4.0](LICENSE-CONTENT.md) |
 | Mermaid-Diagramm `branches/three-actor-fork/diagram.mmd` | [CC BY 4.0](LICENSE-CONTENT.md) |
 | Mermaid-Diagramm `branches/next-action-navigator/diagram.mmd` | [CC BY 4.0](LICENSE-CONTENT.md) |
 | Repository-Konfiguration und CI | [MIT](LICENSE) |

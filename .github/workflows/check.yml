@@ -32,3 +32,9 @@ jobs:
       - run: dotnet run --project branches/temporal-clock/HALVETH.Clock.csproj -- --self-test
       - run: dotnet publish branches/temporal-clock/HALVETH.Clock.csproj -c Release -o branches/temporal-clock/publish
       - run: branches/temporal-clock/publish/HALVETH.Clock.exe --self-test
+      - run: dotnet build branches/temporal-clock/vector/HALVETH.Chronosphere.csproj -c Release
+      - run: dotnet publish branches/temporal-clock/vector/HALVETH.Chronosphere.csproj -c Release -o branches/temporal-clock/vector/publish
+      - shell: pwsh
+        run: |
+          $test = Start-Process -FilePath branches/temporal-clock/vector/publish/HALVETH.Chronosphere.exe -ArgumentList '--self-test' -WindowStyle Hidden -PassThru -Wait
+          if ($test.ExitCode -ne 0) { throw 'Vector clock self-test failed' }

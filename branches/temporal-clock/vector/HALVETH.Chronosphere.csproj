@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>HALVETH.Chronosphere</AssemblyName>
+    <RootNamespace>Halveth.Chronosphere</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\ClockMath.cs" Link="ClockMath.cs" />
+  </ItemGroup>
+</Project>
