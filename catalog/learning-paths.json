@@ -16,9 +16,9 @@
     {
       "id": "fold-resolution-lab",
       "title": "Faltgrenze – Papier, Kompression und Prüftiefe",
-      "description": "Vergleiche die Flächenhalbierung eines Papierstapels mit hypothetischer räumlicher Kompression; wähle danach die Prüftiefe für eine Codefrage.",
+      "description": "Beobachte eine maßgebundene Umlegebewegung und den berechneten Stapel bis zur illustrativen Freiraumschwelle; vergleiche danach die getrennte hypothetische Raumkompression und die Prüftiefe für Codefragen.",
       "source": "branches/fold-resolution-lab/model.js",
-      "tests": ["branches/fold-resolution-lab/model.test.mjs"],
+      "tests": ["branches/fold-resolution-lab/model.test.mjs", "branches/fold-resolution-lab/fold-motion.test.mjs"],
       "docs": "branches/fold-resolution-lab/README.md",
       "demo": "faltgrenze/"
     },

@@ -221,12 +221,23 @@ test('fold lab keeps stacking and compression separate when the formal threshold
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('/faltgrenze/');
   await expect(page.locator('#fold-count')).toHaveText('0');
+  await expect(page.locator('#fold-status')).toContainText('Ausgangsblatt');
+  await page.getByRole('button',{name:'Weiter →'}).click();
+  await expect(page.locator('#fold-count')).toHaveText('1');
+  await expect(page.locator('#scene-readout')).toContainText('2^1 Lagen');
+  await page.getByRole('button',{name:/111 · Gedankenversuch/}).click();
+  await expect(page.locator('#fold-status')).toContainText('nur formale Fortsetzung');
+  await expect(page.locator('#scene-readout')).toContainText('Fußabdruck unter einem Anzeigepixel');
   await page.getByRole('button',{name:/96 · rₛ/}).click();
   await expect(page.locator('#fold-count')).toHaveText('96');
   await expect(page.locator('#comparison')).toContainText('Radius ≤ rₛ im Rechenmodell');
   await expect(page.locator('#stack-extent')).not.toContainText('7,43');
   await page.getByLabel('Prüffrage').selectOption('regression');
   await expect(page.locator('#reentry')).toContainText('UNKNOWN');
+  for(const width of [320,390,768]){
+    await page.setViewportSize({width,height:900});
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  }
   expect(errors).toEqual([]);
 });
 
