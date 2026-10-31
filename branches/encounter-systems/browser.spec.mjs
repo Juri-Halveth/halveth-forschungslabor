@@ -224,10 +224,11 @@ test('fold lab keeps stacking and compression separate when the formal threshold
   await expect(page.locator('#fold-status')).toContainText('Ausgangsblatt');
   await page.getByRole('button',{name:'Weiter →'}).click();
   await expect(page.locator('#fold-count')).toHaveText('1');
-  await expect(page.locator('#scene-readout')).toContainText('2^1 Lagen');
+  await expect(page.locator('#scene-readout')).toContainText('HALVETH-A4-001');
+  await expect(page.locator('#scene-readout')).toContainText('2^1 ideale Lagen');
   await page.getByRole('button',{name:/111 · Gedankenversuch/}).click();
   await expect(page.locator('#fold-status')).toContainText('nur formale Fortsetzung');
-  await expect(page.locator('#scene-readout')).toContainText('Fußabdruck unter einem Anzeigepixel');
+  await expect(page.locator('#scene-readout')).toContainText('Reine Formel: keine 3D-Blattgeometrie berechnet');
   await page.getByRole('button',{name:/96 · rₛ/}).click();
   await expect(page.locator('#fold-count')).toHaveText('96');
   await expect(page.locator('#comparison')).toContainText('Radius ≤ rₛ im Rechenmodell');

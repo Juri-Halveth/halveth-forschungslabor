@@ -30,9 +30,11 @@ Windows-Terminal-Shell. [Quellcode, Build und Grenzen](branches/temporal-clock/R
 
 ### [Faltgrenze – Papier, Kompression und Prüftiefe](branches/fold-resolution-lab/)
 
-Zwei getrennte Rechenwege zeigen, warum Flächenhalbierung und räumliche
-Kompression nicht dieselbe Faltung sind. Ein zweiter Teil wählt die Prüftiefe
-für konkrete Codefragen. [Direkt ausprobieren](https://juri-halveth.github.io/halveth-forschungslabor/faltgrenze/).
+Ein durchgehendes A4-Materialnetz mit sichtbarer Biegezone und vier Ansichten
+zeigt die ersten kinematischen Faltschritte. Danach bleibt die Rechnung klar
+als formale Extrapolation markiert. Ein getrennter Kompressionsvergleich und
+eine Frage nach der Prüftiefe ergänzen die Szene.
+[Direkt ausprobieren](https://juri-halveth.github.io/halveth-forschungslabor/faltgrenze/).
 
 ### [Security Research – Methoden, Quellen und nächste Gegenprobe](branches/security-research-hub/)
 

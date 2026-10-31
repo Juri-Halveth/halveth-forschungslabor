@@ -57,8 +57,8 @@
         },
         {
           "path": "branches/fold-resolution-lab/README.md",
-          "bytes": 5679,
-          "sha256": "66c4b1a89e9b993569695053d95a27b36f9404f1d95875e0ae50af1750d82cf4"
+          "bytes": 7079,
+          "sha256": "444453c69ced582330aae66e6450bd2f1252c8d32d73583ef039cc26cc1a5c20"
         },
         {
           "path": "branches/fold-resolution-lab/model.test.mjs",
@@ -135,8 +135,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 28536,
-          "sha256": "fd866e2233e90bdcd6e480e4d86457005ab1e8ce5a6646eabe0b2796f5d7e17f"
+          "bytes": 28634,
+          "sha256": "1f5e072e455f47d8effedf0204c816997e289b0a7445710aeea9b67d7cd94194"
         }
       ]
     },
@@ -209,8 +209,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 28536,
-          "sha256": "fd866e2233e90bdcd6e480e4d86457005ab1e8ce5a6646eabe0b2796f5d7e17f"
+          "bytes": 28634,
+          "sha256": "1f5e072e455f47d8effedf0204c816997e289b0a7445710aeea9b67d7cd94194"
         }
       ]
     },

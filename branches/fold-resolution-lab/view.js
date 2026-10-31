@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 import {foldState, inspectionQuestions} from "./model.js";
-import {FoldRenderer} from "./fold-render.js";
-import {foldGate, geometricStop} from "./fold-motion.js";
+import {SheetRenderer} from "./sheet-render.js";
+import {sheetLimit, sheetStages, SHEET_ID} from "./sheet-motion.js";
 
 const $ = id => document.getElementById(id);
 const superscripts = {"0":"⁰", "1":"¹", "2":"²", "3":"³", "4":"⁴", "5":"⁵", "6":"⁶", "7":"⁷", "8":"⁸", "9":"⁹"};
@@ -15,8 +15,9 @@ const number = value => value >= 0.001 && value < 10000
   : scientific(value);
 const x = n => 40 + n / 240 * 690;
 const y = value => Math.max(14, Math.min(192, 14 + (75 - Math.log10(value)) / 115 * 178));
-const renderer = new FoldRenderer($("fold-canvas"));
-const geometricLimit = geometricStop();
+const renderer = new SheetRenderer($("fold-canvas"));
+const geometricLimit = sheetLimit();
+const sheetSteps = sheetStages();
 let animationFrame = 0;
 
 function drawGraph() {
@@ -50,7 +51,7 @@ function update(progress = 0) {
     ? `Radius > rₛ · erste ganze Stufe ${state.comparison.firstSchwarzschildFold}`
     : "Radius ≤ rₛ im Rechenmodell";
   const render = renderer.draw(n, progress);
-  const gate = n < 240 ? foldGate(n) : null;
+  const gate = n < geometricLimit ? sheetSteps[n] : null;
   const status = $("fold-status");
   status.classList.toggle("formal", n >= geometricLimit);
   if (progress > 0 && progress < 1) {
@@ -58,20 +59,21 @@ function update(progress = 0) {
   } else if (n === 0) {
     status.textContent = "Ausgangsblatt · noch nicht gefaltet";
   } else if (n < geometricLimit) {
-    status.textContent = `${n} Faltungen · beweglicher Modellbereich`;
+    status.textContent = n < 4
+      ? `${n} Faltungen · dasselbe Materialblatt`
+      : `${n} Faltungen · Kontakt und Überdeckung offen`;
   } else if (n === geometricLimit) {
-    status.textContent = `${n} Faltungen · Freiraumschwelle des Modells`;
+    status.textContent = `${n} Faltungen · Grenze des Blattmodells`;
   } else {
     status.textContent = `${n} Faltungen · nur formale Fortsetzung`;
   }
-  const gateText = gate && n >= geometricLimit
-    ? `Nächste Umlegekante: ${number(gate.outerArcM)} m Bogen bei ${number(gate.spanM)} m Blattlänge.`
-    : gate ? `Nächste Kante: ${number(gate.spanM)} m Blattlänge; ${number(gate.outerArcM)} m angenommener Bogen.` : "Ende des eingestellten Rechenfensters.";
-  const pixelText = render.footprintSubpixel ? "Fußabdruck unter einem Anzeigepixel." : "";
-  $("scene-readout").textContent = `2^${n} Lagen · ${number(state.stack.thicknessM)} m stark. ${gateText} ${pixelText}`;
+  const gateText = gate ? `Nächste Biegezone: R = ${number(gate.radiusM)} m; ${number(2*gate.halfBandM)} m Materiallänge.`
+    : n === geometricLimit ? "Die nächste Biegezone passt nicht in die verfügbare Seitenlänge."
+      : "Reine Formel: keine 3D-Blattgeometrie berechnet.";
+  $("scene-readout").textContent = `${SHEET_ID} · Originalfläche ${number(render.materialAreaM2)} m² · 2^${n} ideale Lagen. ${gateText}`;
   $("prev-fold").disabled = n === 0;
   $("next-fold").disabled = n === 240;
-  $("play-fold").disabled = n === 240;
+  $("play-fold").disabled = n >= geometricLimit;
   $("cursor").setAttribute("x1", x(n));
   $("cursor").setAttribute("x2", x(n));
 }
@@ -96,7 +98,7 @@ function setStep(n) {
 function playStep() {
   stopAnimation();
   const n = Number($("folds").value);
-  if (n >= 240) return;
+  if (n >= geometricLimit) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     setStep(n+1); return;
   }
@@ -117,6 +119,10 @@ document.querySelectorAll("[data-fold]").forEach(button => button.addEventListen
 $("prev-fold").addEventListener("click", () => setStep(Number($("folds").value)-1));
 $("next-fold").addEventListener("click", () => setStep(Number($("folds").value)+1));
 $("play-fold").addEventListener("click", playStep);
+$("projection").addEventListener("change", event => {
+  renderer.setView(event.target.value);
+  update();
+});
 $("question").addEventListener("change", updateQuestion);
 new ResizeObserver(() => update()).observe($("fold-canvas"));
 drawGraph(); update(); updateQuestion();
