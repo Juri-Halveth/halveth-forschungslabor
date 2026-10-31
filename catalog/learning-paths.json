@@ -5,6 +5,15 @@
   "scope": "Current repository module and research entry points, not an audit of other repositories",
   "entries": [
     {
+      "id": "temporal-clock",
+      "title": "Chronosphere – vier sichtbare Zeitkanäle",
+      "description": "Eine lokale Windows-Terminal-Uhr mit vier bewegten Zeigern, adaptiver Braille-Darstellung und überprüfbaren Zeitwinkeln.",
+      "source": "branches/temporal-clock/ClockRenderer.cs",
+      "tests": ["branches/temporal-clock/ClockSelfTest.cs"],
+      "docs": "branches/temporal-clock/README.md",
+      "demo": null
+    },
+    {
       "id": "security-research-hub",
       "title": "Security Research – Methoden, Quellen und nächste Gegenprobe",
       "description": "18 Prüfmethoden, vier lokale Gegenproben, öffentliche Fallanalysen und ein exportierbarer Forschungsplan mit getrenntem Arbeits- und Belegstand.",
