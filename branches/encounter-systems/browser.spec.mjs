@@ -236,9 +236,10 @@ test('fold lab keeps stacking and compression separate when the formal threshold
   await expect(page.locator('#reentry')).toContainText('UNKNOWN');
   for(const width of [320,390,768]){
     await page.setViewportSize({width,height:900});
-    const layout=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth,
-      beyond:[...document.querySelectorAll('*')].filter(element=>element.getBoundingClientRect().right>innerWidth+1)
-        .slice(0,5).map(element=>({tag:element.tagName,id:element.id,className:typeof element.className==='string'?element.className:''}))}));
+    const layout=await page.evaluate(()=>({viewport:innerWidth,client:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth,
+      beyond:[...document.querySelectorAll('*')].filter(element=>element.getBoundingClientRect().right>document.documentElement.clientWidth+1)
+        .slice(0,8).map(element=>({tag:element.tagName,id:element.id,className:typeof element.className==='string'?element.className:'',
+          right:Math.round(element.getBoundingClientRect().right),width:element.clientWidth,scroll:element.scrollWidth}))}));
     expect(layout.scroll,JSON.stringify({width,...layout})).toBeLessThanOrEqual(layout.viewport);
   }
   expect(errors).toEqual([]);
