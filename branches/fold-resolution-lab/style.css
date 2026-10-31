@@ -27,3 +27,4 @@ a{color:#92e2d7}a:hover{color:#d6ffe3}.site-head{height:76px;padding:0 max(24px,
 .model dl>div>*{min-width:0;overflow-wrap:anywhere}
 .scene-readout,.stage-status,.stage-note{overflow-wrap:anywhere}
 @media(max-width:760px){.stage-head,.stage-controls{padding-left:18px;padding-right:18px}.stage-head,.stage-controls{flex-direction:column;align-items:stretch}.stage-status{text-align:left;width:fit-content;max-width:100%}.stage-view{height:350px}.stage-note{padding-left:18px;padding-right:18px}.scene-readout{text-align:left}.transport button{flex:1}.transport{display:flex}.scene-caption{left:13px;top:13px;bottom:auto}}
+@media(max-width:760px){.model h2,.graph-panel h2,.interpretation h2,.code-zoom h2{font-size:clamp(21px,6vw,28px);overflow-wrap:anywhere}}
