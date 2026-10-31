@@ -7,4 +7,7 @@
     <AssemblyName>HALVETH.Clock</AssemblyName>
     <RootNamespace>Halveth.TemporalClock</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="vector/**/*.cs" />
+  </ItemGroup>
 </Project>

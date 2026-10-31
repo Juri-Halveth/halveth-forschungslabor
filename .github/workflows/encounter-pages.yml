@@ -8,6 +8,7 @@ on:
         "branches/endeck-observer/**",
         "branches/security-workbench/**",
         "branches/security-research-hub/**",
+        "branches/fold-resolution-lab/**",
         "research/lifecycle-echo/**",
         "catalog/**",
         "scripts/build-learning-hub*",
@@ -23,6 +24,7 @@ on:
         "branches/endeck-observer/**",
         "branches/security-workbench/**",
         "branches/security-research-hub/**",
+        "branches/fold-resolution-lab/**",
         "research/lifecycle-echo/**",
         "catalog/**",
         "scripts/build-learning-hub*",
@@ -54,6 +56,7 @@ jobs:
           node branches/security-workbench/cli.mjs runtime --require-patch
           node --test branches/security-workbench/core.test.mjs branches/security-workbench/http-fixture.test.mjs
           node --test branches/security-research-hub/model.test.mjs
+          node --test branches/fold-resolution-lab/model.test.mjs
           node --test scripts/build-encounter-site.test.mjs
           node --test branches/endeck-observer/model.test.mjs
           node --test branches/endeck-observer/learning.test.mjs

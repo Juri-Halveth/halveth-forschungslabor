@@ -9,5 +9,5 @@ if (Test-Path -LiteralPath $anchor) { . $anchor }
 if (Test-Path -LiteralPath $final) { . $final }
 Clear-Host
 Write-Host 'HALVETH LIVE' -ForegroundColor Cyan -NoNewline
-Write-Host '  |  Uhr oben · Arbeit hier' -ForegroundColor DarkGray
+Write-Host '  |  Kompakte Uhr separat | Arbeit hier' -ForegroundColor DarkGray
 Write-Host ''

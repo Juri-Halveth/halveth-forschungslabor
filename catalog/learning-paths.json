@@ -7,11 +7,20 @@
     {
       "id": "temporal-clock",
       "title": "Chronosphere – vier sichtbare Zeitkanäle",
-      "description": "Eine lokale Windows-Terminal-Uhr mit vier bewegten Zeigern, adaptiver Braille-Darstellung und überprüfbaren Zeitwinkeln.",
-      "source": "branches/temporal-clock/ClockRenderer.cs",
-      "tests": ["branches/temporal-clock/ClockSelfTest.cs"],
+      "description": "Eine kompakte, verschiebbare Vektoruhr mit vier Zeitkanälen und einer voll nutzbaren Terminal-Shell.",
+      "source": "branches/temporal-clock/vector/ClockWindow.cs",
+      "tests": ["branches/temporal-clock/vector/Program.cs", "branches/temporal-clock/ClockSelfTest.cs"],
       "docs": "branches/temporal-clock/README.md",
       "demo": null
+    },
+    {
+      "id": "fold-resolution-lab",
+      "title": "Faltgrenze – Papier, Kompression und Prüftiefe",
+      "description": "Vergleiche die Flächenhalbierung eines Papierstapels mit hypothetischer räumlicher Kompression; wähle danach die Prüftiefe für eine Codefrage.",
+      "source": "branches/fold-resolution-lab/model.js",
+      "tests": ["branches/fold-resolution-lab/model.test.mjs"],
+      "docs": "branches/fold-resolution-lab/README.md",
+      "demo": "faltgrenze/"
     },
     {
       "id": "security-research-hub",

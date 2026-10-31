@@ -7,28 +7,62 @@
     {
       "id": "temporal-clock",
       "title": "Chronosphere – vier sichtbare Zeitkanäle",
-      "description": "Eine lokale Windows-Terminal-Uhr mit vier bewegten Zeigern, adaptiver Braille-Darstellung und überprüfbaren Zeitwinkeln.",
-      "source": "branches/temporal-clock/ClockRenderer.cs",
+      "description": "Eine kompakte, verschiebbare Vektoruhr mit vier Zeitkanälen und einer voll nutzbaren Terminal-Shell.",
+      "source": "branches/temporal-clock/vector/ClockWindow.cs",
       "tests": [
+        "branches/temporal-clock/vector/Program.cs",
         "branches/temporal-clock/ClockSelfTest.cs"
       ],
       "docs": "branches/temporal-clock/README.md",
       "demo": null,
       "files": [
         {
-          "path": "branches/temporal-clock/ClockRenderer.cs",
-          "bytes": 11839,
-          "sha256": "54798743d1b967708dab4b2c6bc2a24e037bbd4474add0e3054102f0588cd0f0"
+          "path": "branches/temporal-clock/vector/ClockWindow.cs",
+          "bytes": 8053,
+          "sha256": "d3587aacd6d1ef70f975f602988c9f17acb95c1bbfa2767698f01a27ed67d7fd"
         },
         {
           "path": "branches/temporal-clock/README.md",
-          "bytes": 3336,
-          "sha256": "3dae1edf96fff726e90905cafad334ab2182feb710cfb7688e1b1661f946e93a"
+          "bytes": 2608,
+          "sha256": "ed9b68dfb5b94132100b5d3bece0679afd426499d78e946c50072b6bff0329c0"
+        },
+        {
+          "path": "branches/temporal-clock/vector/Program.cs",
+          "bytes": 2199,
+          "sha256": "052886a81c20216bd013b11415afc673c7381bef40a6b5c7dc02963f5182121b"
         },
         {
           "path": "branches/temporal-clock/ClockSelfTest.cs",
           "bytes": 2696,
           "sha256": "2366226a5a5b23bcb99b67c36f9c2a3b13bede49a823893f985bebd37a43471e"
+        }
+      ]
+    },
+    {
+      "id": "fold-resolution-lab",
+      "title": "Faltgrenze – Papier, Kompression und Prüftiefe",
+      "description": "Vergleiche die Flächenhalbierung eines Papierstapels mit hypothetischer räumlicher Kompression; wähle danach die Prüftiefe für eine Codefrage.",
+      "source": "branches/fold-resolution-lab/model.js",
+      "tests": [
+        "branches/fold-resolution-lab/model.test.mjs"
+      ],
+      "docs": "branches/fold-resolution-lab/README.md",
+      "demo": "faltgrenze/",
+      "files": [
+        {
+          "path": "branches/fold-resolution-lab/model.js",
+          "bytes": 3316,
+          "sha256": "2d1741c7ece2ab6386aa6cf11d15d6e34b4edfc4b0ec3518a5d93ee400d9b5a3"
+        },
+        {
+          "path": "branches/fold-resolution-lab/README.md",
+          "bytes": 3523,
+          "sha256": "05c7320e6693027095a44ed39f6f36c368e6d3b816487ebc36e725c79b9e12aa"
+        },
+        {
+          "path": "branches/fold-resolution-lab/model.test.mjs",
+          "bytes": 2417,
+          "sha256": "fe375e37bd16cd6902deb00e8058c2cd7400c7dfd9180aae943b02530735a5b5"
         }
       ]
     },
@@ -95,8 +129,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 26375,
-          "sha256": "74d1479c1e9406ed2af23603306fed0d8cba2cc2a77b99fde7bb1f1056e1b47b"
+          "bytes": 27103,
+          "sha256": "9861d842061d04be2819beda7f273be99deafa22af344ccfd7fcfc336b765fc1"
         }
       ]
     },
@@ -169,8 +203,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 26375,
-          "sha256": "74d1479c1e9406ed2af23603306fed0d8cba2cc2a77b99fde7bb1f1056e1b47b"
+          "bytes": 27103,
+          "sha256": "9861d842061d04be2819beda7f273be99deafa22af344ccfd7fcfc336b765fc1"
         }
       ]
     },

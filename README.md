@@ -25,9 +25,14 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ### [Chronosphere – vier sichtbare Zeitkanäle](branches/temporal-clock/)
 
-Eine lokal laufende Windows-Terminal-Uhr mit bewegtem Zifferblatt, vier
-Zeigern, UTC/T0 und einer Shell im zweiten Feld. Die Darstellung passt sich an
-die Pane-Größe an. [Quellcode, Build und Grenzen](branches/temporal-clock/README.md).
+Eine kompakte Vektoruhr mit vier Zeitkanälen neben einer voll nutzbaren
+Windows-Terminal-Shell. [Quellcode, Build und Grenzen](branches/temporal-clock/README.md).
+
+### [Faltgrenze – Papier, Kompression und Prüftiefe](branches/fold-resolution-lab/)
+
+Zwei getrennte Rechenwege zeigen, warum Flächenhalbierung und räumliche
+Kompression nicht dieselbe Faltung sind. Ein zweiter Teil wählt die Prüftiefe
+für konkrete Codefragen. [Direkt ausprobieren](https://juri-halveth.github.io/halveth-forschungslabor/faltgrenze/).
 
 ### [Security Research – Methoden, Quellen und nächste Gegenprobe](branches/security-research-hub/)
 
