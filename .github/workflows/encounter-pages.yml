@@ -57,6 +57,7 @@ jobs:
           node --test branches/security-workbench/core.test.mjs branches/security-workbench/http-fixture.test.mjs
           node --test branches/security-research-hub/model.test.mjs
           node --test branches/fold-resolution-lab/model.test.mjs
+          node --test branches/fold-resolution-lab/fold-motion.test.mjs
           node --test scripts/build-encounter-site.test.mjs
           node --test branches/endeck-observer/model.test.mjs
           node --test branches/endeck-observer/learning.test.mjs

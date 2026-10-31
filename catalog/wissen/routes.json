@@ -41,10 +41,11 @@
     {
       "id": "fold-resolution-lab",
       "title": "Faltgrenze – Papier, Kompression und Prüftiefe",
-      "description": "Vergleiche die Flächenhalbierung eines Papierstapels mit hypothetischer räumlicher Kompression; wähle danach die Prüftiefe für eine Codefrage.",
+      "description": "Beobachte eine maßgebundene Umlegebewegung und den berechneten Stapel bis zur illustrativen Freiraumschwelle; vergleiche danach die getrennte hypothetische Raumkompression und die Prüftiefe für Codefragen.",
       "source": "branches/fold-resolution-lab/model.js",
       "tests": [
-        "branches/fold-resolution-lab/model.test.mjs"
+        "branches/fold-resolution-lab/model.test.mjs",
+        "branches/fold-resolution-lab/fold-motion.test.mjs"
       ],
       "docs": "branches/fold-resolution-lab/README.md",
       "demo": "faltgrenze/",
@@ -56,13 +57,18 @@
         },
         {
           "path": "branches/fold-resolution-lab/README.md",
-          "bytes": 3523,
-          "sha256": "05c7320e6693027095a44ed39f6f36c368e6d3b816487ebc36e725c79b9e12aa"
+          "bytes": 5679,
+          "sha256": "66c4b1a89e9b993569695053d95a27b36f9404f1d95875e0ae50af1750d82cf4"
         },
         {
           "path": "branches/fold-resolution-lab/model.test.mjs",
           "bytes": 2417,
           "sha256": "fe375e37bd16cd6902deb00e8058c2cd7400c7dfd9180aae943b02530735a5b5"
+        },
+        {
+          "path": "branches/fold-resolution-lab/fold-motion.test.mjs",
+          "bytes": 2140,
+          "sha256": "dc3194052dfde879016896d64da712159c7eaa91944dd7e50707d4be01b2ed52"
         }
       ]
     },
@@ -129,8 +135,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 27103,
-          "sha256": "9861d842061d04be2819beda7f273be99deafa22af344ccfd7fcfc336b765fc1"
+          "bytes": 28536,
+          "sha256": "fd866e2233e90bdcd6e480e4d86457005ab1e8ce5a6646eabe0b2796f5d7e17f"
         }
       ]
     },
@@ -203,8 +209,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 27103,
-          "sha256": "9861d842061d04be2819beda7f273be99deafa22af344ccfd7fcfc336b765fc1"
+          "bytes": 28536,
+          "sha256": "fd866e2233e90bdcd6e480e4d86457005ab1e8ce5a6646eabe0b2796f5d7e17f"
         }
       ]
     },
