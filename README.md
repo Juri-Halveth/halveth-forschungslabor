@@ -1,5 +1,10 @@
 # HALVETH Forschungslabor
 
+[![Forschungslabor im HALVETH NETZ: gekreuzte Projektions- und Prüfpfade](assets/netz-starship-hero.svg)](https://juri-halveth.github.io/universum/)
+
+**Im NETZ:** [Interaktives Starship Lab öffnen](https://juri-halveth.github.io/universum/) · Themen: Modelle & Visualisierung · Sicherheit & Belege · Software & Werkzeuge. Im Katalog dieses Projekt wählen; die eigene Anwendung und ihre Quellen bleiben hier dokumentiert.
+
+
 **Kleine Werkzeuge. Konkrete Modelle. Nachvollziehbare Prüfungen.**
 
 Dieses Repository enthält eine ausgewählte technische Sammlung von Juri im Projekt HALVETH: lokale JavaScript- und Python-Bausteine, ihre Eingaben, Grenzen und Gegenproben. [Person und Projektname](IDENTITY.md) sind getrennt zugeordnet.
