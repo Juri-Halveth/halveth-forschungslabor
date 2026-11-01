@@ -1,4 +1,5 @@
 /* SPDX-License-Identifier: MIT */
+.netz-gateway{display:inline-flex;align-items:center;gap:12px;max-width:100%;min-height:54px;margin:0 0 24px;padding:6px 14px 6px 6px;border:1px solid #426173;border-radius:10px;background:#12222c;text-decoration:none}.netz-gateway img{display:block;width:166px;height:42px;object-fit:cover;border-radius:6px}.netz-gateway span{display:grid;gap:3px;font-size:10px;letter-spacing:.12em;color:#94d6e4}.netz-gateway strong{font-size:13px;letter-spacing:0;color:#f4f8fb}.netz-gateway:hover,.netz-gateway:focus-visible{border-color:#94d6e4}@media(max-width:600px){.netz-gateway{margin-bottom:18px}.netz-gateway img{width:110px;height:34px}.netz-gateway strong{font-size:11px}}
 .demo-start{display:flex;align-items:center;gap:20px;padding:20px 24px;border-bottom:1px solid var(--border)}
 .demo-start .btn{flex-shrink:0}.demo-start p{margin:0;color:var(--muted-foreground);font-size:14px;max-width:65ch}
 .manual-controls>summary,.other-labs>summary{cursor:pointer;min-height:48px;padding:12px 24px;font-weight:600;list-style-position:inside}
