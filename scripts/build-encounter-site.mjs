@@ -40,6 +40,7 @@ export const licenseFiles = Object.freeze([
 // Source and public addresses are explicit; adjacent files never enter Pages.
 export const publicFiles = Object.freeze([
   ...moduleFiles.map((name) => ({ path: name, sourcePath: "branches/encounter-systems/" + name })),
+  { path: "assets/netz-starship-hero.svg", sourcePath: "assets/netz-starship-hero.svg" },
   ...licenseFiles.map((name) => ({ path: name, sourcePath: name })),
   ...["index.html", "fragment.html", "README.md", "SOURCE.json", "style.css", "model.mjs", "geometry.mjs", "view.mjs", "learning.mjs", "KNOWLEDGE.json"].map((name) => ({
     path: "endeck/" + name, sourcePath: "branches/endeck-observer/" + name,
