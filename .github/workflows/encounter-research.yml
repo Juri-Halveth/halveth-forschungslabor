@@ -1,9 +1,9 @@
 name: Encounter systems research
 on:
   push:
-    paths: ['branches/encounter-systems/**', 'branches/endeck-observer/**', 'catalog/**', 'scripts/build-learning-hub*', 'scripts/build-encounter-site*', '.github/workflows/encounter-research.yml']
+    paths: ['branches/1001-doors/**', 'branches/encounter-systems/**', 'branches/endeck-observer/**', 'catalog/**', 'scripts/build-learning-hub*', 'scripts/build-encounter-site*', 'scripts/plain-json.mjs', 'scripts/test_1001_preview.py', '.github/workflows/encounter-research.yml']
   pull_request:
-    paths: ['branches/encounter-systems/**', 'branches/endeck-observer/**', 'catalog/**', 'scripts/build-learning-hub*', 'scripts/build-encounter-site*', '.github/workflows/encounter-research.yml']
+    paths: ['branches/1001-doors/**', 'branches/encounter-systems/**', 'branches/endeck-observer/**', 'catalog/**', 'scripts/build-learning-hub*', 'scripts/build-encounter-site*', 'scripts/plain-json.mjs', 'scripts/test_1001_preview.py', '.github/workflows/encounter-research.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -21,6 +21,9 @@ jobs:
           package-manager-cache: false
       - name: Check model, reference and deterministic results
         run: |
+          node branches/1001-doors/generate.mjs --check
+          node --test branches/1001-doors/model.test.mjs branches/1001-doors/number-research.test.mjs branches/1001-doors/role-journey.test.mjs branches/1001-doors/powers-square.test.mjs
+          python3 -m unittest scripts/test_1001_preview.py
           node branches/security-workbench/cli.mjs runtime --require-patch
           node --test branches/encounter-systems/model.test.mjs branches/encounter-systems/geometry.test.mjs
           node branches/encounter-systems/research.mjs --check

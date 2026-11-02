@@ -5,6 +5,15 @@
   "scope": "Current repository module and research entry points, not an audit of other repositories",
   "entries": [
     {
+      "id": "1001-doors",
+      "title": "1001 Türen – Zahlen, Rollen und Zustandsräume",
+      "description": "Alle Werte von 0 bis 1000 erkunden, Darstellungen und Wege vergleichen und ein endliches Abstimmungsmodell ausführen.",
+      "source": "branches/1001-doors/model.mjs",
+      "tests": ["branches/1001-doors/model.test.mjs", "branches/1001-doors/role-journey.test.mjs"],
+      "docs": "branches/1001-doors/README.md",
+      "demo": "branches/1001-doors/"
+    },
+    {
       "id": "temporal-clock",
       "title": "Chronosphere – vier sichtbare Zeitkanäle",
       "description": "Eine kompakte, verschiebbare Vektoruhr mit vier Zeitkanälen und einer voll nutzbaren Terminal-Shell.",
