@@ -1,0 +1,37 @@
+{
+  "schema": "halveth.doors.source-receipt.v1",
+  "observedAt": "2026-10-23T16:39:09+02:00",
+  "input": {
+    "name": "HALVETH_1001_TUEREN_v1.zip",
+    "bytes": 47804,
+    "sha256": "05ff6e9831050f079b90d12e0cfe2274bb0189a7ba726bdc5c7af2a7bee1aa89",
+    "entries": [
+      {"path": "halveth_doors/build.py", "bytes": 5523, "sha256": "5dab05eeeb53e7b87b88d9563cfbaa666917f38477133528947c5a0c8d9b7fde"},
+      {"path": "halveth_doors/README.md", "bytes": 1251, "sha256": "d11b8e99d443aeb68a03be385005e4538a8655bc4f9a08098e85388ca49b785b"},
+      {"path": "halveth_doors/HALVETH_TUERREGISTER_0000_1000.json", "bytes": 930090, "sha256": "2ddcaa4820907861a1ef10afdb70cc2a340a728e4dd7da2c33906ff53e517a3f"}
+    ]
+  },
+  "coverage": {"archiveEntriesRead": 3, "numericRecordsParsed": 1001, "generatorReadCompletelyBeforeExecution": true},
+  "v1Rebuild": {"parsedJsonEqual": true, "byteEqualOnWindows": false, "difference": "29908 LF newlines became CRLF through Python text-mode output; otherwise exact after declared line-ending normalization"},
+  "derivation": "New JavaScript implementation of the declared math and model ideas. No original code, private chat or original ZIP included in this module.",
+  "publicRegistrySource": {
+    "namespace": "HTTP_STATUS",
+    "source": "https://www.iana.org/assignments/http-status-codes/http-status-codes-1.csv",
+    "retrievedAt": "2026-10-23T16:55:07.168673+02:00",
+    "registryLastUpdated": "2025-09-15",
+    "sha256": "6098f56a5f25ca050313838886090a5e58a40ca72c2b44eb19d5ac7c9f6b4896",
+    "rowCount": 75,
+    "coverage": "500 values in 100..599 including explicitly unassigned ranges",
+    "license": "CC0-1.0",
+    "licenseSource": "https://www.iana.org/help/licensing-terms"
+  },
+  "v1Limits": [
+    "One exclusive math.type hides overlapping predicates, e.g. 2 is both prime and power of two.",
+    "Factor lists for 0 and 1 both empty without a separate definition-state field.",
+    "Parity mentioned in README but absent as its own field.",
+    "No executable 999-vote transition, timeout or counterexample in v1.",
+    "Special dictionary contains 1024 and 2048 outside the generated range.",
+    "Individual historical and physical research for all 1001 numbers remains open."
+  ],
+  "rights": {"newCode": "Repository MIT", "newComputedData": "Repository CC0-1.0", "newDocumentation": "Repository CC-BY-4.0", "externalSources": "Their original rights; linked and summarized within scope", "archiveAuthorship": "User supplied; digest binds bytes, not legal authorship"}
+}

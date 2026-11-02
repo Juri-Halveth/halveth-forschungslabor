@@ -7,6 +7,7 @@ verleiht keine Rechte an verlinkten Quellen oder an fremden Projekten.
 | --- | --- |
 | Quellcode, Tests, HTML und CSS unter `branches/` und `scripts/` | [MIT](LICENSE) |
 | JSON-Daten, Modelle, Fixtures und Katalogmetadaten | [CC0 1.0](LICENSE-DATA.md) |
+| `branches/1001-doors/http-status-codes-source.csv` | [IANA/IETF CC0 1.0](https://www.iana.org/help/licensing-terms); die Fassung und ihr Digest stehen in `branches/1001-doors/SOURCE_RECEIPT.json` |
 | Neu geschriebene Datenwerte der öffentlichen Arrays in `branches/security-research-hub/catalog.mjs` | [CC0 1.0](LICENSE-DATA.md); Modulcode MIT; verlinkte Werke behalten ihre Rechte |
 | Neu geschriebene Erläuterungen und Markdown-Dateien | [CC BY 4.0](LICENSE-CONTENT.md) |
 | Eigene Vektoruhr-Vorschau `branches/temporal-clock/preview.png` | [CC BY 4.0](LICENSE-CONTENT.md) |

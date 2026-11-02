@@ -40,6 +40,18 @@ export const licenseFiles = Object.freeze([
 // Source and public addresses are explicit; adjacent files never enter Pages.
 export const publicFiles = Object.freeze([
   ...moduleFiles.map((name) => ({ path: name, sourcePath: "branches/encounter-systems/" + name })),
+  ...[
+    "index.html", "style.css", "app.mjs", "model.mjs", "http-status-data.mjs",
+    "number-research-view.mjs", "number-research.mjs",
+    "powers-square-view.mjs", "powers-square.mjs",
+    "role-journey-view.mjs", "role-journey.mjs",
+    "registry.json", "relations.json", "README.md", "FORWARD_PORT.md",
+    "NUMBER_RESEARCH.md",
+    "NUMBER_RESEARCH_RECEIPT.json", "ROLE_JOURNEY_RESEARCH.md",
+    "ROLE_JOURNEY_RECEIPT.json", "POWERS_SQUARE_RESEARCH.md",
+    "SOURCE_RECEIPT.json", "http-status-codes-source.csv",
+  ].map((name) => ({ path: "branches/1001-doors/" + name, sourcePath: "branches/1001-doors/" + name })),
+  { path: "scripts/plain-json.mjs", sourcePath: "scripts/plain-json.mjs" },
   { path: "assets/netz-starship-hero.svg", sourcePath: "assets/netz-starship-hero.svg" },
   ...licenseFiles.map((name) => ({ path: name, sourcePath: name })),
   ...["index.html", "fragment.html", "README.md", "SOURCE.json", "style.css", "model.mjs", "geometry.mjs", "view.mjs", "learning.mjs", "KNOWLEDGE.json"].map((name) => ({

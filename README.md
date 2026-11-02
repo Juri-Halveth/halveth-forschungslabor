@@ -29,6 +29,15 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [1001 Türen – Zahlen, Rollen und Zustandsräume](branches/1001-doors/)
+
+Das Browserlabor erschließt alle Ganzzahlen von 0 bis 1000. Es zeigt ihre
+gleichzeitigen Eigenschaften, prüft Darstellungswechsel und Rollenreisen und
+führt ein endliches Modell mit 999 deklarierten Stimmen aus. Die Bereiche
+256/512/1024 sind Koordinaten- und Bitansichten; sie sind keine autonom
+laufenden Entitäten. [Direkt im Browser öffnen](https://juri-halveth.github.io/halveth-forschungslabor/branches/1001-doors/) ·
+[Code, Quellen und lokale Startanleitung](branches/1001-doors/README.md).
+
 ### [Chronosphere – vier sichtbare Zeitkanäle](branches/temporal-clock/)
 
 Eine kompakte Vektoruhr mit vier Zeitkanälen neben einer voll nutzbaren

@@ -5,6 +5,40 @@
   "modelWeightTraining": false,
   "entries": [
     {
+      "id": "1001-doors",
+      "title": "1001 Türen – Zahlen, Rollen und Zustandsräume",
+      "description": "Alle Werte von 0 bis 1000 erkunden, Darstellungen und Wege vergleichen und ein endliches Abstimmungsmodell ausführen.",
+      "source": "branches/1001-doors/model.mjs",
+      "tests": [
+        "branches/1001-doors/model.test.mjs",
+        "branches/1001-doors/role-journey.test.mjs"
+      ],
+      "docs": "branches/1001-doors/README.md",
+      "demo": "branches/1001-doors/",
+      "files": [
+        {
+          "path": "branches/1001-doors/model.mjs",
+          "bytes": 17095,
+          "sha256": "da4ab1cb7cb5758c3296b78526d8d82180147163b80a6c17808bcf2add9b8ab7"
+        },
+        {
+          "path": "branches/1001-doors/README.md",
+          "bytes": 12278,
+          "sha256": "e157b7d71156ffd0a6626dfe9d36ea5c271ef0f882f75f4c03620372a9e9f121"
+        },
+        {
+          "path": "branches/1001-doors/model.test.mjs",
+          "bytes": 8836,
+          "sha256": "bab74fa6ba44d6ac8c91a1623045658455c56b794ed36a100de7dd0d7dcdad50"
+        },
+        {
+          "path": "branches/1001-doors/role-journey.test.mjs",
+          "bytes": 6330,
+          "sha256": "4e04ce2920c9608ce819a3a21f52a5633b1c34c8a7087a68dbbac91d2b7eb3ea"
+        }
+      ]
+    },
+    {
       "id": "temporal-clock",
       "title": "Chronosphere – vier sichtbare Zeitkanäle",
       "description": "Eine kompakte, verschiebbare Vektoruhr mit vier Zeitkanälen und einer voll nutzbaren Terminal-Shell.",
@@ -135,8 +169,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 28634,
-          "sha256": "1f5e072e455f47d8effedf0204c816997e289b0a7445710aeea9b67d7cd94194"
+          "bytes": 28816,
+          "sha256": "6794606c4df76adcf3681f710f7b1a9af6c5073b22c4b403fdf20916bff783dc"
         }
       ]
     },
@@ -209,8 +243,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 28634,
-          "sha256": "1f5e072e455f47d8effedf0204c816997e289b0a7445710aeea9b67d7cd94194"
+          "bytes": 28816,
+          "sha256": "6794606c4df76adcf3681f710f7b1a9af6c5073b22c4b403fdf20916bff783dc"
         }
       ]
     },
