@@ -193,10 +193,15 @@ test("unavailable browser storage keeps the experiment and temporary learning us
   expect(errors).toEqual([]);
 });
 
-test("the repository tunnel has twenty-three usable source and test routes and mobile navigation fits",async({page},info)=>{
-  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(23);
-  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(23);
-  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(23);
+test("the repository tunnel exposes every bound source and test route and mobile navigation fits",async({page},info)=>{
+  const routeResponse=await page.request.get('/wissen/routes.json');
+  expect(routeResponse.ok()).toBe(true);
+  const registered=(await routeResponse.json()).entries.length;
+  expect(registered).toBeGreaterThan(0);
+  await page.goto("/wissen/");await expect(page.locator(".route")).toHaveCount(registered);
+  await expect(page.getByRole("link",{name:"Code",exact:true})).toHaveCount(registered);
+  await expect(page.getByRole("link",{name:"Tests",exact:true})).toHaveCount(registered);
+  await expect(page.locator('.route').filter({hasText:'ASTER Quelllinse'})).toHaveCount(1);
   await expect(page.locator('.route').filter({hasText:'1001 Türen'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../branches/1001-doors/');
   await expect(page.locator('.route').filter({hasText:'Sicherheitsprüfungen'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../sicherheitslabor/');
   await expect(page.locator('.route').filter({hasText:'Security Research'}).getByRole('link',{name:'Ansicht öffnen ↗',exact:true})).toHaveAttribute('href','../security/');
@@ -206,7 +211,7 @@ test("the repository tunnel has twenty-three usable source and test routes and m
   await page.getByLabel('Was möchtest du machen?',{exact:true}).fill('no-such-tool');
   await expect(page.locator('.route:visible')).toHaveCount(0);
   await page.getByRole('button',{name:'Alle Werkzeuge zeigen',exact:true}).click();
-  await expect(page.locator('.route:visible')).toHaveCount(23);
+  await expect(page.locator('.route:visible')).toHaveCount(registered);
   for(const url of ["/wissen/","/signals.html","/"]){
     await page.goto(url);
     for(const width of [320,390,768,1024]){
