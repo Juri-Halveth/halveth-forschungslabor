@@ -591,6 +591,34 @@
       ]
     },
     {
+      "id": "aster-source-lens",
+      "title": "ASTER Quelllinse – vier Adressen getrennt prüfen",
+      "description": "Synthetische Quellrecords und Digests vergleichen, ohne Kausalität oder reale Beobachtung zu behaupten.",
+      "source": "branches/aster-source-lens/src/aster-lens.mjs",
+      "tests": [
+        "branches/aster-source-lens/test/aster-lens.test.mjs"
+      ],
+      "docs": "branches/aster-source-lens/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/aster-source-lens/src/aster-lens.mjs",
+          "bytes": 2633,
+          "sha256": "7d13b591fe4795074eb7e224c4d22d5f60b8d6d107d20ca0c5e15be76f76188a"
+        },
+        {
+          "path": "branches/aster-source-lens/README.md",
+          "bytes": 1728,
+          "sha256": "7519ec62eed56032c45ebe873d5d339664981e981b34cbfb585db0713af3ba4b"
+        },
+        {
+          "path": "branches/aster-source-lens/test/aster-lens.test.mjs",
+          "bytes": 2613,
+          "sha256": "9623bbb8e2feb7dbc9b135181dbdcb9f27ac67bb076a0df79c2912dca4b3b46e"
+        }
+      ]
+    },
+    {
       "id": "security-impact-learning",
       "title": "Berichtsprüfung – Beobachtung und Sicherheitswirkung einordnen",
       "description": "Lokale synthetische Prüfmodelle für Befundbehauptungen. Keine aktiven Angriffe oder fremden Zielsysteme.",

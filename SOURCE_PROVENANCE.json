@@ -4,6 +4,15 @@
   "selection": "Executable local modules and declared models only; narratives, institutional-level claims, financial proposals and personal archives excluded",
   "records": [
     {
+      "path": "branches/aster-source-lens/src/aster-lens.mjs",
+      "sourceRepository": "Juri-Halveth/open-research-branches",
+      "sourceCommit": "45dcd97649fa3f5428d63f29a7b1a3598ae5399b",
+      "sourcePath": "branches/aster-provenance-and-secret-garden/src/aster-lens.mjs",
+      "sourceSha256": "7d13b591fe4795074eb7e224c4d22d5f60b8d6d107d20ca0c5e15be76f76188a",
+      "transfer": "EXACT_SOURCE_BYTES",
+      "outputSha256": "7d13b591fe4795074eb7e224c4d22d5f60b8d6d107d20ca0c5e15be76f76188a"
+    },
+    {
       "path": "branches/focus-kernel/core.js",
       "sourceSha256": "2dfab1c8af1418e00604f13fe718a1bb29f22b9e6539db723aae2a593a4b5a29",
       "transfer": "EXACT_SOURCE_BYTES",

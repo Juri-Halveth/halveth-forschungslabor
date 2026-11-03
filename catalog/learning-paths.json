@@ -212,6 +212,17 @@
       "demo": null
     },
     {
+      "id": "aster-source-lens",
+      "title": "ASTER Quelllinse – vier Adressen getrennt prüfen",
+      "description": "Synthetische Quellrecords und Digests vergleichen, ohne Kausalität oder reale Beobachtung zu behaupten.",
+      "source": "branches/aster-source-lens/src/aster-lens.mjs",
+      "tests": [
+        "branches/aster-source-lens/test/aster-lens.test.mjs"
+      ],
+      "docs": "branches/aster-source-lens/README.md",
+      "demo": null
+    },
+    {
       "id": "security-impact-learning",
       "title": "Berichtsprüfung – Beobachtung und Sicherheitswirkung einordnen",
       "description": "Lokale synthetische Prüfmodelle für Befundbehauptungen. Keine aktiven Angriffe oder fremden Zielsysteme.",

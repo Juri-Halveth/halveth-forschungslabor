@@ -1,5 +1,5 @@
 {
-  "branchCount": 13,
+  "branchCount": 14,
   "branches": [
     {
       "id": "1001-doors",
@@ -122,6 +122,15 @@
       "testFiles": [
         "branches/normenwerk-rule-universe/test_normenkern.py",
         "branches/normenwerk-rule-universe/test_universe.py"
+      ]
+    },
+    {
+      "id": "aster-source-lens",
+      "sourceFiles": [
+        "branches/aster-source-lens/src/aster-lens.mjs"
+      ],
+      "testFiles": [
+        "branches/aster-source-lens/test/aster-lens.test.mjs"
       ]
     },
     {
