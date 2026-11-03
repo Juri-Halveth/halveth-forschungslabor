@@ -10,13 +10,16 @@ const root=path.resolve(import.meta.dirname,"..");
 test("every current module has real source and test bindings; generated knowledge stays current",async()=>{
   assert.equal(await checkLearningArtifacts(),3);
   const routes=JSON.parse(await fs.readFile(path.join(root,"catalog/wissen/routes.json"),"utf8"));
-  assert.equal(routes.entries.length,23);
+  const registry=JSON.parse(await fs.readFile(path.join(root,"catalog/learning-paths.json"),"utf8"));
+  assert.equal(routes.entries.length,registry.entries.length);
   assert.equal(routes.entries.find(entry=>entry.id==='1001-doors').demo,'branches/1001-doors/');
   assert.equal(routes.entries.find(entry=>entry.id==='temporal-clock').source,
     'branches/temporal-clock/vector/ClockWindow.cs');
   assert.equal(routes.entries.find(entry=>entry.id==='fold-resolution-lab').demo,'faltgrenze/');
   assert.equal(routes.entries.find(entry=>entry.id==='security-workbench').demo,'sicherheitslabor/');
   assert.equal(routes.entries.find(entry=>entry.id==='security-research-hub').demo,'security/');
+  assert.equal(routes.entries.find(entry=>entry.id==='aster-source-lens').source,
+    'branches/aster-source-lens/src/aster-lens.mjs');
   assert.ok(routes.entries.every(entry=>entry.files.some(file=>file.path===entry.source)&&entry.files.some(file=>entry.tests.includes(file.path))));
 });
 test("missing test, unbound module and path traversal reject instead of producing a complete tunnel",async(t)=>{

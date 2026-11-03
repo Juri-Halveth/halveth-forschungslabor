@@ -144,6 +144,10 @@ In-Memory-Prototyp mit Ereignisidentität, Kandidatenaufnahme, HOLD und protokol
 
 Python-Regelmodell mit dreiwertiger Logik, explizitem Vorrang und Replay der mitgelieferten Modelle.
 
+### [ASTER Quelllinse – Quelle, Darstellung und Zeitspur trennen](branches/aster-source-lens/)
+
+Vier getrennte Quelladressen mit begrenztem Digestvergleich. Der aus dem privaten Forschungsarchiv ausgewählte Code ist hier öffentlich testbar; persönliche Erzählungen und Identitätsrecords wurden nicht übernommen.
+
 ### [Berichtsprüfung – Beobachtung und Sicherheitswirkung einordnen](branches/security-impact-learning/)
 
 Lokale synthetische Prüfmodelle für Befundbehauptungen. Keine aktiven Angriffe oder fremden Zielsysteme.

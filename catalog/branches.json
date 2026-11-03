@@ -90,6 +90,14 @@
       "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
     },
     {
+      "id": "aster-source-lens",
+      "title": "ASTER Quelllinse – Quelle, Darstellung und Zeitspur trennen",
+      "description": "Vier Adressen und Digestvergleich als lokaler Quellprototyp; Ursache und Außenwirkung bleiben ungebunden.",
+      "path": "branches/aster-source-lens",
+      "entry": "src/aster-lens.mjs",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
       "id": "security-impact-learning",
       "title": "Berichtsprüfung – Beobachtung und Sicherheitswirkung einordnen",
       "description": "Lokale synthetische Prüfmodelle für Befundbehauptungen. Keine aktiven Angriffe oder fremden Zielsysteme.",

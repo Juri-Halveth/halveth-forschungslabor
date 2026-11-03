@@ -169,8 +169,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 28816,
-          "sha256": "6794606c4df76adcf3681f710f7b1a9af6c5073b22c4b403fdf20916bff783dc"
+          "bytes": 29150,
+          "sha256": "e5451a2d789ee33cfce1a3a8e251cba4976981a0fb84bc8f8b69a1302d02993c"
         }
       ]
     },
@@ -243,8 +243,8 @@
         },
         {
           "path": "branches/encounter-systems/browser.spec.mjs",
-          "bytes": 28816,
-          "sha256": "6794606c4df76adcf3681f710f7b1a9af6c5073b22c4b403fdf20916bff783dc"
+          "bytes": 29150,
+          "sha256": "e5451a2d789ee33cfce1a3a8e251cba4976981a0fb84bc8f8b69a1302d02993c"
         }
       ]
     },
@@ -587,6 +587,34 @@
           "path": "branches/normenwerk-rule-universe/test_universe.py",
           "bytes": 3512,
           "sha256": "c0627d127e8d259803163b8c74e64aee26c7580bd097914cacea90fe0e9d1889"
+        }
+      ]
+    },
+    {
+      "id": "aster-source-lens",
+      "title": "ASTER Quelllinse – vier Adressen getrennt prüfen",
+      "description": "Synthetische Quellrecords und Digests vergleichen, ohne Kausalität oder reale Beobachtung zu behaupten.",
+      "source": "branches/aster-source-lens/src/aster-lens.mjs",
+      "tests": [
+        "branches/aster-source-lens/test/aster-lens.test.mjs"
+      ],
+      "docs": "branches/aster-source-lens/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/aster-source-lens/src/aster-lens.mjs",
+          "bytes": 2633,
+          "sha256": "7d13b591fe4795074eb7e224c4d22d5f60b8d6d107d20ca0c5e15be76f76188a"
+        },
+        {
+          "path": "branches/aster-source-lens/README.md",
+          "bytes": 1728,
+          "sha256": "7519ec62eed56032c45ebe873d5d339664981e981b34cbfb585db0713af3ba4b"
+        },
+        {
+          "path": "branches/aster-source-lens/test/aster-lens.test.mjs",
+          "bytes": 2645,
+          "sha256": "de58dfcabd7f4bf6ee294a927233ca687211af52ec6ed0780e515549b4d9c3ee"
         }
       ]
     },

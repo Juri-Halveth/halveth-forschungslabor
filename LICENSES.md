@@ -18,6 +18,9 @@ verleiht keine Rechte an verlinkten Quellen oder an fremden Projekten.
 
 Quellfassung der übernommenen Implementierungen:
 `open-research-branches@251fd2e72e7c521d939314d401bed03037fd6695`.
+Die zusätzlich ausgewählte `ASTER`-Quelldatei stammt bytegleich aus
+`open-research-branches@45dcd97649fa3f5428d63f29a7b1a3598ae5399b`;
+ihre neuen synthetischen Tests und ihre neue Erläuterung wurden hier verfasst.
 Die früheren speziellen Lizenzregeln für andere Berichte betreffen keine der
 hier ausgewählten Dateien. Das Originalregister bleibt im privaten Quellarchiv.
 `SOURCE_PROVENANCE.json` bezeichnet exakte Übernahmen und Bearbeitungen einzeln.
