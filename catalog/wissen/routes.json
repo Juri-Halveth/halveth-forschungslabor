@@ -613,8 +613,8 @@
         },
         {
           "path": "branches/aster-source-lens/test/aster-lens.test.mjs",
-          "bytes": 2613,
-          "sha256": "9623bbb8e2feb7dbc9b135181dbdcb9f27ac67bb076a0df79c2912dca4b3b46e"
+          "bytes": 2645,
+          "sha256": "de58dfcabd7f4bf6ee294a927233ca687211af52ec6ed0780e515549b4d9c3ee"
         }
       ]
     },
