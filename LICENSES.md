@@ -16,6 +16,7 @@ verleiht keine Rechte an verlinkten Quellen oder an fremden Projekten.
 | Mermaid-Diagramm `branches/next-action-navigator/diagram.mmd` | [CC BY 4.0](LICENSE-CONTENT.md) |
 | Repository-Konfiguration und CI | [MIT](LICENSE) |
 | Historische Rust-Quellen unter `branches/lucinet-core-rust/` | [MIT mit ursprünglichem Copyright-Hinweis](branches/lucinet-core-rust/LICENSE) |
+| Historische Rust-Quellen unter `branches/lucinet-script-lab/` | [MIT mit ursprünglichem Copyright-Hinweis](branches/lucinet-script-lab/LICENSE) |
 | Lizenztexte | Ihre jeweils genannten Kopierbedingungen |
 
 Quellfassung der übernommenen Implementierungen:

@@ -5,6 +5,34 @@
   "modelWeightTraining": false,
   "entries": [
     {
+      "id": "lucinet-script-lab",
+      "title": "LUCINET Script Lab – Unicode untersuchen",
+      "description": "Vergleiche Codepunkte, Grapheme, Normalisierung und Schreibrichtung eines eingegebenen Texts.",
+      "source": "branches/lucinet-script-lab/src/lib.rs",
+      "tests": [
+        "branches/lucinet-script-lab/source_receipt.test.mjs"
+      ],
+      "docs": "branches/lucinet-script-lab/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/lucinet-script-lab/src/lib.rs",
+          "bytes": 11866,
+          "sha256": "3ec01a361a99e885e9e764aa683ac6d9c7e2c2264adfae17c151ee30a9baf8a5"
+        },
+        {
+          "path": "branches/lucinet-script-lab/README.md",
+          "bytes": 1866,
+          "sha256": "eb80e99277bdf14aa7a07f65a1c9407bff6e8b5af4dee1c1d324b65b8cec9fe0"
+        },
+        {
+          "path": "branches/lucinet-script-lab/source_receipt.test.mjs",
+          "bytes": 1077,
+          "sha256": "de5d746807e18db606626f6b88398b50e345f5d0c2ce42ad22a995ebd45b1d5f"
+        }
+      ]
+    },
+    {
       "id": "lucinet-core-rust",
       "title": "LUCINET-Kern in Rust",
       "description": "Prüfe, wie eine Projektion ihren Quellzustand bindet und welche Zustandswechsel ein Modell erlaubt.",
