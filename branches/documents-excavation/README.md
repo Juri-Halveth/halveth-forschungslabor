@@ -87,6 +87,14 @@ generierte Ordner werden ausgelassen. Die Ausgabe enthält **private relative
 Pfade** und muss deshalb in einem lokalen Verzeichnis außerhalb des Git-Repos
 bleiben. Budgetende und Lesefehler stehen im Summary.
 
+Standardmäßig werden die Einträge je Verzeichnis sortiert. Bei sehr breiten
+Verzeichnissen liefert `--order filesystem` jeden Eintrag in der Reihenfolge
+des Dateisystems und beendet die Suche beim Dateilimit ohne vorherige Sortierung.
+Mit `--max-entries` begrenzt man in beiden Modi die Zahl gelesener Einträge,
+einschließlich übersprungener Namen. Erreicht die Suche diese Grenze vor dem
+bestätigten Verzeichnisende, steht im Ergebnis `budgetLimit: ENTRIES`.
+Die sortierte Suche gibt ein erst teilweise gelesenes Verzeichnis dabei nicht aus.
+
 ```sh
 python scripts/excavate-metadata.py --root "C:/Pfad/zur/Sammlung" --output "C:/Pfad/zum/lokalen/Index" --max-files 100000 --max-seconds 600
 ```
