@@ -5,6 +5,34 @@
   "modelWeightTraining": false,
   "entries": [
     {
+      "id": "lucinet-core-rust",
+      "title": "LUCINET-Kern in Rust",
+      "description": "Prüfe, wie eine Projektion ihren Quellzustand bindet und welche Zustandswechsel ein Modell erlaubt.",
+      "source": "branches/lucinet-core-rust/src/lib.rs",
+      "tests": [
+        "branches/lucinet-core-rust/tests/p0_semantics.rs"
+      ],
+      "docs": "branches/lucinet-core-rust/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/lucinet-core-rust/src/lib.rs",
+          "bytes": 4292,
+          "sha256": "11532f7c29a471e8dc0c373975785243d7efdf78335bf61a6bdb4696466113b6"
+        },
+        {
+          "path": "branches/lucinet-core-rust/README.md",
+          "bytes": 1847,
+          "sha256": "d86f0e2898365ba49e1c9d969b487001030b8e702db05a3a11e8ae832999f83c"
+        },
+        {
+          "path": "branches/lucinet-core-rust/tests/p0_semantics.rs",
+          "bytes": 15295,
+          "sha256": "9ec87489b6d63df37acdbaf3cedf193f660f250313dd2223b9f3d887b191c3aa"
+        }
+      ]
+    },
+    {
       "id": "network-candidate",
       "title": "Netzbild-Kandidaten – Pixelbrücken und räumliche Kreuzungen",
       "description": "Pixelregionen unter Helligkeitsschwellen prüfen und zwei räumliche Quellen derselben Draufsicht offen halten.",

@@ -2,6 +2,14 @@
   "schemaVersion": "1.0.0",
   "branches": [
     {
+      "id": "lucinet-core-rust",
+      "title": "LUCINET-Kern in Rust",
+      "description": "Prüfe, wie eine Projektion ihren Quellzustand bindet und welche Zustandswechsel ein Modell erlaubt.",
+      "path": "branches/lucinet-core-rust",
+      "entry": "src/lib.rs",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
       "id": "network-candidate",
       "title": "Netzbild-Kandidaten – Pixelbrücken und räumliche Kreuzungen",
       "description": "Offline-Modell für Helligkeitsschwellen und zwei räumliche Kandidaten mit derselben Draufsicht.",
