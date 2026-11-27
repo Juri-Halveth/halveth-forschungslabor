@@ -1,6 +1,16 @@
 {
-  "branchCount": 17,
+  "branchCount": 18,
   "branches": [
+    {
+      "id": "lucinet-core-rust",
+      "sourceFiles": [
+        "branches/lucinet-core-rust/src/lib.rs"
+      ],
+      "testFiles": [
+        "branches/lucinet-core-rust/tests/p0_semantics.rs",
+        "branches/lucinet-core-rust/source_receipt.test.mjs"
+      ]
+    },
     {
       "id": "network-candidate",
       "sourceFiles": [

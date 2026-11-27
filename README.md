@@ -29,6 +29,10 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [LUCINET-Kern in Rust](branches/lucinet-core-rust/README.md)
+
+Prüfe, wie eine Projektion ihren Quellzustand bindet und welche Zustandswechsel ein Modell erlaubt.
+
 ### [Netzbild-Kandidaten](branches/network-candidate/README.md)
 
 Ein Helligkeitsregler verändert die Zahl der verbundenen Pixelgruppen. Zwei synthetische Raumfiguren teilen dieselbe Draufsicht und lassen sich in der Seitenansicht unterscheiden. [Modell öffnen](https://juri-halveth.github.io/halveth-forschungslabor/netzbild/).
