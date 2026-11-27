@@ -17,6 +17,10 @@ test("every current module has real source and test bindings; generated knowledg
     'branches/temporal-clock/vector/ClockWindow.cs');
   assert.equal(routes.entries.find(entry=>entry.id==='fold-resolution-lab').demo,'faltgrenze/');
   assert.equal(routes.entries.find(entry=>entry.id==='security-workbench').demo,'sicherheitslabor/');
+  const network=routes.entries.find(entry=>entry.id==='network-candidate');
+  assert.equal(network.demo,'netzbild/');
+  assert.ok(network.files.some(file=>file.path==='branches/network-candidate/adapter.mjs'));
+  assert.ok(network.files.some(file=>file.path==='branches/network-candidate/demo.mjs'));
   assert.equal(routes.entries.find(entry=>entry.id==='security-research-hub').demo,'security/');
   assert.equal(routes.entries.find(entry=>entry.id==='aster-source-lens').source,
     'branches/aster-source-lens/src/aster-lens.mjs');
