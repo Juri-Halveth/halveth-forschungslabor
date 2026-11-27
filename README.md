@@ -29,6 +29,10 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [Prozentanteile exakt berechnen](branches/exact-percent-kernel/README.md)
+
+Prozentwerte als endliche Dezimalzahlen addieren, ihre Summe prüfen und einen Restanteil ausgeben.
+
 ### [1001 Türen – Zahlen, Rollen und Zustandsräume](branches/1001-doors/)
 
 Das Browserlabor erschließt alle Ganzzahlen von 0 bis 1000. Es zeigt ihre
@@ -166,6 +170,6 @@ Gemeinsame Hilfsfunktionen unter `scripts/` prüfen Plain-JSON, Quellenpakete un
 
 ## Herkunft
 
-Projektleitung: **Juri / HALVETH**. Entwicklung mit KI-Unterstützung. `SOURCE_PROVENANCE.json` bindet die übernommenen Codebytes und ihre historische Commitfassung. Die bisherigen Lizenzbedingungen gelten weiter; siehe `LICENSES.md`. Frühere nichttechnische Arbeiten werden getrennt privat erhalten.
+Projektleitung: **Juri / HALVETH**. Entwicklung mit KI-Unterstützung. `SOURCE_PROVENANCE.json` bindet die übernommenen Codebytes und ihre historische Commitfassung. Die bisherigen Lizenzbedingungen gelten weiter; siehe [Lizenzzuordnung](LICENSES.md). Frühere nichttechnische Arbeiten werden getrennt privat erhalten.
 
 [Portfolio](https://juri-halveth.github.io/) · [Kontakt](mailto:security@halveth.de)

@@ -5,6 +5,17 @@
   "scope": "Current repository module and research entry points, not an audit of other repositories",
   "entries": [
     {
+      "id": "exact-percent-kernel",
+      "title": "Prozentanteile exakt berechnen",
+      "description": "Prozentwerte als endliche Dezimalzahlen addieren, ihre Summe prüfen und einen Restanteil ausgeben.",
+      "source": "branches/exact-percent-kernel/exact-percent.mjs",
+      "tests": [
+        "branches/exact-percent-kernel/exact-percent.test.mjs"
+      ],
+      "docs": "branches/exact-percent-kernel/README.md",
+      "demo": null
+    },
+    {
       "id": "1001-doors",
       "title": "1001 Türen – Zahlen, Rollen und Zustandsräume",
       "description": "Alle Werte von 0 bis 1000 erkunden, Darstellungen und Wege vergleichen und ein endliches Abstimmungsmodell ausführen.",
