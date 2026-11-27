@@ -5,6 +5,17 @@
   "scope": "Current repository module and research entry points, not an audit of other repositories",
   "entries": [
     {
+      "id": "light-time-model",
+      "title": "Licht und Zeit – Zwei-Port-Bilanz und Lorentz-Koordinaten",
+      "description": "Berechne die Ausgänge eines idealen Interferometers und vergleiche Raumzeitkoordinaten in zwei Inertialsystemen.",
+      "source": "branches/light-time-model/core.cjs",
+      "tests": [
+        "branches/light-time-model/tests/core.test.mjs"
+      ],
+      "docs": "branches/light-time-model/README.md",
+      "demo": null
+    },
+    {
       "id": "exact-percent-kernel",
       "title": "Prozentanteile exakt berechnen",
       "description": "Prozentwerte als endliche Dezimalzahlen addieren, ihre Summe prüfen und einen Restanteil ausgeben.",
