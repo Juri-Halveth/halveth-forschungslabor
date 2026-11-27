@@ -29,6 +29,10 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [Zwei lokale Verzeichnisbäume vergleichen](branches/system-essence-detector/README.md)
+
+Vergleiche relative Dateipfade und Bytes zweier ausdrücklich gewählter Ordner. Das Ergebnis benennt beobachtete Unterschiede und offene Stellen.
+
 ### [GENESIS – Zustände und Ereignisse untersuchen](branches/genesis-state-lab/README.md)
 
 Wähle einen von 100 Modellagenten, löse einen Impuls aus und vergleiche seinen Verlauf mit der Rekonstruktion.

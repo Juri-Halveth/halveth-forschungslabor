@@ -1,6 +1,15 @@
 {
-  "branchCount": 20,
+  "branchCount": 21,
   "branches": [
+    {
+      "id": "system-essence-detector",
+      "sourceFiles": [
+        "branches/system-essence-detector/compare.py"
+      ],
+      "testFiles": [
+        "branches/system-essence-detector/test_compare.py"
+      ]
+    },
     {
       "id": "genesis-state-lab",
       "sourceFiles": [

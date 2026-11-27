@@ -5,6 +5,34 @@
   "modelWeightTraining": false,
   "entries": [
     {
+      "id": "system-essence-detector",
+      "title": "Zwei lokale Verzeichnisbäume vergleichen",
+      "description": "Vergleiche relative Dateipfade und Bytes zweier ausdrücklich gewählter Ordner. Das Ergebnis benennt beobachtete Unterschiede und offene Stellen.",
+      "source": "branches/system-essence-detector/compare.py",
+      "tests": [
+        "branches/system-essence-detector/test_compare.py"
+      ],
+      "docs": "branches/system-essence-detector/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/system-essence-detector/compare.py",
+          "bytes": 10307,
+          "sha256": "39eea2e42c075c4f82bb7817bb1b158471d6f7f531e52d5d6ae810810723a614"
+        },
+        {
+          "path": "branches/system-essence-detector/README.md",
+          "bytes": 1353,
+          "sha256": "4d7efd7bebbd16a25e4588144bd8ec8c560c41e4122383e512870fb293cffb64"
+        },
+        {
+          "path": "branches/system-essence-detector/test_compare.py",
+          "bytes": 6695,
+          "sha256": "1d6553ca1df41981573eb5d84d275bc7c5aa02dc10249209bdcafdf61b6d849c"
+        }
+      ]
+    },
+    {
       "id": "genesis-state-lab",
       "title": "GENESIS – Zustände und Ereignisse untersuchen",
       "description": "Wähle einen von 100 Modellagenten, löse einen Impuls aus und vergleiche seinen Verlauf mit der Rekonstruktion.",

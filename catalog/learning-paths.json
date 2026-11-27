@@ -5,6 +5,17 @@
   "scope": "Current repository module and research entry points, not an audit of other repositories",
   "entries": [
     {
+      "id": "system-essence-detector",
+      "title": "Zwei lokale Verzeichnisbäume vergleichen",
+      "description": "Vergleiche relative Dateipfade und Bytes zweier ausdrücklich gewählter Ordner. Das Ergebnis benennt beobachtete Unterschiede und offene Stellen.",
+      "source": "branches/system-essence-detector/compare.py",
+      "tests": [
+        "branches/system-essence-detector/test_compare.py"
+      ],
+      "docs": "branches/system-essence-detector/README.md",
+      "demo": null
+    },
+    {
       "id": "genesis-state-lab",
       "title": "GENESIS – Zustände und Ereignisse untersuchen",
       "description": "Wähle einen von 100 Modellagenten, löse einen Impuls aus und vergleiche seinen Verlauf mit der Rekonstruktion.",

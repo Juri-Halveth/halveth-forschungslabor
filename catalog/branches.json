@@ -2,6 +2,14 @@
   "schemaVersion": "1.0.0",
   "branches": [
     {
+      "id": "system-essence-detector",
+      "title": "Zwei lokale Verzeichnisbäume vergleichen",
+      "description": "Vergleiche relative Dateipfade und Bytes zweier ausdrücklich gewählter Ordner. Das Ergebnis benennt beobachtete Unterschiede und offene Stellen.",
+      "path": "branches/system-essence-detector",
+      "entry": "compare.py",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
       "id": "genesis-state-lab",
       "title": "GENESIS – Zustände und Ereignisse untersuchen",
       "description": "Wähle einen von 100 Modellagenten, löse einen Impuls aus und vergleiche seinen Verlauf mit der Rekonstruktion.",

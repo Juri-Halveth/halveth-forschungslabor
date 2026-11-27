@@ -6,6 +6,7 @@ verleiht keine Rechte an verlinkten Quellen oder an fremden Projekten.
 | Dateien | Bedingungen |
 | --- | --- |
 | `exact-percent.mjs` und zugehörige Tests unter `branches/exact-percent-kernel/` | [Apache-2.0](branches/exact-percent-kernel/LICENSE-APACHE-2.0.txt) |
+| Bytevergleich und Tests in `branches/system-essence-detector/` | [Apache-2.0](branches/system-essence-detector/LICENSE-APACHE-2.0.txt) |
 | Übriger Quellcode, Tests, HTML und CSS unter `branches/` und `scripts/` | [MIT](LICENSE) |
 | JSON-Daten, Modelle, Fixtures und Katalogmetadaten | [CC0 1.0](LICENSE-DATA.md) |
 | `branches/1001-doors/http-status-codes-source.csv` | [IANA/IETF CC0 1.0](https://www.iana.org/help/licensing-terms); die Fassung und ihr Digest stehen in `branches/1001-doors/SOURCE_RECEIPT.json` |
