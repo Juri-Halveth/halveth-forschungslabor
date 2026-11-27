@@ -29,6 +29,11 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [Netzbild-Kandidaten](branches/network-candidate/README.md)
+
+Ein Helligkeitsregler verändert die Zahl der verbundenen Pixelgruppen. Zwei synthetische Raumfiguren teilen dieselbe Draufsicht und lassen sich in der Seitenansicht unterscheiden. [Modell öffnen](https://juri-halveth.github.io/halveth-forschungslabor/netzbild/).
+
+
 ### [Licht und Zeit – Zwei-Port-Bilanz und Lorentz-Koordinaten](branches/light-time-model/README.md)
 
 Berechne die Ausgänge eines idealen Interferometers und vergleiche Raumzeitkoordinaten in zwei Inertialsystemen.

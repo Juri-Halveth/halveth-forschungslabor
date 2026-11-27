@@ -496,3 +496,26 @@ test("commands, timeline, workloads, corruption and repair are connected to mode
     ),
   ).toBe(true);
 });
+
+test("network image demo changes pixel evidence without turning 3D illustrations into observations",async({page})=>{
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto('/netzbild/');
+  await expect(page.locator('#measurement')).toContainText('1 vierarmige Muster');
+  await expect(page.locator('#candidate-cards')).toBeVisible();
+  const a=await page.locator('#pixel-grid').evaluate(element=>[...element.children].map(pixel=>pixel.style.getPropertyValue('--pixel')));
+  await page.getByRole('button',{name:'B · Überlagerung'}).click();
+  const b=await page.locator('#pixel-grid').evaluate(element=>[...element.children].map(pixel=>pixel.style.getPropertyValue('--pixel')));
+  expect(b).toEqual(a);
+  await page.locator('#threshold').fill('120');
+  await expect(page.locator('#measurement')).toContainText('0 vierarmige Muster');
+  await expect(page.locator('#candidate-cards')).toBeHidden();
+  await page.getByRole('button',{name:'C · Filamente'}).click();
+  await page.locator('#threshold').fill('80');
+  await expect(page.locator('#measurement')).toContainText('3 Pixelgruppen');
+  await expect(page.locator('#candidate-cards')).toBeHidden();
+  for(const width of [320,390,768,1024]){
+    await page.setViewportSize({width,height:900});
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  }
+  expect(errors).toEqual([]);
+});

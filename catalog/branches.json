@@ -2,6 +2,14 @@
   "schemaVersion": "1.0.0",
   "branches": [
     {
+      "id": "network-candidate",
+      "title": "Netzbild-Kandidaten – Pixelbrücken und räumliche Kreuzungen",
+      "description": "Offline-Modell für Helligkeitsschwellen und zwei räumliche Kandidaten mit derselben Draufsicht.",
+      "path": "branches/network-candidate",
+      "entry": "model.mjs",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
       "id": "light-time-model",
       "title": "Licht und Zeit – Zwei-Port-Bilanz und Lorentz-Koordinaten",
       "description": "Berechne die Ausgänge eines idealen Interferometers und vergleiche Raumzeitkoordinaten in zwei Inertialsystemen.",

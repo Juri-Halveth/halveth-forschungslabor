@@ -57,6 +57,8 @@ test("publication copies only approved files, binds bytes and rejects reused out
   assert.equal(receipt.files.find((entry) => entry.path === "endeck/index.html").sourcePath, "branches/endeck-observer/index.html");
   assert.equal(await fs.readFile(path.join(output, "lifecycle/lifecycle_probe.py"), "utf8"), "approved lifecycle/lifecycle_probe.py");
   assert.equal(receipt.files.find(entry=>entry.path==='sicherheitslabor/core.mjs').sourcePath,'branches/security-workbench/core.mjs');
+  assert.equal(receipt.files.find(entry=>entry.path==='netzbild/index.html').sourcePath,'branches/network-candidate/demo.html');
+  assert.equal(receipt.files.find(entry=>entry.path==='netzbild/model-core.mjs').sourcePath,'branches/network-candidate/model-core.mjs');
   assert.ok(!receipt.files.some(entry=>entry.path.includes('private-lab-token')||entry.path==='sicherheitslabor/http-fixture.mjs'));
   assert.equal(receipt.files.find(entry=>entry.path==='security/model.mjs').sourcePath,'branches/security-research-hub/model.mjs');
   assert.equal(receipt.files.find(entry=>entry.path==='faltgrenze/model.js').sourcePath,'branches/fold-resolution-lab/model.js');

@@ -60,6 +60,9 @@ export const publicFiles = Object.freeze([
   ...["index.html", "README.md", "results.json", "lifecycle_probe.py"].map((name) => ({
     path: "lifecycle/" + name, sourcePath: "research/lifecycle-echo/" + name,
   })),
+  ...["demo.html", "demo.css", "demo.mjs", "model-core.mjs", "fixtures.mjs"].map((name) => ({
+    path: "netzbild/" + (name === "demo.html" ? "index.html" : name), sourcePath: "branches/network-candidate/" + name,
+  })),
   ...["index.html", "style.css", "view.mjs", "routes.json"].map((name) => ({
     path: "wissen/" + name, sourcePath: "catalog/wissen/" + name,
   })),
