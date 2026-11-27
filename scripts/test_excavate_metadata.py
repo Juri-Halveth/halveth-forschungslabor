@@ -195,6 +195,70 @@ class InventoryTests(unittest.TestCase):
             self.assertEqual(summary["budgetLimit"], "FILES")
             self.assertTrue(summary["truncated"])
 
+    def test_streaming_file_limit_closes_iterators_without_listing_the_directory(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            base = Path(temporary)
+            source = base / "source"
+            nested = source / "nested"
+            nested.mkdir(parents=True)
+            for i in range(50):
+                (nested / f"item-{i}").touch()
+            counts = {"next": 0, "closed": 0}
+            clock = Clock()
+            real_scandir = MODULE.os.scandir
+
+            def counted(path):
+                return DelayedScandir(real_scandir(path), 1, 0, clock.advance, counts)
+
+            with patch.object(MODULE.os, "scandir", side_effect=counted):
+                summary = MODULE.inventory(source, base / "out", 1, 30, order="filesystem")
+            self.assertEqual(counts, {"next": 2, "closed": 2})
+            self.assertEqual(summary["entriesRead"], 2)
+            self.assertEqual(summary["files"], 1)
+            self.assertEqual(summary["budgetLimit"], "FILES")
+            self.assertEqual(summary["roots"][0]["state"], "BUDGET_LIMIT")
+
+    def test_entry_limit_caps_enumeration_even_when_names_are_excluded(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            base = Path(temporary)
+            source = base / "source"
+            for name in (".git", "node_modules", "target", "dist"):
+                (source / name).mkdir(parents=True)
+            for order in ("filesystem", "sorted"):
+                with self.subTest(order=order):
+                    summary = MODULE.inventory(source, base / order, 100, 30, order=order, max_entries=2)
+                    self.assertEqual(summary["entriesRead"], 2)
+                    self.assertEqual(summary["budgetLimit"], "ENTRIES")
+                    self.assertEqual(summary["state"], "BUDGET_LIMIT")
+                    self.assertEqual(summary["files"], 0)
+
+    def test_streaming_excludes_own_output_and_preserves_complete_file_set(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            source = Path(temporary)
+            (source / "directory").mkdir()
+            (source / "directory" / "sample.dat").touch()
+            (source / "file.txt").touch()
+            (source / "node_modules").mkdir()
+            output = source / "inventory"
+            for order in ("sorted", "filesystem"):
+                with self.subTest(order=order):
+                    summary = MODULE.inventory(source, output, 100, 30, order=order)
+                    self.assertEqual(summary["state"], "COMPLETE_WITH_EXCLUSIONS")
+                    self.assertEqual(summary["ordering"], order)
+                    self.assertEqual(summary["excluded"]["own_output"], 1)
+                    rows = (output / "inventory_local.jsonl").read_text(encoding="utf-8").splitlines()
+                    self.assertEqual({json.loads(row)["relativePath"] for row in rows},
+                                     {"directory/sample.dat", "file.txt"})
+
+    def test_invalid_order_and_entry_limits_are_rejected(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            base = Path(temporary)
+            with self.assertRaisesRegex(ValueError, "order"):
+                MODULE.inventory(base, base / "out", 100, 30, order="arbitrary")
+            for limit in (0, -1, True, 1.5):
+                with self.subTest(limit=limit), self.assertRaisesRegex(ValueError, "max_entries"):
+                    MODULE.inventory(base, base / "out", 100, 30, max_entries=limit)
+
     def test_nonfinite_time_budgets_are_rejected(self):
         with tempfile.TemporaryDirectory() as temporary:
             base = Path(temporary)
