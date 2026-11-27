@@ -1,6 +1,15 @@
 {
-  "branchCount": 15,
+  "branchCount": 16,
   "branches": [
+    {
+      "id": "light-time-model",
+      "sourceFiles": [
+        "branches/light-time-model/core.cjs"
+      ],
+      "testFiles": [
+        "branches/light-time-model/tests/core.test.mjs"
+      ]
+    },
     {
       "id": "exact-percent-kernel",
       "sourceFiles": [

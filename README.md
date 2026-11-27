@@ -29,6 +29,10 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [Licht und Zeit – Zwei-Port-Bilanz und Lorentz-Koordinaten](branches/light-time-model/README.md)
+
+Berechne die Ausgänge eines idealen Interferometers und vergleiche Raumzeitkoordinaten in zwei Inertialsystemen.
+
 ### [Prozentanteile exakt berechnen](branches/exact-percent-kernel/README.md)
 
 Prozentwerte als endliche Dezimalzahlen addieren, ihre Summe prüfen und einen Restanteil ausgeben.

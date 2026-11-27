@@ -2,6 +2,14 @@
   "schemaVersion": "1.0.0",
   "branches": [
     {
+      "id": "light-time-model",
+      "title": "Licht und Zeit – Zwei-Port-Bilanz und Lorentz-Koordinaten",
+      "description": "Berechne die Ausgänge eines idealen Interferometers und vergleiche Raumzeitkoordinaten in zwei Inertialsystemen.",
+      "path": "branches/light-time-model",
+      "entry": "core.cjs",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
       "id": "exact-percent-kernel",
       "title": "Prozentanteile exakt berechnen",
       "description": "Prozentwerte als endliche Dezimalzahlen addieren, ihre Summe prüfen und einen Restanteil ausgeben.",
