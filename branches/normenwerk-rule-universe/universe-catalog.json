@@ -1,6 +1,18 @@
 {
-  "branchCount": 18,
+  "branchCount": 19,
   "branches": [
+    {
+      "id": "lucinet-script-lab",
+      "sourceFiles": [
+        "branches/lucinet-script-lab/src/lib.rs",
+        "branches/lucinet-script-lab/src/main.rs"
+      ],
+      "testFiles": [
+        "branches/lucinet-script-lab/source_receipt.test.mjs",
+        "branches/lucinet-script-lab/src/lib.rs",
+        "branches/lucinet-script-lab/src/main.rs"
+      ]
+    },
     {
       "id": "lucinet-core-rust",
       "sourceFiles": [

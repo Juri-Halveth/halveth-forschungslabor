@@ -2,6 +2,14 @@
   "schemaVersion": "1.0.0",
   "branches": [
     {
+      "id": "lucinet-script-lab",
+      "title": "LUCINET Script Lab – Unicode untersuchen",
+      "description": "Vergleiche Codepunkte, Grapheme, Normalisierung und Schreibrichtung eines eingegebenen Texts.",
+      "path": "branches/lucinet-script-lab",
+      "entry": "src/lib.rs",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
       "id": "lucinet-core-rust",
       "title": "LUCINET-Kern in Rust",
       "description": "Prüfe, wie eine Projektion ihren Quellzustand bindet und welche Zustandswechsel ein Modell erlaubt.",

@@ -5,6 +5,17 @@
   "scope": "Current repository module and research entry points, not an audit of other repositories",
   "entries": [
     {
+      "id": "lucinet-script-lab",
+      "title": "LUCINET Script Lab – Unicode untersuchen",
+      "description": "Vergleiche Codepunkte, Grapheme, Normalisierung und Schreibrichtung eines eingegebenen Texts.",
+      "source": "branches/lucinet-script-lab/src/lib.rs",
+      "tests": [
+        "branches/lucinet-script-lab/source_receipt.test.mjs"
+      ],
+      "docs": "branches/lucinet-script-lab/README.md",
+      "demo": null
+    },
+    {
       "id": "lucinet-core-rust",
       "title": "LUCINET-Kern in Rust",
       "description": "Prüfe, wie eine Projektion ihren Quellzustand bindet und welche Zustandswechsel ein Modell erlaubt.",

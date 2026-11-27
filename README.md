@@ -29,6 +29,10 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [LUCINET Script Lab – Unicode untersuchen](branches/lucinet-script-lab/README.md)
+
+Vergleiche Codepunkte, Grapheme, Normalisierung und Schreibrichtung eines eingegebenen Texts.
+
 ### [LUCINET-Kern in Rust](branches/lucinet-core-rust/README.md)
 
 Prüfe, wie eine Projektion ihren Quellzustand bindet und welche Zustandswechsel ein Modell erlaubt.
