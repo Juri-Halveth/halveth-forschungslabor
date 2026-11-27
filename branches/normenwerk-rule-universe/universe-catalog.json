@@ -1,6 +1,21 @@
 {
-  "branchCount": 19,
+  "branchCount": 20,
   "branches": [
+    {
+      "id": "genesis-state-lab",
+      "sourceFiles": [
+        "branches/genesis-state-lab/model.js",
+        "branches/genesis-state-lab/view.js",
+        "branches/genesis-state-lab/handoff.js",
+        "branches/genesis-state-lab/prediction-process-probe.mjs"
+      ],
+      "testFiles": [
+        "branches/genesis-state-lab/model.test.mjs",
+        "branches/genesis-state-lab/handoff.test.mjs",
+        "branches/genesis-state-lab/prediction-process-probe.test.mjs",
+        "branches/genesis-state-lab/evidence/receipt.test.mjs"
+      ]
+    },
     {
       "id": "lucinet-script-lab",
       "sourceFiles": [

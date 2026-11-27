@@ -11,6 +11,7 @@ verleiht keine Rechte an verlinkten Quellen oder an fremden Projekten.
 | `branches/1001-doors/http-status-codes-source.csv` | [IANA/IETF CC0 1.0](https://www.iana.org/help/licensing-terms); die Fassung und ihr Digest stehen in `branches/1001-doors/SOURCE_RECEIPT.json` |
 | Neu geschriebene Datenwerte der öffentlichen Arrays in `branches/security-research-hub/catalog.mjs` | [CC0 1.0](LICENSE-DATA.md); Modulcode MIT; verlinkte Werke behalten ihre Rechte |
 | Neu geschriebene Erläuterungen und Markdown-Dateien | [CC BY 4.0](LICENSE-CONTENT.md) |
+| Drei eigene Browserabbildungen unter `branches/genesis-state-lab/evidence/` | [CC BY 4.0](LICENSE-CONTENT.md), [ursprüngliche Zuordnung](branches/genesis-state-lab/evidence/README.md) |
 | Eigene Vektoruhr-Vorschau `branches/temporal-clock/preview.png` | [CC BY 4.0](LICENSE-CONTENT.md) |
 | Mermaid-Diagramm `branches/three-actor-fork/diagram.mmd` | [CC BY 4.0](LICENSE-CONTENT.md) |
 | Mermaid-Diagramm `branches/next-action-navigator/diagram.mmd` | [CC BY 4.0](LICENSE-CONTENT.md) |

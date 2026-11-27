@@ -5,6 +5,17 @@
   "scope": "Current repository module and research entry points, not an audit of other repositories",
   "entries": [
     {
+      "id": "genesis-state-lab",
+      "title": "GENESIS – Zustände und Ereignisse untersuchen",
+      "description": "Wähle einen von 100 Modellagenten, löse einen Impuls aus und vergleiche seinen Verlauf mit der Rekonstruktion.",
+      "source": "branches/genesis-state-lab/model.js",
+      "tests": [
+        "branches/genesis-state-lab/model.test.mjs"
+      ],
+      "docs": "branches/genesis-state-lab/README.md",
+      "demo": null
+    },
+    {
       "id": "lucinet-script-lab",
       "title": "LUCINET Script Lab – Unicode untersuchen",
       "description": "Vergleiche Codepunkte, Grapheme, Normalisierung und Schreibrichtung eines eingegebenen Texts.",
