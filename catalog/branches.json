@@ -2,6 +2,14 @@
   "schemaVersion": "1.0.0",
   "branches": [
     {
+      "id": "genesis-state-lab",
+      "title": "GENESIS – Zustände und Ereignisse untersuchen",
+      "description": "Wähle einen von 100 Modellagenten, löse einen Impuls aus und vergleiche seinen Verlauf mit der Rekonstruktion.",
+      "path": "branches/genesis-state-lab",
+      "entry": "model.js",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
       "id": "lucinet-script-lab",
       "title": "LUCINET Script Lab – Unicode untersuchen",
       "description": "Vergleiche Codepunkte, Grapheme, Normalisierung und Schreibrichtung eines eingegebenen Texts.",

@@ -29,6 +29,10 @@ Danach: `http://127.0.0.1:8847/branches/eye-optics-and-prediction/`.
 
 ## Was enthalten ist
 
+### [GENESIS – Zustände und Ereignisse untersuchen](branches/genesis-state-lab/README.md)
+
+Wähle einen von 100 Modellagenten, löse einen Impuls aus und vergleiche seinen Verlauf mit der Rekonstruktion.
+
 ### [LUCINET Script Lab – Unicode untersuchen](branches/lucinet-script-lab/README.md)
 
 Vergleiche Codepunkte, Grapheme, Normalisierung und Schreibrichtung eines eingegebenen Texts.

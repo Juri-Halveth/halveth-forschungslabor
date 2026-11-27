@@ -5,6 +5,34 @@
   "modelWeightTraining": false,
   "entries": [
     {
+      "id": "genesis-state-lab",
+      "title": "GENESIS – Zustände und Ereignisse untersuchen",
+      "description": "Wähle einen von 100 Modellagenten, löse einen Impuls aus und vergleiche seinen Verlauf mit der Rekonstruktion.",
+      "source": "branches/genesis-state-lab/model.js",
+      "tests": [
+        "branches/genesis-state-lab/model.test.mjs"
+      ],
+      "docs": "branches/genesis-state-lab/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/genesis-state-lab/model.js",
+          "bytes": 12758,
+          "sha256": "995c6a6fffbc18034457302b25ada4b19a1f96d90ba4b552488ae56bc0d1ba0d"
+        },
+        {
+          "path": "branches/genesis-state-lab/README.md",
+          "bytes": 14784,
+          "sha256": "7f173b00ba9cfd8ea5679a666e095d306aaa6fa98a7804d211d1512da142c409"
+        },
+        {
+          "path": "branches/genesis-state-lab/model.test.mjs",
+          "bytes": 8850,
+          "sha256": "2b5f099c86a7ed1f61ca0cac505b670198e092454243f2c074185d800560377d"
+        }
+      ]
+    },
+    {
       "id": "lucinet-script-lab",
       "title": "LUCINET Script Lab – Unicode untersuchen",
       "description": "Vergleiche Codepunkte, Grapheme, Normalisierung und Schreibrichtung eines eingegebenen Texts.",
