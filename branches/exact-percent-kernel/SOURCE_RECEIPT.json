@@ -1,0 +1,14 @@
+{
+  "schema": "halveth.exact-percent-source-receipt.v1",
+  "sourceRole": "CONCEPTUAL_LOCAL_PREDECESSOR",
+  "sourceLabel": "HALVETH_AI_FILM_STUDIO/kernel/HALVETH_ZERO_GATE.ps1",
+  "sourceBytes": 20182,
+  "sourceSha256": "218b9fbe4230f63343838a0beae8ccc406c527dd150e3a646c93870e1095d51a",
+  "sourceLicenseState": "UNDECLARED_LOCAL_SOURCE_NOT_DISTRIBUTED_HERE",
+  "transfer": "NEW_SMALL_IMPLEMENTATION_NO_SOURCE_BYTE_COPY",
+  "implementationPath": "branches/exact-percent-kernel/exact-percent.mjs",
+  "implementationSha256": "4efc7477f6786a57244a552d61001f5bfef0e7f78c8dea3751c5a93e342f89fa",
+  "testPath": "branches/exact-percent-kernel/exact-percent.test.mjs",
+  "testSha256": "0e4bd78d4dcbe8e1cf50622dfbb229d4746a48b4da37b4776f3ebe05456777b4",
+  "claimCeiling": "Digests bind inspected local bytes and new module bytes; they do not prove original authorship, financial safety, or external effect."
+}

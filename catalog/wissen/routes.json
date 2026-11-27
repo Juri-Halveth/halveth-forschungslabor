@@ -5,6 +5,34 @@
   "modelWeightTraining": false,
   "entries": [
     {
+      "id": "exact-percent-kernel",
+      "title": "Prozentanteile exakt berechnen",
+      "description": "Prozentwerte als endliche Dezimalzahlen addieren, ihre Summe prüfen und einen Restanteil ausgeben.",
+      "source": "branches/exact-percent-kernel/exact-percent.mjs",
+      "tests": [
+        "branches/exact-percent-kernel/exact-percent.test.mjs"
+      ],
+      "docs": "branches/exact-percent-kernel/README.md",
+      "demo": null,
+      "files": [
+        {
+          "path": "branches/exact-percent-kernel/exact-percent.mjs",
+          "bytes": 4043,
+          "sha256": "4efc7477f6786a57244a552d61001f5bfef0e7f78c8dea3751c5a93e342f89fa"
+        },
+        {
+          "path": "branches/exact-percent-kernel/README.md",
+          "bytes": 2362,
+          "sha256": "aef3b33587e9270b7d1d7b78ac0d6e4ff3506388385a68d66b8cf51e2a896d67"
+        },
+        {
+          "path": "branches/exact-percent-kernel/exact-percent.test.mjs",
+          "bytes": 3131,
+          "sha256": "0e4bd78d4dcbe8e1cf50622dfbb229d4746a48b4da37b4776f3ebe05456777b4"
+        }
+      ]
+    },
+    {
       "id": "1001-doors",
       "title": "1001 Türen – Zahlen, Rollen und Zustandsräume",
       "description": "Alle Werte von 0 bis 1000 erkunden, Darstellungen und Wege vergleichen und ein endliches Abstimmungsmodell ausführen.",

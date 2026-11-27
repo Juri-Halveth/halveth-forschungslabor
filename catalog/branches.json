@@ -2,6 +2,14 @@
   "schemaVersion": "1.0.0",
   "branches": [
     {
+      "id": "exact-percent-kernel",
+      "title": "Prozentanteile exakt berechnen",
+      "description": "Prozentwerte als endliche Dezimalzahlen addieren, ihre Summe prüfen und einen Restanteil ausgeben.",
+      "path": "branches/exact-percent-kernel",
+      "entry": "exact-percent.mjs",
+      "kind": "LOCAL_PROTOTYPE_OR_DECLARED_MODEL"
+    },
+    {
       "id": "1001-doors",
       "title": "1001 Türen – Zahlen, Rollen und Zustandsräume",
       "description": "0–1000 als durchsuchbares Register mit Darstellungswechseln, Rollenreisen, Zeitmodell und lokalem 999-Stimmen-Versuch.",

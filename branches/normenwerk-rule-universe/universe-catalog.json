@@ -1,6 +1,15 @@
 {
-  "branchCount": 14,
+  "branchCount": 15,
   "branches": [
+    {
+      "id": "exact-percent-kernel",
+      "sourceFiles": [
+        "branches/exact-percent-kernel/exact-percent.mjs"
+      ],
+      "testFiles": [
+        "branches/exact-percent-kernel/exact-percent.test.mjs"
+      ]
+    },
     {
       "id": "1001-doors",
       "sourceFiles": [
